@@ -1,0 +1,16 @@
+[
+  { "ministryId": "mha", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — full DDG drilldown available." },
+  { "ministryId": "mopsw", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — small ministry, complete coverage." },
+  { "ministryId": "mod_dopt", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — Mission Karmayogi outlays may need re-validation." },
+  { "ministryId": "mod", "dgStatus": "validated", "ddgStatus": "ocr-needed", "notes": "DDG PDFs require OCR; planned for next sprint." },
+  { "ministryId": "morth", "dgStatus": "validated", "ddgStatus": "parsed", "notes": "DDG parsed; awaiting validation." },
+  { "ministryId": "mor", "dgStatus": "validated", "ddgStatus": "missing", "notes": "Railways uses separate accounting; mapping pending." },
+  { "ministryId": "mof", "dgStatus": "validated", "ddgStatus": "parsed" },
+  { "ministryId": "mohfw", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "moe", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "moa", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "mord", "dgStatus": "parsed", "ddgStatus": "missing", "notes": "MGNREGS state-wise breakdown not disclosed in DDG." },
+  { "ministryId": "moh", "dgStatus": "validated", "ddgStatus": "ocr-needed" },
+  { "ministryId": "moca", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "mocom", "dgStatus": "parsed", "ddgStatus": "missing" }
+]

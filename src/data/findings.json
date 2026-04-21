@@ -1,0 +1,26 @@
+[
+  {
+    "id": "f-mha-police-salaries",
+    "title": "Three out of four rupees in MHA's police budget go to salaries",
+    "ministryId": "mha",
+    "dek": "Object-head data shows that across the central armed police forces — CRPF, BSF, ITBP, SSB — salaries dominate, leaving thin room for modernisation.",
+    "body": "When you drill into the Demand for Police (No. 58) at the object-head level, salaries account for over 75% of revenue spending across the major central armed police forces. Capital outlay on modernisation — equipment, arms, surveillance — sits at roughly ₹4,290 Cr in FY26, less than the salary bill of the smallest of these forces. The pattern matters: when salary commitments are this rigid, marginal increases in the police budget translate poorly into operational capability.",
+    "date": "2025-02-08"
+  },
+  {
+    "id": "f-mopsw-sagarmala",
+    "title": "Sagarmala absorbs the majority of capital spending at MoPSW",
+    "ministryId": "mopsw",
+    "dek": "The flagship maritime programme dwarfs every other capital line in the Ports ministry — and most of it routes through a single object head: Major Works.",
+    "body": "MoPSW is small in budget terms (₹4,137 Cr in FY26), but the object-head view reveals a tightly concentrated portfolio. Sagarmala alone accounts for over ₹2,200 Cr of capital expenditure, and within that, the 'Major Works' object head carries ₹1,820 Cr. The Maritime Development Fund — newer, less scrutinised — adds another ₹1,272 Cr through the 'Investments' object head.",
+    "date": "2025-02-12"
+  },
+  {
+    "id": "f-dopt-karmayogi",
+    "title": "Mission Karmayogi is now DoPT's largest single outlay outside salaries",
+    "ministryId": "mod_dopt",
+    "dek": "The civil-services capacity-building programme has grown to ₹510 Cr in FY26 — bigger than UPSC's entire examinations budget.",
+    "body": "DoPT is a small department, but the object-head data shows the centre of gravity has shifted. Mission Karmayogi, routed through the Capacity Building Commission, is now the largest non-salary line in the department at ₹510 Cr (FY26). For comparison, UPSC's examinations budget — covering every Civil Services Exam, NDA, CDS — sits at ₹392 Cr. The training institutes (LBSNAA, ISTM) together draw ₹363 Cr.",
+    "date": "2025-02-15"
+  }
+]
