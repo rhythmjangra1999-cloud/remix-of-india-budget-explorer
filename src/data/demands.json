@@ -1,25 +1,1532 @@
 [
-  { "id": "d-mha-1", "ministryId": "mha", "number": 56, "title": "Ministry of Home Affairs", "amounts": { "FY26": 4711, "FY27": 4920 }, "confidence": "validated", "sourcePage": 1 },
-  { "id": "d-mha-2", "ministryId": "mha", "number": 57, "title": "Cabinet", "amounts": { "FY26": 933, "FY27": 980 }, "confidence": "validated", "sourcePage": 14 },
-  { "id": "d-mha-3", "ministryId": "mha", "number": 58, "title": "Police", "amounts": { "FY26": 142810, "FY27": 148500 }, "confidence": "validated", "sourcePage": 22 },
-  { "id": "d-mha-4", "ministryId": "mha", "number": 59, "title": "Other Expenditure of MHA", "amounts": { "FY26": 16350, "FY27": 16900 }, "confidence": "parsed", "sourcePage": 88 },
-  { "id": "d-mha-5", "ministryId": "mha", "number": 60, "title": "Transfers to UTs (with legislature)", "amounts": { "FY26": 47120, "FY27": 49100 }, "confidence": "validated", "sourcePage": 102 },
-  { "id": "d-mha-6", "ministryId": "mha", "number": 61, "title": "Transfers to UTs (without legislature)", "amounts": { "FY26": 21287, "FY27": 21400 }, "confidence": "parsed", "sourcePage": 118 },
-
-  { "id": "d-mopsw-1", "ministryId": "mopsw", "number": 86, "title": "Ports, Shipping and Waterways", "amounts": { "FY26": 4137, "FY27": 4380 }, "confidence": "validated", "sourcePage": 1 },
-
-  { "id": "d-dopt-1", "ministryId": "mod_dopt", "number": 73, "title": "Department of Personnel and Training", "amounts": { "FY26": 2451, "FY27": 2580 }, "confidence": "validated", "sourcePage": 1 },
-
-  { "id": "d-mod-1", "ministryId": "mod", "number": 18, "title": "Defence Services (Revenue)", "amounts": { "FY26": 312300, "FY27": 326000 }, "confidence": "parsed" },
-  { "id": "d-mod-2", "ministryId": "mod", "number": 19, "title": "Capital Outlay on Defence Services", "amounts": { "FY26": 174900, "FY27": 184000 }, "confidence": "parsed" },
-  { "id": "d-mod-3", "ministryId": "mod", "number": 20, "title": "Defence Pensions", "amounts": { "FY26": 160795, "FY27": 165400 }, "confidence": "parsed" },
-  { "id": "d-mod-4", "ministryId": "mod", "number": 21, "title": "Ministry of Defence (Civil)", "amounts": { "FY26": 33215, "FY27": 37050 }, "confidence": "parsed" },
-
-  { "id": "d-morth-1", "ministryId": "morth", "number": 84, "title": "Ministry of Road Transport and Highways", "amounts": { "FY26": 272240, "FY27": 285000 }, "confidence": "validated" },
-
-  { "id": "d-mor-1", "ministryId": "mor", "number": 85, "title": "Ministry of Railways", "amounts": { "FY26": 255445, "FY27": 268900 }, "confidence": "validated" },
-
-  { "id": "d-mof-1", "ministryId": "mof", "number": 33, "title": "Transfers to States", "amounts": { "FY26": 1432000, "FY27": 1490000 }, "confidence": "validated" },
-  { "id": "d-mof-2", "ministryId": "mof", "number": 34, "title": "Interest Payments", "amounts": { "FY26": 380000, "FY27": 410000 }, "confidence": "validated" },
-  { "id": "d-mof-3", "ministryId": "mof", "number": 35, "title": "Other Finance Department Expenditure", "amounts": { "FY26": 124123, "FY27": 110500 }, "confidence": "parsed" }
+  {
+    "id": "d001",
+    "ministryId": "magri",
+    "number": 1,
+    "title": "Department of Agriculture and Farmers Welfare",
+    "amounts": {
+      "FY26": 235132.43,
+      "FY27": 232561.38,
+      "FY26_RE": 220089.3,
+      "FY25_Actual": 232153.21,
+      "FY27_Revenue": 232451.62,
+      "FY27_Capital": 109.76
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d002",
+    "ministryId": "magri",
+    "number": 2,
+    "title": "Department of Agricultural Research and Education",
+    "amounts": {
+      "FY26": 10466.39,
+      "FY27": 9967.4,
+      "FY26_RE": 10280.83,
+      "FY25_Actual": 10033.56,
+      "FY27_Revenue": 9964.95,
+      "FY27_Capital": 2.45
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d003",
+    "ministryId": "datom",
+    "number": 3,
+    "title": "Atomic Energy",
+    "amounts": {
+      "FY26": 37482.93,
+      "FY27": 38422.71,
+      "FY26_RE": 37181.72,
+      "FY25_Actual": 36616.6,
+      "FY27_Revenue": 25629.3,
+      "FY27_Capital": 12793.41
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d004",
+    "ministryId": "mayush",
+    "number": 4,
+    "title": "Ministry of Ayush",
+    "amounts": {
+      "FY26": 3992.9,
+      "FY27": 4408.93,
+      "FY26_RE": 3671.82,
+      "FY25_Actual": 3468.63,
+      "FY27_Revenue": 4381.86,
+      "FY27_Capital": 27.07
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d005",
+    "ministryId": "mchem",
+    "number": 5,
+    "title": "Department of Chemicals and Petrochemicals",
+    "amounts": {
+      "FY26": 194.05,
+      "FY27": 185.72,
+      "FY26_RE": 185.57,
+      "FY25_Actual": 1607.75,
+      "FY27_Revenue": 184.7,
+      "FY27_Capital": 1.02
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d006",
+    "ministryId": "mchem",
+    "number": 6,
+    "title": "Department of Fertilisers",
+    "amounts": {
+      "FY26": 184082.44,
+      "FY27": 187162.53,
+      "FY26_RE": 215148.63,
+      "FY25_Actual": 191824.18,
+      "FY27_Revenue": 187153.64,
+      "FY27_Capital": 8.89
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d007",
+    "ministryId": "mchem",
+    "number": 7,
+    "title": "Department of Pharmaceuticals",
+    "amounts": {
+      "FY26": 5268.72,
+      "FY27": 5931.22,
+      "FY26_RE": 4369.7,
+      "FY25_Actual": 3018.79,
+      "FY27_Revenue": 5929.42,
+      "FY27_Capital": 1.8
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d008",
+    "ministryId": "mca",
+    "number": 8,
+    "title": "Ministry of Civil Aviation",
+    "amounts": {
+      "FY26": 2400.31,
+      "FY27": 2102.87,
+      "FY26_RE": 2055.49,
+      "FY25_Actual": 2606.2,
+      "FY27_Revenue": 2057.87,
+      "FY27_Capital": 45.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d009",
+    "ministryId": "mcoal",
+    "number": 9,
+    "title": "Ministry of Coal",
+    "amounts": {
+      "FY26": 1251.2,
+      "FY27": 4390.32,
+      "FY26_RE": 1240.96,
+      "FY25_Actual": 850.88,
+      "FY27_Revenue": 4388.12,
+      "FY27_Capital": 2.2
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d010",
+    "ministryId": "mcom",
+    "number": 10,
+    "title": "Department of Commerce",
+    "amounts": {
+      "FY26": 5300.99,
+      "FY27": 5873.07,
+      "FY26_RE": 6606.02,
+      "FY25_Actual": 5538.93,
+      "FY27_Revenue": 5825.76,
+      "FY27_Capital": 47.31
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d011",
+    "ministryId": "mcom",
+    "number": 11,
+    "title": "Department for Promotion of Industry and Internal Trade",
+    "amounts": {
+      "FY26": 13145.06,
+      "FY27": 11970.83,
+      "FY26_RE": 8616.15,
+      "FY25_Actual": 7902.06,
+      "FY27_Revenue": 6851.7,
+      "FY27_Capital": 5119.13
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d012",
+    "ministryId": "mcomm",
+    "number": 12,
+    "title": "Department of Posts",
+    "amounts": {
+      "FY26": 41086.97,
+      "FY27": 42850.0,
+      "FY26_RE": 40382.11,
+      "FY25_Actual": 38718.98,
+      "FY27_Revenue": 41600.49,
+      "FY27_Capital": 1249.51
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d013",
+    "ministryId": "mcomm",
+    "number": 13,
+    "title": "Department of Telecommunications",
+    "amounts": {
+      "FY26": 109636.26,
+      "FY27": 97990.95,
+      "FY26_RE": 101827.66,
+      "FY25_Actual": 131859.47,
+      "FY27_Revenue": 30716.02,
+      "FY27_Capital": 67274.93
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d014",
+    "ministryId": "mcaf",
+    "number": 14,
+    "title": "Department of Consumer Affairs",
+    "amounts": {
+      "FY26": 4416.92,
+      "FY27": 4497.37,
+      "FY26_RE": 3418.02,
+      "FY25_Actual": 7356.77,
+      "FY27_Revenue": 4403.95,
+      "FY27_Capital": 93.42
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d015",
+    "ministryId": "mcaf",
+    "number": 15,
+    "title": "Department of Food and Public Distribution",
+    "amounts": {
+      "FY26": 261406.37,
+      "FY27": 285047.2,
+      "FY26_RE": 285047.65,
+      "FY25_Actual": 232151.92,
+      "FY27_Revenue": 235024.58,
+      "FY27_Capital": 50022.62
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d016",
+    "ministryId": "mcoop",
+    "number": 16,
+    "title": "Ministry of Cooperation",
+    "amounts": {
+      "FY26": 1186.29,
+      "FY27": 1744.74,
+      "FY26_RE": 981.31,
+      "FY25_Actual": 738.0,
+      "FY27_Revenue": 1742.84,
+      "FY27_Capital": 1.9
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d017",
+    "ministryId": "mcorp",
+    "number": 17,
+    "title": "Ministry of Corporate Affairs",
+    "amounts": {
+      "FY26": 11586.19,
+      "FY27": 6561.86,
+      "FY26_RE": 8969.43,
+      "FY25_Actual": 710.48,
+      "FY27_Revenue": 6506.24,
+      "FY27_Capital": 55.62
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d018",
+    "ministryId": "mcult",
+    "number": 18,
+    "title": "Ministry of Culture",
+    "amounts": {
+      "FY26": 3360.96,
+      "FY27": 3416.63,
+      "FY26_RE": 3550.09,
+      "FY25_Actual": 3260.0,
+      "FY27_Revenue": 3216.63,
+      "FY27_Capital": 200.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d019",
+    "ministryId": "mod",
+    "number": 19,
+    "title": "Ministry of Defence (Civil)",
+    "amounts": {
+      "FY26": 59498.47,
+      "FY27": 63814.61,
+      "FY26_RE": 60263.12,
+      "FY25_Actual": 57313.74,
+      "FY27_Revenue": 51991.36,
+      "FY27_Capital": 11823.25
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d020",
+    "ministryId": "mod",
+    "number": 20,
+    "title": "Defence Services (Revenue)",
+    "amounts": {
+      "FY26": 318884.68,
+      "FY27": 373255.44,
+      "FY26_RE": 359007.64,
+      "FY25_Actual": 301120.54,
+      "FY27_Revenue": 373255.44,
+      "FY27_Capital": 0.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d021",
+    "ministryId": "mod",
+    "number": 21,
+    "title": "Capital Outlay on Defence Services",
+    "amounts": {
+      "FY26": 180000.0,
+      "FY27": 219306.47,
+      "FY26_RE": 186454.2,
+      "FY25_Actual": 159768.4,
+      "FY27_Revenue": 0.0,
+      "FY27_Capital": 219306.47
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d022",
+    "ministryId": "mod",
+    "number": 22,
+    "title": "Defence Pensions",
+    "amounts": {
+      "FY26": 168795.0,
+      "FY27": 179338.22,
+      "FY26_RE": 169186.5,
+      "FY25_Actual": 157653.65,
+      "FY27_Revenue": 179338.22,
+      "FY27_Capital": 0.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d023",
+    "ministryId": "mdoner",
+    "number": 23,
+    "title": "Ministry of Development of North Eastern Region",
+    "amounts": {
+      "FY26": 5915.0,
+      "FY27": 6812.3,
+      "FY26_RE": 4479.2,
+      "FY25_Actual": 3447.71,
+      "FY27_Revenue": 2247.7,
+      "FY27_Capital": 4564.6
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d024",
+    "ministryId": "moes",
+    "number": 24,
+    "title": "Ministry of Earth Sciences",
+    "amounts": {
+      "FY26": 3658.08,
+      "FY27": 3798.23,
+      "FY26_RE": 3388.27,
+      "FY25_Actual": 3386.73,
+      "FY27_Revenue": 3082.19,
+      "FY27_Capital": 716.04
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d025",
+    "ministryId": "moe",
+    "number": 25,
+    "title": "Department of School Education and Literacy",
+    "amounts": {
+      "FY26": 142696.1,
+      "FY27": 150293.26,
+      "FY26_RE": 129541.14,
+      "FY25_Actual": 117984.44,
+      "FY27_Revenue": 150292.41,
+      "FY27_Capital": 0.85
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d026",
+    "ministryId": "moe",
+    "number": 26,
+    "title": "Department of Higher Education",
+    "amounts": {
+      "FY26": 69075.21,
+      "FY27": 78496.22,
+      "FY26_RE": 70278.93,
+      "FY25_Actual": 61755.93,
+      "FY27_Revenue": 78493.54,
+      "FY27_Capital": 2.68
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d027",
+    "ministryId": "meity",
+    "number": 27,
+    "title": "Ministry of Electronics and Information Technology",
+    "amounts": {
+      "FY26": 26026.25,
+      "FY27": 21632.96,
+      "FY26_RE": 20232.95,
+      "FY25_Actual": 13670.52,
+      "FY27_Revenue": 21234.15,
+      "FY27_Capital": 398.81
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d028",
+    "ministryId": "moefcc",
+    "number": 28,
+    "title": "Ministry of Environment, Forests and Climate Change",
+    "amounts": {
+      "FY26": 4056.07,
+      "FY27": 4413.36,
+      "FY26_RE": 4017.31,
+      "FY25_Actual": 2684.92,
+      "FY27_Revenue": 4190.56,
+      "FY27_Capital": 222.8
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d029",
+    "ministryId": "mea",
+    "number": 29,
+    "title": "Ministry of External Affairs",
+    "amounts": {
+      "FY26": 20516.62,
+      "FY27": 22123.98,
+      "FY26_RE": 21752.25,
+      "FY25_Actual": 27824.25,
+      "FY27_Revenue": 20711.2,
+      "FY27_Capital": 1412.78
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d030",
+    "ministryId": "mof",
+    "number": 30,
+    "title": "Department of Economic Affairs",
+    "amounts": {
+      "FY26": 113872.25,
+      "FY27": 131327.37,
+      "FY26_RE": 140024.14,
+      "FY25_Actual": 54946.01,
+      "FY27_Revenue": 5029.89,
+      "FY27_Capital": 126297.48
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d031",
+    "ministryId": "mof",
+    "number": 31,
+    "title": "Department of Expenditure",
+    "amounts": {
+      "FY26": 603.83,
+      "FY27": 525.53,
+      "FY26_RE": 510.87,
+      "FY25_Actual": 487.07,
+      "FY27_Revenue": 451.4,
+      "FY27_Capital": 74.13
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d032",
+    "ministryId": "mof",
+    "number": 32,
+    "title": "Department of Financial Services",
+    "amounts": {
+      "FY26": 1688.15,
+      "FY27": 3746.96,
+      "FY26_RE": 3696.63,
+      "FY25_Actual": 4031.3,
+      "FY27_Revenue": 3686.99,
+      "FY27_Capital": 59.97
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d033",
+    "ministryId": "mof",
+    "number": 33,
+    "title": "Department of Public Enterprises",
+    "amounts": {
+      "FY26": 29.17,
+      "FY27": 29.6,
+      "FY26_RE": 27.26,
+      "FY25_Actual": 22.02,
+      "FY27_Revenue": 28.94,
+      "FY27_Capital": 0.66
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d034",
+    "ministryId": "mof",
+    "number": 34,
+    "title": "Department of Investment and Public Asset Management",
+    "amounts": {
+      "FY26": 57.13,
+      "FY27": 55.92,
+      "FY26_RE": 33.71,
+      "FY25_Actual": 45.61,
+      "FY27_Revenue": 54.25,
+      "FY27_Capital": 1.67
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d035",
+    "ministryId": "mof",
+    "number": 35,
+    "title": "Department of Revenue",
+    "amounts": {
+      "FY26": 133880.25,
+      "FY27": 3120.82,
+      "FY26_RE": 21042.72,
+      "FY25_Actual": 159922.15,
+      "FY27_Revenue": 2523.11,
+      "FY27_Capital": 597.71
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d036",
+    "ministryId": "mof",
+    "number": 36,
+    "title": "Direct Taxes",
+    "amounts": {
+      "FY26": 10900.45,
+      "FY27": 15306.57,
+      "FY26_RE": 12732.08,
+      "FY25_Actual": 11441.2,
+      "FY27_Revenue": 10320.12,
+      "FY27_Capital": 4986.45
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d037",
+    "ministryId": "mof",
+    "number": 37,
+    "title": "Indirect Taxes",
+    "amounts": {
+      "FY26": 42889.33,
+      "FY27": 27683.13,
+      "FY26_RE": 41496.72,
+      "FY25_Actual": 38818.21,
+      "FY27_Revenue": 26077.13,
+      "FY27_Capital": 1606.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d038",
+    "ministryId": "mof",
+    "number": 38,
+    "title": "Indian Audit and Accounts Department",
+    "amounts": {
+      "FY26": 6805.23,
+      "FY27": 6834.28,
+      "FY26_RE": 7073.72,
+      "FY25_Actual": 6587.4,
+      "FY27_Revenue": 6665.31,
+      "FY27_Capital": 168.97
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d039",
+    "ministryId": "mof",
+    "number": 39,
+    "title": "Interest Payments",
+    "amounts": {
+      "FY26": 1352307.47,
+      "FY27": 1443971.79,
+      "FY26_RE": 1352307.49,
+      "FY25_Actual": 1164271.06,
+      "FY27_Revenue": 1443971.79,
+      "FY27_Capital": 0.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d040",
+    "ministryId": "mof",
+    "number": 40,
+    "title": "Repayment of Debt",
+    "amounts": {
+      "FY26": 9038648.16,
+      "FY27": 9534445.88,
+      "FY26_RE": 8177058.62,
+      "FY25_Actual": 8500778.9,
+      "FY27_Revenue": 0.0,
+      "FY27_Capital": 9534445.88
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d041",
+    "ministryId": "mof",
+    "number": 41,
+    "title": "Pensions",
+    "amounts": {
+      "FY26": 98186.0,
+      "FY27": 101500.0,
+      "FY26_RE": 94756.0,
+      "FY25_Actual": 93361.15,
+      "FY27_Revenue": 101500.0,
+      "FY27_Capital": 0.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d042",
+    "ministryId": "mof",
+    "number": 42,
+    "title": "Transfers to States",
+    "amounts": {
+      "FY26": 371037.01,
+      "FY27": 441674.61,
+      "FY26_RE": 399692.01,
+      "FY25_Actual": 331961.16,
+      "FY27_Revenue": 193821.61,
+      "FY27_Capital": 247853.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d043",
+    "ministryId": "mfahd",
+    "number": 43,
+    "title": "Department of Fisheries",
+    "amounts": {
+      "FY26": 2703.67,
+      "FY27": 2761.8,
+      "FY26_RE": 1732.95,
+      "FY25_Actual": 1127.92,
+      "FY27_Revenue": 2732.27,
+      "FY27_Capital": 29.53
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d044",
+    "ministryId": "mfahd",
+    "number": 44,
+    "title": "Department of Animal Husbandry and Dairying",
+    "amounts": {
+      "FY26": 5055.4,
+      "FY27": 6363.46,
+      "FY26_RE": 5482.83,
+      "FY25_Actual": 3649.25,
+      "FY27_Revenue": 5915.95,
+      "FY27_Capital": 447.51
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d045",
+    "ministryId": "mfpi",
+    "number": 45,
+    "title": "Ministry of Food Processing Industries",
+    "amounts": {
+      "FY26": 5267.6,
+      "FY27": 4979.16,
+      "FY26_RE": 4221.57,
+      "FY25_Actual": 2866.82,
+      "FY27_Revenue": 4976.43,
+      "FY27_Capital": 2.73
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d046",
+    "ministryId": "mohfw",
+    "number": 46,
+    "title": "Department of Health and Family Welfare",
+    "amounts": {
+      "FY26": 123059.8,
+      "FY27": 140763.55,
+      "FY26_RE": 126647.79,
+      "FY25_Actual": 106122.84,
+      "FY27_Revenue": 137835.25,
+      "FY27_Capital": 2928.3
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d047",
+    "ministryId": "mohfw",
+    "number": 47,
+    "title": "Department of Health Research",
+    "amounts": {
+      "FY26": 3900.69,
+      "FY27": 4821.21,
+      "FY26_RE": 3927.64,
+      "FY25_Actual": 3383.93,
+      "FY27_Revenue": 4819.4,
+      "FY27_Capital": 1.81
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d048",
+    "ministryId": "mhi",
+    "number": 48,
+    "title": "Ministry of Heavy Industries",
+    "amounts": {
+      "FY26": 7680.23,
+      "FY27": 7939.9,
+      "FY26_RE": 5293.85,
+      "FY25_Actual": 2686.55,
+      "FY27_Revenue": 7937.08,
+      "FY27_Capital": 2.82
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d049",
+    "ministryId": "mha",
+    "number": 49,
+    "title": "Ministry of Home Affairs",
+    "amounts": {
+      "FY26": 4557.19,
+      "FY27": 10387.35,
+      "FY26_RE": 7480.15,
+      "FY25_Actual": 5694.77,
+      "FY27_Revenue": 9878.54,
+      "FY27_Capital": 508.81
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d050",
+    "ministryId": "mha",
+    "number": 50,
+    "title": "Cabinet",
+    "amounts": {
+      "FY26": 7162.56,
+      "FY27": 5217.12,
+      "FY26_RE": 7116.46,
+      "FY25_Actual": 5630.11,
+      "FY27_Revenue": 992.32,
+      "FY27_Capital": 4224.8
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d051",
+    "ministryId": "mha",
+    "number": 51,
+    "title": "Police",
+    "amounts": {
+      "FY26": 161445.37,
+      "FY27": 174873.63,
+      "FY26_RE": 163204.65,
+      "FY25_Actual": 147979.7,
+      "FY27_Revenue": 153601.13,
+      "FY27_Capital": 21272.5
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d052",
+    "ministryId": "mha",
+    "number": 52,
+    "title": "Andaman and Nicobar Islands",
+    "amounts": {
+      "FY26": 6267.06,
+      "FY27": 6735.94,
+      "FY26_RE": 7442.89,
+      "FY25_Actual": 5999.14,
+      "FY27_Revenue": 6138.08,
+      "FY27_Capital": 597.86
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d053",
+    "ministryId": "mha",
+    "number": 53,
+    "title": "Chandigarh",
+    "amounts": {
+      "FY26": 6983.18,
+      "FY27": 6545.52,
+      "FY26_RE": 6465.77,
+      "FY25_Actual": 6598.19,
+      "FY27_Revenue": 5939.52,
+      "FY27_Capital": 606.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d054",
+    "ministryId": "mha",
+    "number": 54,
+    "title": "Dadra and Nagar Haveli and Daman and Diu",
+    "amounts": {
+      "FY26": 2782.5,
+      "FY27": 2835.2,
+      "FY26_RE": 2743.14,
+      "FY25_Actual": 2651.25,
+      "FY27_Revenue": 1735.2,
+      "FY27_Capital": 1100.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d055",
+    "ministryId": "mha",
+    "number": 55,
+    "title": "Ladakh",
+    "amounts": {
+      "FY26": 4702.4,
+      "FY27": 4879.56,
+      "FY26_RE": 7390.68,
+      "FY25_Actual": 4894.62,
+      "FY27_Revenue": 2552.51,
+      "FY27_Capital": 2327.05
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d056",
+    "ministryId": "mha",
+    "number": 56,
+    "title": "Lakshadweep",
+    "amounts": {
+      "FY26": 1612.91,
+      "FY27": 1709.1,
+      "FY26_RE": 1607.85,
+      "FY25_Actual": 1627.77,
+      "FY27_Revenue": 1362.99,
+      "FY27_Capital": 346.11
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d057",
+    "ministryId": "mha",
+    "number": 57,
+    "title": "Transfers to Delhi",
+    "amounts": {
+      "FY26": 1348.01,
+      "FY27": 1348.01,
+      "FY26_RE": 1242.0,
+      "FY25_Actual": 1108.0,
+      "FY27_Revenue": 968.01,
+      "FY27_Capital": 380.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d058",
+    "ministryId": "mha",
+    "number": 58,
+    "title": "Transfers to Jammu and Kashmir",
+    "amounts": {
+      "FY26": 41000.07,
+      "FY27": 43290.29,
+      "FY26_RE": 41340.22,
+      "FY25_Actual": 46000.06,
+      "FY27_Revenue": 43290.29,
+      "FY27_Capital": 0.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d059",
+    "ministryId": "mha",
+    "number": 59,
+    "title": "Transfers to Puducherry",
+    "amounts": {
+      "FY26": 3432.2,
+      "FY27": 3517.88,
+      "FY26_RE": 3517.88,
+      "FY25_Actual": 3302.36,
+      "FY27_Revenue": 3517.87,
+      "FY27_Capital": 0.01
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d060",
+    "ministryId": "mohua",
+    "number": 60,
+    "title": "Ministry of Housing and Urban Affairs",
+    "amounts": {
+      "FY26": 101918.31,
+      "FY27": 89760.19,
+      "FY26_RE": 63302.92,
+      "FY25_Actual": 59143.75,
+      "FY27_Revenue": 50883.31,
+      "FY27_Capital": 38876.88
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d061",
+    "ministryId": "mib",
+    "number": 61,
+    "title": "Ministry of Information and Broadcasting",
+    "amounts": {
+      "FY26": 4358.38,
+      "FY27": 4551.94,
+      "FY26_RE": 6103.02,
+      "FY25_Actual": 4306.77,
+      "FY27_Revenue": 4494.56,
+      "FY27_Capital": 57.38
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d062",
+    "ministryId": "mjs",
+    "number": 62,
+    "title": "Department of Water Resources, River Development and Ganga Rejuvenation",
+    "amounts": {
+      "FY26": 33165.9,
+      "FY27": 26657.98,
+      "FY26_RE": 24239.55,
+      "FY25_Actual": 26611.6,
+      "FY27_Revenue": 26182.32,
+      "FY27_Capital": 475.66
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d063",
+    "ministryId": "mjs",
+    "number": 63,
+    "title": "Department of Drinking Water and Sanitation",
+    "amounts": {
+      "FY26": 74226.02,
+      "FY27": 74894.86,
+      "FY26_RE": 23031.08,
+      "FY25_Actual": 26258.66,
+      "FY27_Revenue": 74893.66,
+      "FY27_Capital": 1.2
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d064",
+    "ministryId": "mole",
+    "number": 64,
+    "title": "Ministry of Labour and Employment",
+    "amounts": {
+      "FY26": 32646.19,
+      "FY27": 32666.31,
+      "FY26_RE": 12688.05,
+      "FY25_Actual": 11436.49,
+      "FY27_Revenue": 32625.33,
+      "FY27_Capital": 40.98
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d065",
+    "ministryId": "molj",
+    "number": 65,
+    "title": "Law and Justice",
+    "amounts": {
+      "FY26": 5198.24,
+      "FY27": 4709.06,
+      "FY26_RE": 5389.87,
+      "FY25_Actual": 7411.97,
+      "FY27_Revenue": 4459.59,
+      "FY27_Capital": 249.47
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d066",
+    "ministryId": "molj",
+    "number": 66,
+    "title": "Election Commission",
+    "amounts": {
+      "FY26": 304.98,
+      "FY27": 382.22,
+      "FY26_RE": 373.29,
+      "FY25_Actual": 350.49,
+      "FY27_Revenue": 367.69,
+      "FY27_Capital": 14.53
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d067",
+    "ministryId": "molj",
+    "number": 67,
+    "title": "Supreme Court of India",
+    "amounts": {
+      "FY26": 547.15,
+      "FY27": 622.11,
+      "FY26_RE": 633.13,
+      "FY25_Actual": 598.55,
+      "FY27_Revenue": 566.19,
+      "FY27_Capital": 55.92
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d068",
+    "ministryId": "msme",
+    "number": 68,
+    "title": "Ministry of Micro, Small and Medium Enterprises",
+    "amounts": {
+      "FY26": 23168.15,
+      "FY27": 24566.27,
+      "FY26_RE": 12095.98,
+      "FY25_Actual": 9700.34,
+      "FY27_Revenue": 22647.26,
+      "FY27_Capital": 1919.01
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d069",
+    "ministryId": "mom",
+    "number": 69,
+    "title": "Ministry of Mines",
+    "amounts": {
+      "FY26": 3538.0,
+      "FY27": 4716.45,
+      "FY26_RE": 3515.14,
+      "FY25_Actual": 3507.26,
+      "FY27_Revenue": 4552.8,
+      "FY27_Capital": 163.65
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d070",
+    "ministryId": "moma",
+    "number": 70,
+    "title": "Ministry of Minority Affairs",
+    "amounts": {
+      "FY26": 3350.0,
+      "FY27": 3400.0,
+      "FY26_RE": 2160.45,
+      "FY25_Actual": 1396.01,
+      "FY27_Revenue": 3395.62,
+      "FY27_Capital": 4.38
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d071",
+    "ministryId": "mnre",
+    "number": 71,
+    "title": "Ministry of New and Renewable Energy",
+    "amounts": {
+      "FY26": 31749.38,
+      "FY27": 44614.67,
+      "FY26_RE": 27801.22,
+      "FY25_Actual": 23299.19,
+      "FY27_Revenue": 44611.14,
+      "FY27_Capital": 3.53
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d072",
+    "ministryId": "mopr",
+    "number": 72,
+    "title": "Ministry of Panchayati Raj",
+    "amounts": {
+      "FY26": 1185.0,
+      "FY27": 1190.16,
+      "FY26_RE": 965.96,
+      "FY25_Actual": 850.3,
+      "FY27_Revenue": 1186.88,
+      "FY27_Capital": 3.28
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d073",
+    "ministryId": "mopa",
+    "number": 73,
+    "title": "Ministry of Parliamentary Affairs",
+    "amounts": {
+      "FY26": 66.56,
+      "FY27": 68.45,
+      "FY26_RE": 66.31,
+      "FY25_Actual": 63.02,
+      "FY27_Revenue": 61.18,
+      "FY27_Capital": 7.27
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d074",
+    "ministryId": "moppg",
+    "number": 74,
+    "title": "Ministry of Personnel, Public Grievances and Pensions",
+    "amounts": {
+      "FY26": 2656.46,
+      "FY27": 2607.45,
+      "FY26_RE": 2525.07,
+      "FY25_Actual": 2509.43,
+      "FY27_Revenue": 2454.37,
+      "FY27_Capital": 153.08
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d075",
+    "ministryId": "moppg",
+    "number": 75,
+    "title": "Central Vigilance Commission",
+    "amounts": {
+      "FY26": 52.07,
+      "FY27": 54.56,
+      "FY26_RE": 50.66,
+      "FY25_Actual": 48.44,
+      "FY27_Revenue": 52.85,
+      "FY27_Capital": 1.71
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d076",
+    "ministryId": "mopng",
+    "number": 76,
+    "title": "Ministry of Petroleum and Natural Gas",
+    "amounts": {
+      "FY26": 26702.93,
+      "FY27": 37653.22,
+      "FY26_RE": 32934.47,
+      "FY25_Actual": 19887.49,
+      "FY27_Revenue": 37414.77,
+      "FY27_Capital": 238.45
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d077",
+    "ministryId": "mopl",
+    "number": 77,
+    "title": "Ministry of Planning",
+    "amounts": {
+      "FY26": 1006.06,
+      "FY27": 1232.16,
+      "FY26_RE": 848.24,
+      "FY25_Actual": 282.61,
+      "FY27_Revenue": 1203.38,
+      "FY27_Capital": 28.78
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d078",
+    "ministryId": "mopsw",
+    "number": 78,
+    "title": "Ministry of Ports, Shipping and Waterways",
+    "amounts": {
+      "FY26": 4035.58,
+      "FY27": 5764.8,
+      "FY26_RE": 3464.11,
+      "FY25_Actual": 3378.27,
+      "FY27_Revenue": 4464.88,
+      "FY27_Capital": 1299.92
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d079",
+    "ministryId": "mopwr",
+    "number": 79,
+    "title": "Ministry of Power",
+    "amounts": {
+      "FY26": 23047.08,
+      "FY27": 31214.47,
+      "FY26_RE": 22797.24,
+      "FY25_Actual": 22532.94,
+      "FY27_Revenue": 30853.45,
+      "FY27_Capital": 361.02
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d080",
+    "ministryId": "mpres",
+    "number": 80,
+    "title": "Staff, Household and Allowances of the President",
+    "amounts": {
+      "FY26": 141.83,
+      "FY27": 137.2,
+      "FY26_RE": 141.83,
+      "FY25_Actual": 124.31,
+      "FY27_Revenue": 133.1,
+      "FY27_Capital": 4.1
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d081",
+    "ministryId": "mpres",
+    "number": 81,
+    "title": "Lok Sabha",
+    "amounts": {
+      "FY26": 903.0,
+      "FY27": 1009.0,
+      "FY26_RE": 923.0,
+      "FY25_Actual": 696.46,
+      "FY27_Revenue": 978.17,
+      "FY27_Capital": 30.83
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d082",
+    "ministryId": "mpres",
+    "number": 82,
+    "title": "Rajya Sabha",
+    "amounts": {
+      "FY26": 413.89,
+      "FY27": 482.99,
+      "FY26_RE": 481.33,
+      "FY25_Actual": 412.06,
+      "FY27_Revenue": 471.32,
+      "FY27_Capital": 11.67
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d083",
+    "ministryId": "mpres",
+    "number": 83,
+    "title": "Secretariat of the Vice-President",
+    "amounts": {
+      "FY26": 12.42,
+      "FY27": 11.7,
+      "FY26_RE": 12.14,
+      "FY25_Actual": 10.98,
+      "FY27_Revenue": 11.39,
+      "FY27_Capital": 0.31
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d084",
+    "ministryId": "mpres",
+    "number": 84,
+    "title": "Union Public Service Commission",
+    "amounts": {
+      "FY26": 435.76,
+      "FY27": 442.94,
+      "FY26_RE": 432.89,
+      "FY25_Actual": 427.09,
+      "FY27_Revenue": 421.09,
+      "FY27_Capital": 21.85
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d085",
+    "ministryId": "mor",
+    "number": 85,
+    "title": "Ministry of Railways",
+    "amounts": {
+      "FY26": 820310.75,
+      "FY27": 884995.3,
+      "FY26_RE": 793160.6,
+      "FY25_Actual": 764346.5,
+      "FY27_Revenue": 385733.33,
+      "FY27_Capital": 499261.97
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d086",
+    "ministryId": "morth",
+    "number": 86,
+    "title": "Ministry of Road Transport and Highways",
+    "amounts": {
+      "FY26": 362373.16,
+      "FY27": 409303.46,
+      "FY26_RE": 380018.87,
+      "FY25_Actual": 369216.91,
+      "FY27_Revenue": 31276.46,
+      "FY27_Capital": 378027.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d087",
+    "ministryId": "mord",
+    "number": 87,
+    "title": "Department of Rural Development",
+    "amounts": {
+      "FY26": 286754.53,
+      "FY27": 240768.81,
+      "FY26_RE": 285995.61,
+      "FY25_Actual": 270048.83,
+      "FY27_Revenue": 240764.18,
+      "FY27_Capital": 4.63
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d088",
+    "ministryId": "mord",
+    "number": 88,
+    "title": "Department of Land Resources",
+    "amounts": {
+      "FY26": 4782.2,
+      "FY27": 5136.33,
+      "FY26_RE": 3245.04,
+      "FY25_Actual": 3722.27,
+      "FY27_Revenue": 5135.33,
+      "FY27_Capital": 1.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d089",
+    "ministryId": "most",
+    "number": 89,
+    "title": "Department of Science and Technology",
+    "amounts": {
+      "FY26": 28508.9,
+      "FY27": 28049.32,
+      "FY26_RE": 11921.58,
+      "FY25_Actual": 5122.35,
+      "FY27_Revenue": 7963.94,
+      "FY27_Capital": 20085.38
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d090",
+    "ministryId": "most",
+    "number": 90,
+    "title": "Department of Biotechnology",
+    "amounts": {
+      "FY26": 3446.64,
+      "FY27": 3446.0,
+      "FY26_RE": 2830.45,
+      "FY25_Actual": 1998.0,
+      "FY27_Revenue": 3446.0,
+      "FY27_Capital": 0.0
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d091",
+    "ministryId": "most",
+    "number": 91,
+    "title": "Department of Scientific and Industrial Research",
+    "amounts": {
+      "FY26": 6657.78,
+      "FY27": 6765.62,
+      "FY26_RE": 6433.16,
+      "FY25_Actual": 6270.94,
+      "FY27_Revenue": 6760.29,
+      "FY27_Capital": 5.33
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d092",
+    "ministryId": "msde",
+    "number": 92,
+    "title": "Ministry of Skill Development and Entrepreneurship",
+    "amounts": {
+      "FY26": 8300.1,
+      "FY27": 12685.8,
+      "FY26_RE": 4703.54,
+      "FY25_Actual": 5253.98,
+      "FY27_Revenue": 12559.51,
+      "FY27_Capital": 126.29
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d093",
+    "ministryId": "msje",
+    "number": 93,
+    "title": "Department of Social Justice and Empowerment",
+    "amounts": {
+      "FY26": 14164.42,
+      "FY27": 14427.59,
+      "FY26_RE": 11922.43,
+      "FY25_Actual": 10409.0,
+      "FY27_Revenue": 14418.02,
+      "FY27_Capital": 9.57
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d094",
+    "ministryId": "msje",
+    "number": 94,
+    "title": "Department of Empowerment of Persons with Disabilities",
+    "amounts": {
+      "FY26": 1275.0,
+      "FY27": 1669.72,
+      "FY26_RE": 1291.6,
+      "FY25_Actual": 1112.61,
+      "FY27_Revenue": 1668.35,
+      "FY27_Capital": 1.37
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d095",
+    "ministryId": "dospace",
+    "number": 95,
+    "title": "Department of Space",
+    "amounts": {
+      "FY26": 13416.2,
+      "FY27": 13705.63,
+      "FY26_RE": 12448.6,
+      "FY25_Actual": 11518.65,
+      "FY27_Revenue": 7329.71,
+      "FY27_Capital": 6375.92
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d096",
+    "ministryId": "mospi",
+    "number": 96,
+    "title": "Ministry of Statistics and Programme Implementation",
+    "amounts": {
+      "FY26": 5471.06,
+      "FY27": 5502.89,
+      "FY26_RE": 5551.29,
+      "FY25_Actual": 4020.74,
+      "FY27_Revenue": 5457.75,
+      "FY27_Capital": 45.14
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d097",
+    "ministryId": "mosteel",
+    "number": 97,
+    "title": "Ministry of Steel",
+    "amounts": {
+      "FY26": 3362.0,
+      "FY27": 443.18,
+      "FY26_RE": 4857.44,
+      "FY25_Actual": 8539.07,
+      "FY27_Revenue": 439.84,
+      "FY27_Capital": 3.34
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d098",
+    "ministryId": "motex",
+    "number": 98,
+    "title": "Ministry of Textiles",
+    "amounts": {
+      "FY26": 5272.0,
+      "FY27": 5279.01,
+      "FY26_RE": 5766.68,
+      "FY25_Actual": 2998.47,
+      "FY27_Revenue": 5269.52,
+      "FY27_Capital": 9.49
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d099",
+    "ministryId": "motour",
+    "number": 99,
+    "title": "Ministry of Tourism",
+    "amounts": {
+      "FY26": 2541.07,
+      "FY27": 2438.41,
+      "FY26_RE": 1310.3,
+      "FY25_Actual": 457.35,
+      "FY27_Revenue": 2433.88,
+      "FY27_Capital": 4.53
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d100",
+    "ministryId": "motrib",
+    "number": 100,
+    "title": "Ministry of Tribal Affairs",
+    "amounts": {
+      "FY26": 14925.81,
+      "FY27": 15421.97,
+      "FY26_RE": 10824.18,
+      "FY25_Actual": 10173.22,
+      "FY27_Revenue": 15389.54,
+      "FY27_Capital": 32.43
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d101",
+    "ministryId": "mwcd",
+    "number": 101,
+    "title": "Ministry of Women and Child Development",
+    "amounts": {
+      "FY26": 27389.69,
+      "FY27": 28638.06,
+      "FY26_RE": 24651.91,
+      "FY25_Actual": 25029.49,
+      "FY27_Revenue": 28632.42,
+      "FY27_Capital": 5.64
+    },
+    "confidence": "validated"
+  },
+  {
+    "id": "d102",
+    "ministryId": "moyas",
+    "number": 102,
+    "title": "Ministry of Youth Affairs and Sports",
+    "amounts": {
+      "FY26": 3794.3,
+      "FY27": 4479.88,
+      "FY26_RE": 3346.54,
+      "FY25_Actual": 2833.06,
+      "FY27_Revenue": 4461.51,
+      "FY27_Capital": 18.37
+    },
+    "confidence": "validated"
+  }
 ]
