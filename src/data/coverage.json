@@ -1,16 +1,18 @@
 [
   { "ministryId": "mha", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — full DDG drilldown available." },
   { "ministryId": "mopsw", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — small ministry, complete coverage." },
-  { "ministryId": "mod_dopt", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — Mission Karmayogi outlays may need re-validation." },
+  { "ministryId": "moppg", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — DoPT incl. Mission Karmayogi outlays may need re-validation." },
   { "ministryId": "mod", "dgStatus": "validated", "ddgStatus": "ocr-needed", "notes": "DDG PDFs require OCR; planned for next sprint." },
   { "ministryId": "morth", "dgStatus": "validated", "ddgStatus": "parsed", "notes": "DDG parsed; awaiting validation." },
   { "ministryId": "mor", "dgStatus": "validated", "ddgStatus": "missing", "notes": "Railways uses separate accounting; mapping pending." },
-  { "ministryId": "mof", "dgStatus": "validated", "ddgStatus": "parsed" },
+  { "ministryId": "mof", "dgStatus": "validated", "ddgStatus": "parsed", "notes": "Finance has 13 demands incl. Interest Payments and Repayment of Debt." },
   { "ministryId": "mohfw", "dgStatus": "validated", "ddgStatus": "missing" },
   { "ministryId": "moe", "dgStatus": "validated", "ddgStatus": "missing" },
-  { "ministryId": "moa", "dgStatus": "validated", "ddgStatus": "missing" },
-  { "ministryId": "mord", "dgStatus": "parsed", "ddgStatus": "missing", "notes": "MGNREGS state-wise breakdown not disclosed in DDG." },
-  { "ministryId": "moh", "dgStatus": "validated", "ddgStatus": "ocr-needed" },
-  { "ministryId": "moca", "dgStatus": "validated", "ddgStatus": "missing" },
-  { "ministryId": "mocom", "dgStatus": "parsed", "ddgStatus": "missing" }
+  { "ministryId": "magri", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "mord", "dgStatus": "validated", "ddgStatus": "missing", "notes": "MGNREGS state-wise breakdown not disclosed in DDG." },
+  { "ministryId": "mohua", "dgStatus": "validated", "ddgStatus": "ocr-needed" },
+  { "ministryId": "mca", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "mcom", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "mchem", "dgStatus": "validated", "ddgStatus": "missing", "notes": "Department of Fertilisers carries the bulk of the outlay." },
+  { "ministryId": "mcaf", "dgStatus": "validated", "ddgStatus": "missing", "notes": "Food subsidy is the single largest scheme line." }
 ]

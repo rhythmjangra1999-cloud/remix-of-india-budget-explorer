@@ -1,9 +1,15 @@
 {
-  "fy": "FY26",
-  "totalUnionBudgetCr": 5083000,
-  "ministriesCovered": 102,
+  "fy": "FY27",
+  "fyLabel": "BE 2026-27",
+  "fyPrev": "FY26",
+  "fyPrevLabel": "BE 2025-26",
+  "totalUnionBudgetCr": 16284130.06,
+  "totalUnionBudgetPrevCr": 15477959.08,
+  "ministriesCovered": 56,
+  "demandsCovered": 102,
   "ddgsLive": 3,
   "ddgsPlanned": 10,
   "sourceUrl": "https://www.indiabudget.gov.in/",
-  "lastUpdated": "2025-02-01"
+  "sourceDoc": "Demands for Grants of Central Government 2026-2027 (February 2026)",
+  "lastUpdated": "2026-04-21"
 }

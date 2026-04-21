@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { BUDGET_META } from "@/lib/budget-data";
 
 const About = () => {
   return (
@@ -23,11 +24,13 @@ const About = () => {
           <div className="reading mx-auto mt-12">
             <h2>What we cover</h2>
             <p>
-              Demands for Grants for all 102 Union ministries are parsed and live.
-              Detailed Demands for Grants (with object-head granularity) are live for
-              three ministries — Ports, Shipping & Waterways; Home Affairs; and the
-              Department of Personnel and Training — with seven more planned for the
-              next sprint.
+              All 102 Demands for Grants from the Union Budget — grouped under
+              {" "}{BUDGET_META.ministriesCovered} ministries and departments — are parsed
+              and live, sourced directly from the official <em>Demands for Grants of
+              Central Government 2026-2027</em> document. Detailed Demands for Grants
+              (with object-head granularity) are live for three ministries — Ports,
+              Shipping &amp; Waterways; Home Affairs; and the Department of Personnel
+              and Training — with seven more planned for the next sprint.
             </p>
 
             <h2>How to cite</h2>
@@ -52,9 +55,10 @@ const About = () => {
 
             <h2>Changelog</h2>
             <ul>
+              <li><strong>v0.4</strong> — Real DG data wired in from Demands for Grants of Central Government 2026-27 (Feb 2026): all 102 demands across {BUDGET_META.ministriesCovered} ministries, with BE 2025-26, RE 2025-26 and BE 2026-27 figures.</li>
               <li><strong>v0.3</strong> — Site shell launched: Explorer (treemap, sunburst, sankey, table), Methodology, Findings.</li>
               <li><strong>v0.2</strong> — DDG parsing complete for MoPSW, MHA, DoPT.</li>
-              <li><strong>v0.1</strong> — DGs parsed for all 102 ministries.</li>
+              <li><strong>v0.1</strong> — DGs parsed for all 102 demands.</li>
             </ul>
           </div>
         </article>

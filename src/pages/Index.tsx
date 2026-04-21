@@ -7,8 +7,11 @@ import { BUDGET_META, FINDINGS, MINISTRIES, ministryById } from "@/lib/budget-da
 import { formatCr } from "@/lib/format";
 
 const Index = () => {
+  // Exclude Finance because Repayment of Debt + Interest Payments dwarf everything
+  // and aren't really "ministry spending" — they're balance-sheet flows.
   const topMinistries = [...MINISTRIES]
-    .sort((a, b) => (b.totals.FY26 ?? 0) - (a.totals.FY26 ?? 0))
+    .filter((m) => m.id !== "mof")
+    .sort((a, b) => (b.totals.FY27 ?? 0) - (a.totals.FY27 ?? 0))
     .slice(0, 6);
 
   return (
@@ -22,19 +25,19 @@ const Index = () => {
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                {BUDGET_META.fy} · Union Budget
+                Budget Estimates 2026-27
               </span>
-              <span>India</span>
+              <span>Government of India</span>
             </div>
             <h1 className="mt-6 font-serif text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight">
               See where every rupee of the Union Budget goes.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-foreground/75 leading-relaxed">
-              A public, editorial tool for journalists, researchers, and citizens to
-              explore India's <span className="text-foreground font-medium">Demands for Grants</span>{" "}
-              across all {BUDGET_META.ministriesCovered} union ministries — with
-              object-head detail for live ministries and an honest account of what's
-              missing.
+              A public, editorial tool to explore India's{" "}
+              <span className="text-foreground font-medium">102 Demands for Grants</span>{" "}
+              across {BUDGET_META.ministriesCovered} union ministries and departments —
+              with object-head detail for the live ministries and an honest account of
+              what's missing.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
@@ -54,14 +57,14 @@ const Index = () => {
 
             {/* Headline figures */}
             <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Total Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} />
-              <Stat label="Ministries covered" value={`${BUDGET_META.ministriesCovered}`} sub="of 102" />
+              <Stat label="Gross Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="incl. debt repayment" />
+              <Stat label="Demands for Grants" value="102" sub={`across ${BUDGET_META.ministriesCovered} ministries`} />
               <Stat
                 label="DDGs live"
                 value={`${BUDGET_META.ddgsLive}`}
                 sub={`of ${BUDGET_META.ddgsPlanned} planned`}
               />
-              <Stat label="Fiscal year" value={BUDGET_META.fy} sub={`updated ${BUDGET_META.lastUpdated}`} />
+              <Stat label="Fiscal year" value="2026-27" sub={`updated ${BUDGET_META.lastUpdated}`} />
             </div>
           </div>
         </section>
@@ -77,7 +80,7 @@ const Index = () => {
             <EntryTile
               n="01"
               title="Explore by Ministry"
-              dek="Browse all 102 ministries. Sort by size, search by name, drill into demands and (where available) object-head detail."
+              dek={`Browse ${BUDGET_META.ministriesCovered} ministries and departments. Sort by size, search by name, drill into demands and (where available) object-head detail.`}
               to="/explorer?view=treemap"
             />
             <EntryTile
@@ -100,7 +103,8 @@ const Index = () => {
           <div className="container py-16">
             <SectionHeader
               kicker="At a glance"
-              title="The six largest allocations in FY26"
+              title="The six largest ministry allocations in BE 2026-27"
+              sub="Excludes the Ministry of Finance, whose 13 demands include Interest Payments and Repayment of Debt — accounting flows that dwarf real-economy spending."
             />
             <div className="mt-8 grid gap-px bg-border rounded-sm overflow-hidden border border-border md:grid-cols-3">
               {topMinistries.map((m, i) => (
@@ -114,14 +118,14 @@ const Index = () => {
                       {String(i + 1).padStart(2, "0")}
                     </div>
                     <div className="font-serif text-xl tnum font-semibold">
-                      {formatCr(m.totals.FY26 ?? 0, { compact: true })}
+                      {formatCr(m.totals.FY27 ?? 0, { compact: true })}
                     </div>
                   </div>
                   <div className="mt-3 font-serif text-lg leading-snug group-hover:text-primary transition-colors">
                     {m.name}
                   </div>
                   <div className="mt-2 text-xs text-muted-foreground">
-                    {(((m.totals.FY26 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
+                    {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of gross Union Budget
                   </div>
                 </Link>
               ))}
@@ -169,8 +173,8 @@ const Index = () => {
             <div className="max-w-2xl">
               <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Coverage</div>
               <p className="mt-2 font-serif text-2xl">
-                DGs live for <span className="text-primary">102</span> ministries · Detailed DGs live for{" "}
-                <span className="text-primary">3</span> of 10 planned.
+                <span className="text-primary">102</span> Demands across <span className="text-primary">{BUDGET_META.ministriesCovered}</span> ministries are live · Detailed DGs live for{" "}
+                <span className="text-primary">{BUDGET_META.ddgsLive}</span> of {BUDGET_META.ddgsPlanned} planned.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <ConfidenceChip level="validated" />
