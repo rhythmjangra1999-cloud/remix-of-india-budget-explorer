@@ -23,11 +23,13 @@ const About = () => {
           <div className="reading mx-auto mt-12">
             <h2>What we cover</h2>
             <p>
-              Demands for Grants for all 102 Union ministries are parsed and live.
-              Detailed Demands for Grants (with object-head granularity) are live for
-              three ministries — Ports, Shipping & Waterways; Home Affairs; and the
-              Department of Personnel and Training — with seven more planned for the
-              next sprint.
+              All 102 Demands for Grants from the Union Budget — grouped under
+              {" "}{BUDGET_META.ministriesCovered} ministries and departments — are parsed
+              and live, sourced directly from the official <em>Demands for Grants of
+              Central Government 2026-2027</em> document. Detailed Demands for Grants
+              (with object-head granularity) are live for three ministries — Ports,
+              Shipping &amp; Waterways; Home Affairs; and the Department of Personnel
+              and Training — with seven more planned for the next sprint.
             </p>
 
             <h2>How to cite</h2>
