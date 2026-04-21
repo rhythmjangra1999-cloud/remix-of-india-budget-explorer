@@ -57,14 +57,14 @@ const Index = () => {
 
             {/* Headline figures */}
             <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Total Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} />
-              <Stat label="Ministries covered" value={`${BUDGET_META.ministriesCovered}`} sub="of 102" />
+              <Stat label="Gross Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="incl. debt repayment" />
+              <Stat label="Demands for Grants" value="102" sub={`across ${BUDGET_META.ministriesCovered} ministries`} />
               <Stat
                 label="DDGs live"
                 value={`${BUDGET_META.ddgsLive}`}
                 sub={`of ${BUDGET_META.ddgsPlanned} planned`}
               />
-              <Stat label="Fiscal year" value={BUDGET_META.fy} sub={`updated ${BUDGET_META.lastUpdated}`} />
+              <Stat label="Fiscal year" value="2026-27" sub={`updated ${BUDGET_META.lastUpdated}`} />
             </div>
           </div>
         </section>
