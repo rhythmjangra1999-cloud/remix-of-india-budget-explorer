@@ -103,7 +103,8 @@ const Index = () => {
           <div className="container py-16">
             <SectionHeader
               kicker="At a glance"
-              title="The six largest allocations in FY26"
+              title="The six largest ministry allocations in BE 2026-27"
+              sub="Excludes the Ministry of Finance, whose 13 demands include Interest Payments and Repayment of Debt — accounting flows that dwarf real-economy spending."
             />
             <div className="mt-8 grid gap-px bg-border rounded-sm overflow-hidden border border-border md:grid-cols-3">
               {topMinistries.map((m, i) => (
@@ -117,14 +118,14 @@ const Index = () => {
                       {String(i + 1).padStart(2, "0")}
                     </div>
                     <div className="font-serif text-xl tnum font-semibold">
-                      {formatCr(m.totals.FY26 ?? 0, { compact: true })}
+                      {formatCr(m.totals.FY27 ?? 0, { compact: true })}
                     </div>
                   </div>
                   <div className="mt-3 font-serif text-lg leading-snug group-hover:text-primary transition-colors">
                     {m.name}
                   </div>
                   <div className="mt-2 text-xs text-muted-foreground">
-                    {(((m.totals.FY26 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
+                    {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of gross Union Budget
                   </div>
                 </Link>
               ))}
