@@ -25,19 +25,19 @@ const Index = () => {
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                {BUDGET_META.fy} · Union Budget
+                Budget Estimates 2026-27
               </span>
-              <span>India</span>
+              <span>Government of India</span>
             </div>
             <h1 className="mt-6 font-serif text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight">
               See where every rupee of the Union Budget goes.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-foreground/75 leading-relaxed">
-              A public, editorial tool for journalists, researchers, and citizens to
-              explore India's <span className="text-foreground font-medium">Demands for Grants</span>{" "}
-              across all {BUDGET_META.ministriesCovered} union ministries — with
-              object-head detail for live ministries and an honest account of what's
-              missing.
+              A public, editorial tool to explore India's{" "}
+              <span className="text-foreground font-medium">102 Demands for Grants</span>{" "}
+              across {BUDGET_META.ministriesCovered} union ministries and departments —
+              with object-head detail for the live ministries and an honest account of
+              what's missing.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
