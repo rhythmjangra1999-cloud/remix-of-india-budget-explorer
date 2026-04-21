@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { BUDGET_META } from "@/lib/budget-data";
 
 const About = () => {
   return (
