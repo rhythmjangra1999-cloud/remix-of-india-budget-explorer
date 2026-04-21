@@ -1,0 +1,25 @@
+[
+  { "id": "d-mha-1", "ministryId": "mha", "number": 56, "title": "Ministry of Home Affairs", "amounts": { "FY26": 4711, "FY27": 4920 }, "confidence": "validated", "sourcePage": 1 },
+  { "id": "d-mha-2", "ministryId": "mha", "number": 57, "title": "Cabinet", "amounts": { "FY26": 933, "FY27": 980 }, "confidence": "validated", "sourcePage": 14 },
+  { "id": "d-mha-3", "ministryId": "mha", "number": 58, "title": "Police", "amounts": { "FY26": 142810, "FY27": 148500 }, "confidence": "validated", "sourcePage": 22 },
+  { "id": "d-mha-4", "ministryId": "mha", "number": 59, "title": "Other Expenditure of MHA", "amounts": { "FY26": 16350, "FY27": 16900 }, "confidence": "parsed", "sourcePage": 88 },
+  { "id": "d-mha-5", "ministryId": "mha", "number": 60, "title": "Transfers to UTs (with legislature)", "amounts": { "FY26": 47120, "FY27": 49100 }, "confidence": "validated", "sourcePage": 102 },
+  { "id": "d-mha-6", "ministryId": "mha", "number": 61, "title": "Transfers to UTs (without legislature)", "amounts": { "FY26": 21287, "FY27": 21400 }, "confidence": "parsed", "sourcePage": 118 },
+
+  { "id": "d-mopsw-1", "ministryId": "mopsw", "number": 86, "title": "Ports, Shipping and Waterways", "amounts": { "FY26": 4137, "FY27": 4380 }, "confidence": "validated", "sourcePage": 1 },
+
+  { "id": "d-dopt-1", "ministryId": "mod_dopt", "number": 73, "title": "Department of Personnel and Training", "amounts": { "FY26": 2451, "FY27": 2580 }, "confidence": "validated", "sourcePage": 1 },
+
+  { "id": "d-mod-1", "ministryId": "mod", "number": 18, "title": "Defence Services (Revenue)", "amounts": { "FY26": 312300, "FY27": 326000 }, "confidence": "parsed" },
+  { "id": "d-mod-2", "ministryId": "mod", "number": 19, "title": "Capital Outlay on Defence Services", "amounts": { "FY26": 174900, "FY27": 184000 }, "confidence": "parsed" },
+  { "id": "d-mod-3", "ministryId": "mod", "number": 20, "title": "Defence Pensions", "amounts": { "FY26": 160795, "FY27": 165400 }, "confidence": "parsed" },
+  { "id": "d-mod-4", "ministryId": "mod", "number": 21, "title": "Ministry of Defence (Civil)", "amounts": { "FY26": 33215, "FY27": 37050 }, "confidence": "parsed" },
+
+  { "id": "d-morth-1", "ministryId": "morth", "number": 84, "title": "Ministry of Road Transport and Highways", "amounts": { "FY26": 272240, "FY27": 285000 }, "confidence": "validated" },
+
+  { "id": "d-mor-1", "ministryId": "mor", "number": 85, "title": "Ministry of Railways", "amounts": { "FY26": 255445, "FY27": 268900 }, "confidence": "validated" },
+
+  { "id": "d-mof-1", "ministryId": "mof", "number": 33, "title": "Transfers to States", "amounts": { "FY26": 1432000, "FY27": 1490000 }, "confidence": "validated" },
+  { "id": "d-mof-2", "ministryId": "mof", "number": 34, "title": "Interest Payments", "amounts": { "FY26": 380000, "FY27": 410000 }, "confidence": "validated" },
+  { "id": "d-mof-3", "ministryId": "mof", "number": 35, "title": "Other Finance Department Expenditure", "amounts": { "FY26": 124123, "FY27": 110500 }, "confidence": "parsed" }
+]

@@ -1,0 +1,26 @@
+[
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Uttar Pradesh", "amount": 218400 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Bihar", "amount": 122900 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Madhya Pradesh", "amount": 96100 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "West Bengal", "amount": 91500 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Maharashtra", "amount": 80300 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Rajasthan", "amount": 73200 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Tamil Nadu", "amount": 62100 },
+  { "ministryId": "mof", "scheme": "Finance Commission Devolution", "state": "Other States", "amount": 687500 },
+
+  { "ministryId": "mord", "scheme": "MGNREGS", "state": "Unallocated (state-wise not disclosed)", "amount": 86000, "unknown": true },
+  { "ministryId": "mord", "scheme": "PM Awas Yojana - Gramin", "state": "Unallocated (state-wise not disclosed)", "amount": 54500, "unknown": true },
+  { "ministryId": "mord", "scheme": "Pradhan Mantri Gram Sadak Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 19000, "unknown": true },
+
+  { "ministryId": "moa", "scheme": "PM-KISAN", "state": "Unallocated (paid directly to farmers)", "amount": 63500, "unknown": true },
+  { "ministryId": "moa", "scheme": "Pradhan Mantri Fasal Bima Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 12200, "unknown": true },
+
+  { "ministryId": "moh", "scheme": "PM Awas Yojana - Urban", "state": "Unallocated (state-wise not disclosed)", "amount": 19800, "unknown": true },
+  { "ministryId": "moh", "scheme": "AMRUT 2.0", "state": "Unallocated (state-wise not disclosed)", "amount": 8000, "unknown": true },
+
+  { "ministryId": "mohfw", "scheme": "Pradhan Mantri Jan Arogya Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 7300, "unknown": true },
+
+  { "ministryId": "mha", "scheme": "Transfer to UTs with legislature", "state": "Jammu & Kashmir", "amount": 37200 },
+  { "ministryId": "mha", "scheme": "Transfer to UTs with legislature", "state": "Delhi", "amount": 5680 },
+  { "ministryId": "mha", "scheme": "Transfer to UTs with legislature", "state": "Puducherry", "amount": 2850 }
+]
