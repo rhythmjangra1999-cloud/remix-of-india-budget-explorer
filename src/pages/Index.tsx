@@ -80,7 +80,7 @@ const Index = () => {
             <EntryTile
               n="01"
               title="Explore by Ministry"
-              dek="Browse all 102 ministries. Sort by size, search by name, drill into demands and (where available) object-head detail."
+              dek={`Browse ${BUDGET_META.ministriesCovered} ministries and departments. Sort by size, search by name, drill into demands and (where available) object-head detail.`}
               to="/explorer?view=treemap"
             />
             <EntryTile
