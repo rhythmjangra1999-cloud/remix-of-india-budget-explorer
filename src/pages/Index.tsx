@@ -7,8 +7,11 @@ import { BUDGET_META, FINDINGS, MINISTRIES, ministryById } from "@/lib/budget-da
 import { formatCr } from "@/lib/format";
 
 const Index = () => {
+  // Exclude Finance because Repayment of Debt + Interest Payments dwarf everything
+  // and aren't really "ministry spending" — they're balance-sheet flows.
   const topMinistries = [...MINISTRIES]
-    .sort((a, b) => (b.totals.FY26 ?? 0) - (a.totals.FY26 ?? 0))
+    .filter((m) => m.id !== "mof")
+    .sort((a, b) => (b.totals.FY27 ?? 0) - (a.totals.FY27 ?? 0))
     .slice(0, 6);
 
   return (
