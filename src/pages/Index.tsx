@@ -173,8 +173,8 @@ const Index = () => {
             <div className="max-w-2xl">
               <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Coverage</div>
               <p className="mt-2 font-serif text-2xl">
-                DGs live for <span className="text-primary">102</span> ministries · Detailed DGs live for{" "}
-                <span className="text-primary">3</span> of 10 planned.
+                <span className="text-primary">102</span> Demands across <span className="text-primary">{BUDGET_META.ministriesCovered}</span> ministries are live · Detailed DGs live for{" "}
+                <span className="text-primary">{BUDGET_META.ddgsLive}</span> of {BUDGET_META.ddgsPlanned} planned.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <ConfidenceChip level="validated" />
