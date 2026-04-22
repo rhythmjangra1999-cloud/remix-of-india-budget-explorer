@@ -1,72 +1,45 @@
 
-# India Budget Visualizer — Public Site Shell + DG Explorer
+## Borrowing the best of "Where Does It All Go?" for the Explorer
 
-A public, editorial-styled site for journalists, researchers, and citizens to explore India's Union Budget at the Demand-for-Grants (DG) level across all 102 ministries, with the architecture ready to drill into Detailed Demands (DDGs) and object heads as that data lands.
+The reference site (wheredoesitallgo.org) is loved for one thing: a **single, calm, drill-down treemap** where every tile says exactly three things — *what it is*, *how much*, and *what % of the total*. No chartjunk, no rails, no tabs competing for attention. We'll bring that energy into our Explorer while keeping our own multi-view depth tucked behind it.
 
-## Pages
+### What changes
 
-1. **Home / Landing**
-   - Hero with one-line mission, current FY badge, total Union Budget headline number
-   - Three entry tiles: *Explore by Ministry*, *Explore by Demand*, *Where money goes (Center → State)*
-   - "Featured findings" strip (3 editorial cards pulled from MoPSW/MHA/DoPT)
-   - Coverage status: "DGs live for 102 ministries · DDGs live for 3 of 10 planned"
+**1. Treemap becomes the headline view (and gets drillable)**
+- Each tile shows: ministry name · ₹ amount · **% of Union Budget**, in that order, sized to fit.
+- Click a tile → it **zooms in** to show that ministry's *Demands* as the new treemap (same look). Click a demand → if DDG data exists, drill to *major heads* → *object heads*. Otherwise show a friendly "object-head detail pending" card in place.
+- A **breadcrumb** at the top: `Union Budget › Ministry of Home Affairs › Police` with click-back at every level.
+- Persistent **running total** strip above the chart: `You are looking at ₹ X Lakh Cr · Y% of the Union Budget`.
 
-2. **Explorer** (the core page)
-   - Left rail: ministry list with search + budget-size sort
-   - Main canvas with view-switcher tabs:
-     - **Treemap** — ministries sized by allocation, click to drill into demands → major heads → (where available) object heads, with breadcrumb
-     - **Sunburst** — full 6-level hierarchy at a glance
-     - **Sankey** — Center → Ministry → Scheme/State flow (uses available data; clearly marks gaps)
-     - **Table** — sortable, filterable, with inline bar magnitudes and CSV export
-   - Right panel: selected node details (amount, YoY change, share of ministry, share of budget, link to source PDF page)
-   - FY selector (FY26 / FY27 toggle as data grows)
-   - "Data confidence" chip on every node (validated / parsed / OCR-needed)
+**2. Calmer, more editorial tile styling**
+- Warm sequential color ramp (already in palette) but **muted further** so labels read first, color second.
+- Tile typography: serif for the name, mono for the number, small caps for the % — the wheredoesitallgo signature.
+- Hover = subtle lift + tooltip with YoY delta vs FY26.
 
-3. **Methodology**
-   - The 2-page note: what Budget / DGs / DDGs are, the 6-level hierarchy with a worked example, extraction process, known gaps (schemes, state transfers), how to read confidence levels
-   - Coverage tracker table (which ministries are parsed, validated, live, OCR-pending)
-   - Anomaly log
+**3. Reorganize the page so the treemap can breathe**
+- Move the **ministry search rail** into a slim collapsible drawer (icon button top-left of the chart). On desktop it's hidden by default; the treemap itself is the navigator.
+- The **right detail panel** stays but only appears once you've drilled at least one level, or via the "Details" button on a tile. At the top level the chart is full-bleed.
+- Tabs (Sunburst / Sankey / Table) move to a smaller secondary switcher under the breadcrumb labelled **"Other views"** — treemap is the default and feels like the product.
 
-4. **Findings** (editorial)
-   - Short articles surfacing object-head-level stories from the 3 live DDGs
-   - Each piece embeds a live mini-visualization
+**4. "How to read this" inline coachmark**
+- First-time visitors see a one-line ghost label on the largest tile: *"Click any tile to drill in →"*. Dismissable, remembered in localStorage.
 
-5. **About** — team, contact, how to cite, changelog
+**5. Tile percent label everywhere**
+- The table view, sunburst tooltip, and detail panel all gain the **% of parent** alongside ₹ amount, so the mental model stays consistent across views.
 
-## Data model (file-driven)
+**6. FY toggle gets a delta hint**
+- Switching FY26 ↔ FY27 briefly flashes ↑/↓ arrows on tiles whose share changed by more than 0.5pp, then settles. Quick visual story of where money shifted.
 
-- You upload JSON/CSV; app reads them as static assets. Suggested files:
-  - `ministries.json` — id, name, slug, total allocation per FY
-  - `demands.json` — ministry_id → demands with major/minor head amounts
-  - `ddgs.json` — full 6-level rows for live ministries (object-head detail)
-  - `transfers.json` — center→state flows (sparse; unknowns flagged)
-  - `coverage.json` — parse/validation status per ministry
-  - `findings.md` — editorial notes
-- A simple `/data` README explains the schema so re-uploads are drop-in
-- Loader validates schema and shows a clear banner if a file is missing/malformed
+### What stays the same
+- The four views, the data files, the editorial palette and typography, the methodology/findings/about pages.
+- All current functionality is preserved — just rearranged so the treemap leads.
 
-## Visual design — editorial / data-journalism
+### Files touched
+- `src/components/explorer/TreemapView.tsx` — rewrite to support hierarchical drill, breadcrumb, % labels, zoom transitions.
+- `src/pages/Explorer.tsx` — restructure layout: full-bleed chart, collapsible search drawer, conditional detail panel, secondary tab switcher.
+- `src/components/explorer/MinistryDetailPanel.tsx` — small tweak so it can render at any drill level (ministry / demand / major-head).
+- `src/components/explorer/TableView.tsx`, `SunburstView.tsx` — add `% of total` to tooltips/columns for consistency.
+- New tiny `src/components/explorer/Breadcrumb.tsx`.
 
-- Serif display headings (e.g., Source Serif / Spectral), sans-serif body (Inter)
-- Generous whitespace, max ~720px reading column on text pages, full-bleed on the explorer
-- Muted palette: warm off-white background, deep ink text, a single accent for highlights, sequential color ramp for amounts (no rainbow)
-- Charts: clean axes, direct labels, no chartjunk; tooltips with formatted ₹ Cr / ₹ Lakh Cr
-- Mobile: explorer collapses to table + treemap; sunburst/sankey hidden behind "open on desktop" hint
-
-## Tooltips & copy
-
-- Plain-language tooltips on every jargon term (DG, DDG, Major Head, Object Head, Revenue vs Capital)
-- Empty states drafted for: no DDG yet, no state-transfer data, OCR pending
-- Footer disclaimer about data freshness and source PDFs
-
-## Out of scope for this build (queued for later)
-
-- Auth, comments, saved views
-- Live PDF parsing pipeline
-- Year-over-year time series beyond the FYs in uploaded data
-- Internal data-ops dashboard (separate later sprint)
-
-## What you'll need to provide after approval
-
-- Sample/initial JSON or CSV for ministries + at least one ministry's DDG so the explorer renders with real data
-- Logo or wordmark (optional — otherwise we'll set a clean type-only mark)
+### Out of scope
+- No new data, no backend, no new pages. Pure UX layer on the Explorer.
