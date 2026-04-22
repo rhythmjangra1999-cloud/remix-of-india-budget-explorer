@@ -9,9 +9,10 @@ interface Props {
   ddgs: DDGRow[];
   fy: FY;
   onSelect: (ministryId: string) => void;
+  totalBudget?: number;
 }
 
-export function SunburstView({ ministries, demands, ddgs, fy, onSelect }: Props) {
+export function SunburstView({ ministries, demands, ddgs, fy, onSelect, totalBudget }: Props) {
   const ref = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -87,7 +88,12 @@ export function SunburstView({ ministries, demands, ddgs, fy, onSelect }: Props)
           if (d.depth === 1) onSelect(d.data.id);
         })
         .append("title")
-        .text((d: any) => `${d.ancestors().reverse().map((n: any) => n.data.name).join(" › ")}\n${formatCr(d.value)}`);
+        .text((d: any) => {
+          const trail = d.ancestors().reverse().map((n: any) => n.data.name).join(" › ");
+          const denom = totalBudget ?? hier.value ?? 0;
+          const pct = denom > 0 ? ((d.value / denom) * 100).toFixed(2) : "—";
+          return `${trail}\n${formatCr(d.value)} · ${pct}% of Union Budget`;
+        });
 
       svg
         .append("text")
