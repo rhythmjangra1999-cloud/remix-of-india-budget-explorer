@@ -1,0 +1,65 @@
+{
+  "fy": "FY26",
+  "totalExpenditureCr": 5008237,
+  "receipts": [
+    { "id": "borrow", "label": "Borrowings & Other Liabilities", "paise": 24, "amountCr": 1601864, "note": "Fiscal deficit; financed mainly via dated G-Secs." },
+    { "id": "income", "label": "Income Tax", "paise": 22, "amountCr": 1102063, "note": "Personal income tax — biggest single direct tax." },
+    { "id": "gst", "label": "GST & Other Indirect Taxes", "paise": 18, "amountCr": 901672, "note": "CGST + Centre's share of IGST + Compensation Cess." },
+    { "id": "corp", "label": "Corporate Tax", "paise": 17, "amountCr": 851601, "note": "Levied on company profits." },
+    { "id": "nontax", "label": "Non-tax Receipts", "paise": 9, "amountCr": 450741, "note": "RBI dividend, PSU profits, spectrum, fees." },
+    { "id": "excise", "label": "Union Excise Duties", "paise": 5, "amountCr": 250412, "note": "Mostly on petroleum products." },
+    { "id": "customs", "label": "Customs", "paise": 4, "amountCr": 200329, "note": "Import duties." },
+    { "id": "nondebt", "label": "Non-debt Capital Receipts", "paise": 1, "amountCr": 50082, "note": "Disinvestment, loan recoveries." }
+  ],
+  "rupeeSpent": [
+    { "id": "interest", "label": "Interest Payments", "paise": 24, "takeaway": "Servicing past borrowings — the single largest line." },
+    { "id": "states", "label": "States' Share of Taxes & Duties", "paise": 22, "takeaway": "Devolved automatically per Finance Commission formula." },
+    { "id": "schemes-cs", "label": "Central Sector Schemes", "paise": 16, "takeaway": "100% Centre-funded (e.g. PM-KISAN, defence pensions)." },
+    { "id": "schemes-css", "label": "Centrally Sponsored Schemes", "paise": 8, "takeaway": "Cost shared with States (e.g. MGNREGS, Samagra Shiksha)." },
+    { "id": "defence", "label": "Defence", "paise": 8, "takeaway": "Pay, pensions and capital acquisitions." },
+    { "id": "subsidies", "label": "Major Subsidies", "paise": 6, "takeaway": "Food, fertiliser, petroleum." },
+    { "id": "fc", "label": "Finance Commission & Other Transfers", "paise": 8, "takeaway": "Grants to local bodies, disaster relief, revenue deficit grants." },
+    { "id": "pensions", "label": "Pensions", "paise": 4, "takeaway": "Civilian + part of defence pensions." },
+    { "id": "other", "label": "Other Expenditure", "paise": 4, "takeaway": "Everything else — secretariat, autonomous bodies." }
+  ],
+  "calendar": [
+    { "phase": "Sept–Nov", "title": "Demands assembled", "detail": "Ministries send budget requests to the Finance Ministry; Department of Expenditure scrutinises." },
+    { "phase": "Dec–Jan", "title": "Consolidation", "detail": "Finance Minister, Revenue & Expenditure Secretaries, and PMO finalise totals; Halwa Ceremony locks the documents." },
+    { "phase": "Feb 1", "title": "Budget tabled", "detail": "Finance Minister presents Union Budget; Budget at a Glance, Receipt Budget, Expenditure Profile, all DGs released same day." },
+    { "phase": "Feb–Mar", "title": "Demands voted", "detail": "Lok Sabha discusses & votes on each Demand for Grants; Appropriation Bill and Finance Bill passed." },
+    { "phase": "Apr 1", "title": "Financial year begins", "detail": "Spending authorisation kicks in for the new FY (Apr–Mar)." },
+    { "phase": "Through year", "title": "Audit & review", "detail": "CAG audits actual spending; Standing Committees review Outcome Budget; Supplementary Demands as needed." }
+  ],
+  "documents": [
+    { "doc": "Union Budget Speech & Budget at a Glance", "publisher": "Finance Minister", "when": "Feb 1", "granularity": "Headline totals, deficit, key schemes", "site": "Landing page numbers" },
+    { "doc": "Demands for Grants (DGs)", "publisher": "Each ministry, via MoF", "when": "Feb 1 onward", "granularity": "Per-ministry, per-demand totals (Revenue + Capital)", "site": "Explorer — top two levels" },
+    { "doc": "Detailed Demands for Grants (DDGs)", "publisher": "Each ministry", "when": "A few weeks after Budget", "granularity": "Object-head detail (Salaries, Subsidies, Major Works…)", "site": "Explorer — drill-down (live for 3 ministries)" },
+    { "doc": "Outcome Budget", "publisher": "NITI Aayog + ministries", "when": "With Budget", "granularity": "Scheme outputs/outcomes", "site": "Linked from Findings" },
+    { "doc": "Receipt Budget", "publisher": "MoF", "when": "Feb 1", "granularity": "Tax & non-tax receipts", "site": "Section A above" },
+    { "doc": "Finance / Appropriation Accounts", "publisher": "CAG", "when": "~18 months later", "granularity": "Actuals vs Budget", "site": "Out of scope (link out)" }
+  ],
+  "stateFlow": {
+    "scheme": "MGNREGS (Mahatma Gandhi National Rural Employment Guarantee Scheme)",
+    "fy26AllocationCr": 86000,
+    "steps": [
+      { "id": "ub", "label": "Union Budget", "detail": "₹86,000 Cr earmarked under Demand No. 86" },
+      { "id": "mord", "label": "Ministry of Rural Development", "detail": "Nodal ministry; releases funds to States via PFMS" },
+      { "id": "scheme", "label": "MGNREGS", "detail": "Centre pays 100% of wages + 75% of material" },
+      { "id": "state", "label": "State Govt (e.g. Jharkhand)", "detail": "Receives funds in State Employment Guarantee Fund" },
+      { "id": "district", "label": "District (e.g. Ranchi)", "detail": "DPC draws against approved labour budget" },
+      { "id": "wage", "label": "Wage to worker", "detail": "Direct Benefit Transfer to worker's bank/Aadhaar-linked account" }
+    ]
+  },
+  "hierarchyExample": {
+    "ministry": "Ministry of Ports, Shipping and Waterways",
+    "totalCr": 27000,
+    "levels": [
+      { "n": 1, "name": "Major Head", "value": "5051 — Capital Outlay on Ports", "amountCr": 4500 },
+      { "n": 2, "name": "Sub-major Head", "value": "(none in this case)", "amountCr": null },
+      { "n": 3, "name": "Minor Head", "value": "Inland Water Transport", "amountCr": 2200 },
+      { "n": 4, "name": "Sub-head", "value": "Sagarmala", "amountCr": 1900 },
+      { "n": 5, "name": "Detailed Head", "value": "(grouped at sub-head)", "amountCr": null },
+      { "n": 6, "name": "Object Head", "value": "Major Works", "amountCr": 1820 }
+    ]
+  }
+}
