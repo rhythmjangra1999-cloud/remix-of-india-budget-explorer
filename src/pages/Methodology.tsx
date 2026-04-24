@@ -7,6 +7,7 @@ import { MoneyFlowChart } from "@/components/methodology/MoneyFlowChart";
 import { BudgetCycleTimeline } from "@/components/methodology/BudgetCycleTimeline";
 import { RupeeDonut } from "@/components/methodology/RupeeDonut";
 import { HierarchyDrill } from "@/components/methodology/HierarchyDrill";
+import { MajorHeadSeries } from "@/components/methodology/MajorHeadSeries";
 import { StickyToc } from "@/components/methodology/StickyToc";
 import flow from "@/data/budget-flow.json";
 import { ArrowRight, Hash } from "lucide-react";
@@ -362,6 +363,17 @@ const Methodology = () => {
                   <HierarchyDrill />
                   <SourceLine>
                     DDG of MoPSW FY26 · Controller General of Accounts head structure.
+                  </SourceLine>
+                </div>
+
+                <div className="mt-10">
+                  <Takeaway>
+                    A quick decoder for the 4-digit Major Head numbers you'll see across every
+                    Demand for Grants.
+                  </Takeaway>
+                  <MajorHeadSeries />
+                  <SourceLine>
+                    Controller General of Accounts — List of Major and Minor Heads of Account.
                   </SourceLine>
                 </div>
               </section>
