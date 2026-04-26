@@ -14,7 +14,7 @@ const About = () => {
               A public tool to make the Union Budget legible.
             </h1>
             <p className="mt-6 text-lg text-foreground/75 leading-relaxed">
-              India Budget Visualizer is a non-commercial, open project. It exists to help
+              Koshtha.AI is a non-commercial, open project. It exists to help
               journalists, researchers, students, and citizens find their way through a
               document that is large, technically formatted, and rarely explored below
               the headline numbers.
@@ -35,10 +35,10 @@ const About = () => {
 
             <h2>How to cite</h2>
             <p>
-              Please cite as: <em>India Budget Visualizer, [year]. Source: Union Budget
+              Please cite as: <em>Koshtha.AI, [year]. Source: Union Budget
               Demands for Grants, Ministry of Finance, GoI.</em> Always link to the
               underlying PDF where possible — confidence levels and limitations are
-              described in the Methodology.
+              described in the Tutorial.
             </p>
 
             <h2>Get in touch</h2>
@@ -56,7 +56,7 @@ const About = () => {
             <h2>Changelog</h2>
             <ul>
               <li><strong>v0.4</strong> — Real DG data wired in from Demands for Grants of Central Government 2026-27 (Feb 2026): all 102 demands across {BUDGET_META.ministriesCovered} ministries, with BE 2025-26, RE 2025-26 and BE 2026-27 figures.</li>
-              <li><strong>v0.3</strong> — Site shell launched: Explorer (treemap, sunburst, sankey, table), Methodology, Findings.</li>
+              <li><strong>v0.3</strong> — Site shell launched: Explorer (treemap, sunburst, sankey, table), Tutorial, Findings.</li>
               <li><strong>v0.2</strong> — DDG parsing complete for MoPSW, MHA, DoPT.</li>
               <li><strong>v0.1</strong> — DGs parsed for all 102 demands.</li>
             </ul>

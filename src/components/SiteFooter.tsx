@@ -10,7 +10,7 @@ export function SiteFooter() {
             <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary text-primary-foreground font-serif font-bold leading-none">
               ₹
             </div>
-            <span className="font-serif text-base font-semibold">India Budget Visualizer</span>
+            <span className="font-serif text-base font-semibold">Koshtha.AI</span>
           </div>
           <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
             A public, non-commercial tool for journalists, researchers, and citizens to
@@ -23,7 +23,7 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2">
             <li><Link className="hover:text-primary" to="/explorer">Explorer</Link></li>
             <li><Link className="hover:text-primary" to="/findings">Findings</Link></li>
-            <li><Link className="hover:text-primary" to="/methodology">Methodology</Link></li>
+            <li><Link className="hover:text-primary" to="/methodology">Tutorial</Link></li>
             <li><Link className="hover:text-primary" to="/about">About</Link></li>
           </ul>
         </div>
@@ -44,9 +44,9 @@ export function SiteFooter() {
         <div className="container py-5 flex flex-col md:flex-row gap-2 justify-between text-xs text-muted-foreground">
           <p>
             Figures are derived from public budget documents. Errors are possible — see
-            Methodology for confidence levels and known gaps.
+            Tutorial for confidence levels and known gaps.
           </p>
-          <p>© {new Date().getFullYear()} India Budget Visualizer · Open project</p>
+          <p>© {new Date().getFullYear()} Koshtha.AI · Open project</p>
         </div>
       </div>
     </footer>
