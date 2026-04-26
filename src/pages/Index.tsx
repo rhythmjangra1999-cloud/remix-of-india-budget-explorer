@@ -87,21 +87,21 @@ const Index = () => {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             <EntryTile
               n="01"
-              title="Explore by Ministry"
-              dek={`Browse ${BUDGET_META.ministriesCovered} ministries and departments. Sort by size, search by name, drill into demands and (where available) object-head detail.`}
+              title="Ministry"
+              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head.`}
               to="/explorer?view=treemap"
             />
             <EntryTile
               n="02"
-              title="Explore by Demand"
-              dek="Skip the ministry layer. Look at every Demand for Grants in a sortable table — useful for cross-cutting comparisons."
-              to="/explorer?view=table"
+              title="State"
+              dek="A map of India linked to a Sankey: pick a state to trace its budget — own revenue and borrowings, devolution from the Centre and central scheme transfers — through to its allocations."
+              to="/explorer?view=sankey"
             />
             <EntryTile
               n="03"
-              title="Where money goes (Centre → State)"
-              dek="Trace flows from the Centre to states and union territories. Sparse — many transfers are not disclosed at this level."
-              to="/explorer?view=sankey"
+              title="Scheme"
+              dek="Cross-cutting view of central and centrally-sponsored schemes — outlays, the ministries that run them, and where the money lands at the state level."
+              to="/explorer?view=table"
             />
           </div>
         </section>
