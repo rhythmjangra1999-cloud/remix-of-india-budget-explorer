@@ -21,38 +21,78 @@ const Index = () => {
       <main className="flex-1">
         {/* Hero */}
         <section className="paper border-b border-border">
-          <div className="container py-20 md:py-28 max-w-5xl">
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                Budget Estimates 2026-27
-              </span>
-              <span>Government of India</span>
-            </div>
-            <h1 className="mt-6 font-serif text-5xl md:text-7xl font-semibold leading-[1.05] tracking-tight">
-              See where every rupee of the Union Budget goes.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg text-foreground/75 leading-relaxed">
-              A public, editorial tool to explore India's{" "}
-              <span className="text-foreground font-medium">102 Demands for Grants</span>{" "}
-              across {BUDGET_META.ministriesCovered} union ministries and departments —
-              with object-head detail for the live ministries and an honest account of
-              what's missing.
-            </p>
+          <div className="container py-20 md:py-24">
+            <div className="grid gap-14 lg:gap-20 lg:grid-cols-12 items-start">
+              {/* Left: copy */}
+              <div className="lg:col-span-7">
+                <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    Budget Estimates 2026-27
+                  </span>
+                  <span>Government of India</span>
+                </div>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                to="/explorer"
-                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-              >
-                Open Explorer <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/methodology"
-                className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
-              >
-                Read Methodology
-              </Link>
+                <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
+                  Trace the rupee.
+                  <span className="block text-foreground/55">The pulse of public spending.</span>
+                </h1>
+
+                <div className="mt-8 max-w-2xl space-y-5 text-lg text-foreground/75 leading-relaxed">
+                  <p>
+                    From a budget of <span className="text-foreground font-medium tnum">₹3.55 lakh</span> in <span className="tnum">1870</span> to{" "}
+                    <span className="text-foreground font-medium tnum">₹55 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
+                  </p>
+                  <p>
+                    Every fiscal year, the government plans how taxes, borrowings and other revenue will be raised and spent. <span className="text-foreground font-medium">Koshtha.AI</span> lets you explore that plan at the most granular level it is published — ministry, demand, major head, sub-head, all the way down to the object head.
+                  </p>
+                </div>
+
+                <div className="mt-10 flex flex-wrap gap-3">
+                  <Link
+                    to="/explorer"
+                    className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                  >
+                    Open Explorer <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    to="/methodology"
+                    className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
+                  >
+                    Read Tutorial
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right: 156-year arc */}
+              <aside className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-border">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                  156 years of the Union Budget
+                </div>
+                <ol className="mt-6 space-y-5">
+                  {[
+                    { yr: "1870", val: "₹3.55 L", label: "First Indian Budget · presented by James Wilson" },
+                    { yr: "1947", val: "₹197.39 Cr", label: "Independence · first budget of free India (R.K. Shanmukham Chetty)" },
+                    { yr: "1991", val: "₹1.13 L Cr", label: "Reforms budget · liberalisation begins (Manmohan Singh)" },
+                    { yr: "2017", val: "₹21.47 L Cr", label: "Rail Budget merged · single Union Budget" },
+                    { yr: "2026", val: "₹55 L Cr+", label: "Today · 102 Demands across 56 ministries" },
+                  ].map((era, i, arr) => (
+                    <li key={era.yr} className="grid grid-cols-[64px_1fr_auto] items-baseline gap-4">
+                      <div className="font-mono text-xs text-muted-foreground tnum">{era.yr}</div>
+                      <div className="relative">
+                        {i < arr.length - 1 && (
+                          <span className="absolute left-[-12px] top-3 h-full w-px bg-border" aria-hidden />
+                        )}
+                        <div className="text-sm text-foreground/80 leading-snug">{era.label}</div>
+                      </div>
+                      <div className="font-serif text-sm font-semibold tnum text-foreground">{era.val}</div>
+                    </li>
+                  ))}
+                </ol>
+                <p className="mt-6 text-xs text-muted-foreground leading-relaxed">
+                  Figures shown at the scale they were published in.
+                </p>
+              </aside>
             </div>
 
             {/* Headline figures */}
