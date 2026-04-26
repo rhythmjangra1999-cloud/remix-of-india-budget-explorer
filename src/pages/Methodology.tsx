@@ -230,7 +230,7 @@ const Methodology = () => {
         <section className="container pt-16 pb-10">
           <div className="reading mx-auto">
             <div className="text-xs uppercase tracking-[0.16em] text-primary font-mono font-medium">
-              Methodology · How the money works
+              Tutorial · How the money works
             </div>
             <h1 className="mt-3 font-serif text-5xl font-semibold leading-tight">
               From your tax rupee to a school in a district.
