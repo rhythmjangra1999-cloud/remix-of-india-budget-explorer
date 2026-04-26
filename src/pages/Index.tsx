@@ -23,63 +23,55 @@ const Index = () => {
         {/* Hero */}
         <section className="paper border-b border-border">
           <div className="container py-20 md:py-24">
-            <div className="grid gap-14 lg:gap-20 lg:grid-cols-12 items-start">
-              {/* Left: copy */}
-              <div className="lg:col-span-7">
-                <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    Budget Estimates 2026-27
-                  </span>
-                  <span>Government of India</span>
-                </div>
-
-                <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
-                  Trace the rupee.
-                  <span className="block text-foreground/55">The pulse of public spending.</span>
-                </h1>
-
-                <div className="mt-8 max-w-2xl space-y-5 text-lg text-foreground/75 leading-relaxed">
-                  <p>
-                    From a budget of <span className="text-foreground font-medium tnum">₹3.55 lakh</span> in <span className="tnum">1870</span> to{" "}
-                    <span className="text-foreground font-medium tnum">₹55 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
-                  </p>
-                  <p>
-                    Every fiscal year, the government plans how taxes, borrowings and other revenue will be raised and spent. <span className="text-foreground font-medium">Koshtha.AI</span> lets you explore that plan at the most granular level it is published — ministry, demand, major head, sub-head, all the way down to the object head.
-                  </p>
-                </div>
-
-                <div className="mt-10 flex flex-wrap gap-3">
-                  <Link
-                    to="/explorer"
-                    className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-                  >
-                    Open Explorer <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    to="/methodology"
-                    className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
-                  >
-                    Read Tutorial
-                  </Link>
-                </div>
+            {/* Full-width heading + copy */}
+            <div className="max-w-5xl">
+              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  Budget Estimates 2026-27
+                </span>
+                <span>Government of India</span>
               </div>
 
-              {/* Right: 165-year history chart */}
-              <aside className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-border">
-                <BudgetHistoryChart />
-              </aside>
+              <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
+                Trace the rupee.
+                <span className="block text-foreground/55">The pulse of public spending.</span>
+              </h1>
+
+              <div className="mt-8 max-w-3xl space-y-5 text-lg text-foreground/75 leading-relaxed">
+                <p>
+                  From a budget of <span className="text-foreground font-medium tnum">₹0.5 crore</span> in <span className="tnum">1860</span> to{" "}
+                  <span className="text-foreground font-medium tnum">₹55 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
+                </p>
+                <p>
+                  Every fiscal year, the government plans how taxes, borrowings and other revenue will be raised and spent. <span className="text-foreground font-medium">Koshtha.AI</span> lets you explore that plan at the most granular level it is published — ministry, demand, major head, sub-head, all the way down to the object head.
+                </p>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Link
+                  to="/explorer"
+                  className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                  Open Explorer <ArrowUpRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/methodology"
+                  className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
+                >
+                  Read Tutorial
+                </Link>
+              </div>
             </div>
 
-            {/* Headline figures */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-sm overflow-hidden border border-border">
+            {/* History chart — full width, below heading */}
+            <div className="mt-14 border-t border-border pt-10">
+              <BudgetHistoryChart />
+            </div>
+
+            {/* Headline figures — 2 stats only */}
+            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden border border-border">
               <Stat label="Gross Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="incl. debt repayment" />
-              <Stat label="Demands for Grants" value="102" sub={`across ${BUDGET_META.ministriesCovered} ministries`} />
-              <Stat
-                label="DDGs live"
-                value={`${BUDGET_META.ddgsLive}`}
-                sub={`of ${BUDGET_META.ddgsPlanned} planned`}
-              />
               <Stat label="Fiscal year" value="2026-27" sub={`updated ${BUDGET_META.lastUpdated}`} />
             </div>
           </div>
