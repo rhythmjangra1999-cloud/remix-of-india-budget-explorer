@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ConfidenceChip } from "@/components/ConfidenceChip";
+import { BudgetHistoryChart } from "@/components/home/BudgetHistoryChart";
 import { BUDGET_META, FINDINGS, MINISTRIES, ministryById } from "@/lib/budget-data";
 import { formatCr } from "@/lib/format";
 
@@ -64,34 +65,9 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Right: 156-year arc */}
+              {/* Right: 165-year history chart */}
               <aside className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-border">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                  156 years of the Union Budget
-                </div>
-                <ol className="mt-6 space-y-5">
-                  {[
-                    { yr: "1870", val: "₹3.55 L", label: "First Indian Budget · presented by James Wilson" },
-                    { yr: "1947", val: "₹197.39 Cr", label: "Independence · first budget of free India (R.K. Shanmukham Chetty)" },
-                    { yr: "1991", val: "₹1.13 L Cr", label: "Reforms budget · liberalisation begins (Manmohan Singh)" },
-                    { yr: "2017", val: "₹21.47 L Cr", label: "Rail Budget merged · single Union Budget" },
-                    { yr: "2026", val: "₹55 L Cr+", label: "Today · 102 Demands across 56 ministries" },
-                  ].map((era, i, arr) => (
-                    <li key={era.yr} className="grid grid-cols-[64px_1fr_auto] items-baseline gap-4">
-                      <div className="font-mono text-xs text-muted-foreground tnum">{era.yr}</div>
-                      <div className="relative">
-                        {i < arr.length - 1 && (
-                          <span className="absolute left-[-12px] top-3 h-full w-px bg-border" aria-hidden />
-                        )}
-                        <div className="text-sm text-foreground/80 leading-snug">{era.label}</div>
-                      </div>
-                      <div className="font-serif text-sm font-semibold tnum text-foreground">{era.val}</div>
-                    </li>
-                  ))}
-                </ol>
-                <p className="mt-6 text-xs text-muted-foreground leading-relaxed">
-                  Figures shown at the scale they were published in.
-                </p>
+                <BudgetHistoryChart />
               </aside>
             </div>
 

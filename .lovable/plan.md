@@ -1,111 +1,60 @@
-# Methodology Page — "How the Money Works"
+## Add a "1860 → 2026" Union Budget history chart to the hero
 
-A visual-first, narrative-driven Methodology page that walks a non-expert through the entire lifecycle of public and private money in India: how do we earn, from your wallet, into the Consolidated Fund, Security fund, out through ministries and schemes, down to states and finally to delivery on the ground. It also explains what the Budget / DG / DDG documents are, who publishes them, and when. what is the formula for each state.
+Replace the 5-row text timeline on the right side of the homepage hero with a real, interactive line chart of total Union Budget expenditure across ~165 years — same minimalist red-area style as the reference image, but tuned to our editorial design system.
 
-## Page structure (top to bottom)
-
-### 1. Hero
-
-- Title: *"How the Money Works"*
-- Dek: *"you earned, then you paid X amount of tax, and from your tax rupee to what led to budget and then how to a school in a district — the full journey of India's Union Budget, in plain language."*
-- Meta strip: reading time (~5 min) · last updated · "Jump to flowchart" anchor.
-
-### 2. The big-picture flowchart (anchor view)
-
-Money: Visual 1. Budget: Visual 2 (A single horizontal SVG flow diagram, full-bleed. Each node is clickable and scroll-jumps to its matching section below.)
+### What the user sees
 
 ```text
- SOURCES OF MONEY              POOLED              ALLOCATED               SPENT BY                    DELIVERED TO
- ─────────────────             ──────              ──────────              ──────────                  ─────────────
- Income Tax        ┐                                Ministries (102) ┐     Central schemes ┐
- GST (Centre)      │                                                 │     CSS (shared)    │           Citizens
- Corporate Tax     ├──►  Consolidated  ──► Union ──► Departments    ├──►  State transfers ├──►        States/UTs
- Customs / Excise  │      Fund of India   Budget    Autonomous bodies│     Salaries/Pensions│          Districts
- Borrowings        │                                                 │     Capital works    │          Frontline staff
- Non-tax (dividend,┘                                Statutory share  ┘     Subsidies        ┘
- spectrum, fees)                                    to States (FC)
+Trace the rupee.                       │  ┌──────────────────────────────────┐
+The pulse of public spending.          │  │  Total Union Budget · ₹ crore    │
+                                       │  │                                  │
+[copy paragraphs]                      │  │                          ╭──     │
+                                       │  │                       ╭──╯       │
+[Open Explorer] [Read Tutorial]        │  │                   ╭───╯          │
+                                       │  │  ──────────╴╴╴╴╴╴╴╯ 55,00,000 Cr │
+                                       │  │  1860   1900   1947  1991  2026  │
+                                       │  └──────────────────────────────────┘
+                                       │  Hover any year for the figure +
+                                       │  what was happening that year
 ```
 
-Built as SVG (not raster) so labels stay crisp and clickable. Muted Explorer palette; arrow widths reflect proportional flow where data exists.
+- **Single line + soft area fill** in the brand primary (terracotta), on `paper` background. No gridlines except a faint baseline.
+- **Log scale Y axis** (essential — 1860's ₹50 lakh next to 2026's ₹55 lakh crore is otherwise invisible). Y-axis labels suppressed; instead show the latest value pinned at the line's right edge (like the reference).
+- **X axis**: sparse year ticks at 1860, 1900, 1947, 1971, 1991, 2014, 2026.
+- **Hover tooltip**: year, total expenditure (formatted ₹X Lakh Cr / ₹Y Cr), and a 1-line caption for marquee years (e.g. 1947 "First budget of free India", 1991 "Liberalisation", 2017 "Rail Budget merged").
+- **Era markers**: 4 thin vertical reference lines for 1947 (Independence), 1991 (Reforms), 2017 (Rail merge), with tiny labels along the top of the chart.
+- Below the chart, a one-line caption: *"Total expenditure across 165 budgets. Log scale. Sources: indiabudget.gov.in archive, PIB, RBI Handbook of Statistics."*
 
-### 3. Section-by-section explainer (each ~150 words + one micro-visual)
+### Data
 
-**A. Where does the money come from?**
-Stacked bar of FY26 receipts: Borrowings, GST, Income Tax, Corporate Tax, Customs, Excise, Non-tax, Dividends. Plain-English call-outs, e.g. *"~27 paise of every ₹1 spent is borrowed."* Source line: Receipt Budget, Feb 1.
+Create `src/data/budget-history.json` — annual rows `{ year, totalCr, note? }` from FY 1860-61 through FY 2026-27. Strategy:
 
-**B. Where does it sit? — The three Funds**
-Three side-by-side cards:
+- **Pre-Independence anchor points** (4–6 rows, sparse): 1860 (₹50 lakh, Wilson's first budget), 1870 (~₹3.55 lakh — figure user cited), 1900, 1921 (Railway budget separated), 1939, 1946-47 (last colonial budget). Interpolate linearly between anchors so the line is continuous but honest — flagged in `note` field.
+- **Post-Independence (1947-48 → 2026-27)**: full annual series. Sources: PIB "Story of India's Union Budgets", indiabudget.gov.in expenditure tables, Wikipedia "Union budget of India", RBI Handbook. Use **Total Expenditure (BE)** consistently. Notable anchor values: 1947-48 ₹197 Cr, 1950-51 ₹347 Cr, 1960-61 ₹1,127 Cr, 1970-71 ₹3,981 Cr, 1980-81 ₹23,259 Cr, 1990-91 ₹1,13,422 Cr, 2000-01 ₹3,38,487 Cr, 2010-11 ₹11,08,749 Cr, 2020-21 ₹30,42,230 Cr, 2026-27 ₹55,00,000 Cr (from existing meta).
+- ~12 of the 165 rows carry an editorial `note` (e.g. "Independence", "Bank nationalisation", "Liberalisation", "GST rollout", "COVID stimulus", "Rail merge"). Only these notes appear in the tooltip and as marker labels.
 
-- **Consolidated Fund of India** — the main account; every in/out needs Parliament's nod.
-- **Contingency Fund** — emergency float (₹30,000 Cr), at the President's disposal.
-- **Public Account** — money the govt holds in trust (PF, small savings).
+The JSON is the single source of truth — easy to correct/extend later. A short `README` block at top of the file lists the source per era.
 
-**C. Who decides what gets spent? — The Budget cycle**
-A timeline strip across the year:
+### Components
 
-```text
- Sept–Nov     Dec–Jan        Feb 1            Feb–Mar         Apr 1        Through year
- ──────       ──────         ─────            ───────         ─────        ────────────
- Ministries   Finance Min.   Budget tabled    Demands voted   FY begins    CAG audits,
- send         consolidates,  in Parliament    (Lok Sabha),    (Apr–Mar)    Standing
- demands      PM signs off   (Union Budget)   Appropriation                Committees review
-                                              Bill passed
-```
+- **`src/components/home/BudgetHistoryChart.tsx`** *(new)* — built with **Recharts** (already pinned in the project; used by `RupeeDonut`/etc.). `<ResponsiveContainer>` + `<AreaChart>` + log-scale Y. ~120 LOC. Exposes a `compact?: boolean` prop so we can reuse it elsewhere later.
+- Tooltip is a custom component reading the `note` field; year markers via `<ReferenceLine>`.
 
-**D. What documents are actually published? — Budget vs DG vs DDG**
+### Hero integration (`src/pages/Index.tsx`)
 
+- Replace the right-rail `<aside>` (lines ~67–95, the 5-item `<ol>`) with the chart component inside the same `lg:col-span-5 lg:pl-8 lg:border-l` container.
+- Kicker stays: *"165 years of the Union Budget"* (updated from 156).
+- Footnote line below the chart replaces the current "Figures shown at the scale they were published in." copy.
+- Everything else on the page is untouched.
 
-| Document                                 | Published by            | When                     | Granularity                                            | Where in our site                                 |
-| ---------------------------------------- | ----------------------- | ------------------------ | ------------------------------------------------------ | ------------------------------------------------- |
-| Union Budget Speech & Budget at a Glance | Finance Minister        | Feb 1                    | Headline totals, deficit, key schemes                  | Landing page numbers                              |
-| Demands for Grants (DGs)                 | Each ministry, via MoF  | Feb 1 onward             | Per-ministry, per-demand totals (Revenue + Capital)    | **Explorer — top two levels**                     |
-| Detailed Demands for Grants (DDGs)       | Each ministry           | A few weeks after Budget | Object-head detail (Salaries, Subsidies, Major Works…) | **Explorer — drill-down (live for 3 ministries)** |
-| Outcome Budget                           | NITI Aayog + ministries | With Budget              | Scheme outputs/outcomes                                | Linked from Findings                              |
-| Receipt Budget                           | MoF                     | Feb 1                    | Tax & non-tax receipts                                 | Section A above                                   |
-| Finance / Appropriation Accounts         | CAG                     | ~18 months later         | Actuals vs Budget                                      | Out of scope (link out)                           |
+### Out of scope
 
+- No inflation-adjusted toggle, no GDP-share toggle, no zoom/brush. Single, calm view.
+- No new route or page — the chart only appears in the hero (we may reuse it on Tutorial later, separate task).
+- No backend / Cloud — pure static JSON, ships with the bundle (~3 KB gzipped).
 
-**E. The 6-level hierarchy — a worked example**
-Re-use the existing MoPSW example, redesigned as a vertical "drill" graphic with each level visually nested, ending in the ₹1,820 Cr object head. Same mental model as the Explorer.
+### Files touched
 
-**F. Centre → State: how money actually reaches a district**
-A small Sankey (re-uses SankeyView styling, hard-coded for one example like MGNREGS):
-
-```text
- Union Budget ──► Ministry of Rural Dev ──► MGNREGS scheme ──► State govt ──► District ──► Wage payment
-```
-
-Plus a callout: **Why state-wise data is often missing** — many central schemes don't disclose state allocation in the DG; it's released via PFMS or Parliament replies. We flag every such row.
-
-**G. What are our taxes actually buying? — The "rupee" diagram**  
-Donut: "Where every ₹1 goes" — Interest payments, Defence, Subsidies, States' share, Central schemes, Pensions, Other. FY26 figures, one-line takeaway under each slice.
-
-### 4. Footer of the page
-
-- "How to cite this page" snippet.
-- Link to source PDFs on indiabudget.gov.in.
-- "Spot an error?" mailto link.
-
-## Visual & UX rules
-
-- Editorial layout: ~720px reading column for prose; full-bleed for the flowchart, timeline, and Sankey.
-- Source Serif 4 for headings, Inter for body, JetBrains Mono for figures (existing design system).
-- Every visual: one-line plain-English takeaway *above*, small grey source line *below*.
-- Section headings get an anchor-link icon on hover; flowchart nodes deep-link to them.
-- Sticky mini-ToC on the right (desktop) with sections A–G + K, scroll-spy highlighted. Mobile: collapses to a "Jump to" dropdown.
-
-## Files touched
-
-- `src/pages/Methodology.tsx` — full rewrite of structure; keep the existing coverage tracker section.
-- `src/components/methodology/MoneyFlowChart.tsx` *(new)* — SVG hero flowchart, clickable nodes.
-- `src/components/methodology/BudgetCycleTimeline.tsx` *(new)* — Sept→Mar timeline strip.
-- `src/components/methodology/RupeeDonut.tsx` *(new)* — D3-based "where every ₹1 goes" donut.
-- `src/components/methodology/HierarchyDrill.tsx` *(new)* — 6-level nested visual.
-- `src/components/methodology/StickyToc.tsx` *(new)* — right-side scroll-spy ToC.
-- `src/data/budget-flow.json` *(new)* — receipts breakdown, rupee-donut shares, doc-publishing calendar; small static file, easy to update each FY.
-
-## Out of scope (this sprint)
-
-- Confidence-level explainer, anomaly log, glossary (sections H/I/J).
-- No interactive simulator; no PFMS / state-PDF integration; English only.
-- No new Explorer ingestion — uses existing `/data` plus the new `budget-flow.json`.
+- `src/data/budget-history.json` *(new)*
+- `src/components/home/BudgetHistoryChart.tsx` *(new)*
+- `src/pages/Index.tsx` *(edit hero right-column only)*
