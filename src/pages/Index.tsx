@@ -38,7 +38,7 @@ const Index = () => {
                 <span className="block text-foreground/55">The pulse of public spending.</span>
               </h1>
 
-              <div className="mt-8 max-w-3xl space-y-5 text-lg text-foreground/75 leading-relaxed">
+              <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
                 <p>
                   From a budget of <span className="text-foreground font-medium tnum">₹0.5 crore</span> in <span className="tnum">1860</span> to{" "}
                   <span className="text-foreground font-medium tnum">₹55 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
