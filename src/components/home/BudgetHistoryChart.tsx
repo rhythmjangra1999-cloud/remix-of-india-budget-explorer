@@ -144,8 +144,9 @@ export function BudgetHistoryChart() {
       {/* Footnote */}
       <p className="mt-3 text-[11px] text-muted-foreground leading-relaxed">
         Total expenditure across {ROWS.length} budgets. Log scale — without it, the colonial-era figures
-        (₹0.5 Cr in 1860) would vanish next to today's ₹55 Lakh Cr. Pre-1947 values reconstructed from
-        Government of India records; post-1947 from indiabudget.gov.in archive, PIB and RBI Handbook of Statistics.
+        (₹0.5 Cr in 1860) would vanish next to today's ₹53 Lakh Cr. Pre-1947 values reconstructed from
+        Government of India Finance Accounts; post-1947 from indiabudget.gov.in Expenditure Profile,
+        PIB, PRS India and the RBI Handbook of Statistics.
       </p>
     </div>
   );

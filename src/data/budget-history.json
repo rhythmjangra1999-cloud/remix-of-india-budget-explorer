@@ -1,211 +1,211 @@
 {
-  "_about": "Total Union Budget expenditure (BE) by fiscal year start. Pre-1947 anchors reconstructed from Government of India / colonial finance records; post-1947 from indiabudget.gov.in archive, PIB 'Story of India's Union Budgets', Wikipedia 'Union budget of India', RBI Handbook of Statistics. Years between anchors are log-linear interpolated.",
-  "unit": "INR crore (\u20b9)",
+  "_about": "Total Union Budget expenditure (Budget Estimates) by fiscal-year start. Post-1947 anchors are official published BE figures from indiabudget.gov.in Expenditure Profile, PIB 'Story of India's Union Budgets', PRS India budget analyses, and RBI Handbook of Statistics on the Indian Economy. Pre-1947 anchors are reconstructed from colonial Government of India Finance Accounts and are flagged 'estimated'. Years between anchors are log-linear interpolated and flagged 'interpolated'.",
+  "unit": "INR crore (₹)",
   "rows": [
     {
       "year": 1860,
       "totalCr": 0.5,
-      "note": "First Indian Budget \u00b7 James Wilson",
+      "note": "First Indian Budget · James Wilson",
       "estimated": true
     },
     {
       "year": 1861,
-      "totalCr": 0.57,
+      "totalCr": 0.61,
       "interpolated": true
     },
     {
       "year": 1862,
-      "totalCr": 0.64,
+      "totalCr": 0.74,
       "interpolated": true
     },
     {
       "year": 1863,
-      "totalCr": 0.73,
+      "totalCr": 0.9,
       "interpolated": true
     },
     {
       "year": 1864,
-      "totalCr": 0.83,
+      "totalCr": 1.1,
       "interpolated": true
     },
     {
       "year": 1865,
-      "totalCr": 0.94,
+      "totalCr": 1.33,
       "interpolated": true
     },
     {
       "year": 1866,
-      "totalCr": 1.07,
+      "totalCr": 1.62,
       "interpolated": true
     },
     {
       "year": 1867,
-      "totalCr": 1.22,
+      "totalCr": 1.97,
       "interpolated": true
     },
     {
       "year": 1868,
-      "totalCr": 1.38,
+      "totalCr": 2.4,
       "interpolated": true
     },
     {
       "year": 1869,
-      "totalCr": 1.57,
+      "totalCr": 2.92,
       "interpolated": true
     },
     {
       "year": 1870,
-      "totalCr": 1.78,
-      "interpolated": true
+      "totalCr": 3.55,
+      "estimated": true
     },
     {
       "year": 1871,
-      "totalCr": 2.02,
+      "totalCr": 3.94,
       "interpolated": true
     },
     {
       "year": 1872,
-      "totalCr": 2.29,
+      "totalCr": 4.37,
       "interpolated": true
     },
     {
       "year": 1873,
-      "totalCr": 2.6,
+      "totalCr": 4.85,
       "interpolated": true
     },
     {
       "year": 1874,
-      "totalCr": 2.95,
+      "totalCr": 5.38,
       "interpolated": true
     },
     {
       "year": 1875,
-      "totalCr": 3.35,
+      "totalCr": 5.97,
       "interpolated": true
     },
     {
       "year": 1876,
-      "totalCr": 3.81,
+      "totalCr": 6.62,
       "interpolated": true
     },
     {
       "year": 1877,
-      "totalCr": 4.32,
+      "totalCr": 7.34,
       "interpolated": true
     },
     {
       "year": 1878,
-      "totalCr": 4.91,
-      "interpolated": true
-    },
-    {
-      "year": 1879,
-      "totalCr": 5.57,
-      "interpolated": true
-    },
-    {
-      "year": 1880,
-      "totalCr": 6.32,
-      "interpolated": true
-    },
-    {
-      "year": 1881,
-      "totalCr": 7.18,
-      "interpolated": true
-    },
-    {
-      "year": 1882,
       "totalCr": 8.15,
       "interpolated": true
     },
     {
+      "year": 1879,
+      "totalCr": 9.04,
+      "interpolated": true
+    },
+    {
+      "year": 1880,
+      "totalCr": 10.03,
+      "interpolated": true
+    },
+    {
+      "year": 1881,
+      "totalCr": 11.12,
+      "interpolated": true
+    },
+    {
+      "year": 1882,
+      "totalCr": 12.34,
+      "interpolated": true
+    },
+    {
       "year": 1883,
-      "totalCr": 9.25,
+      "totalCr": 13.69,
       "interpolated": true
     },
     {
       "year": 1884,
-      "totalCr": 10.51,
+      "totalCr": 15.19,
       "interpolated": true
     },
     {
       "year": 1885,
-      "totalCr": 11.93,
+      "totalCr": 16.85,
       "interpolated": true
     },
     {
       "year": 1886,
-      "totalCr": 13.54,
+      "totalCr": 18.7,
       "interpolated": true
     },
     {
       "year": 1887,
-      "totalCr": 15.37,
+      "totalCr": 20.74,
       "interpolated": true
     },
     {
       "year": 1888,
-      "totalCr": 17.45,
+      "totalCr": 23.01,
       "interpolated": true
     },
     {
       "year": 1889,
-      "totalCr": 19.81,
+      "totalCr": 25.53,
       "interpolated": true
     },
     {
       "year": 1890,
-      "totalCr": 22.49,
+      "totalCr": 28.32,
       "interpolated": true
     },
     {
       "year": 1891,
-      "totalCr": 25.54,
+      "totalCr": 31.42,
       "interpolated": true
     },
     {
       "year": 1892,
-      "totalCr": 28.99,
+      "totalCr": 34.86,
       "interpolated": true
     },
     {
       "year": 1893,
-      "totalCr": 32.91,
+      "totalCr": 38.67,
       "interpolated": true
     },
     {
       "year": 1894,
-      "totalCr": 37.37,
+      "totalCr": 42.91,
       "interpolated": true
     },
     {
       "year": 1895,
-      "totalCr": 42.42,
+      "totalCr": 47.6,
       "interpolated": true
     },
     {
       "year": 1896,
-      "totalCr": 48.16,
+      "totalCr": 52.81,
       "interpolated": true
     },
     {
       "year": 1897,
-      "totalCr": 54.67,
+      "totalCr": 58.59,
       "interpolated": true
     },
     {
       "year": 1898,
-      "totalCr": 62.07,
+      "totalCr": 65.0,
       "interpolated": true
     },
     {
       "year": 1899,
-      "totalCr": 70.47,
+      "totalCr": 72.11,
       "interpolated": true
     },
     {
       "year": 1900,
-      "totalCr": 80,
+      "totalCr": 80.0,
       "estimated": true
     },
     {
@@ -310,7 +310,7 @@
     },
     {
       "year": 1921,
-      "totalCr": 130,
+      "totalCr": 130.0,
       "note": "Railway Budget separated",
       "estimated": true
     },
@@ -401,48 +401,49 @@
     },
     {
       "year": 1939,
-      "totalCr": 170,
+      "totalCr": 170.0,
       "estimated": true
     },
     {
       "year": 1940,
-      "totalCr": 173.2,
+      "totalCr": 173.99,
       "interpolated": true
     },
     {
       "year": 1941,
-      "totalCr": 176.47,
+      "totalCr": 178.08,
       "interpolated": true
     },
     {
       "year": 1942,
-      "totalCr": 179.79,
+      "totalCr": 182.26,
       "interpolated": true
     },
     {
       "year": 1943,
-      "totalCr": 183.18,
+      "totalCr": 186.54,
       "interpolated": true
     },
     {
       "year": 1944,
-      "totalCr": 186.64,
+      "totalCr": 190.93,
       "interpolated": true
     },
     {
       "year": 1945,
-      "totalCr": 190.15,
+      "totalCr": 195.41,
       "interpolated": true
     },
     {
       "year": 1946,
-      "totalCr": 193.74,
-      "interpolated": true
+      "totalCr": 200.0,
+      "note": "Last colonial budget",
+      "estimated": true
     },
     {
       "year": 1947,
       "totalCr": 197.39,
-      "note": "Independence \u00b7 first budget of free India"
+      "note": "Independence · first budget of free India"
     },
     {
       "year": 1948,
@@ -456,8 +457,8 @@
     },
     {
       "year": 1950,
-      "totalCr": 347,
-      "note": "Republic of India \u00b7 first Republic budget"
+      "totalCr": 347.0,
+      "note": "Republic of India · first Republic budget"
     },
     {
       "year": 1951,
@@ -481,7 +482,7 @@
     },
     {
       "year": 1955,
-      "totalCr": 530
+      "totalCr": 530.0
     },
     {
       "year": 1956,
@@ -505,317 +506,319 @@
     },
     {
       "year": 1960,
-      "totalCr": 1127
+      "totalCr": 1127.0
     },
     {
       "year": 1961,
-      "totalCr": 1322.84,
+      "totalCr": 1323,
       "interpolated": true
     },
     {
       "year": 1962,
-      "totalCr": 1552.72,
+      "totalCr": 1553,
       "interpolated": true
     },
     {
       "year": 1963,
-      "totalCr": 1822.54,
+      "totalCr": 1823,
       "interpolated": true
     },
     {
       "year": 1964,
-      "totalCr": 2139.25,
+      "totalCr": 2139,
       "interpolated": true
     },
     {
       "year": 1965,
-      "totalCr": 2511
+      "totalCr": 2511.0
     },
     {
       "year": 1966,
-      "totalCr": 2708.46,
+      "totalCr": 2708,
       "interpolated": true
     },
     {
       "year": 1967,
-      "totalCr": 2921.45,
+      "totalCr": 2921,
       "interpolated": true
     },
     {
       "year": 1968,
-      "totalCr": 3151.19,
+      "totalCr": 3151,
       "interpolated": true
     },
     {
       "year": 1969,
-      "totalCr": 3399,
+      "totalCr": 3399.0,
       "note": "Bank nationalisation"
     },
     {
       "year": 1970,
-      "totalCr": 3981
+      "totalCr": 3981.0
     },
     {
       "year": 1971,
-      "totalCr": 4774.11,
+      "totalCr": 4774,
       "interpolated": true
     },
     {
       "year": 1972,
-      "totalCr": 5725.22,
+      "totalCr": 5725,
       "interpolated": true
     },
     {
       "year": 1973,
-      "totalCr": 6865.83,
+      "totalCr": 6866,
       "interpolated": true
     },
     {
       "year": 1974,
-      "totalCr": 8233.66,
+      "totalCr": 8234,
       "interpolated": true
     },
     {
       "year": 1975,
-      "totalCr": 9874
+      "totalCr": 9874.0
     },
     {
       "year": 1976,
-      "totalCr": 11719.6,
+      "totalCr": 11720,
       "interpolated": true
     },
     {
       "year": 1977,
-      "totalCr": 13910.17,
+      "totalCr": 13910,
       "interpolated": true
     },
     {
       "year": 1978,
-      "totalCr": 16510.18,
+      "totalCr": 16510,
       "interpolated": true
     },
     {
       "year": 1979,
-      "totalCr": 19596.18,
+      "totalCr": 19596,
       "interpolated": true
     },
     {
       "year": 1980,
-      "totalCr": 23259
+      "totalCr": 23259.0
     },
     {
       "year": 1981,
-      "totalCr": 27268.29,
+      "totalCr": 27268,
       "interpolated": true
     },
     {
       "year": 1982,
-      "totalCr": 31968.68,
+      "totalCr": 31969,
       "interpolated": true
     },
     {
       "year": 1983,
-      "totalCr": 37479.31,
+      "totalCr": 37479,
       "interpolated": true
     },
     {
       "year": 1984,
-      "totalCr": 43939.84,
+      "totalCr": 43940,
       "interpolated": true
     },
     {
       "year": 1985,
-      "totalCr": 51514
+      "totalCr": 51514.0
     },
     {
       "year": 1986,
-      "totalCr": 60322.55,
+      "totalCr": 59433,
       "interpolated": true
     },
     {
       "year": 1987,
-      "totalCr": 70637.3,
+      "totalCr": 68568,
       "interpolated": true
     },
     {
       "year": 1988,
-      "totalCr": 82715.8,
+      "totalCr": 79108,
       "interpolated": true
     },
     {
       "year": 1989,
-      "totalCr": 96859.65,
+      "totalCr": 91269,
       "interpolated": true
     },
     {
       "year": 1990,
-      "totalCr": 113422
+      "totalCr": 105298.0
     },
     {
       "year": 1991,
-      "totalCr": 113422,
-      "note": "Liberalisation begins \u00b7 Manmohan Singh"
+      "totalCr": 113422.0,
+      "note": "Liberalisation begins · Manmohan Singh"
     },
     {
       "year": 1992,
-      "totalCr": 126997.62,
+      "totalCr": 126998,
       "interpolated": true
     },
     {
       "year": 1993,
-      "totalCr": 142198.13,
+      "totalCr": 142198,
       "interpolated": true
     },
     {
       "year": 1994,
-      "totalCr": 159218.0,
+      "totalCr": 159218,
       "interpolated": true
     },
     {
       "year": 1995,
-      "totalCr": 178275
+      "totalCr": 178275.0
     },
     {
       "year": 1996,
-      "totalCr": 202665.93,
+      "totalCr": 202666,
       "interpolated": true
     },
     {
       "year": 1997,
-      "totalCr": 230393.95,
+      "totalCr": 230394,
       "interpolated": true
     },
     {
       "year": 1998,
-      "totalCr": 261915.6,
+      "totalCr": 261916,
       "interpolated": true
     },
     {
       "year": 1999,
-      "totalCr": 297749.94,
+      "totalCr": 297750,
       "interpolated": true
     },
     {
       "year": 2000,
-      "totalCr": 338487
+      "totalCr": 338487.0
     },
     {
       "year": 2001,
-      "totalCr": 368030.94,
+      "totalCr": 368031,
       "interpolated": true
     },
     {
       "year": 2002,
-      "totalCr": 400153.54,
+      "totalCr": 400154,
       "interpolated": true
     },
     {
       "year": 2003,
-      "totalCr": 435079.88,
+      "totalCr": 435080,
       "interpolated": true
     },
     {
       "year": 2004,
-      "totalCr": 473054.68,
+      "totalCr": 473055,
       "interpolated": true
     },
     {
       "year": 2005,
-      "totalCr": 514344
+      "totalCr": 514344.0
     },
     {
       "year": 2006,
-      "totalCr": 599749.08,
+      "totalCr": 599749,
       "interpolated": true
     },
     {
       "year": 2007,
-      "totalCr": 699335.39,
+      "totalCr": 699335,
       "interpolated": true
     },
     {
       "year": 2008,
-      "totalCr": 815457.66,
+      "totalCr": 815458,
       "interpolated": true
     },
     {
       "year": 2009,
-      "totalCr": 950861.64,
+      "totalCr": 950862,
       "interpolated": true
     },
     {
       "year": 2010,
-      "totalCr": 1108749
+      "totalCr": 1108749.0
     },
     {
       "year": 2011,
-      "totalCr": 1250646.33,
+      "totalCr": 1250646,
       "interpolated": true
     },
     {
       "year": 2012,
-      "totalCr": 1410703.62,
+      "totalCr": 1410704,
       "interpolated": true
     },
     {
       "year": 2013,
-      "totalCr": 1591245.0,
+      "totalCr": 1591245,
       "interpolated": true
     },
     {
       "year": 2014,
-      "totalCr": 1794892
+      "totalCr": 1794892.0
     },
     {
       "year": 2015,
-      "totalCr": 1777477
+      "totalCr": 1777477.0,
+      "note": "New accounting classification (Plan/Non-Plan merged from FY18)"
     },
     {
       "year": 2016,
-      "totalCr": 1953400.14
+      "totalCr": 1978060.0
     },
     {
       "year": 2017,
-      "totalCr": 2146735,
+      "totalCr": 2146735.0,
       "note": "Rail Budget merged into Union Budget"
     },
     {
       "year": 2018,
-      "totalCr": 2411291.08
+      "totalCr": 2442213.0
     },
     {
       "year": 2019,
-      "totalCr": 2708450.12
+      "totalCr": 2786349.0
     },
     {
       "year": 2020,
-      "totalCr": 3042230,
+      "totalCr": 3042230.0,
       "note": "COVID-19 stimulus budget"
     },
     {
       "year": 2021,
-      "totalCr": 3483236
+      "totalCr": 3483236.0
     },
     {
       "year": 2022,
-      "totalCr": 3944909
+      "totalCr": 3944909.0
     },
     {
       "year": 2023,
-      "totalCr": 4503097
+      "totalCr": 4503097.0
     },
     {
       "year": 2024,
-      "totalCr": 4820512
+      "totalCr": 4820512.0
     },
     {
       "year": 2025,
-      "totalCr": 5054097
+      "totalCr": 5065345.0,
+      "note": "BE 2025-26"
     },
     {
       "year": 2026,
-      "totalCr": 5500000,
-      "note": "BE 2026-27 \u00b7 102 demands across 56 ministries"
+      "totalCr": 5347315.0,
+      "note": "BE 2026-27 · 102 demands across 56 ministries"
     }
   ]
 }
