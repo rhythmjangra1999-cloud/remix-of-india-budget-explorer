@@ -41,7 +41,7 @@ const Index = () => {
               <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
                 <p>
                   From a budget of <span className="text-foreground font-medium tnum">₹0.5 crore</span> in <span className="tnum">1860</span> to{" "}
-                  <span className="text-foreground font-medium tnum">₹55 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
+                  <span className="text-foreground font-medium tnum">₹53.47 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
                 </p>
                 <p>
                   Every fiscal year, the government plans how taxes, borrowings and other revenue will be raised and spent. <span className="text-foreground font-medium">Koshtha.AI</span> lets you explore that plan at the most granular level it is published — ministry, demand, major head, sub-head, all the way down to the object head.
