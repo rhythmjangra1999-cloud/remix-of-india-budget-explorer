@@ -1,60 +1,89 @@
-## Add a "1860 → 2026" Union Budget history chart to the hero
+## Goal
 
-Replace the 5-row text timeline on the right side of the homepage hero with a real, interactive line chart of total Union Budget expenditure across ~165 years — same minimalist red-area style as the reference image, but tuned to our editorial design system.
+Replace every number in the 1860 → 2026-27 Union Budget series with values that match official records (PIB, indiabudget.gov.in expenditure tables, RBI Handbook of Statistics, PRS India). Today the series is mostly **log-linear interpolated** between sparse anchors, and a few real anchors are also off (most importantly: FY 2026-27 shows ₹55 lakh cr — the official BE is ₹53.47 lakh cr; FY 1991 is duplicated; FY 2014 BE is overstated by ~₹2 lakh cr; and `meta.json` shows ₹162 lakh cr, ~3× the real budget).
 
-### What the user sees
+## Fact-check before changes
+
+Verified against PIB / indiabudget.gov.in / PRS India / RBI Handbook:
+
+- **FY 2026-27 BE**: ₹53,47,315 cr (≈ ₹53.47 lakh cr) — *not ₹55 lakh cr, and certainly not ₹150 lakh cr.*
+- **FY 2025-26 BE**: ₹50,65,345 cr.
+- **FY 1947-48** (first free-India budget, Shanmukham Chetty): ₹197.39 cr ✓ (already correct).
+- "₹150 lakh crore" intuition aligns with **India's nominal GDP** (~₹3.5 trn USD) or roughly Centre+States combined, not the Union Budget alone.
+
+## Source-of-truth anchors (FY → Total Expenditure BE, ₹ crore)
+
+These will be the only **hard** rows. Every year between two anchors is log-linear interpolated and flagged `interpolated: true`.
 
 ```text
-Trace the rupee.                       │  ┌──────────────────────────────────┐
-The pulse of public spending.          │  │  Total Union Budget · ₹ crore    │
-                                       │  │                                  │
-[copy paragraphs]                      │  │                          ╭──     │
-                                       │  │                       ╭──╯       │
-[Open Explorer] [Read Tutorial]        │  │                   ╭───╯          │
-                                       │  │  ──────────╴╴╴╴╴╴╴╯ 55,00,000 Cr │
-                                       │  │  1860   1900   1947  1991  2026  │
-                                       │  └──────────────────────────────────┘
-                                       │  Hover any year for the figure +
-                                       │  what was happening that year
+Pre-Independence (sparse, reconstructed — flagged "estimated")
+  1860 → 0.5            (Wilson's first budget, ~₹50 lakh)
+  1870 → 3.55           (user-cited figure)
+  1900 → ~80
+  1921 → ~130           (Railway Budget separated)
+  1939 → ~170
+  1946 → ~200           (last colonial budget)
+
+Post-Independence (annual, hard values from official records)
+  1947 → 197.39         (first free-India budget)
+  1950 → 347
+  1960 → 1,127
+  1970 → 3,981
+  1980 → 23,259
+  1990 → 1,13,422
+  2000 → 3,38,487
+  2010 → 11,08,749
+  2014 → 17,94,892      (keep — matches 2014-15 BE)
+  2015 → 17,77,477
+  2016 → 19,78,060
+  2017 → 21,46,735      (Rail Budget merged)
+  2018 → 24,42,213
+  2019 → 27,86,349
+  2020 → 30,42,230      (COVID stimulus)
+  2021 → 34,83,236
+  2022 → 39,44,909
+  2023 → 45,03,097
+  2024 → 48,20,512
+  2025 → 50,65,345      (BE 2025-26, was 50,54,097 — slightly off, looked like RE)
+  2026 → 53,47,315      (BE 2026-27, was 55,00,000 — too high)
 ```
 
-- **Single line + soft area fill** in the brand primary (terracotta), on `paper` background. No gridlines except a faint baseline.
-- **Log scale Y axis** (essential — 1860's ₹50 lakh next to 2026's ₹55 lakh crore is otherwise invisible). Y-axis labels suppressed; instead show the latest value pinned at the line's right edge (like the reference).
-- **X axis**: sparse year ticks at 1860, 1900, 1947, 1971, 1991, 2014, 2026.
-- **Hover tooltip**: year, total expenditure (formatted ₹X Lakh Cr / ₹Y Cr), and a 1-line caption for marquee years (e.g. 1947 "First budget of free India", 1991 "Liberalisation", 2017 "Rail Budget merged").
-- **Era markers**: 4 thin vertical reference lines for 1947 (Independence), 1991 (Reforms), 2017 (Rail merge), with tiny labels along the top of the chart.
-- Below the chart, a one-line caption: *"Total expenditure across 165 budgets. Log scale. Sources: indiabudget.gov.in archive, PIB, RBI Handbook of Statistics."*
+## What changes
 
-### Data
+### 1. `src/data/budget-history.json` — rewrite all 167 rows
+- Lock the anchors above as exact values with `note` where editorial.
+- Re-interpolate every year *between* two consecutive anchors with **log-linear** growth (matches the chart's log Y-axis so the line stays visually smooth).
+- Flag pre-1947 non-anchor years as `interpolated: true` and pre-1947 anchors as `estimated: true`. Post-1947 years between two real anchors stay `interpolated: true`; years that *are* anchors carry no flag.
+- Fix two structural bugs already in the file:
+  - **1990 and 1991 both show ₹1,13,422 cr** (1991-92 BE is actually ~₹1,17,114 cr; 1990 should be the prior year's BE).
+  - **2015 < 2014** (₹17.77 L cr < ₹17.94 L cr). Real BE for 2015-16 was ₹17,77,477 cr after the new accounting classification; keep that, but add a `note` so the visual dip is explained on hover.
+- Update the top `_about` field to list the corrected provenance.
 
-Create `src/data/budget-history.json` — annual rows `{ year, totalCr, note? }` from FY 1860-61 through FY 2026-27. Strategy:
+### 2. `src/data/meta.json` — fix the headline total
+- `totalUnionBudgetCr`: `16284130.06` → **`5347315`** (BE 2026-27)
+- `totalUnionBudgetPrevCr`: `15477959.08` → **`5065345`** (BE 2025-26)
 
-- **Pre-Independence anchor points** (4–6 rows, sparse): 1860 (₹50 lakh, Wilson's first budget), 1870 (~₹3.55 lakh — figure user cited), 1900, 1921 (Railway budget separated), 1939, 1946-47 (last colonial budget). Interpolate linearly between anchors so the line is continuous but honest — flagged in `note` field.
-- **Post-Independence (1947-48 → 2026-27)**: full annual series. Sources: PIB "Story of India's Union Budgets", indiabudget.gov.in expenditure tables, Wikipedia "Union budget of India", RBI Handbook. Use **Total Expenditure (BE)** consistently. Notable anchor values: 1947-48 ₹197 Cr, 1950-51 ₹347 Cr, 1960-61 ₹1,127 Cr, 1970-71 ₹3,981 Cr, 1980-81 ₹23,259 Cr, 1990-91 ₹1,13,422 Cr, 2000-01 ₹3,38,487 Cr, 2010-11 ₹11,08,749 Cr, 2020-21 ₹30,42,230 Cr, 2026-27 ₹55,00,000 Cr (from existing meta).
-- ~12 of the 165 rows carry an editorial `note` (e.g. "Independence", "Bank nationalisation", "Liberalisation", "GST rollout", "COVID stimulus", "Rail merge"). Only these notes appear in the tooltip and as marker labels.
+This single change auto-corrects the hero "Gross Union Budget" stat and every "% of gross Union Budget" share calculation that consumes `BUDGET_META.totalUnionBudgetCr`.
 
-The JSON is the single source of truth — easy to correct/extend later. A short `README` block at top of the file lists the source per era.
+### 3. `src/components/home/BudgetHistoryChart.tsx` — copy tweak
+- Footnote currently says *"today's ₹55 Lakh Cr"* → change to *"today's ₹53 Lakh Cr"*. The pinned right-edge label and tooltip already read from JSON so they auto-update.
 
-### Components
+### 4. `src/pages/Index.tsx` — hero copy
+- Replace the literal string *"₹55 lakh crore in 2026"* with *"₹53.47 lakh crore in 2026"*.
 
-- **`src/components/home/BudgetHistoryChart.tsx`** *(new)* — built with **Recharts** (already pinned in the project; used by `RupeeDonut`/etc.). `<ResponsiveContainer>` + `<AreaChart>` + log-scale Y. ~120 LOC. Exposes a `compact?: boolean` prop so we can reuse it elsewhere later.
-- Tooltip is a custom component reading the `note` field; year markers via `<ReferenceLine>`.
+## Execution
 
-### Hero integration (`src/pages/Index.tsx`)
+A short Python script (run once via `code--exec`, output written straight to `src/data/budget-history.json`) takes the anchor table above, log-linearly interpolates every gap, attaches the editorial `note`s, and emits the JSON. Deterministic, easy to re-run if any anchor needs another correction later. No new dependencies; pure stdlib.
 
-- Replace the right-rail `<aside>` (lines ~67–95, the 5-item `<ol>`) with the chart component inside the same `lg:col-span-5 lg:pl-8 lg:border-l` container.
-- Kicker stays: *"165 years of the Union Budget"* (updated from 156).
-- Footnote line below the chart replaces the current "Figures shown at the scale they were published in." copy.
-- Everything else on the page is untouched.
+## Out of scope
 
-### Out of scope
+- No new chart features (no inflation-adjustment, no GDP-share toggle).
+- No changes to ministry/demand totals (`ministries.json`, `demands.json`) — those come from a different source and look internally consistent.
+- No backend / DB.
 
-- No inflation-adjusted toggle, no GDP-share toggle, no zoom/brush. Single, calm view.
-- No new route or page — the chart only appears in the hero (we may reuse it on Tutorial later, separate task).
-- No backend / Cloud — pure static JSON, ships with the bundle (~3 KB gzipped).
+## Files touched
 
-### Files touched
-
-- `src/data/budget-history.json` *(new)*
-- `src/components/home/BudgetHistoryChart.tsx` *(new)*
-- `src/pages/Index.tsx` *(edit hero right-column only)*
+- `src/data/budget-history.json` *(rewrite)*
+- `src/data/meta.json` *(2 numbers)*
+- `src/components/home/BudgetHistoryChart.tsx` *(footnote string)*
+- `src/pages/Index.tsx` *(hero copy string)*
