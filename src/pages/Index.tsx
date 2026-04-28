@@ -89,7 +89,8 @@ const Index = () => {
               n="01"
               title="Ministry"
               dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head.`}
-              to="/explorer?view=treemap"
+              to="/explorer/ministry/magri"
+              badge="Live: Agriculture"
             />
             <EntryTile
               n="02"
