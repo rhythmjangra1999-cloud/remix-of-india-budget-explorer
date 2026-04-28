@@ -5,12 +5,12 @@
     "number": 1,
     "title": "Department of Agriculture and Farmers Welfare",
     "amounts": {
-      "FY26": 235132.43,
-      "FY27": 232561.38,
-      "FY26_RE": 220089.3,
-      "FY25_Actual": 232153.21,
-      "FY27_Revenue": 232451.62,
-      "FY27_Capital": 109.76
+      "FY26": 127290.36,
+      "FY27": 130561.40,
+      "FY26_RE": 121300.00,
+      "FY25_Actual": 115420.00,
+      "FY27_Revenue": 130451.55,
+      "FY27_Capital": 109.85
     },
     "confidence": "validated"
   },
@@ -20,12 +20,12 @@
     "number": 2,
     "title": "Department of Agricultural Research and Education",
     "amounts": {
-      "FY26": 10466.39,
-      "FY27": 9967.4,
-      "FY26_RE": 10280.83,
-      "FY25_Actual": 10033.56,
-      "FY27_Revenue": 9964.95,
-      "FY27_Capital": 2.45
+      "FY26": 10033.07,
+      "FY27": 9967.41,
+      "FY26_RE": 10033.07,
+      "FY25_Actual": 9504.00,
+      "FY27_Revenue": 9967.41,
+      "FY27_Capital": 0
     },
     "confidence": "validated"
   },
