@@ -8,7 +8,7 @@
   { "ministryId": "mof", "dgStatus": "validated", "ddgStatus": "parsed", "notes": "Finance has 13 demands incl. Interest Payments and Repayment of Debt." },
   { "ministryId": "mohfw", "dgStatus": "validated", "ddgStatus": "missing" },
   { "ministryId": "moe", "dgStatus": "validated", "ddgStatus": "missing" },
-  { "ministryId": "magri", "dgStatus": "validated", "ddgStatus": "missing" },
+  { "ministryId": "magri", "dgStatus": "validated", "ddgStatus": "validated", "notes": "Live — DAFW + DARE mapped to object-head; gap flags surfaced." },
   { "ministryId": "mord", "dgStatus": "validated", "ddgStatus": "missing", "notes": "MGNREGS state-wise breakdown not disclosed in DDG." },
   { "ministryId": "mohua", "dgStatus": "validated", "ddgStatus": "ocr-needed" },
   { "ministryId": "mca", "dgStatus": "validated", "ddgStatus": "missing" },

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Search, PanelLeft, X } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -23,6 +23,7 @@ import type { FY } from "@/data/types";
 
 const Explorer = () => {
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const initView = params.get("view") ?? "treemap";
   const initMinistry = params.get("ministry");
 
@@ -63,6 +64,10 @@ const Explorer = () => {
   const selected = selectedId ? ministryById(selectedId) ?? null : null;
 
   const pickMinistry = (id: string) => {
+    if (id === "magri") {
+      navigate("/explorer/ministry/magri");
+      return;
+    }
     setSelectedId(id);
     setDrawerOpen(false);
   };
@@ -265,7 +270,7 @@ const Explorer = () => {
                       return (
                         <li key={m.id}>
                           <button
-                            onClick={() => setSelectedId(m.id)}
+                            onClick={() => pickMinistry(m.id)}
                             className={`w-full text-left px-3 py-2.5 hover:bg-muted/50 transition-colors ${
                               active ? "bg-muted" : ""
                             }`}

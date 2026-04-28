@@ -1,5 +1,29 @@
 [
   {
+    "id": "f-magri-revenue-skew",
+    "title": "DAFW spends 99.9 paise of every rupee on revenue, not capital",
+    "ministryId": "magri",
+    "dek": "Object-head data shows the Department of Agriculture & Farmers Welfare allocates just ₹110 Cr to capital outlay in BE 2026-27 against ₹1.30 lakh Cr in revenue spending — almost the entire portfolio is transfers and subsidies.",
+    "body": "When you drill DAFW to the object-head level, the picture is unambiguous: ₹1,30,452 Cr (99.92%) flows through the Revenue account — Farmers Income Support (PM-KISAN), Crop Insurance, Reserve Fund transfers, and grants to states under DAPSC/DAPST. Capital outlay sits at ₹110 Cr — less than 0.1% of the demand. This is not unusual for a transfer-heavy ministry, but it constrains the lever Government has to invest in long-lived agricultural infrastructure directly.",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "f-magri-new-discontinued",
+    "title": "24 new agriculture lines created in BE 2026-27, 14 discontinued",
+    "ministryId": "magri",
+    "dek": "Beneath the headline numbers, BE 2026-27 quietly opens 24 fresh budget lines in DAFW and shuts down 14 prior ones — a churn of 6% of the demand's object-head footprint.",
+    "body": "Auto-flagged from the Detailed Demand for Grants: 24 sub-head/object-head combinations in Demand 1 are NEW (no prior allocation) and 14 are DISCONTINUED (had FY25 actuals or BE25 but no BE26). Most NEW lines cluster under 'Special Initiatives for development of Agriculture and Allied Sectors' — the largest YoY hike at +₹155 Cr (+62%). The discontinued lines are mostly small, but tracking them matters: the headline 'Agriculture got X% more' rarely reflects which programmes actually expanded.",
+    "date": "2026-04-18"
+  },
+  {
+    "id": "f-magri-reserve-fund",
+    "title": "Reserve Fund transfers are the single largest line in DAFW",
+    "ministryId": "magri",
+    "dek": "Transfers to Reserve Funds and Deposit Accounts absorb ₹72,400 Cr — more than PM-KISAN's Farmers Income Support — yet they're an accounting flow, not programme spending.",
+    "body": "The largest minor head in DAFW is 'Transfer to Reserve Funds/Deposits Accounts' at ₹72,400 Cr (BE 2026-27), down ₹334 Cr from BE 25-26. These are book entries that move money to dedicated funds (notably the Agri Infra Development Fund built from cesses) — they show as expenditure but don't represent direct programme outlay. Stripping them out, the active programmatic spend in DAFW is closer to ₹58,000 Cr, of which Farmers Income Support (PM-KISAN) is ~₹50,000 Cr.",
+    "date": "2026-04-20"
+  },
+  {
     "id": "f-mha-police-salaries",
     "title": "Three out of four rupees in MHA's police budget go to salaries",
     "ministryId": "mha",

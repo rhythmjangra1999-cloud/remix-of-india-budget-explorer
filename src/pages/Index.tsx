@@ -89,7 +89,8 @@ const Index = () => {
               n="01"
               title="Ministry"
               dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head.`}
-              to="/explorer?view=treemap"
+              to="/explorer/ministry/magri"
+              badge="Live: Agriculture"
             />
             <EntryTile
               n="02"
@@ -118,7 +119,7 @@ const Index = () => {
               {topMinistries.map((m, i) => (
                 <Link
                   key={m.id}
-                  to={`/explorer?ministry=${m.id}`}
+                  to={m.id === "magri" ? "/explorer/ministry/magri" : `/explorer?ministry=${m.id}`}
                   className="bg-card p-6 hover:bg-muted/50 transition-colors group"
                 >
                   <div className="flex items-baseline justify-between gap-4">
@@ -225,13 +226,21 @@ function SectionHeader({ kicker, title, sub }: { kicker: string; title: string; 
   );
 }
 
-function EntryTile({ n, title, dek, to }: { n: string; title: string; dek: string; to: string }) {
+function EntryTile({ n, title, dek, to, badge }: { n: string; title: string; dek: string; to: string; badge?: string }) {
   return (
     <Link
       to={to}
       className="group relative block border border-border bg-card p-7 hover:border-foreground transition-all"
     >
-      <div className="font-mono text-xs text-muted-foreground">{n}</div>
+      <div className="flex items-center justify-between">
+        <div className="font-mono text-xs text-muted-foreground">{n}</div>
+        {badge && (
+          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-sm bg-primary/10 text-primary font-medium">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            {badge}
+          </span>
+        )}
+      </div>
       <h3 className="mt-4 font-serif text-2xl font-semibold leading-tight">{title}</h3>
       <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{dek}</p>
       <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />

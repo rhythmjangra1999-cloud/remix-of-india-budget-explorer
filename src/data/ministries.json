@@ -73,11 +73,12 @@
     "id": "magri",
     "name": "Ministry of Agriculture and Farmers Welfare",
     "slug": "ministry-of-agriculture-and-farmers-welfare",
+    "short": "Agriculture",
     "totals": {
-      "FY26": 245598.82,
-      "FY27": 242528.78
+      "FY26": 137323.43,
+      "FY27": 140528.81
     },
-    "ddgAvailable": false
+    "ddgAvailable": true
   },
   {
     "id": "moe",
