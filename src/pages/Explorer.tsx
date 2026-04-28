@@ -270,7 +270,7 @@ const Explorer = () => {
                       return (
                         <li key={m.id}>
                           <button
-                            onClick={() => setSelectedId(m.id)}
+                            onClick={() => pickMinistry(m.id)}
                             className={`w-full text-left px-3 py-2.5 hover:bg-muted/50 transition-colors ${
                               active ? "bg-muted" : ""
                             }`}
