@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import { sankey, sankeyLinkHorizontal, sankeyLeft } from "d3-sankey";
 import type { Ministry, Transfer } from "@/data/types";
 import { formatCr } from "@/lib/format";
+import { useChartTooltip } from "./useChartTooltip";
 
 interface Props {
   ministries: Ministry[];
@@ -12,6 +13,7 @@ interface Props {
 export function SankeyView({ ministries, transfers }: Props) {
   const ref = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { containerRef, show, move, hide, Tooltip } = useChartTooltip();
 
   const { nodes, links } = useMemo(() => {
     const nodeMap = new Map<string, { name: string; type: string }>();
@@ -80,8 +82,11 @@ export function SankeyView({ ministries, transfers }: Props) {
         .attr("stroke", (d: any) => (d.unknown ? "hsl(0 55% 50%)" : "hsl(220 25% 12%)"))
         .attr("stroke-opacity", (d: any) => (d.unknown ? 0.18 : 0.12))
         .attr("stroke-width", (d: any) => Math.max(1, d.width))
-        .append("title")
-        .text((d: any) => `${d.source.name} → ${d.target.name}\n${formatCr(d.value)}${d.unknown ? "  (state-wise undisclosed)" : ""}`);
+        .on("mouseenter", (event, d: any) => {
+          show(`${d.source.name} → ${d.target.name}`, formatCr(d.value), d.unknown ? "State-wise undisclosed" : undefined, event);
+        })
+        .on("mousemove", (event) => move(event))
+        .on("mouseleave", () => hide());
 
       const nodeG = svg
         .append("g")
@@ -96,8 +101,11 @@ export function SankeyView({ ministries, transfers }: Props) {
         .attr("height", (d: any) => Math.max(1, d.y1 - d.y0))
         .attr("width", (d: any) => d.x1 - d.x0)
         .attr("fill", (d: any) => colorFor(d.type))
-        .append("title")
-        .text((d: any) => `${d.name}\n${formatCr(d.value)}`);
+        .on("mouseenter", (event, d: any) => {
+          show(d.name, formatCr(d.value), undefined, event);
+        })
+        .on("mousemove", (event) => move(event))
+        .on("mouseleave", () => hide());
 
       nodeG
         .append("text")
@@ -125,8 +133,11 @@ export function SankeyView({ ministries, transfers }: Props) {
         <Legend swatch="hsl(195 45% 35%)" label="State / UT" />
         <Legend swatch="hsl(0 55% 50%)" label="Unallocated (state-wise undisclosed)" />
       </div>
-      <div ref={wrapRef} className="w-full rounded-sm border border-border bg-card overflow-x-auto">
-        <svg ref={ref} className="block" />
+      <div ref={containerRef} className="relative w-full">
+        <div ref={wrapRef} className="w-full rounded-sm border border-border bg-card overflow-x-auto">
+          <svg ref={ref} className="block" />
+        </div>
+        <Tooltip />
       </div>
       <p className="text-xs text-muted-foreground italic">
         Note: For many large schemes (MGNREGS, PM-KISAN, PMAY) state-wise allocations

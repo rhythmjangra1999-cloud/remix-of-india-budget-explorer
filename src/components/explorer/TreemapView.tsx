@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import type { Ministry, Demand, DDGRow, FY } from "@/data/types";
 import { formatCr } from "@/lib/format";
 import { Breadcrumb, type Crumb } from "./Breadcrumb";
+import { useChartTooltip } from "./useChartTooltip";
 
 interface Props {
   ministries: Ministry[];
@@ -43,6 +44,7 @@ export function TreemapView({
 }: Props) {
   const ref = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { containerRef, show, move, hide, Tooltip } = useChartTooltip();
   const [path, setPath] = useState<string[]>([]); // node ids from root
   const [coachDismissed, setCoachDismissed] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
@@ -221,25 +223,23 @@ export function TreemapView({
         .attr("stroke", "hsl(var(--background))")
         .attr("stroke-width", 1)
         .attr("rx", 1.5)
-        .on("mouseenter", function () {
+        .on("mouseenter", function (event, d: any) {
           d3.select(this).attr("opacity", 0.88);
+          const data = d.data as DrillNode;
+          const pct = ((data.value / Math.max(totalBudget, 1)) * 100).toFixed(2);
+          let sub = `${pct}% of Union Budget`;
+          if (data.prevValue && data.prevValue > 0) {
+            const delta = ((data.value - data.prevValue) / data.prevValue) * 100;
+            sub += ` · YoY ${delta >= 0 ? "+" : ""}${delta.toFixed(1)}%`;
+          }
+          if (data.children?.length) sub += " · click to drill in";
+          show(data.fullName, formatCr(data.value), sub, event);
         })
+        .on("mousemove", (event) => move(event))
         .on("mouseleave", function () {
           d3.select(this).attr("opacity", 1);
+          hide();
         });
-
-      // Tooltip with YoY when prevValue available.
-      node.append("title").text((d: any) => {
-        const data = d.data as DrillNode;
-        const pct = ((data.value / Math.max(totalBudget, 1)) * 100).toFixed(2);
-        let yoy = "";
-        if (data.prevValue && data.prevValue > 0) {
-          const delta = ((data.value - data.prevValue) / data.prevValue) * 100;
-          yoy = `\nYoY vs FY26: ${delta >= 0 ? "+" : ""}${delta.toFixed(1)}%`;
-        }
-        const drill = data.children && data.children.length ? "\n(click to drill in)" : "";
-        return `${data.fullName}\n${formatCr(data.value)} · ${pct}% of Union Budget${yoy}${drill}`;
-      });
 
       // Label: name (serif), amount (mono), share (small caps mono)
       node.each(function (d: any) {
@@ -375,11 +375,14 @@ export function TreemapView({
         </div>
       </div>
 
-      <div
-        ref={wrapRef}
-        className="w-full h-[560px] rounded-sm border border-border bg-card overflow-hidden"
-      >
-        <svg ref={ref} className="block" />
+      <div ref={containerRef} className="relative w-full">
+        <div
+          ref={wrapRef}
+          className="w-full h-[560px] rounded-sm border border-border bg-card overflow-hidden"
+        >
+          <svg ref={ref} className="block" />
+        </div>
+        <Tooltip />
       </div>
 
       <p className="text-xs text-muted-foreground">

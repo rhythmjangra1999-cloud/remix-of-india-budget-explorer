@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import * as d3 from "d3";
 import type { Ministry, Demand, DDGRow, FY } from "@/data/types";
 import { formatCr } from "@/lib/format";
+import { useChartTooltip } from "./useChartTooltip";
 
 interface Props {
   ministries: Ministry[];
@@ -15,6 +16,7 @@ interface Props {
 export function SunburstView({ ministries, demands, ddgs, fy, onSelect, totalBudget }: Props) {
   const ref = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { containerRef, show, move, hide, Tooltip } = useChartTooltip();
 
   const root = useMemo(() => {
     const tree: any = { name: "Union Budget", children: [] };
@@ -87,13 +89,14 @@ export function SunburstView({ ministries, demands, ddgs, fy, onSelect, totalBud
         .on("click", (_, d: any) => {
           if (d.depth === 1) onSelect(d.data.id);
         })
-        .append("title")
-        .text((d: any) => {
-          const trail = d.ancestors().reverse().map((n: any) => n.data.name).join(" › ");
+        .on("mouseenter", (event, d: any) => {
+          const trail = d.ancestors().reverse().slice(1).map((n: any) => n.data.name).join(" › ");
           const denom = totalBudget ?? hier.value ?? 0;
           const pct = denom > 0 ? ((d.value / denom) * 100).toFixed(2) : "—";
-          return `${trail}\n${formatCr(d.value)} · ${pct}% of Union Budget`;
-        });
+          show(trail || d.data.name, formatCr(d.value), `${pct}% of Union Budget`, event);
+        })
+        .on("mousemove", (event) => move(event))
+        .on("mouseleave", () => hide());
 
       svg
         .append("text")
@@ -120,8 +123,11 @@ export function SunburstView({ ministries, demands, ddgs, fy, onSelect, totalBud
   }, [root, onSelect]);
 
   return (
-    <div ref={wrapRef} className="w-full rounded-sm border border-border bg-card p-6 flex justify-center">
-      <svg ref={ref} className="block" />
+    <div ref={containerRef} className="relative w-full">
+      <div ref={wrapRef} className="w-full rounded-sm border border-border bg-card p-6 flex justify-center">
+        <svg ref={ref} className="block" />
+      </div>
+      <Tooltip />
     </div>
   );
 }

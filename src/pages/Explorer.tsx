@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Search, PanelLeft, X } from "lucide-react";
+import { Search, PanelLeft, X, ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -9,6 +9,7 @@ import { TreemapView } from "@/components/explorer/TreemapView";
 import { SunburstView } from "@/components/explorer/SunburstView";
 import { SankeyView } from "@/components/explorer/SankeyView";
 import { TableView } from "@/components/explorer/TableView";
+import { SchemeTableView } from "@/components/explorer/SchemeTableView";
 import { MinistryDetailPanel } from "@/components/explorer/MinistryDetailPanel";
 import {
   BUDGET_META,
@@ -32,7 +33,7 @@ const Explorer = () => {
   const [selectedId, setSelectedId] = useState<string | null>(initMinistry);
   const [q, setQ] = useState("");
   const [sortBySize, setSortBySize] = useState(true);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
   useEffect(() => {
     const next = new URLSearchParams(params);
@@ -80,13 +81,41 @@ const Explorer = () => {
         <section className="border-b border-border">
           <div className="container py-10 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">Explorer</div>
-              <h1 className="mt-2 font-serif text-3xl md:text-4xl font-semibold leading-tight">
-                Union Budget — {fy}
-              </h1>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {MINISTRIES.length} ministries · Total {formatCr(BUDGET_META.totalUnionBudgetCr)}
-              </p>
+              {view === "schemes" ? (
+                <>
+                  <button
+                    onClick={() => navigate("/")}
+                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
+                    Back to Home
+                  </button>
+                  <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">Explorer — Schemes</div>
+                  <h1 className="mt-2 font-serif text-3xl md:text-4xl font-semibold leading-tight">
+                    Government of India Schemes
+                  </h1>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    448 schemes · Central &amp; Centrally Sponsored
+                  </p>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => navigate("/")}
+                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
+                    Back to Home
+                  </button>
+                  <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">Explorer</div>
+                  <h1 className="mt-2 font-serif text-3xl md:text-4xl font-semibold leading-tight">
+                    Grants to Ministries
+                  </h1>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {MINISTRIES.length} ministries · Total {formatCr(BUDGET_META.totalUnionBudgetCr)}
+                  </p>
+                </>
+              )}
             </div>
             <div className="inline-flex rounded-sm border border-border overflow-hidden text-sm">
               {(["FY26", "FY27"] as FY[]).map((y) => (
@@ -105,20 +134,14 @@ const Explorer = () => {
         </section>
 
         <section className="container py-8">
-          {view === "treemap" ? (
+          {view === "schemes" ? (
+            // Scheme view — full width, no ministry rail or detail panel
+            <SchemeTableView fy={fy} />
+          ) : view === "treemap" ? (
             // Treemap-led, full-bleed layout with collapsible drawer + conditional detail panel.
             <div className="relative">
               {/* Toolbar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <button
-                  onClick={() => setDrawerOpen((s) => !s)}
-                  className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-3 py-1.5 text-xs hover:bg-muted transition-colors"
-                  aria-expanded={drawerOpen}
-                >
-                  <PanelLeft className="h-3.5 w-3.5" />
-                  {drawerOpen ? "Hide ministries" : "Browse ministries"}
-                </button>
-
+              <div className="flex flex-wrap items-center justify-end gap-3 mb-4">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="hidden sm:inline">Other views:</span>
                   <div className="inline-flex rounded-sm border border-border overflow-hidden">

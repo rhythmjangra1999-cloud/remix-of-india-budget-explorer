@@ -71,7 +71,7 @@ const Index = () => {
 
             {/* Headline figures — 2 stats only */}
             <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Gross Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="incl. debt repayment" />
+              <Stat label="Gross Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="" />
               <Stat label="Fiscal year" value="2026-27" sub={`updated ${BUDGET_META.lastUpdated}`} />
             </div>
           </div>
@@ -102,7 +102,7 @@ const Index = () => {
               n="03"
               title="Scheme"
               dek="Cross-cutting view of central and centrally-sponsored schemes — outlays, the ministries that run them, and where the money lands at the state level."
-              to="/explorer?view=table"
+              to="/explorer?view=schemes"
             />
           </div>
         </section>
