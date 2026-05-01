@@ -104,6 +104,10 @@ function MajorHeadTable({ rows, demandNo, ministry, demandDesc }: MHTableProps) 
   const [sortKey, setSortKey] = useState<MHSort>("section");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [filter, setFilter] = useState("");
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [sheetMH, setSheetMH] = useState<MajorHeadRow | null>(null);
+  const toggleExpand = (key: string) =>
+    setExpanded((prev) => { const s = new Set(prev); s.has(key) ? s.delete(key) : s.add(key); return s; });
 
   const filtered = useMemo(() => {
     if (!filter.trim()) return rows;
