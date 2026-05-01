@@ -1,89 +1,100 @@
 ## Goal
 
-Replace every number in the 1860 → 2026-27 Union Budget series with values that match official records (PIB, indiabudget.gov.in expenditure tables, RBI Handbook of Statistics, PRS India). Today the series is mostly **log-linear interpolated** between sparse anchors, and a few real anchors are also off (most importantly: FY 2026-27 shows ₹55 lakh cr — the official BE is ₹53.47 lakh cr; FY 1991 is duplicated; FY 2014 BE is overstated by ~₹2 lakh cr; and `meta.json` shows ₹162 lakh cr, ~3× the real budget).
+Let users drill from a Major Head row inside a Demand all the way down to object-head detail (the same hierarchy as the uploaded `1.1.FY27.csv`: Major → Sub-Major → Minor → Sub-Head → Detailed → Object). Keep the current Demand page calm — no third nested table directly on the page.
 
-## Fact-check before changes
+## UX pattern — two tiers, no clutter
 
-Verified against PIB / indiabudget.gov.in / PRS India / RBI Handbook:
-
-- **FY 2026-27 BE**: ₹53,47,315 cr (≈ ₹53.47 lakh cr) — *not ₹55 lakh cr, and certainly not ₹150 lakh cr.*
-- **FY 2025-26 BE**: ₹50,65,345 cr.
-- **FY 1947-48** (first free-India budget, Shanmukham Chetty): ₹197.39 cr ✓ (already correct).
-- "₹150 lakh crore" intuition aligns with **India's nominal GDP** (~₹3.5 trn USD) or roughly Centre+States combined, not the Union Budget alone.
-
-## Source-of-truth anchors (FY → Total Expenditure BE, ₹ crore)
-
-These will be the only **hard** rows. Every year between two anchors is log-linear interpolated and flagged `interpolated: true`.
+We keep the current Major Heads table exactly as it is (with Revenue/Capital subtotals + Grand Total). We add **two complementary entry points** off each Major Head row:
 
 ```text
-Pre-Independence (sparse, reconstructed — flagged "estimated")
-  1860 → 0.5            (Wilson's first budget, ~₹50 lakh)
-  1870 → 3.55           (user-cited figure)
-  1900 → ~80
-  1921 → ~130           (Railway Budget separated)
-  1939 → ~170
-  1946 → ~200           (last colonial budget)
-
-Post-Independence (annual, hard values from official records)
-  1947 → 197.39         (first free-India budget)
-  1950 → 347
-  1960 → 1,127
-  1970 → 3,981
-  1980 → 23,259
-  1990 → 1,13,422
-  2000 → 3,38,487
-  2010 → 11,08,749
-  2014 → 17,94,892      (keep — matches 2014-15 BE)
-  2015 → 17,77,477
-  2016 → 19,78,060
-  2017 → 21,46,735      (Rail Budget merged)
-  2018 → 24,42,213
-  2019 → 27,86,349
-  2020 → 30,42,230      (COVID stimulus)
-  2021 → 34,83,236
-  2022 → 39,44,909
-  2023 → 45,03,097
-  2024 → 48,20,512
-  2025 → 50,65,345      (BE 2025-26, was 50,54,097 — slightly off, looked like RE)
-  2026 → 53,47,315      (BE 2026-27, was 55,00,000 — too high)
+[ Code | Major Head Name | Section | Actuals | BE25 | RE25 | BE26-27 | YoY | ▸ ]
+                                                                            │
+                  click ▸ on row  ──►  inline accordion expands underneath
+                                       (Minor Head summary, ~5–15 rows)
+                                       │
+                                       └── "Open full breakdown ↗"  ──►  side sheet (Sheet/Drawer)
+                                                                          full Major→Minor→Sub→Object tree
+                                                                          with search, gap badges, CSV
 ```
 
-## What changes
+### Tier 1 — Inline expand (Minor Head summary)
+- Adds a chevron column to `MajorHeadTable`. Clicking expands an in-table row showing **only Minor Head subtotals** for that Major Head: code · name · 4 yrs · YoY · share-of-MH bar.
+- Typical 3–15 rows per MH — small enough not to overwhelm.
+- Multiple rows can be expanded; expand-all/collapse-all buttons in the toolbar.
+- Subtotal/Grand Total rows are not expandable.
 
-### 1. `src/data/budget-history.json` — rewrite all 167 rows
-- Lock the anchors above as exact values with `note` where editorial.
-- Re-interpolate every year *between* two consecutive anchors with **log-linear** growth (matches the chart's log Y-axis so the line stays visually smooth).
-- Flag pre-1947 non-anchor years as `interpolated: true` and pre-1947 anchors as `estimated: true`. Post-1947 years between two real anchors stay `interpolated: true`; years that *are* anchors carry no flag.
-- Fix two structural bugs already in the file:
-  - **1990 and 1991 both show ₹1,13,422 cr** (1991-92 BE is actually ~₹1,17,114 cr; 1990 should be the prior year's BE).
-  - **2015 < 2014** (₹17.77 L cr < ₹17.94 L cr). Real BE for 2015-16 was ₹17,77,477 cr after the new accounting classification; keep that, but add a `note` so the visual dip is explained on hover.
-- Update the top `_about` field to list the corrected provenance.
+### Tier 2 — Side sheet (full DDG tree)
+- A "View full breakdown ↗" link inside the expanded row, plus a clickable Major Head name, opens a right-side **Sheet** (existing `components/ui/sheet.tsx`).
+- The sheet shows the full nested tree for that Major Head: **Sub-Major → Minor → Sub-Head → Detailed → Object**, with subtotals at every level.
+- Sheet header: MH code + name, demand context, BE 26-27 with YoY pill, gap-flag count chips (DISCONTINUED · NEW · SMALL_BASE · TOKEN).
+- Body: collapsible tree (default expanded to Minor; deeper levels lazy-expand). Each leaf shows object-head name, 4 years, YoY pill, full code (`2401.00.103.15.01.31`), and a gap badge if applicable.
+- Sheet toolbar: search, "Hide token/small-base rows" toggle, CSV export of just this MH.
+- Mobile: same Sheet slides up as bottom drawer.
 
-### 2. `src/data/meta.json` — fix the headline total
-- `totalUnionBudgetCr`: `16284130.06` → **`5347315`** (BE 2026-27)
-- `totalUnionBudgetPrevCr`: `15477959.08` → **`5065345`** (BE 2025-26)
+This keeps the Demand page surface unchanged; depth is opt-in per MH.
 
-This single change auto-corrects the hero "Gross Union Budget" stat and every "% of gross Union Budget" share calculation that consumes `BUDGET_META.totalUnionBudgetCr`.
+## Coverage scope
 
-### 3. `src/components/home/BudgetHistoryChart.tsx` — copy tweak
-- Footnote currently says *"today's ₹55 Lakh Cr"* → change to *"today's ₹53 Lakh Cr"*. The pinned right-edge label and tooltip already read from JSON so they auto-update.
+DDG drill-down only lights up for Major Heads we have detailed data for. For others the chevron is replaced by a "—" with a tooltip "Detailed DG not yet parsed" — same pattern as the existing coverage chips. Initial coverage = Agriculture (DAFW Demand 1 + DARE Demand 2) from the uploaded CSVs.
 
-### 4. `src/pages/Index.tsx` — hero copy
-- Replace the literal string *"₹55 lakh crore in 2026"* with *"₹53.47 lakh crore in 2026"*.
+## Data model
 
-## Execution
+New file `src/data/ddgs/agri-ddg.json` produced by a one-off conversion of `1.1.FY27.csv` + `1.2.FY27.csv`. Each leaf row already exists in the CSV; we keep the flat shape and build the tree in-memory.
 
-A short Python script (run once via `code--exec`, output written straight to `src/data/budget-history.json`) takes the anchor table above, log-linearly interpolates every gap, attaches the editorial `note`s, and emits the JSON. Deterministic, easy to re-run if any anchor needs another correction later. No new dependencies; pure stdlib.
+```ts
+type DDGLeaf = {
+  id: string;            // full_code, e.g. "2401.00.103.15.01.31"
+  ministry: "DAFW" | "DARE" | string;
+  demandNo: number;
+  section: "Revenue" | "Capital";
+  majorHead: string;     // "2401"
+  majorHeadName: string;
+  subMajor: string;      // "00"
+  minorHead: string;     // "103"
+  minorHeadName: string;
+  subHead: string;       // "15"
+  detailedHead: string;  // "01"
+  subHeadName: string;
+  objectHead: string;    // "31"
+  objectHeadName: string;
+  actuals2425: number | null;
+  be2526: number | null;
+  re2526: number | null;
+  be2627: number | null;
+  gapFlag: "DISCONTINUED" | "NEW" | "SMALL_BASE" | "TOKEN" | null;
+  gapReason: string | null;
+};
+```
 
-## Out of scope
+`src/lib/ddg.ts` exposes:
+- `getDDGLeaves(demandNo, majorHead)` → flat leaves
+- `buildDDGTree(leaves)` → nested SubMajor→Minor→Sub→Detailed→Object with subtotals at each node
+- `getMinorHeadSummary(demandNo, majorHead)` → Tier-1 rows (one per Minor Head) with subtotals
+- `hasDDG(demandNo, majorHead)` → boolean for chevron enable
+- `getGapCounts(leaves)` → `{ DISCONTINUED, NEW, SMALL_BASE, TOKEN }`
 
-- No new chart features (no inflation-adjustment, no GDP-share toggle).
-- No changes to ministry/demand totals (`ministries.json`, `demands.json`) — those come from a different source and look internally consistent.
-- No backend / DB.
+Figures stay in ₹ Lakh inside the source rows (CSV uses lakh) and are converted to ₹ Cr at render via existing `formatCrore`. We'll divide by 100 once on load to keep a single unit (₹ Cr) across Tier 1, Tier 2, and CSV export so totals reconcile with the existing Major Head table.
 
-## Files touched
+## Files
 
-- `src/data/budget-history.json` *(rewrite)*
-- `src/data/meta.json` *(2 numbers)*
-- `src/components/home/BudgetHistoryChart.tsx` *(footnote string)*
-- `src/pages/Index.tsx` *(hero copy string)*
+- new — `src/data/ddgs/agri-ddg.json` (generated from the two CSVs)
+- new — `src/lib/ddg.ts` (loaders + tree builder + aggregations)
+- new — `src/components/explorer/ddg/MinorHeadInline.tsx` (Tier 1 row body)
+- new — `src/components/explorer/ddg/DDGSheet.tsx` (Tier 2 side sheet with the recursive tree)
+- new — `src/components/explorer/ddg/DDGTreeNode.tsx` (recursive node renderer)
+- edit — `src/pages/Explorer.tsx` → `MajorHeadTable`: add chevron col, expanded state set, "View full breakdown" trigger, and selectedMH state to drive the sheet
+- edit — `src/components/explorer/agri/MajorHeadTable.tsx` (mirror the same affordance for the dedicated Agriculture page so behaviour is consistent)
+
+## What stays the same
+
+- Demand header (3 summary cards: Revenue / Capital / Total) — unchanged.
+- Major Head table rows, subtotals, Grand Total — unchanged.
+- Sidebar, section toggle, sort chips, CSV export of MH table — unchanged.
+- No new tab on the page; the deep view is a transient sheet.
+
+## Acceptance
+
+- Click the chevron on `2401 Crop Husbandry` (Demand 1, DAFW) → inline row reveals Minor Head subtotals (Seeds, Crop Insurance, etc.) with 4-yr figures + YoY.
+- Click "View full breakdown ↗" → right sheet opens with the full Sub-Major→Minor→Sub→Object tree, gap badges, search, and CSV export limited to that MH.
+- Major Heads without detailed data show a disabled chevron with tooltip — no broken state.
+- Subtotals at every level reconcile to the parent figure within ±1 ₹ Cr (rounding).
