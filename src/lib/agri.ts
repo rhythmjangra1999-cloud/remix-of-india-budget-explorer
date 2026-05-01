@@ -154,6 +154,105 @@ export interface MoverRow {
   pct: number;
 }
 
+// ── Major Heads aggregation ──────────────────────────────────────────────────
+export interface MajorHeadRow {
+  mhCode: string;
+  mhName: string;
+  section: Section;
+  actuals2425: number | null;
+  be2526: number | null;
+  re2526: number | null;
+  be2627: number | null;
+}
+
+export function getMajorHeads(rows: AgriRow[]): MajorHeadRow[] {
+  const map = new Map<string, MajorHeadRow>();
+  for (const r of rows) {
+    const key = `${r.majorHead}|${r.section}`;
+    let m = map.get(key);
+    if (!m) {
+      m = {
+        mhCode: String(r.majorHead),
+        mhName: r.majorHeadName,
+        section: r.section,
+        actuals2425: null,
+        be2526: null,
+        re2526: null,
+        be2627: null,
+      };
+      map.set(key, m);
+    }
+    (["actuals2425", "be2526", "re2526", "be2627"] as const).forEach((y) => {
+      const v = r[y];
+      if (v != null) m![y] = (m![y] ?? 0) + v;
+    });
+  }
+  return Array.from(map.values());
+}
+
+export function getMHStatus(r: MajorHeadRow): "NEW" | "DISCONTINUED" | "SMALL_BASE" | null {
+  const prev = r.be2526 ?? 0;
+  const curr = r.be2627 ?? 0;
+  if (prev === 0 && curr > 0) return "NEW";
+  if (prev > 0 && curr === 0) return "DISCONTINUED";
+  if (prev > 0 && prev < 10) return "SMALL_BASE";
+  return null;
+}
+
+export function computeYoY(curr: number | null, prev: number | null): number | null {
+  if (curr == null || prev == null || prev === 0) return null;
+  return ((curr - prev) / prev) * 100;
+}
+
+// ── Demand-level summary (4-year totals per demand) ─────────────────────────
+export interface DemandSummary {
+  demandId: "d001" | "d002";
+  demandNo: number;
+  title: string;
+  short: string;
+  actuals2425: number;
+  be2526: number;
+  re2526: number;
+  be2627: number;
+  // by section
+  revActuals2425: number; revBe2526: number; revRe2526: number; revBe2627: number;
+  capActuals2425: number; capBe2526: number; capRe2526: number; capBe2627: number;
+}
+
+export function getDemandSummaries(): DemandSummary[] {
+  const meta: Record<"d001" | "d002", { no: number; title: string; short: string }> = {
+    d001: { no: 1, title: "Department of Agriculture & Farmers Welfare", short: "DAFW" },
+    d002: { no: 2, title: "Department of Agricultural Research & Education", short: "DARE" },
+  };
+  return (["d001", "d002"] as const).map((id) => {
+    const drows = ALL_AGRI.filter((r) => r.demandId === id);
+    const sumF = (rs: AgriRow[], f: keyof Pick<AgriRow, "actuals2425" | "be2526" | "re2526" | "be2627">) =>
+      rs.reduce((s, r) => s + (r[f] ?? 0), 0);
+    const rev = drows.filter((r) => r.section === "Revenue");
+    const cap = drows.filter((r) => r.section === "Capital");
+    return {
+      demandId: id,
+      demandNo: meta[id].no,
+      title: meta[id].title,
+      short: meta[id].short,
+      actuals2425: sumF(drows, "actuals2425"),
+      be2526: sumF(drows, "be2526"),
+      re2526: sumF(drows, "re2526"),
+      be2627: sumF(drows, "be2627"),
+      revActuals2425: sumF(rev, "actuals2425"), revBe2526: sumF(rev, "be2526"), revRe2526: sumF(rev, "re2526"), revBe2627: sumF(rev, "be2627"),
+      capActuals2425: sumF(cap, "actuals2425"), capBe2526: sumF(cap, "be2526"), capRe2526: sumF(cap, "re2526"), capBe2627: sumF(cap, "be2627"),
+    };
+  });
+}
+
+export type YearKey = "actuals2425" | "be2526" | "re2526" | "be2627";
+export const YEAR_LABELS: Record<YearKey, string> = {
+  actuals2425: "Actuals 24-25",
+  be2526: "BE 25-26",
+  re2526: "RE 25-26",
+  be2627: "BE 26-27",
+};
+
 export function topMovers(rows: AgriRow[], minBaseCr = 100): { hikes: MoverRow[]; cuts: MoverRow[] } {
   const map = new Map<string, MoverRow>();
   for (const r of rows) {

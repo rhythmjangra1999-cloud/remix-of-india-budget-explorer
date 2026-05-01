@@ -6,11 +6,14 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { AgriSunburst } from "@/components/explorer/agri/AgriSunburst";
 import { AgriTable } from "@/components/explorer/agri/AgriTable";
+import { MajorHeadTable } from "@/components/explorer/agri/MajorHeadTable";
+import { DemandsOverview } from "@/components/explorer/agri/DemandsOverview";
 import {
   ALL_AGRI,
   buildHierarchy,
   computeKpis,
   filterRows,
+  getMajorHeads,
   topMovers,
   type DemandFilter,
 } from "@/lib/agri";
@@ -29,6 +32,7 @@ const MinistryAgri = () => {
   const kpis = useMemo(() => computeKpis(rows), [rows]);
   const root = useMemo(() => buildHierarchy(rows), [rows]);
   const movers = useMemo(() => topMovers(rows), [rows]);
+  const majorHeads = useMemo(() => getMajorHeads(rows), [rows]);
 
   const flagged = useMemo(() => ALL_AGRI.filter((r) => r.gapFlag), []);
 
@@ -83,6 +87,8 @@ const MinistryAgri = () => {
           <Tabs defaultValue="explore">
             <TabsList className="bg-secondary/60">
               <TabsTrigger value="explore">Sunburst + Table</TabsTrigger>
+              <TabsTrigger value="demands">Demands overview</TabsTrigger>
+              <TabsTrigger value="major">Major heads</TabsTrigger>
               <TabsTrigger value="movers">Top movers</TabsTrigger>
               <TabsTrigger value="quality">Data quality</TabsTrigger>
             </TabsList>
@@ -97,6 +103,23 @@ const MinistryAgri = () => {
                   <AgriTable root={root} selectedKey={selectedKey} onSelect={setSelectedKey} />
                 </div>
               </div>
+            </TabsContent>
+
+            {/* Demands overview — 4-year mini-bars per demand */}
+            <TabsContent value="demands" className="mt-6">
+              <DemandsOverview section={section} />
+              <p className="mt-4 text-xs text-muted-foreground">
+                4-year trajectory per demand. Bars: Actuals 24-25 · BE 25-26 · RE 25-26 · BE 26-27 (highlighted).
+                YoY % compares BE 26-27 vs BE 25-26.
+              </p>
+            </TabsContent>
+
+            {/* Major heads — sortable, filterable, CSV export */}
+            <TabsContent value="major" className="mt-6">
+              <MajorHeadTable rows={majorHeads} />
+              <p className="mt-3 text-xs text-muted-foreground">
+                Aggregated to Major Head × Section. Click column headers to sort. Use the search to filter, "CSV" to export.
+              </p>
             </TabsContent>
 
             {/* Movers */}
