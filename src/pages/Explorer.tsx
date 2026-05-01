@@ -9,6 +9,7 @@ import { TreemapView } from "@/components/explorer/TreemapView";
 import { SunburstView } from "@/components/explorer/SunburstView";
 import { SankeyView } from "@/components/explorer/SankeyView";
 import { TableView } from "@/components/explorer/TableView";
+import { DemandsTable } from "@/components/explorer/DemandsTable";
 import { SchemeTableView } from "@/components/explorer/SchemeTableView";
 import { MinistryDetailPanel } from "@/components/explorer/MinistryDetailPanel";
 import {
