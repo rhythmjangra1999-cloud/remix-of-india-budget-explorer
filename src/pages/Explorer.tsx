@@ -291,33 +291,54 @@ function AllDemandsOverview({ section, onSelect }: { section: Section; onSelect:
 }
 
 // ── Demand detail panel ──────────────────────────────────────────────────────
+function DemandSummaryCard({
+  label, demand, section, accent,
+}: { label: string; demand: DemandSummary; section: Section; accent?: boolean }) {
+  const v = getValue(demand, "be2627", section);
+  const prev = getValue(demand, "be2526", section);
+  const yoy = computeYoY(v, prev);
+  return (
+    <div className={`rounded-md border p-4 ${accent ? "border-primary/40 bg-primary/5" : "border-border bg-card"}`}>
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
+      <div className="mt-1 flex items-baseline gap-2">
+        <span className={`font-serif text-2xl font-bold tnum ${accent ? "text-primary" : ""}`}>{formatCrore(v, true)}</span>
+        <YoYPill value={yoy} />
+      </div>
+      <div className="mt-1 text-[10px] text-muted-foreground tnum">
+        BE 25-26: {formatCrore(prev, true)} · RE 25-26: {formatCrore(getValue(demand, "re2526", section), true)}
+      </div>
+    </div>
+  );
+}
+
 function DemandDetail({ demandNo, section }: { demandNo: number; section: Section }) {
   const demand = getDemand(demandNo);
   if (!demand) return <div className="p-8 text-muted-foreground">Demand not found.</div>;
 
   const mhRows = getMajorHeads(demandNo);
-  const v = getValue(demand, "be2627", section);
-  const yoy = computeYoY(getValue(demand, "be2627", section), getValue(demand, "be2526", section));
 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <div className="text-xs text-muted-foreground">Demand No. {demand.demandNo} · {demand.ministry}</div>
-          <h2 className="mt-1 font-serif text-2xl font-semibold leading-tight">{demand.demandDesc}</h2>
-        </div>
-        <div className="text-right">
-          <div className="text-xs text-muted-foreground uppercase tracking-wide">BE 2026-27 · {section}</div>
-          <div className="font-serif text-3xl font-bold tnum text-primary">{formatCrore(v, true)}</div>
-          <div className="mt-1"><YoYPill value={yoy} /></div>
+      <div>
+        <div className="text-xs text-muted-foreground">Demand No. {demand.demandNo} · {demand.ministry}</div>
+        <h2 className="mt-1 font-serif text-2xl font-semibold leading-tight">{demand.demandDesc}</h2>
+        <div className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+          BE 2026-27 · current view: {section}
         </div>
       </div>
 
-      {/* Major heads table */}
+      {/* Section totals — Revenue · Capital · Overall */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <DemandSummaryCard label="Total Revenue" demand={demand} section="revenue" accent={section === "revenue"} />
+        <DemandSummaryCard label="Total Capital" demand={demand} section="capital" accent={section === "capital"} />
+        <DemandSummaryCard label="Overall Total" demand={demand} section="total"   accent={section === "total"} />
+      </div>
+
+      {/* Major heads table (all heads under this demand) */}
       <div>
         <div className="text-xs uppercase tracking-wide text-muted-foreground mb-3">
-          Major Heads · {mhRows.length} heads under this demand · figures ₹ Cr · click column to sort
+          All Major Heads · {mhRows.length} heads under this demand · figures ₹ Cr · click column to sort
         </div>
         {mhRows.length > 0
           ? <MajorHeadTable rows={mhRows} />
