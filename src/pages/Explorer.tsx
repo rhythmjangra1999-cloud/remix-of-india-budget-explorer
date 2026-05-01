@@ -142,7 +142,15 @@ const Explorer = () => {
             // Treemap-led, full-bleed layout with collapsible drawer + conditional detail panel.
             <div className="relative">
               {/* Toolbar */}
-              <div className="flex flex-wrap items-center justify-end gap-3 mb-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <button
+                  onClick={() => setDrawerOpen((v) => !v)}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm border border-border bg-card hover:bg-muted text-xs transition-colors"
+                  aria-label={drawerOpen ? "Hide ministries panel" : "Show ministries panel"}
+                >
+                  {drawerOpen ? <PanelLeftClose className="h-3.5 w-3.5" /> : <PanelLeft className="h-3.5 w-3.5" />}
+                  {drawerOpen ? "Hide ministries" : "Show ministries"}
+                </button>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="hidden sm:inline">Other views:</span>
                   <div className="inline-flex rounded-sm border border-border overflow-hidden">
