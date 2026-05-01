@@ -25,13 +25,7 @@ const Index = () => {
           <div className="container py-20 md:py-24">
             {/* Full-width heading + copy */}
             <div className="w-full">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  Budget Estimates 2026-27
-                </span>
-                <span>Government of India</span>
-              </div>
+
 
               <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
                 Trace the rupee.
