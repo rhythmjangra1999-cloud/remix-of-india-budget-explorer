@@ -15,7 +15,7 @@ export function SiteHeader() {
           <div className="leading-tight">
             <div className="font-serif text-base font-semibold">Koshtha</div>
             <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-              Trace the rupee · {new Date().getFullYear()}
+              Trace the rupee
             </div>
           </div>
         </Link>
