@@ -504,7 +504,7 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
           All Major Heads · {mhRows.length} heads under this demand · figures ₹ Cr · click column to sort
         </div>
         {mhRows.length > 0
-          ? <MajorHeadTable rows={mhRows} />
+          ? <MajorHeadTable rows={mhRows} demandNo={demand.demandNo} ministry={demand.ministry} demandDesc={demand.demandDesc} />
           : <div className="rounded-md border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
               Major head detail not yet available for this demand.
             </div>
