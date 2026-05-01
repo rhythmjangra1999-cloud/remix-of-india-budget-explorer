@@ -4,6 +4,9 @@ import { Download, Search, ChevronRight, ChevronLeft, ChevronDown, ArrowLeft, Ar
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SchemeTableView } from "@/components/explorer/SchemeTableView";
+import { MinorHeadInline } from "@/components/explorer/ddg/MinorHeadInline";
+import { DDGSheet } from "@/components/explorer/ddg/DDGSheet";
+import { hasDDG } from "@/lib/ddg";
 import {
   DG_META, DG_SUMMARY, getMinistries, getDemandsForMinistry, getDemand,
   getMajorHeads, getValue, getMinistryTotal, computeYoY, formatCrore,
