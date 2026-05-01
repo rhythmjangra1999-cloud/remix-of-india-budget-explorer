@@ -74,44 +74,99 @@ function SortTh<K extends string>({
   );
 }
 
-// ── Major heads table ────────────────────────────────────────────────────────
-type MHSort = "mhCode" | "mhName" | "actuals2425" | "be2526" | "re2526" | "be2627";
+// ── Major heads table (Section · Code · Name · 4 yrs · YoY) ──────────────────
+type MHSort = "section" | "mhCode" | "mhName" | "actuals2425" | "be2526" | "re2526" | "be2627" | "yoy";
+
+function sectionRank(s: string): number {
+  const v = (s || "").toLowerCase();
+  if (v.startsWith("rev")) return 0;
+  if (v.startsWith("cap")) return 1;
+  return 2;
+}
+
+function sumField(rows: MajorHeadRow[], key: "actuals2425" | "be2526" | "re2526" | "be2627"): number | null {
+  const vals = rows.map(r => r[key]).filter((v): v is number => typeof v === "number");
+  if (!vals.length) return null;
+  return vals.reduce((s, v) => s + v, 0);
+}
 
 function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
-  const [sortKey, setSortKey] = useState<MHSort>("be2627");
-  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [sortKey, setSortKey] = useState<MHSort>("section");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [filter, setFilter] = useState("");
 
-  const sorted = useMemo(() => {
-    let list = rows;
-    if (filter.trim()) {
-      const lf = filter.toLowerCase();
-      list = list.filter((r) => r.mhName.toLowerCase().includes(lf) || r.mhCode.includes(lf));
-    }
-    return [...list].sort((a, b) => {
+  const filtered = useMemo(() => {
+    if (!filter.trim()) return rows;
+    const lf = filter.toLowerCase();
+    return rows.filter((r) => r.mhName.toLowerCase().includes(lf) || r.mhCode.includes(lf) || r.section.toLowerCase().includes(lf));
+  }, [rows, filter]);
+
+  // Group by section, sort within
+  const grouped = useMemo(() => {
+    const sorter = (a: MajorHeadRow, b: MajorHeadRow) => {
       let av: string | number = 0, bv: string | number = 0;
-      if (sortKey === "mhCode") { av = a.mhCode; bv = b.mhCode; }
+      if (sortKey === "section") { av = sectionRank(a.section); bv = sectionRank(b.section); }
+      else if (sortKey === "mhCode") { av = a.mhCode; bv = b.mhCode; }
       else if (sortKey === "mhName") { av = a.mhName; bv = b.mhName; }
+      else if (sortKey === "yoy")  {
+        av = computeYoY(a.be2627, a.be2526) ?? -Infinity;
+        bv = computeYoY(b.be2627, b.be2526) ?? -Infinity;
+      }
       else { av = a[sortKey] ?? -Infinity; bv = b[sortKey] ?? -Infinity; }
       if (typeof av === "string") return sortDir === "asc" ? av.localeCompare(bv as string) : (bv as string).localeCompare(av);
       return sortDir === "asc" ? (av as number) - (bv as number) : (bv as number) - (av as number);
+    };
+
+    // Always group by section first (Revenue → Capital → Other), then apply chosen sort within
+    const buckets = new Map<string, MajorHeadRow[]>();
+    filtered.forEach(r => {
+      const key = r.section || "Other";
+      if (!buckets.has(key)) buckets.set(key, []);
+      buckets.get(key)!.push(r);
     });
-  }, [rows, filter, sortKey, sortDir]);
+    const sectionsOrdered = [...buckets.keys()].sort((a, b) => sectionRank(a) - sectionRank(b));
+    return sectionsOrdered.map(sec => ({
+      section: sec,
+      rows: [...buckets.get(sec)!].sort(sorter),
+      subtotal: {
+        actuals2425: sumField(buckets.get(sec)!, "actuals2425"),
+        be2526:      sumField(buckets.get(sec)!, "be2526"),
+        re2526:      sumField(buckets.get(sec)!, "re2526"),
+        be2627:      sumField(buckets.get(sec)!, "be2627"),
+      },
+    }));
+  }, [filtered, sortKey, sortDir]);
+
+  const grand = useMemo(() => ({
+    actuals2425: sumField(filtered, "actuals2425"),
+    be2526:      sumField(filtered, "be2526"),
+    re2526:      sumField(filtered, "re2526"),
+    be2627:      sumField(filtered, "be2627"),
+  }), [filtered]);
 
   const toggleSort = (k: MHSort) => {
     if (sortKey === k) setSortDir(d => d === "asc" ? "desc" : "asc");
-    else { setSortKey(k); setSortDir(k === "mhCode" || k === "mhName" ? "asc" : "desc"); }
+    else { setSortKey(k); setSortDir(k === "section" || k === "mhCode" || k === "mhName" ? "asc" : "desc"); }
   };
 
   const exportCsv = () => {
-    const hdr = "MH Code,MH Name,Section,Actuals 24-25,BE 25-26,RE 25-26,BE 26-27,YoY%\n";
-    const body = sorted.map((r) => {
-      const yoy = computeYoY(r.be2627, r.be2526);
-      return `"${r.mhCode}","${r.mhName}","${r.section}",${r.actuals2425 ?? ""},${r.be2526 ?? ""},${r.re2526 ?? ""},${r.be2627 ?? ""},${yoy !== null ? yoy.toFixed(1) + "%" : ""}`;
-    }).join("\n");
-    const blob = new Blob([hdr + body], { type: "text/csv" });
+    const hdr = "Section,Code,Major Head,Actuals 24-25,BE 25-26,RE 25-26,BE 26-27,YoY%\n";
+    const lines: string[] = [];
+    grouped.forEach(g => {
+      g.rows.forEach(r => {
+        const yoy = computeYoY(r.be2627, r.be2526);
+        lines.push(`"${r.section}","${r.mhCode}","${r.mhName}",${r.actuals2425 ?? ""},${r.be2526 ?? ""},${r.re2526 ?? ""},${r.be2627 ?? ""},${yoy !== null ? yoy.toFixed(1) + "%" : ""}`);
+      });
+      const sy = computeYoY(g.subtotal.be2627, g.subtotal.be2526);
+      lines.push(`"${g.section}","TOTAL","Total - ${g.section}",${g.subtotal.actuals2425 ?? ""},${g.subtotal.be2526 ?? ""},${g.subtotal.re2526 ?? ""},${g.subtotal.be2627 ?? ""},${sy !== null ? sy.toFixed(1) + "%" : ""}`);
+    });
+    const gy = computeYoY(grand.be2627, grand.be2526);
+    lines.push(`"Total","TOTAL","Grand Total",${grand.actuals2425 ?? ""},${grand.be2526 ?? ""},${grand.re2526 ?? ""},${grand.be2627 ?? ""},${gy !== null ? gy.toFixed(1) + "%" : ""}`);
+    const blob = new Blob([hdr + lines.join("\n")], { type: "text/csv" });
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "major-heads.csv"; a.click();
   };
+
+  const fmt = (v: number | null) => v !== null ? v.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—";
 
   return (
     <div className="space-y-3">
@@ -123,42 +178,80 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
         <button onClick={exportCsv} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs hover:bg-muted transition-colors">
           <Download className="h-3.5 w-3.5" /> CSV
         </button>
-        <span className="text-xs text-muted-foreground">{sorted.length} heads</span>
+        <span className="text-xs text-muted-foreground">{filtered.length} heads</span>
       </div>
       <div className="rounded-md border border-border overflow-hidden">
-        <div className="overflow-x-auto max-h-[420px] overflow-y-auto">
+        <div className="overflow-x-auto max-h-[520px] overflow-y-auto">
           <table className="w-full text-xs">
             <thead className="bg-muted/50 text-muted-foreground sticky top-0 z-10 text-[11px] uppercase tracking-wide">
               <tr>
+                <SortTh label="Section"      k="section"     sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
                 <SortTh label="Code"         k="mhCode"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
                 <SortTh label="Major Head"   k="mhName"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
-                <th className="px-3 py-2.5 text-left font-medium">Section</th>
                 <SortTh label="Actuals 24-25" k="actuals2425" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} right />
                 <SortTh label="BE 25-26"     k="be2526"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} right />
                 <SortTh label="RE 25-26"     k="re2526"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} right />
                 <SortTh label="BE 26-27"     k="be2627"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} right />
-                <th className="px-3 py-2.5 text-right font-medium">YoY %</th>
+                <SortTh label="YoY %"        k="yoy"         sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} right />
                 <th className="px-3 py-2.5 text-left font-medium">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
-              {sorted.map((r, i) => {
-                const yoy = computeYoY(r.be2627, r.be2526);
-                const status = getMHStatus(r);
+              {grouped.map((g) => {
+                const subYoY = computeYoY(g.subtotal.be2627, g.subtotal.be2526);
                 return (
-                  <tr key={i} className="hover:bg-muted/30 transition-colors">
-                    <td className="px-3 py-2 font-mono text-muted-foreground">{r.mhCode}</td>
-                    <td className="px-3 py-2 font-medium max-w-[220px] truncate" title={r.mhName}>{r.mhName}</td>
-                    <td className="px-3 py-2 text-muted-foreground">{r.section}</td>
-                    <td className="px-3 py-2 text-right tnum">{r.actuals2425 !== null ? r.actuals2425.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—"}</td>
-                    <td className="px-3 py-2 text-right tnum">{r.be2526 !== null ? r.be2526.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—"}</td>
-                    <td className="px-3 py-2 text-right tnum">{r.re2526 !== null ? r.re2526.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—"}</td>
-                    <td className="px-3 py-2 text-right tnum font-semibold">{r.be2627 !== null ? r.be2627.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—"}</td>
-                    <td className="px-3 py-2 text-right"><YoYPill value={yoy} /></td>
-                    <td className="px-3 py-2"><StatusPill status={status} /></td>
-                  </tr>
+                  <React.Fragment key={g.section}>
+                    {g.rows.map((r, i) => {
+                      const yoy = computeYoY(r.be2627, r.be2526);
+                      const status = getMHStatus(r);
+                      return (
+                        <tr key={g.section + i} className="hover:bg-muted/30 transition-colors">
+                          <td className="px-3 py-2 text-muted-foreground capitalize">{r.section}</td>
+                          <td className="px-3 py-2 font-mono text-muted-foreground">{r.mhCode}</td>
+                          <td className="px-3 py-2 font-medium max-w-[260px] truncate" title={r.mhName}>{r.mhName}</td>
+                          <td className="px-3 py-2 text-right tnum">{fmt(r.actuals2425)}</td>
+                          <td className="px-3 py-2 text-right tnum">{fmt(r.be2526)}</td>
+                          <td className="px-3 py-2 text-right tnum">{fmt(r.re2526)}</td>
+                          <td className="px-3 py-2 text-right tnum font-semibold">{fmt(r.be2627)}</td>
+                          <td className="px-3 py-2 text-right"><YoYPill value={yoy} /></td>
+                          <td className="px-3 py-2"><StatusPill status={status} /></td>
+                        </tr>
+                      );
+                    })}
+                    {/* Section subtotal */}
+                    <tr className="bg-primary/5 border-t-2 border-primary/20 font-semibold">
+                      <td className="px-3 py-2 capitalize">{g.section}</td>
+                      <td className="px-3 py-2 font-mono text-muted-foreground">TOTAL</td>
+                      <td className="px-3 py-2">Total — {g.section}</td>
+                      <td className="px-3 py-2 text-right tnum">{fmt(g.subtotal.actuals2425)}</td>
+                      <td className="px-3 py-2 text-right tnum">{fmt(g.subtotal.be2526)}</td>
+                      <td className="px-3 py-2 text-right tnum">{fmt(g.subtotal.re2526)}</td>
+                      <td className="px-3 py-2 text-right tnum">{fmt(g.subtotal.be2627)}</td>
+                      <td className="px-3 py-2 text-right"><YoYPill value={subYoY} /></td>
+                      <td className="px-3 py-2"></td>
+                    </tr>
+                  </React.Fragment>
                 );
               })}
+              {/* Grand total */}
+              {grouped.length > 0 && (
+                <tr className="bg-foreground text-background font-bold border-t-2 border-foreground">
+                  <td className="px-3 py-2.5">Total</td>
+                  <td className="px-3 py-2.5 font-mono">TOTAL</td>
+                  <td className="px-3 py-2.5">Grand Total</td>
+                  <td className="px-3 py-2.5 text-right tnum">{fmt(grand.actuals2425)}</td>
+                  <td className="px-3 py-2.5 text-right tnum">{fmt(grand.be2526)}</td>
+                  <td className="px-3 py-2.5 text-right tnum">{fmt(grand.re2526)}</td>
+                  <td className="px-3 py-2.5 text-right tnum">{fmt(grand.be2627)}</td>
+                  <td className="px-3 py-2.5 text-right tnum">
+                    {(() => {
+                      const gy = computeYoY(grand.be2627, grand.be2526);
+                      return gy !== null ? `${gy >= 0 ? "+" : ""}${gy.toFixed(1)}%` : "—";
+                    })()}
+                  </td>
+                  <td className="px-3 py-2.5"></td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -166,6 +259,7 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
     </div>
   );
 }
+
 
 // ── All-demands overview table ───────────────────────────────────────────────
 type OvSort = "demandNo" | "actuals2425" | "be2526" | "re2526" | "be2627" | "yoy";
