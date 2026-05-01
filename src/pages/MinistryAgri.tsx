@@ -105,6 +105,23 @@ const MinistryAgri = () => {
               </div>
             </TabsContent>
 
+            {/* Demands overview — 4-year mini-bars per demand */}
+            <TabsContent value="demands" className="mt-6">
+              <DemandsOverview section={section} />
+              <p className="mt-4 text-xs text-muted-foreground">
+                4-year trajectory per demand. Bars: Actuals 24-25 · BE 25-26 · RE 25-26 · BE 26-27 (highlighted).
+                YoY % compares BE 26-27 vs BE 25-26.
+              </p>
+            </TabsContent>
+
+            {/* Major heads — sortable, filterable, CSV export */}
+            <TabsContent value="major" className="mt-6">
+              <MajorHeadTable rows={majorHeads} />
+              <p className="mt-3 text-xs text-muted-foreground">
+                Aggregated to Major Head × Section. Click column headers to sort. Use the search to filter, "CSV" to export.
+              </p>
+            </TabsContent>
+
             {/* Movers */}
             <TabsContent value="movers" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2">
