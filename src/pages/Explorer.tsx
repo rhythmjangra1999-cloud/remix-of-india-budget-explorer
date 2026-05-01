@@ -4,6 +4,9 @@ import { Download, Search, ChevronRight, ChevronLeft, ChevronDown, ArrowLeft, Ar
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SchemeTableView } from "@/components/explorer/SchemeTableView";
+import { MinorHeadInline } from "@/components/explorer/ddg/MinorHeadInline";
+import { DDGSheet } from "@/components/explorer/ddg/DDGSheet";
+import { hasDDG } from "@/lib/ddg";
 import {
   DG_META, DG_SUMMARY, getMinistries, getDemandsForMinistry, getDemand,
   getMajorHeads, getValue, getMinistryTotal, computeYoY, formatCrore,
@@ -90,10 +93,21 @@ function sumField(rows: MajorHeadRow[], key: "actuals2425" | "be2526" | "re2526"
   return vals.reduce((s, v) => s + v, 0);
 }
 
-function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
+interface MHTableProps {
+  rows: MajorHeadRow[];
+  demandNo?: number;
+  ministry?: string;
+  demandDesc?: string;
+}
+
+function MajorHeadTable({ rows, demandNo, ministry, demandDesc }: MHTableProps) {
   const [sortKey, setSortKey] = useState<MHSort>("section");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [filter, setFilter] = useState("");
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [sheetMH, setSheetMH] = useState<MajorHeadRow | null>(null);
+  const toggleExpand = (key: string) =>
+    setExpanded((prev) => { const s = new Set(prev); s.has(key) ? s.delete(key) : s.add(key); return s; });
 
   const filtered = useMemo(() => {
     if (!filter.trim()) return rows;
@@ -185,6 +199,7 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
           <table className="w-full text-xs">
             <thead className="bg-muted/50 text-muted-foreground sticky top-0 z-10 text-[11px] uppercase tracking-wide">
               <tr>
+                {demandNo !== undefined && <th className="w-6"></th>}
                 <SortTh label="Section"      k="section"     sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
                 <SortTh label="Code"         k="mhCode"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
                 <SortTh label="Major Head"   k="mhName"      sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
@@ -204,22 +219,62 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
                     {g.rows.map((r, i) => {
                       const yoy = computeYoY(r.be2627, r.be2526);
                       const status = getMHStatus(r);
+                      const rowKey = `${g.section}-${r.mhCode}-${i}`;
+                      const drillable = demandNo !== undefined && hasDDG(demandNo, r.mhCode);
+                      const isOpen = expanded.has(rowKey);
+                      const colSpan = (demandNo !== undefined ? 10 : 9);
                       return (
-                        <tr key={g.section + i} className="hover:bg-muted/30 transition-colors">
-                          <td className="px-3 py-2 text-muted-foreground capitalize">{r.section}</td>
-                          <td className="px-3 py-2 font-mono text-muted-foreground">{r.mhCode}</td>
-                          <td className="px-3 py-2 font-medium max-w-[260px] truncate" title={r.mhName}>{r.mhName}</td>
-                          <td className="px-3 py-2 text-right tnum">{fmt(r.actuals2425)}</td>
-                          <td className="px-3 py-2 text-right tnum">{fmt(r.be2526)}</td>
-                          <td className="px-3 py-2 text-right tnum">{fmt(r.re2526)}</td>
-                          <td className="px-3 py-2 text-right tnum font-semibold">{fmt(r.be2627)}</td>
-                          <td className="px-3 py-2 text-right"><YoYPill value={yoy} /></td>
-                          <td className="px-3 py-2"><StatusPill status={status} /></td>
-                        </tr>
+                        <React.Fragment key={rowKey}>
+                          <tr className="hover:bg-muted/30 transition-colors">
+                            {demandNo !== undefined && (
+                              <td className="px-1 py-2 text-center">
+                                {drillable ? (
+                                  <button
+                                    onClick={() => toggleExpand(rowKey)}
+                                    className="p-0.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground"
+                                    aria-label={isOpen ? "Collapse" : "Expand"}
+                                  >
+                                    {isOpen ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
+                                  </button>
+                                ) : (
+                                  <span title="Detailed DG not yet parsed" className="text-muted-foreground/40 text-[10px]">·</span>
+                                )}
+                              </td>
+                            )}
+                            <td className="px-3 py-2 text-muted-foreground capitalize">{r.section}</td>
+                            <td className="px-3 py-2 font-mono text-muted-foreground">{r.mhCode}</td>
+                            <td className="px-3 py-2 font-medium max-w-[260px] truncate" title={r.mhName}>
+                              {drillable ? (
+                                <button onClick={() => setSheetMH(r)} className="hover:text-primary hover:underline text-left">
+                                  {r.mhName}
+                                </button>
+                              ) : r.mhName}
+                            </td>
+                            <td className="px-3 py-2 text-right tnum">{fmt(r.actuals2425)}</td>
+                            <td className="px-3 py-2 text-right tnum">{fmt(r.be2526)}</td>
+                            <td className="px-3 py-2 text-right tnum">{fmt(r.re2526)}</td>
+                            <td className="px-3 py-2 text-right tnum font-semibold">{fmt(r.be2627)}</td>
+                            <td className="px-3 py-2 text-right"><YoYPill value={yoy} /></td>
+                            <td className="px-3 py-2"><StatusPill status={status} /></td>
+                          </tr>
+                          {isOpen && demandNo !== undefined && drillable && (
+                            <tr>
+                              <td colSpan={colSpan} className="p-0">
+                                <MinorHeadInline
+                                  demandNo={demandNo}
+                                  majorHead={r.mhCode}
+                                  majorHeadName={r.mhName}
+                                  onOpenSheet={() => setSheetMH(r)}
+                                />
+                              </td>
+                            </tr>
+                          )}
+                        </React.Fragment>
                       );
                     })}
                     {/* Section subtotal */}
                     <tr className="bg-primary/5 border-t-2 border-primary/20 font-semibold">
+                      {demandNo !== undefined && <td></td>}
                       <td className="px-3 py-2 capitalize">{g.section}</td>
                       <td className="px-3 py-2 font-mono text-muted-foreground">TOTAL</td>
                       <td className="px-3 py-2">Total — {g.section}</td>
@@ -236,6 +291,7 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
               {/* Grand total */}
               {grouped.length > 0 && (
                 <tr className="bg-foreground text-background font-bold border-t-2 border-foreground">
+                  {demandNo !== undefined && <td></td>}
                   <td className="px-3 py-2.5">Total</td>
                   <td className="px-3 py-2.5 font-mono">TOTAL</td>
                   <td className="px-3 py-2.5">Grand Total</td>
@@ -256,9 +312,22 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
           </table>
         </div>
       </div>
+      {sheetMH && demandNo !== undefined && (
+        <DDGSheet
+          open={!!sheetMH}
+          onClose={() => setSheetMH(null)}
+          demandNo={demandNo}
+          majorHead={sheetMH.mhCode}
+          majorHeadName={sheetMH.mhName}
+          ministry={ministry ?? sheetMH.ministry}
+          demandDesc={demandDesc ?? sheetMH.demandDesc}
+        />
+      )}
     </div>
   );
 }
+
+
 
 
 // ── All-demands overview table ───────────────────────────────────────────────
@@ -435,7 +504,7 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
           All Major Heads · {mhRows.length} heads under this demand · figures ₹ Cr · click column to sort
         </div>
         {mhRows.length > 0
-          ? <MajorHeadTable rows={mhRows} />
+          ? <MajorHeadTable rows={mhRows} demandNo={demand.demandNo} ministry={demand.ministry} demandDesc={demand.demandDesc} />
           : <div className="rounded-md border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
               Major head detail not yet available for this demand.
             </div>
