@@ -12,12 +12,14 @@ export interface Ministry {
   ddgAvailable?: boolean;
 }
 
+export type DemandAmountKey = FY | "FY26_RE" | "FY25_Actual" | "FY27_Revenue" | "FY27_Capital";
+
 export interface Demand {
   id: string;
   ministryId: string;
   number: number;
   title: string;
-  amounts: Partial<Record<FY, number>>;
+  amounts: Partial<Record<DemandAmountKey, number>>;
   confidence: ConfidenceLevel;
   sourcePage?: number;
 }

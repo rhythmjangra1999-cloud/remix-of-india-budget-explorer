@@ -12,11 +12,11 @@
   { "ministryId": "mord", "scheme": "PM Awas Yojana - Gramin", "state": "Unallocated (state-wise not disclosed)", "amount": 54500, "unknown": true },
   { "ministryId": "mord", "scheme": "Pradhan Mantri Gram Sadak Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 19000, "unknown": true },
 
-  { "ministryId": "moa", "scheme": "PM-KISAN", "state": "Unallocated (paid directly to farmers)", "amount": 63500, "unknown": true },
-  { "ministryId": "moa", "scheme": "Pradhan Mantri Fasal Bima Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 12200, "unknown": true },
+  { "ministryId": "magri", "scheme": "PM-KISAN", "state": "Unallocated (paid directly to farmers)", "amount": 63500, "unknown": true },
+  { "ministryId": "magri", "scheme": "Pradhan Mantri Fasal Bima Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 12200, "unknown": true },
 
-  { "ministryId": "moh", "scheme": "PM Awas Yojana - Urban", "state": "Unallocated (state-wise not disclosed)", "amount": 19800, "unknown": true },
-  { "ministryId": "moh", "scheme": "AMRUT 2.0", "state": "Unallocated (state-wise not disclosed)", "amount": 8000, "unknown": true },
+  { "ministryId": "mohua", "scheme": "PM Awas Yojana - Urban", "state": "Unallocated (state-wise not disclosed)", "amount": 19800, "unknown": true },
+  { "ministryId": "mohua", "scheme": "AMRUT 2.0", "state": "Unallocated (state-wise not disclosed)", "amount": 8000, "unknown": true },
 
   { "ministryId": "mohfw", "scheme": "Pradhan Mantri Jan Arogya Yojana", "state": "Unallocated (state-wise not disclosed)", "amount": 7300, "unknown": true },
 

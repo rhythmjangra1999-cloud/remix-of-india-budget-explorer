@@ -14,7 +14,7 @@ const About = () => {
               A public tool to make the Union Budget legible.
             </h1>
             <p className="mt-6 text-lg text-foreground/75 leading-relaxed">
-              Koshtha.AI is a non-commercial, open project. It exists to help
+              Koshtha is a non-commercial, open project. It exists to help
               journalists, researchers, students, and citizens find their way through a
               document that is large, technically formatted, and rarely explored below
               the headline numbers.
@@ -35,7 +35,7 @@ const About = () => {
 
             <h2>How to cite</h2>
             <p>
-              Please cite as: <em>Koshtha.AI, [year]. Source: Union Budget
+              Please cite as: <em>Koshtha, [year]. Source: Union Budget
               Demands for Grants, Ministry of Finance, GoI.</em> Always link to the
               underlying PDF where possible — confidence levels and limitations are
               described in the Tutorial.

@@ -10,7 +10,7 @@ export function SiteFooter() {
             <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary text-primary-foreground font-serif font-bold leading-none">
               ₹
             </div>
-            <span className="font-serif text-base font-semibold">Koshtha.AI</span>
+            <span className="font-serif text-base font-semibold">Koshtha</span>
           </div>
           <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
             A public, non-commercial tool for journalists, researchers, and citizens to
@@ -46,7 +46,7 @@ export function SiteFooter() {
             Figures are derived from public budget documents. Errors are possible — see
             Tutorial for confidence levels and known gaps.
           </p>
-          <p>© {new Date().getFullYear()} Koshtha.AI · Open project</p>
+          <p>© {new Date().getFullYear()} Koshtha · Open project</p>
         </div>
       </div>
     </footer>

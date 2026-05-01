@@ -13,7 +13,7 @@ export function SiteHeader() {
             ₹
           </div>
           <div className="leading-tight">
-            <div className="font-serif text-base font-semibold">Koshtha.AI</div>
+            <div className="font-serif text-base font-semibold">Koshtha</div>
             <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
               Trace the rupee · {new Date().getFullYear()}
             </div>

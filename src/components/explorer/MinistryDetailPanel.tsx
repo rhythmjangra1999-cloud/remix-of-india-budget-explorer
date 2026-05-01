@@ -108,7 +108,7 @@ function DemandRow({
 }) {
   const v = demand.amounts[fy] ?? 0;
   const rows = ddgsForDemand(demand.id);
-  const a = demand.amounts as Record<string, number | undefined>;
+  const a = demand.amounts;
 
   // Pull all fields we may have for this DG.
   const fy27Rev = a.FY27_Revenue;

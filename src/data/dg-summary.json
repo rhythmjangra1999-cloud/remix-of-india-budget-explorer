@@ -1,0 +1,2552 @@
+[
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 40,
+    "demandDesc": "Repayment of Debt",
+    "actuals2425": {
+      "revenue": 0.0,
+      "capital": 8500778.9,
+      "total": 8500778.9
+    },
+    "be2526": {
+      "revenue": 0.0,
+      "capital": 9038648.16,
+      "total": 9038648.16
+    },
+    "re2526": {
+      "revenue": 0.0,
+      "capital": 8177058.62,
+      "total": 8177058.62
+    },
+    "be2627": {
+      "revenue": 0.0,
+      "capital": 9534445.88,
+      "total": 9534445.88
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 39,
+    "demandDesc": "Interest Payments",
+    "actuals2425": {
+      "revenue": 1164271.06,
+      "capital": 0.0,
+      "total": 1164271.06
+    },
+    "be2526": {
+      "revenue": 1352307.47,
+      "capital": 0.0,
+      "total": 1352307.47
+    },
+    "re2526": {
+      "revenue": 1352307.49,
+      "capital": 0.0,
+      "total": 1352307.49
+    },
+    "be2627": {
+      "revenue": 1443971.79,
+      "capital": 0.0,
+      "total": 1443971.79
+    }
+  },
+  {
+    "ministry": "Ministry of Railways",
+    "demandNo": 85,
+    "demandDesc": "Ministry of Railways",
+    "actuals2425": {
+      "revenue": 335757.09,
+      "capital": 428589.41,
+      "total": 764346.5
+    },
+    "be2526": {
+      "revenue": 376033.19,
+      "capital": 444277.56,
+      "total": 820310.75
+    },
+    "re2526": {
+      "revenue": 352925.81,
+      "capital": 440234.79,
+      "total": 793160.6
+    },
+    "be2627": {
+      "revenue": 385733.33,
+      "capital": 499261.97,
+      "total": 884995.3
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 42,
+    "demandDesc": "Transfers to States (Share of Central Taxes)",
+    "actuals2425": {
+      "revenue": 148067.59,
+      "capital": 183893.57,
+      "total": 331961.16
+    },
+    "be2526": {
+      "revenue": 178207.01,
+      "capital": 192830.0,
+      "total": 371037.01
+    },
+    "re2526": {
+      "revenue": 202508.01,
+      "capital": 197184.0,
+      "total": 399692.01
+    },
+    "be2627": {
+      "revenue": 193821.61,
+      "capital": 247853.0,
+      "total": 441674.61
+    }
+  },
+  {
+    "ministry": "Ministry of Road Transport and Highways",
+    "demandNo": 86,
+    "demandDesc": "Ministry of Road Transport and Highways",
+    "actuals2425": {
+      "revenue": 21556.17,
+      "capital": 347660.74,
+      "total": 369216.91
+    },
+    "be2526": {
+      "revenue": 30047.98,
+      "capital": 332325.18,
+      "total": 362373.16
+    },
+    "re2526": {
+      "revenue": 30046.38,
+      "capital": 349972.49,
+      "total": 380018.87
+    },
+    "be2627": {
+      "revenue": 31276.46,
+      "capital": 378027.0,
+      "total": 409303.46
+    }
+  },
+  {
+    "ministry": "Ministry of Defence",
+    "demandNo": 20,
+    "demandDesc": "Defence Services (Revenue)",
+    "actuals2425": {
+      "revenue": 301120.54,
+      "capital": 0.0,
+      "total": 301120.54
+    },
+    "be2526": {
+      "revenue": 318884.68,
+      "capital": 0.0,
+      "total": 318884.68
+    },
+    "re2526": {
+      "revenue": 359007.64,
+      "capital": 0.0,
+      "total": 359007.64
+    },
+    "be2627": {
+      "revenue": 373255.44,
+      "capital": 0.0,
+      "total": 373255.44
+    }
+  },
+  {
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "demandNo": 15,
+    "demandDesc": "Department of Food and Public Distribution",
+    "actuals2425": {
+      "revenue": 207602.33,
+      "capital": 24549.59,
+      "total": 232151.92
+    },
+    "be2526": {
+      "revenue": 211386.14,
+      "capital": 50020.23,
+      "total": 261406.37
+    },
+    "re2526": {
+      "revenue": 235024.93,
+      "capital": 50022.72,
+      "total": 285047.65
+    },
+    "be2627": {
+      "revenue": 235024.58,
+      "capital": 50022.62,
+      "total": 285047.2
+    }
+  },
+  {
+    "ministry": "Ministry of Rural Development",
+    "demandNo": 87,
+    "demandDesc": "Department of Rural Development",
+    "actuals2425": {
+      "revenue": 270044.85,
+      "capital": 3.98,
+      "total": 270048.83
+    },
+    "be2526": {
+      "revenue": 286750.29,
+      "capital": 4.24,
+      "total": 286754.53
+    },
+    "re2526": {
+      "revenue": 285991.37,
+      "capital": 4.24,
+      "total": 285995.61
+    },
+    "be2627": {
+      "revenue": 240764.18,
+      "capital": 4.63,
+      "total": 240768.81
+    }
+  },
+  {
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "demandNo": 1,
+    "demandDesc": "Department of Agriculture and Farmers Welfare",
+    "actuals2425": {
+      "revenue": 232078.02,
+      "capital": 75.19,
+      "total": 232153.21
+    },
+    "be2526": {
+      "revenue": 235044.56,
+      "capital": 87.87,
+      "total": 235132.43
+    },
+    "re2526": {
+      "revenue": 220003.13,
+      "capital": 86.17,
+      "total": 220089.3
+    },
+    "be2627": {
+      "revenue": 232451.62,
+      "capital": 109.76,
+      "total": 232561.38
+    }
+  },
+  {
+    "ministry": "Ministry of Defence",
+    "demandNo": 21,
+    "demandDesc": "Capital Outlay on Defence Services",
+    "actuals2425": {
+      "revenue": 0.0,
+      "capital": 159768.4,
+      "total": 159768.4
+    },
+    "be2526": {
+      "revenue": 0.0,
+      "capital": 180000.0,
+      "total": 180000.0
+    },
+    "re2526": {
+      "revenue": 0.0,
+      "capital": 186454.2,
+      "total": 186454.2
+    },
+    "be2627": {
+      "revenue": 0.0,
+      "capital": 219306.47,
+      "total": 219306.47
+    }
+  },
+  {
+    "ministry": "Ministry of Chemicals and Fertilisers",
+    "demandNo": 6,
+    "demandDesc": "Department of Fertilisers",
+    "actuals2425": {
+      "revenue": 191816.12,
+      "capital": 8.06,
+      "total": 191824.18
+    },
+    "be2526": {
+      "revenue": 184067.26,
+      "capital": 15.18,
+      "total": 184082.44
+    },
+    "re2526": {
+      "revenue": 215130.35,
+      "capital": 18.28,
+      "total": 215148.63
+    },
+    "be2627": {
+      "revenue": 187153.64,
+      "capital": 8.89,
+      "total": 187162.53
+    }
+  },
+  {
+    "ministry": "Ministry of Defence",
+    "demandNo": 22,
+    "demandDesc": "Defence Pensions",
+    "actuals2425": {
+      "revenue": 157653.65,
+      "capital": 0.0,
+      "total": 157653.65
+    },
+    "be2526": {
+      "revenue": 168795.0,
+      "capital": 0.0,
+      "total": 168795.0
+    },
+    "re2526": {
+      "revenue": 169186.5,
+      "capital": 0.0,
+      "total": 169186.5
+    },
+    "be2627": {
+      "revenue": 179338.22,
+      "capital": 0.0,
+      "total": 179338.22
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 51,
+    "demandDesc": "Transfers to Chandigarh",
+    "actuals2425": {
+      "revenue": 136379.57,
+      "capital": 11600.13,
+      "total": 147979.7
+    },
+    "be2526": {
+      "revenue": 144866.16,
+      "capital": 16579.21,
+      "total": 161445.37
+    },
+    "re2526": {
+      "revenue": 147180.69,
+      "capital": 16023.96,
+      "total": 163204.65
+    },
+    "be2627": {
+      "revenue": 153601.13,
+      "capital": 21272.5,
+      "total": 174873.63
+    }
+  },
+  {
+    "ministry": "Ministry of Education",
+    "demandNo": 25,
+    "demandDesc": "Department of School Education and Literacy",
+    "actuals2425": {
+      "revenue": 117984.19,
+      "capital": 0.25,
+      "total": 117984.44
+    },
+    "be2526": {
+      "revenue": 142695.3,
+      "capital": 0.8,
+      "total": 142696.1
+    },
+    "re2526": {
+      "revenue": 129540.34,
+      "capital": 0.8,
+      "total": 129541.14
+    },
+    "be2627": {
+      "revenue": 150292.41,
+      "capital": 0.85,
+      "total": 150293.26
+    }
+  },
+  {
+    "ministry": "Ministry of Health and Family Welfare",
+    "demandNo": 46,
+    "demandDesc": "Department of Health and Family Welfare",
+    "actuals2425": {
+      "revenue": 103724.48,
+      "capital": 2398.36,
+      "total": 106122.84
+    },
+    "be2526": {
+      "revenue": 119435.36,
+      "capital": 3624.44,
+      "total": 123059.8
+    },
+    "re2526": {
+      "revenue": 124209.97,
+      "capital": 2437.82,
+      "total": 126647.79
+    },
+    "be2627": {
+      "revenue": 137835.25,
+      "capital": 2928.3,
+      "total": 140763.55
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 30,
+    "demandDesc": "Department of Economic Affairs",
+    "actuals2425": {
+      "revenue": 43923.52,
+      "capital": 11022.49,
+      "total": 54946.01
+    },
+    "be2526": {
+      "revenue": 2987.75,
+      "capital": 110884.5,
+      "total": 113872.25
+    },
+    "re2526": {
+      "revenue": 61207.76,
+      "capital": 78816.38,
+      "total": 140024.14
+    },
+    "be2627": {
+      "revenue": 5029.89,
+      "capital": 126297.48,
+      "total": 131327.37
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 41,
+    "demandDesc": "Pensions",
+    "actuals2425": {
+      "revenue": 93361.15,
+      "capital": 0.0,
+      "total": 93361.15
+    },
+    "be2526": {
+      "revenue": 98186.0,
+      "capital": 0.0,
+      "total": 98186.0
+    },
+    "re2526": {
+      "revenue": 94756.0,
+      "capital": 0.0,
+      "total": 94756.0
+    },
+    "be2627": {
+      "revenue": 101500.0,
+      "capital": 0.0,
+      "total": 101500.0
+    }
+  },
+  {
+    "ministry": "Ministry of Communications",
+    "demandNo": 13,
+    "demandDesc": "Department of Telecommunications",
+    "actuals2425": {
+      "revenue": 52867.14,
+      "capital": 78992.33,
+      "total": 131859.47
+    },
+    "be2526": {
+      "revenue": 35851.5,
+      "capital": 73784.76,
+      "total": 109636.26
+    },
+    "re2526": {
+      "revenue": 33632.37,
+      "capital": 68195.29,
+      "total": 101827.66
+    },
+    "be2627": {
+      "revenue": 30716.02,
+      "capital": 67274.93,
+      "total": 97990.95
+    }
+  },
+  {
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "demandNo": 60,
+    "demandDesc": "Ministry of Housing and Urban Affairs",
+    "actuals2425": {
+      "revenue": 21953.92,
+      "capital": 37189.83,
+      "total": 59143.75
+    },
+    "be2526": {
+      "revenue": 59322.61,
+      "capital": 42595.7,
+      "total": 101918.31
+    },
+    "re2526": {
+      "revenue": 24394.92,
+      "capital": 38908.0,
+      "total": 63302.92
+    },
+    "be2627": {
+      "revenue": 50883.31,
+      "capital": 38876.88,
+      "total": 89760.19
+    }
+  },
+  {
+    "ministry": "Ministry of Education",
+    "demandNo": 26,
+    "demandDesc": "Department of Higher Education",
+    "actuals2425": {
+      "revenue": 61751.09,
+      "capital": 4.84,
+      "total": 61755.93
+    },
+    "be2526": {
+      "revenue": 69064.94,
+      "capital": 10.27,
+      "total": 69075.21
+    },
+    "re2526": {
+      "revenue": 70268.66,
+      "capital": 10.27,
+      "total": 70278.93
+    },
+    "be2627": {
+      "revenue": 78493.54,
+      "capital": 2.68,
+      "total": 78496.22
+    }
+  },
+  {
+    "ministry": "Ministry of Jal Shakti",
+    "demandNo": 63,
+    "demandDesc": "Department of Drinking Water and Sanitation",
+    "actuals2425": {
+      "revenue": 26257.16,
+      "capital": 1.5,
+      "total": 26258.66
+    },
+    "be2526": {
+      "revenue": 74224.82,
+      "capital": 1.2,
+      "total": 74226.02
+    },
+    "re2526": {
+      "revenue": 23029.88,
+      "capital": 1.2,
+      "total": 23031.08
+    },
+    "be2627": {
+      "revenue": 74893.66,
+      "capital": 1.2,
+      "total": 74894.86
+    }
+  },
+  {
+    "ministry": "Ministry of Defence",
+    "demandNo": 19,
+    "demandDesc": "Ministry of Defence (Civil)",
+    "actuals2425": {
+      "revenue": 46313.39,
+      "capital": 11000.35,
+      "total": 57313.74
+    },
+    "be2526": {
+      "revenue": 46995.35,
+      "capital": 12503.12,
+      "total": 59498.47
+    },
+    "re2526": {
+      "revenue": 49184.47,
+      "capital": 11078.65,
+      "total": 60263.12
+    },
+    "be2627": {
+      "revenue": 51991.36,
+      "capital": 11823.25,
+      "total": 63814.61
+    }
+  },
+  {
+    "ministry": "Ministry of New and Renewable Energy",
+    "demandNo": 71,
+    "demandDesc": "Ministry of New and Renewable Energy",
+    "actuals2425": {
+      "revenue": 23292.8,
+      "capital": 6.39,
+      "total": 23299.19
+    },
+    "be2526": {
+      "revenue": 31742.18,
+      "capital": 7.2,
+      "total": 31749.38
+    },
+    "re2526": {
+      "revenue": 27799.02,
+      "capital": 2.2,
+      "total": 27801.22
+    },
+    "be2627": {
+      "revenue": 44611.14,
+      "capital": 3.53,
+      "total": 44614.67
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 58,
+    "demandDesc": "Transfers to Jammu and Kashmir",
+    "actuals2425": {
+      "revenue": 46000.06,
+      "capital": 0.0,
+      "total": 46000.06
+    },
+    "be2526": {
+      "revenue": 41000.07,
+      "capital": 0.0,
+      "total": 41000.07
+    },
+    "re2526": {
+      "revenue": 41340.22,
+      "capital": 0.0,
+      "total": 41340.22
+    },
+    "be2627": {
+      "revenue": 43290.29,
+      "capital": 0.0,
+      "total": 43290.29
+    }
+  },
+  {
+    "ministry": "Ministry of Communications",
+    "demandNo": 12,
+    "demandDesc": "Department of Posts",
+    "actuals2425": {
+      "revenue": 37528.49,
+      "capital": 1190.49,
+      "total": 38718.98
+    },
+    "be2526": {
+      "revenue": 40128.62,
+      "capital": 958.35,
+      "total": 41086.97
+    },
+    "re2526": {
+      "revenue": 39336.0,
+      "capital": 1046.11,
+      "total": 40382.11
+    },
+    "be2627": {
+      "revenue": 41600.49,
+      "capital": 1249.51,
+      "total": 42850.0
+    }
+  },
+  {
+    "ministry": "Department of Atomic Energy",
+    "demandNo": 3,
+    "demandDesc": "Atomic Energy",
+    "actuals2425": {
+      "revenue": 21595.39,
+      "capital": 15021.21,
+      "total": 36616.6
+    },
+    "be2526": {
+      "revenue": 22668.29,
+      "capital": 14814.64,
+      "total": 37482.93
+    },
+    "re2526": {
+      "revenue": 22418.9,
+      "capital": 14762.82,
+      "total": 37181.72
+    },
+    "be2627": {
+      "revenue": 25629.3,
+      "capital": 12793.41,
+      "total": 38422.71
+    }
+  },
+  {
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "demandNo": 76,
+    "demandDesc": "Ministry of Petroleum and Natural Gas",
+    "actuals2425": {
+      "revenue": 18721.78,
+      "capital": 1165.71,
+      "total": 19887.49
+    },
+    "be2526": {
+      "revenue": 14379.8,
+      "capital": 12323.13,
+      "total": 26702.93
+    },
+    "re2526": {
+      "revenue": 30333.21,
+      "capital": 2601.26,
+      "total": 32934.47
+    },
+    "be2627": {
+      "revenue": 37414.77,
+      "capital": 238.45,
+      "total": 37653.22
+    }
+  },
+  {
+    "ministry": "Ministry of Labour and Employment",
+    "demandNo": 64,
+    "demandDesc": "Ministry of Labour and Employment",
+    "actuals2425": {
+      "revenue": 11404.1,
+      "capital": 32.39,
+      "total": 11436.49
+    },
+    "be2526": {
+      "revenue": 32606.92,
+      "capital": 39.27,
+      "total": 32646.19
+    },
+    "re2526": {
+      "revenue": 12659.41,
+      "capital": 28.64,
+      "total": 12688.05
+    },
+    "be2627": {
+      "revenue": 32625.33,
+      "capital": 40.98,
+      "total": 32666.31
+    }
+  },
+  {
+    "ministry": "Ministry of Power",
+    "demandNo": 79,
+    "demandDesc": "Ministry of Power",
+    "actuals2425": {
+      "revenue": 19892.19,
+      "capital": 2640.75,
+      "total": 22532.94
+    },
+    "be2526": {
+      "revenue": 22388.67,
+      "capital": 658.41,
+      "total": 23047.08
+    },
+    "re2526": {
+      "revenue": 22213.73,
+      "capital": 583.51,
+      "total": 22797.24
+    },
+    "be2627": {
+      "revenue": 30853.45,
+      "capital": 361.02,
+      "total": 31214.47
+    }
+  },
+  {
+    "ministry": "Ministry of Women and Child Development",
+    "demandNo": 101,
+    "demandDesc": "Ministry of Women and Child Development",
+    "actuals2425": {
+      "revenue": 25022.97,
+      "capital": 6.52,
+      "total": 25029.49
+    },
+    "be2526": {
+      "revenue": 27384.99,
+      "capital": 4.7,
+      "total": 27389.69
+    },
+    "re2526": {
+      "revenue": 24646.65,
+      "capital": 5.26,
+      "total": 24651.91
+    },
+    "be2627": {
+      "revenue": 28632.42,
+      "capital": 5.64,
+      "total": 28638.06
+    }
+  },
+  {
+    "ministry": "Ministry of Science and Technology",
+    "demandNo": 89,
+    "demandDesc": "Department of Science and Technology",
+    "actuals2425": {
+      "revenue": 5058.13,
+      "capital": 64.22,
+      "total": 5122.35
+    },
+    "be2526": {
+      "revenue": 8413.05,
+      "capital": 20095.85,
+      "total": 28508.9
+    },
+    "re2526": {
+      "revenue": 8838.52,
+      "capital": 3083.06,
+      "total": 11921.58
+    },
+    "be2627": {
+      "revenue": 7963.94,
+      "capital": 20085.38,
+      "total": 28049.32
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 37,
+    "demandDesc": "Indirect Taxes",
+    "actuals2425": {
+      "revenue": 37046.44,
+      "capital": 1771.77,
+      "total": 38818.21
+    },
+    "be2526": {
+      "revenue": 40904.73,
+      "capital": 1984.6,
+      "total": 42889.33
+    },
+    "re2526": {
+      "revenue": 38906.44,
+      "capital": 2590.28,
+      "total": 41496.72
+    },
+    "be2627": {
+      "revenue": 26077.13,
+      "capital": 1606.0,
+      "total": 27683.13
+    }
+  },
+  {
+    "ministry": "Ministry of Jal Shakti",
+    "demandNo": 62,
+    "demandDesc": "Department of Water Resources, River Development and Ganga Rejuvenation",
+    "actuals2425": {
+      "revenue": 26311.41,
+      "capital": 300.19,
+      "total": 26611.6
+    },
+    "be2526": {
+      "revenue": 32607.4,
+      "capital": 558.5,
+      "total": 33165.9
+    },
+    "re2526": {
+      "revenue": 23782.47,
+      "capital": 457.08,
+      "total": 24239.55
+    },
+    "be2627": {
+      "revenue": 26182.32,
+      "capital": 475.66,
+      "total": 26657.98
+    }
+  },
+  {
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "demandNo": 68,
+    "demandDesc": "Ministry of Micro, Small and Medium Enterprises",
+    "actuals2425": {
+      "revenue": 9112.42,
+      "capital": 587.92,
+      "total": 9700.34
+    },
+    "be2526": {
+      "revenue": 22452.42,
+      "capital": 715.73,
+      "total": 23168.15
+    },
+    "re2526": {
+      "revenue": 11180.32,
+      "capital": 915.66,
+      "total": 12095.98
+    },
+    "be2627": {
+      "revenue": 22647.26,
+      "capital": 1919.01,
+      "total": 24566.27
+    }
+  },
+  {
+    "ministry": "Ministry of External Affairs",
+    "demandNo": 29,
+    "demandDesc": "Ministry of External Affairs",
+    "actuals2425": {
+      "revenue": 23933.26,
+      "capital": 3890.99,
+      "total": 27824.25
+    },
+    "be2526": {
+      "revenue": 19519.74,
+      "capital": 996.88,
+      "total": 20516.62
+    },
+    "re2526": {
+      "revenue": 20755.37,
+      "capital": 996.88,
+      "total": 21752.25
+    },
+    "be2627": {
+      "revenue": 20711.2,
+      "capital": 1412.78,
+      "total": 22123.98
+    }
+  },
+  {
+    "ministry": "Ministry of Electronics and Information Technology",
+    "demandNo": 27,
+    "demandDesc": "Ministry of Electronics and Information Technology",
+    "actuals2425": {
+      "revenue": 13344.66,
+      "capital": 325.86,
+      "total": 13670.52
+    },
+    "be2526": {
+      "revenue": 25583.11,
+      "capital": 443.14,
+      "total": 26026.25
+    },
+    "re2526": {
+      "revenue": 19846.32,
+      "capital": 386.63,
+      "total": 20232.95
+    },
+    "be2627": {
+      "revenue": 21234.15,
+      "capital": 398.81,
+      "total": 21632.96
+    }
+  },
+  {
+    "ministry": "Ministry of Tribal Affairs",
+    "demandNo": 100,
+    "demandDesc": "Ministry of Tribal Affairs",
+    "actuals2425": {
+      "revenue": 10171.17,
+      "capital": 2.05,
+      "total": 10173.22
+    },
+    "be2526": {
+      "revenue": 14894.08,
+      "capital": 31.73,
+      "total": 14925.81
+    },
+    "re2526": {
+      "revenue": 10805.53,
+      "capital": 18.65,
+      "total": 10824.18
+    },
+    "be2627": {
+      "revenue": 15389.54,
+      "capital": 32.43,
+      "total": 15421.97
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 36,
+    "demandDesc": "Direct Taxes",
+    "actuals2425": {
+      "revenue": 9143.94,
+      "capital": 2297.26,
+      "total": 11441.2
+    },
+    "be2526": {
+      "revenue": 9473.29,
+      "capital": 1427.16,
+      "total": 10900.45
+    },
+    "re2526": {
+      "revenue": 10665.52,
+      "capital": 2066.56,
+      "total": 12732.08
+    },
+    "be2627": {
+      "revenue": 10320.12,
+      "capital": 4986.45,
+      "total": 15306.57
+    }
+  },
+  {
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "demandNo": 93,
+    "demandDesc": "Department of Social Justice and Empowerment",
+    "actuals2425": {
+      "revenue": 10373.21,
+      "capital": 35.79,
+      "total": 10409.0
+    },
+    "be2526": {
+      "revenue": 14152.84,
+      "capital": 11.58,
+      "total": 14164.42
+    },
+    "re2526": {
+      "revenue": 11914.15,
+      "capital": 8.28,
+      "total": 11922.43
+    },
+    "be2627": {
+      "revenue": 14418.02,
+      "capital": 9.57,
+      "total": 14427.59
+    }
+  },
+  {
+    "ministry": "Department of Space",
+    "demandNo": 95,
+    "demandDesc": "Department of Space",
+    "actuals2425": {
+      "revenue": 6988.67,
+      "capital": 4529.98,
+      "total": 11518.65
+    },
+    "be2526": {
+      "revenue": 7312.57,
+      "capital": 6103.63,
+      "total": 13416.2
+    },
+    "re2526": {
+      "revenue": 7138.73,
+      "capital": 5309.87,
+      "total": 12448.6
+    },
+    "be2627": {
+      "revenue": 7329.71,
+      "capital": 6375.92,
+      "total": 13705.63
+    }
+  },
+  {
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "demandNo": 92,
+    "demandDesc": "Ministry of Skill Development and Entrepreneurship",
+    "actuals2425": {
+      "revenue": 5167.93,
+      "capital": 86.05,
+      "total": 5253.98
+    },
+    "be2526": {
+      "revenue": 8217.04,
+      "capital": 83.06,
+      "total": 8300.1
+    },
+    "re2526": {
+      "revenue": 4637.54,
+      "capital": 66.0,
+      "total": 4703.54
+    },
+    "be2627": {
+      "revenue": 12559.51,
+      "capital": 126.29,
+      "total": 12685.8
+    }
+  },
+  {
+    "ministry": "Ministry of Commerce and Industry",
+    "demandNo": 11,
+    "demandDesc": "Department for Promotion of Industry and Internal Trade",
+    "actuals2425": {
+      "revenue": 6504.59,
+      "capital": 1397.47,
+      "total": 7902.06
+    },
+    "be2526": {
+      "revenue": 7452.93,
+      "capital": 5692.13,
+      "total": 13145.06
+    },
+    "re2526": {
+      "revenue": 4114.8,
+      "capital": 4501.35,
+      "total": 8616.15
+    },
+    "be2627": {
+      "revenue": 6851.7,
+      "capital": 5119.13,
+      "total": 11970.83
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 49,
+    "demandDesc": "Ministry of Home Affairs",
+    "actuals2425": {
+      "revenue": 5425.14,
+      "capital": 269.63,
+      "total": 5694.77
+    },
+    "be2526": {
+      "revenue": 4161.22,
+      "capital": 395.97,
+      "total": 4557.19
+    },
+    "re2526": {
+      "revenue": 7199.71,
+      "capital": 280.44,
+      "total": 7480.15
+    },
+    "be2627": {
+      "revenue": 9878.54,
+      "capital": 508.81,
+      "total": 10387.35
+    }
+  },
+  {
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "demandNo": 2,
+    "demandDesc": "Department of Agricultural Research and Education",
+    "actuals2425": {
+      "revenue": 10030.41,
+      "capital": 3.15,
+      "total": 10033.56
+    },
+    "be2526": {
+      "revenue": 10462.06,
+      "capital": 4.33,
+      "total": 10466.39
+    },
+    "re2526": {
+      "revenue": 10278.34,
+      "capital": 2.49,
+      "total": 10280.83
+    },
+    "be2627": {
+      "revenue": 9964.95,
+      "capital": 2.45,
+      "total": 9967.4
+    }
+  },
+  {
+    "ministry": "Ministry of Heavy Industries",
+    "demandNo": 48,
+    "demandDesc": "Ministry of Heavy Industries",
+    "actuals2425": {
+      "revenue": 2685.0,
+      "capital": 1.55,
+      "total": 2686.55
+    },
+    "be2526": {
+      "revenue": 7178.23,
+      "capital": 502.0,
+      "total": 7680.23
+    },
+    "re2526": {
+      "revenue": 4791.27,
+      "capital": 502.58,
+      "total": 5293.85
+    },
+    "be2627": {
+      "revenue": 7937.08,
+      "capital": 2.82,
+      "total": 7939.9
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 38,
+    "demandDesc": "Indian Audit and Accounts Department",
+    "actuals2425": {
+      "revenue": 6433.26,
+      "capital": 154.14,
+      "total": 6587.4
+    },
+    "be2526": {
+      "revenue": 6631.14,
+      "capital": 174.09,
+      "total": 6805.23
+    },
+    "re2526": {
+      "revenue": 6532.1,
+      "capital": 541.62,
+      "total": 7073.72
+    },
+    "be2627": {
+      "revenue": 6665.31,
+      "capital": 168.97,
+      "total": 6834.28
+    }
+  },
+  {
+    "ministry": "Ministry of Development of North Eastern Region",
+    "demandNo": 23,
+    "demandDesc": "Ministry of Development of North Eastern Region",
+    "actuals2425": {
+      "revenue": 1100.28,
+      "capital": 2347.43,
+      "total": 3447.71
+    },
+    "be2526": {
+      "revenue": 1882.76,
+      "capital": 4032.24,
+      "total": 5915.0
+    },
+    "re2526": {
+      "revenue": 1411.79,
+      "capital": 3067.41,
+      "total": 4479.2
+    },
+    "be2627": {
+      "revenue": 2247.7,
+      "capital": 4564.6,
+      "total": 6812.3
+    }
+  },
+  {
+    "ministry": "Ministry of Science and Technology",
+    "demandNo": 91,
+    "demandDesc": "Department of Scientific and Industrial Research",
+    "actuals2425": {
+      "revenue": 6269.64,
+      "capital": 1.3,
+      "total": 6270.94
+    },
+    "be2526": {
+      "revenue": 6656.17,
+      "capital": 1.61,
+      "total": 6657.78
+    },
+    "re2526": {
+      "revenue": 6430.27,
+      "capital": 2.89,
+      "total": 6433.16
+    },
+    "be2627": {
+      "revenue": 6760.29,
+      "capital": 5.33,
+      "total": 6765.62
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 52,
+    "demandDesc": "Andaman and Nicobar Islands",
+    "actuals2425": {
+      "revenue": 5596.53,
+      "capital": 402.61,
+      "total": 5999.14
+    },
+    "be2526": {
+      "revenue": 5711.98,
+      "capital": 555.08,
+      "total": 6267.06
+    },
+    "re2526": {
+      "revenue": 6969.66,
+      "capital": 473.23,
+      "total": 7442.89
+    },
+    "be2627": {
+      "revenue": 6138.08,
+      "capital": 597.86,
+      "total": 6735.94
+    }
+  },
+  {
+    "ministry": "Ministry of Corporate Affairs",
+    "demandNo": 17,
+    "demandDesc": "Ministry of Corporate Affairs",
+    "actuals2425": {
+      "revenue": 668.58,
+      "capital": 41.9,
+      "total": 710.48
+    },
+    "be2526": {
+      "revenue": 11469.86,
+      "capital": 116.33,
+      "total": 11586.19
+    },
+    "re2526": {
+      "revenue": 8883.06,
+      "capital": 86.37,
+      "total": 8969.43
+    },
+    "be2627": {
+      "revenue": 6506.24,
+      "capital": 55.62,
+      "total": 6561.86
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 53,
+    "demandDesc": "Chandigarh",
+    "actuals2425": {
+      "revenue": 5945.7,
+      "capital": 652.49,
+      "total": 6598.19
+    },
+    "be2526": {
+      "revenue": 6185.18,
+      "capital": 798.0,
+      "total": 6983.18
+    },
+    "re2526": {
+      "revenue": 5918.77,
+      "capital": 547.0,
+      "total": 6465.77
+    },
+    "be2627": {
+      "revenue": 5939.52,
+      "capital": 606.0,
+      "total": 6545.52
+    }
+  },
+  {
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "demandNo": 44,
+    "demandDesc": "Department of Animal Husbandry and Dairying",
+    "actuals2425": {
+      "revenue": 3451.24,
+      "capital": 198.01,
+      "total": 3649.25
+    },
+    "be2526": {
+      "revenue": 4469.45,
+      "capital": 585.95,
+      "total": 5055.4
+    },
+    "re2526": {
+      "revenue": 4830.44,
+      "capital": 652.39,
+      "total": 5482.83
+    },
+    "be2627": {
+      "revenue": 5915.95,
+      "capital": 447.51,
+      "total": 6363.46
+    }
+  },
+  {
+    "ministry": "Ministry of Chemicals and Fertilisers",
+    "demandNo": 7,
+    "demandDesc": "Department of Pharmaceuticals",
+    "actuals2425": {
+      "revenue": 2978.8,
+      "capital": 39.99,
+      "total": 3018.79
+    },
+    "be2526": {
+      "revenue": 5267.16,
+      "capital": 1.56,
+      "total": 5268.72
+    },
+    "re2526": {
+      "revenue": 4368.2,
+      "capital": 1.5,
+      "total": 4369.7
+    },
+    "be2627": {
+      "revenue": 5929.42,
+      "capital": 1.8,
+      "total": 5931.22
+    }
+  },
+  {
+    "ministry": "Ministry of Commerce and Industry",
+    "demandNo": 10,
+    "demandDesc": "Department of Commerce",
+    "actuals2425": {
+      "revenue": 5494.13,
+      "capital": 44.8,
+      "total": 5538.93
+    },
+    "be2526": {
+      "revenue": 5246.99,
+      "capital": 54.0,
+      "total": 5300.99
+    },
+    "re2526": {
+      "revenue": 6556.54,
+      "capital": 49.48,
+      "total": 6606.02
+    },
+    "be2627": {
+      "revenue": 5825.76,
+      "capital": 47.31,
+      "total": 5873.07
+    }
+  },
+  {
+    "ministry": "Ministry of Ports, Shipping and Waterways",
+    "demandNo": 78,
+    "demandDesc": "Ministry of Ports, Shipping and Waterways",
+    "actuals2425": {
+      "revenue": 1958.63,
+      "capital": 1419.64,
+      "total": 3378.27
+    },
+    "be2526": {
+      "revenue": 2184.23,
+      "capital": 1851.35,
+      "total": 4035.58
+    },
+    "re2526": {
+      "revenue": 2175.13,
+      "capital": 1288.98,
+      "total": 3464.11
+    },
+    "be2627": {
+      "revenue": 4464.88,
+      "capital": 1299.92,
+      "total": 5764.8
+    }
+  },
+  {
+    "ministry": "Ministry of Statistics and Programme Implementation",
+    "demandNo": 96,
+    "demandDesc": "Ministry of Statistics and Programme Implementation",
+    "actuals2425": {
+      "revenue": 3990.72,
+      "capital": 30.02,
+      "total": 4020.74
+    },
+    "be2526": {
+      "revenue": 5426.19,
+      "capital": 44.87,
+      "total": 5471.06
+    },
+    "re2526": {
+      "revenue": 5492.25,
+      "capital": 59.04,
+      "total": 5551.29
+    },
+    "be2627": {
+      "revenue": 5457.75,
+      "capital": 45.14,
+      "total": 5502.89
+    }
+  },
+  {
+    "ministry": "Ministry of Textiles",
+    "demandNo": 98,
+    "demandDesc": "Ministry of Textiles",
+    "actuals2425": {
+      "revenue": 2956.05,
+      "capital": 42.42,
+      "total": 2998.47
+    },
+    "be2526": {
+      "revenue": 5252.89,
+      "capital": 19.11,
+      "total": 5272.0
+    },
+    "re2526": {
+      "revenue": 5748.14,
+      "capital": 18.54,
+      "total": 5766.68
+    },
+    "be2627": {
+      "revenue": 5269.52,
+      "capital": 9.49,
+      "total": 5279.01
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 50,
+    "demandDesc": "Cabinet",
+    "actuals2425": {
+      "revenue": 646.17,
+      "capital": 4983.94,
+      "total": 5630.11
+    },
+    "be2526": {
+      "revenue": 765.72,
+      "capital": 6396.84,
+      "total": 7162.56
+    },
+    "re2526": {
+      "revenue": 803.02,
+      "capital": 6313.44,
+      "total": 7116.46
+    },
+    "be2627": {
+      "revenue": 992.32,
+      "capital": 4224.8,
+      "total": 5217.12
+    }
+  },
+  {
+    "ministry": "Ministry of Rural Development",
+    "demandNo": 88,
+    "demandDesc": "Department of Land Resources",
+    "actuals2425": {
+      "revenue": 3721.4,
+      "capital": 0.87,
+      "total": 3722.27
+    },
+    "be2526": {
+      "revenue": 4781.19,
+      "capital": 1.01,
+      "total": 4782.2
+    },
+    "re2526": {
+      "revenue": 3244.03,
+      "capital": 1.01,
+      "total": 3245.04
+    },
+    "be2627": {
+      "revenue": 5135.33,
+      "capital": 1.0,
+      "total": 5136.33
+    }
+  },
+  {
+    "ministry": "Ministry of Food Processing Industries",
+    "demandNo": 45,
+    "demandDesc": "Ministry of Food Processing Industries",
+    "actuals2425": {
+      "revenue": 2864.84,
+      "capital": 1.98,
+      "total": 2866.82
+    },
+    "be2526": {
+      "revenue": 5264.96,
+      "capital": 2.64,
+      "total": 5267.6
+    },
+    "re2526": {
+      "revenue": 4219.23,
+      "capital": 2.34,
+      "total": 4221.57
+    },
+    "be2627": {
+      "revenue": 4976.43,
+      "capital": 2.73,
+      "total": 4979.16
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 55,
+    "demandDesc": "Lakshadweep (Transfers)",
+    "actuals2425": {
+      "revenue": 2408.68,
+      "capital": 2485.94,
+      "total": 4894.62
+    },
+    "be2526": {
+      "revenue": 2460.25,
+      "capital": 2242.15,
+      "total": 4702.4
+    },
+    "re2526": {
+      "revenue": 5042.95,
+      "capital": 2347.73,
+      "total": 7390.68
+    },
+    "be2627": {
+      "revenue": 2552.51,
+      "capital": 2327.05,
+      "total": 4879.56
+    }
+  },
+  {
+    "ministry": "Ministry of Health and Family Welfare",
+    "demandNo": 47,
+    "demandDesc": "Department of Health Research",
+    "actuals2425": {
+      "revenue": 3382.98,
+      "capital": 0.95,
+      "total": 3383.93
+    },
+    "be2526": {
+      "revenue": 3899.43,
+      "capital": 1.26,
+      "total": 3900.69
+    },
+    "re2526": {
+      "revenue": 3926.17,
+      "capital": 1.47,
+      "total": 3927.64
+    },
+    "be2627": {
+      "revenue": 4819.4,
+      "capital": 1.81,
+      "total": 4821.21
+    }
+  },
+  {
+    "ministry": "Ministry of Mines",
+    "demandNo": 69,
+    "demandDesc": "Ministry of Mines",
+    "actuals2425": {
+      "revenue": 3461.26,
+      "capital": 46.0,
+      "total": 3507.26
+    },
+    "be2526": {
+      "revenue": 3458.91,
+      "capital": 79.09,
+      "total": 3538.0
+    },
+    "re2526": {
+      "revenue": 3341.2,
+      "capital": 173.94,
+      "total": 3515.14
+    },
+    "be2627": {
+      "revenue": 4552.8,
+      "capital": 163.65,
+      "total": 4716.45
+    }
+  },
+  {
+    "ministry": "Ministry of Law and Justice",
+    "demandNo": 65,
+    "demandDesc": "Department of Law and Justice",
+    "actuals2425": {
+      "revenue": 7309.68,
+      "capital": 102.29,
+      "total": 7411.97
+    },
+    "be2526": {
+      "revenue": 5007.22,
+      "capital": 191.02,
+      "total": 5198.24
+    },
+    "re2526": {
+      "revenue": 4571.62,
+      "capital": 818.25,
+      "total": 5389.87
+    },
+    "be2627": {
+      "revenue": 4459.59,
+      "capital": 249.47,
+      "total": 4709.06
+    }
+  },
+  {
+    "ministry": "Ministry of Information and Broadcasting",
+    "demandNo": 61,
+    "demandDesc": "Ministry of Information and Broadcasting",
+    "actuals2425": {
+      "revenue": 4261.67,
+      "capital": 45.1,
+      "total": 4306.77
+    },
+    "be2526": {
+      "revenue": 4314.59,
+      "capital": 43.79,
+      "total": 4358.38
+    },
+    "re2526": {
+      "revenue": 6038.34,
+      "capital": 64.68,
+      "total": 6103.02
+    },
+    "be2627": {
+      "revenue": 4494.56,
+      "capital": 57.38,
+      "total": 4551.94
+    }
+  },
+  {
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "demandNo": 14,
+    "demandDesc": "Department of Consumer Affairs",
+    "actuals2425": {
+      "revenue": 7294.39,
+      "capital": 62.38,
+      "total": 7356.77
+    },
+    "be2526": {
+      "revenue": 4332.5,
+      "capital": 84.42,
+      "total": 4416.92
+    },
+    "re2526": {
+      "revenue": 3339.47,
+      "capital": 78.55,
+      "total": 3418.02
+    },
+    "be2627": {
+      "revenue": 4403.95,
+      "capital": 93.42,
+      "total": 4497.37
+    }
+  },
+  {
+    "ministry": "Ministry of Youth Affairs and Sports",
+    "demandNo": 102,
+    "demandDesc": "Ministry of Youth Affairs and Sports",
+    "actuals2425": {
+      "revenue": 2830.82,
+      "capital": 2.24,
+      "total": 2833.06
+    },
+    "be2526": {
+      "revenue": 3788.49,
+      "capital": 5.81,
+      "total": 3794.3
+    },
+    "re2526": {
+      "revenue": 3343.43,
+      "capital": 3.11,
+      "total": 3346.54
+    },
+    "be2627": {
+      "revenue": 4461.51,
+      "capital": 18.37,
+      "total": 4479.88
+    }
+  },
+  {
+    "ministry": "Ministry of Environment, Forests and Climate Change",
+    "demandNo": 28,
+    "demandDesc": "Ministry of Environment, Forests and Climate Change",
+    "actuals2425": {
+      "revenue": 2595.83,
+      "capital": 89.09,
+      "total": 2684.92
+    },
+    "be2526": {
+      "revenue": 3920.07,
+      "capital": 136.0,
+      "total": 4056.07
+    },
+    "re2526": {
+      "revenue": 3842.92,
+      "capital": 174.39,
+      "total": 4017.31
+    },
+    "be2627": {
+      "revenue": 4190.56,
+      "capital": 222.8,
+      "total": 4413.36
+    }
+  },
+  {
+    "ministry": "Ministry of AYUSH",
+    "demandNo": 4,
+    "demandDesc": "Ministry of AYUSH",
+    "actuals2425": {
+      "revenue": 3456.29,
+      "capital": 12.34,
+      "total": 3468.63
+    },
+    "be2526": {
+      "revenue": 3937.45,
+      "capital": 55.45,
+      "total": 3992.9
+    },
+    "re2526": {
+      "revenue": 3618.47,
+      "capital": 53.35,
+      "total": 3671.82
+    },
+    "be2627": {
+      "revenue": 4381.86,
+      "capital": 27.07,
+      "total": 4408.93
+    }
+  },
+  {
+    "ministry": "Ministry of Coal",
+    "demandNo": 9,
+    "demandDesc": "Ministry of Coal",
+    "actuals2425": {
+      "revenue": 848.72,
+      "capital": 2.16,
+      "total": 850.88
+    },
+    "be2526": {
+      "revenue": 1249.0,
+      "capital": 2.2,
+      "total": 1251.2
+    },
+    "re2526": {
+      "revenue": 1238.76,
+      "capital": 2.2,
+      "total": 1240.96
+    },
+    "be2627": {
+      "revenue": 4388.12,
+      "capital": 2.2,
+      "total": 4390.32
+    }
+  },
+  {
+    "ministry": "Ministry of Earth Sciences",
+    "demandNo": 24,
+    "demandDesc": "Ministry of Earth Sciences",
+    "actuals2425": {
+      "revenue": 2387.4,
+      "capital": 999.33,
+      "total": 3386.73
+    },
+    "be2526": {
+      "revenue": 2779.05,
+      "capital": 879.03,
+      "total": 3658.08
+    },
+    "re2526": {
+      "revenue": 2909.92,
+      "capital": 478.35,
+      "total": 3388.27
+    },
+    "be2627": {
+      "revenue": 3082.19,
+      "capital": 716.04,
+      "total": 3798.23
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 32,
+    "demandDesc": "Department of Financial Services",
+    "actuals2425": {
+      "revenue": 3246.93,
+      "capital": 784.37,
+      "total": 4031.3
+    },
+    "be2526": {
+      "revenue": 1620.01,
+      "capital": 68.14,
+      "total": 1688.15
+    },
+    "re2526": {
+      "revenue": 3641.84,
+      "capital": 54.79,
+      "total": 3696.63
+    },
+    "be2627": {
+      "revenue": 3686.99,
+      "capital": 59.97,
+      "total": 3746.96
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 59,
+    "demandDesc": "Transfers to Puducherry",
+    "actuals2425": {
+      "revenue": 3302.36,
+      "capital": 0.0,
+      "total": 3302.36
+    },
+    "be2526": {
+      "revenue": 3432.19,
+      "capital": 0.01,
+      "total": 3432.2
+    },
+    "re2526": {
+      "revenue": 3517.87,
+      "capital": 0.01,
+      "total": 3517.88
+    },
+    "be2627": {
+      "revenue": 3517.87,
+      "capital": 0.01,
+      "total": 3517.88
+    }
+  },
+  {
+    "ministry": "Ministry of Science and Technology",
+    "demandNo": 90,
+    "demandDesc": "Department of Biotechnology",
+    "actuals2425": {
+      "revenue": 1998.0,
+      "capital": 0.0,
+      "total": 1998.0
+    },
+    "be2526": {
+      "revenue": 3446.64,
+      "capital": 0.0,
+      "total": 3446.64
+    },
+    "re2526": {
+      "revenue": 2830.45,
+      "capital": 0.0,
+      "total": 2830.45
+    },
+    "be2627": {
+      "revenue": 3446.0,
+      "capital": 0.0,
+      "total": 3446.0
+    }
+  },
+  {
+    "ministry": "Ministry of Culture",
+    "demandNo": 18,
+    "demandDesc": "Ministry of Culture",
+    "actuals2425": {
+      "revenue": 3077.36,
+      "capital": 182.64,
+      "total": 3260.0
+    },
+    "be2526": {
+      "revenue": 3168.51,
+      "capital": 192.45,
+      "total": 3360.96
+    },
+    "re2526": {
+      "revenue": 3357.64,
+      "capital": 192.45,
+      "total": 3550.09
+    },
+    "be2627": {
+      "revenue": 3216.63,
+      "capital": 200.0,
+      "total": 3416.63
+    }
+  },
+  {
+    "ministry": "Ministry of Minority Affairs",
+    "demandNo": 70,
+    "demandDesc": "Ministry of Minority Affairs",
+    "actuals2425": {
+      "revenue": 1393.06,
+      "capital": 2.95,
+      "total": 1396.01
+    },
+    "be2526": {
+      "revenue": 3346.28,
+      "capital": 3.72,
+      "total": 3350.0
+    },
+    "re2526": {
+      "revenue": 2157.98,
+      "capital": 2.47,
+      "total": 2160.45
+    },
+    "be2627": {
+      "revenue": 3395.62,
+      "capital": 4.38,
+      "total": 3400.0
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 35,
+    "demandDesc": "Department of Revenue",
+    "actuals2425": {
+      "revenue": 159472.47,
+      "capital": 449.68,
+      "total": 159922.15
+    },
+    "be2526": {
+      "revenue": 133271.01,
+      "capital": 609.24,
+      "total": 133880.25
+    },
+    "re2526": {
+      "revenue": 20469.84,
+      "capital": 572.88,
+      "total": 21042.72
+    },
+    "be2627": {
+      "revenue": 2523.11,
+      "capital": 597.71,
+      "total": 3120.82
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 54,
+    "demandDesc": "Dadra and Nagar Haveli and Daman and Diu",
+    "actuals2425": {
+      "revenue": 1635.0,
+      "capital": 1016.25,
+      "total": 2651.25
+    },
+    "be2526": {
+      "revenue": 1712.5,
+      "capital": 1070.0,
+      "total": 2782.5
+    },
+    "re2526": {
+      "revenue": 1673.14,
+      "capital": 1070.0,
+      "total": 2743.14
+    },
+    "be2627": {
+      "revenue": 1735.2,
+      "capital": 1100.0,
+      "total": 2835.2
+    }
+  },
+  {
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "demandNo": 43,
+    "demandDesc": "Department of Fisheries",
+    "actuals2425": {
+      "revenue": 1122.64,
+      "capital": 5.28,
+      "total": 1127.92
+    },
+    "be2526": {
+      "revenue": 2681.05,
+      "capital": 22.62,
+      "total": 2703.67
+    },
+    "re2526": {
+      "revenue": 1723.13,
+      "capital": 9.82,
+      "total": 1732.95
+    },
+    "be2627": {
+      "revenue": 2732.27,
+      "capital": 29.53,
+      "total": 2761.8
+    }
+  },
+  {
+    "ministry": "Ministry of Personnel, Public Grievances and Pensions",
+    "demandNo": 74,
+    "demandDesc": "Ministry of Personnel, Public Grievances and Pensions",
+    "actuals2425": {
+      "revenue": 2257.42,
+      "capital": 252.01,
+      "total": 2509.43
+    },
+    "be2526": {
+      "revenue": 2408.69,
+      "capital": 247.77,
+      "total": 2656.46
+    },
+    "re2526": {
+      "revenue": 2373.84,
+      "capital": 151.23,
+      "total": 2525.07
+    },
+    "be2627": {
+      "revenue": 2454.37,
+      "capital": 153.08,
+      "total": 2607.45
+    }
+  },
+  {
+    "ministry": "Ministry of Tourism",
+    "demandNo": 99,
+    "demandDesc": "Ministry of Tourism",
+    "actuals2425": {
+      "revenue": 453.18,
+      "capital": 4.17,
+      "total": 457.35
+    },
+    "be2526": {
+      "revenue": 2534.94,
+      "capital": 6.13,
+      "total": 2541.07
+    },
+    "re2526": {
+      "revenue": 1304.17,
+      "capital": 6.13,
+      "total": 1310.3
+    },
+    "be2627": {
+      "revenue": 2433.88,
+      "capital": 4.53,
+      "total": 2438.41
+    }
+  },
+  {
+    "ministry": "Ministry of Civil Aviation",
+    "demandNo": 8,
+    "demandDesc": "Ministry of Civil Aviation",
+    "actuals2425": {
+      "revenue": 2509.08,
+      "capital": 97.12,
+      "total": 2606.2
+    },
+    "be2526": {
+      "revenue": 2330.31,
+      "capital": 70.0,
+      "total": 2400.31
+    },
+    "re2526": {
+      "revenue": 2014.48,
+      "capital": 41.01,
+      "total": 2055.49
+    },
+    "be2627": {
+      "revenue": 2057.87,
+      "capital": 45.0,
+      "total": 2102.87
+    }
+  },
+  {
+    "ministry": "Ministry of Cooperation",
+    "demandNo": 16,
+    "demandDesc": "Ministry of Cooperation",
+    "actuals2425": {
+      "revenue": 735.75,
+      "capital": 2.25,
+      "total": 738.0
+    },
+    "be2526": {
+      "revenue": 1184.68,
+      "capital": 1.61,
+      "total": 1186.29
+    },
+    "re2526": {
+      "revenue": 979.18,
+      "capital": 2.13,
+      "total": 981.31
+    },
+    "be2627": {
+      "revenue": 1742.84,
+      "capital": 1.9,
+      "total": 1744.74
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 56,
+    "demandDesc": "Lakshadweep",
+    "actuals2425": {
+      "revenue": 1412.12,
+      "capital": 215.65,
+      "total": 1627.77
+    },
+    "be2526": {
+      "revenue": 1322.54,
+      "capital": 290.37,
+      "total": 1612.91
+    },
+    "re2526": {
+      "revenue": 1340.89,
+      "capital": 266.96,
+      "total": 1607.85
+    },
+    "be2627": {
+      "revenue": 1362.99,
+      "capital": 346.11,
+      "total": 1709.1
+    }
+  },
+  {
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "demandNo": 94,
+    "demandDesc": "Department of Empowerment of Persons with Disabilities",
+    "actuals2425": {
+      "revenue": 1112.6,
+      "capital": 0.01,
+      "total": 1112.61
+    },
+    "be2526": {
+      "revenue": 1273.8,
+      "capital": 1.2,
+      "total": 1275.0
+    },
+    "re2526": {
+      "revenue": 1290.4,
+      "capital": 1.2,
+      "total": 1291.6
+    },
+    "be2627": {
+      "revenue": 1668.35,
+      "capital": 1.37,
+      "total": 1669.72
+    }
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "demandNo": 57,
+    "demandDesc": "Transfers to Delhi",
+    "actuals2425": {
+      "revenue": 966.0,
+      "capital": 142.0,
+      "total": 1108.0
+    },
+    "be2526": {
+      "revenue": 968.01,
+      "capital": 380.0,
+      "total": 1348.01
+    },
+    "re2526": {
+      "revenue": 967.01,
+      "capital": 274.99,
+      "total": 1242.0
+    },
+    "be2627": {
+      "revenue": 968.01,
+      "capital": 380.0,
+      "total": 1348.01
+    }
+  },
+  {
+    "ministry": "Ministry of Planning",
+    "demandNo": 77,
+    "demandDesc": "Ministry of Planning",
+    "actuals2425": {
+      "revenue": 275.46,
+      "capital": 7.15,
+      "total": 282.61
+    },
+    "be2526": {
+      "revenue": 972.35,
+      "capital": 33.71,
+      "total": 1006.06
+    },
+    "re2526": {
+      "revenue": 826.67,
+      "capital": 21.57,
+      "total": 848.24
+    },
+    "be2627": {
+      "revenue": 1203.38,
+      "capital": 28.78,
+      "total": 1232.16
+    }
+  },
+  {
+    "ministry": "Ministry of Panchayati Raj",
+    "demandNo": 72,
+    "demandDesc": "Ministry of Panchayati Raj",
+    "actuals2425": {
+      "revenue": 838.64,
+      "capital": 11.66,
+      "total": 850.3
+    },
+    "be2526": {
+      "revenue": 1170.9,
+      "capital": 14.1,
+      "total": 1185.0
+    },
+    "re2526": {
+      "revenue": 951.15,
+      "capital": 14.81,
+      "total": 965.96
+    },
+    "be2627": {
+      "revenue": 1186.88,
+      "capital": 3.28,
+      "total": 1190.16
+    }
+  },
+  {
+    "ministry": "President, Parliament, UPSC & Vice-President Secretariat",
+    "demandNo": 81,
+    "demandDesc": "Lok Sabha",
+    "actuals2425": {
+      "revenue": 670.64,
+      "capital": 25.82,
+      "total": 696.46
+    },
+    "be2526": {
+      "revenue": 878.1,
+      "capital": 24.9,
+      "total": 903.0
+    },
+    "re2526": {
+      "revenue": 893.05,
+      "capital": 29.95,
+      "total": 923.0
+    },
+    "be2627": {
+      "revenue": 978.17,
+      "capital": 30.83,
+      "total": 1009.0
+    }
+  },
+  {
+    "ministry": "Ministry of Law and Justice",
+    "demandNo": 67,
+    "demandDesc": "Supreme Court of India",
+    "actuals2425": {
+      "revenue": 507.96,
+      "capital": 90.59,
+      "total": 598.55
+    },
+    "be2526": {
+      "revenue": 490.58,
+      "capital": 56.57,
+      "total": 547.15
+    },
+    "re2526": {
+      "revenue": 565.63,
+      "capital": 67.5,
+      "total": 633.13
+    },
+    "be2627": {
+      "revenue": 566.19,
+      "capital": 55.92,
+      "total": 622.11
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 31,
+    "demandDesc": "Department of Expenditure",
+    "actuals2425": {
+      "revenue": 439.59,
+      "capital": 47.48,
+      "total": 487.07
+    },
+    "be2526": {
+      "revenue": 540.52,
+      "capital": 63.31,
+      "total": 603.83
+    },
+    "re2526": {
+      "revenue": 449.16,
+      "capital": 61.71,
+      "total": 510.87
+    },
+    "be2627": {
+      "revenue": 451.4,
+      "capital": 74.13,
+      "total": 525.53
+    }
+  },
+  {
+    "ministry": "President, Parliament, UPSC & Vice-President Secretariat",
+    "demandNo": 82,
+    "demandDesc": "Rajya Sabha",
+    "actuals2425": {
+      "revenue": 399.7,
+      "capital": 12.36,
+      "total": 412.06
+    },
+    "be2526": {
+      "revenue": 400.89,
+      "capital": 13.0,
+      "total": 413.89
+    },
+    "re2526": {
+      "revenue": 467.05,
+      "capital": 14.28,
+      "total": 481.33
+    },
+    "be2627": {
+      "revenue": 471.32,
+      "capital": 11.67,
+      "total": 482.99
+    }
+  },
+  {
+    "ministry": "Ministry of Steel",
+    "demandNo": 97,
+    "demandDesc": "Ministry of Steel",
+    "actuals2425": {
+      "revenue": 109.77,
+      "capital": 8429.3,
+      "total": 8539.07
+    },
+    "be2526": {
+      "revenue": 364.22,
+      "capital": 2997.78,
+      "total": 3362.0
+    },
+    "re2526": {
+      "revenue": 1837.66,
+      "capital": 3019.78,
+      "total": 4857.44
+    },
+    "be2627": {
+      "revenue": 439.84,
+      "capital": 3.34,
+      "total": 443.18
+    }
+  },
+  {
+    "ministry": "President, Parliament, UPSC & Vice-President Secretariat",
+    "demandNo": 84,
+    "demandDesc": "Union Public Service Commission",
+    "actuals2425": {
+      "revenue": 405.59,
+      "capital": 21.5,
+      "total": 427.09
+    },
+    "be2526": {
+      "revenue": 414.12,
+      "capital": 21.64,
+      "total": 435.76
+    },
+    "re2526": {
+      "revenue": 411.25,
+      "capital": 21.64,
+      "total": 432.89
+    },
+    "be2627": {
+      "revenue": 421.09,
+      "capital": 21.85,
+      "total": 442.94
+    }
+  },
+  {
+    "ministry": "Ministry of Law and Justice",
+    "demandNo": 66,
+    "demandDesc": "Election Commission",
+    "actuals2425": {
+      "revenue": 332.93,
+      "capital": 17.56,
+      "total": 350.49
+    },
+    "be2526": {
+      "revenue": 302.98,
+      "capital": 2.0,
+      "total": 304.98
+    },
+    "re2526": {
+      "revenue": 358.79,
+      "capital": 14.5,
+      "total": 373.29
+    },
+    "be2627": {
+      "revenue": 367.69,
+      "capital": 14.53,
+      "total": 382.22
+    }
+  },
+  {
+    "ministry": "Ministry of Chemicals and Fertilisers",
+    "demandNo": 5,
+    "demandDesc": "Department of Chemicals and Petrochemicals",
+    "actuals2425": {
+      "revenue": 1486.39,
+      "capital": 121.36,
+      "total": 1607.75
+    },
+    "be2526": {
+      "revenue": 192.07,
+      "capital": 1.98,
+      "total": 194.05
+    },
+    "re2526": {
+      "revenue": 184.37,
+      "capital": 1.2,
+      "total": 185.57
+    },
+    "be2627": {
+      "revenue": 184.7,
+      "capital": 1.02,
+      "total": 185.72
+    }
+  },
+  {
+    "ministry": "President, Parliament, UPSC & Vice-President Secretariat",
+    "demandNo": 80,
+    "demandDesc": "Staff, Household and Allowances of the President",
+    "actuals2425": {
+      "revenue": 111.32,
+      "capital": 12.99,
+      "total": 124.31
+    },
+    "be2526": {
+      "revenue": 125.63,
+      "capital": 16.2,
+      "total": 141.83
+    },
+    "re2526": {
+      "revenue": 125.63,
+      "capital": 16.2,
+      "total": 141.83
+    },
+    "be2627": {
+      "revenue": 133.1,
+      "capital": 4.1,
+      "total": 137.2
+    }
+  },
+  {
+    "ministry": "Ministry of Parliamentary Affairs",
+    "demandNo": 73,
+    "demandDesc": "Ministry of Parliamentary Affairs",
+    "actuals2425": {
+      "revenue": 56.68,
+      "capital": 6.34,
+      "total": 63.02
+    },
+    "be2526": {
+      "revenue": 59.9,
+      "capital": 6.66,
+      "total": 66.56
+    },
+    "re2526": {
+      "revenue": 58.6,
+      "capital": 7.71,
+      "total": 66.31
+    },
+    "be2627": {
+      "revenue": 61.18,
+      "capital": 7.27,
+      "total": 68.45
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 34,
+    "demandDesc": "Department of Investment and Public Asset Management (DIPAM)",
+    "actuals2425": {
+      "revenue": 44.82,
+      "capital": 0.79,
+      "total": 45.61
+    },
+    "be2526": {
+      "revenue": 55.43,
+      "capital": 1.7,
+      "total": 57.13
+    },
+    "re2526": {
+      "revenue": 33.11,
+      "capital": 0.6,
+      "total": 33.71
+    },
+    "be2627": {
+      "revenue": 54.25,
+      "capital": 1.67,
+      "total": 55.92
+    }
+  },
+  {
+    "ministry": "Ministry of Personnel, Public Grievances and Pensions",
+    "demandNo": 75,
+    "demandDesc": "Central Vigilance Commission",
+    "actuals2425": {
+      "revenue": 46.84,
+      "capital": 1.6,
+      "total": 48.44
+    },
+    "be2526": {
+      "revenue": 50.45,
+      "capital": 1.62,
+      "total": 52.07
+    },
+    "re2526": {
+      "revenue": 49.04,
+      "capital": 1.62,
+      "total": 50.66
+    },
+    "be2627": {
+      "revenue": 52.85,
+      "capital": 1.71,
+      "total": 54.56
+    }
+  },
+  {
+    "ministry": "Ministry of Finance",
+    "demandNo": 33,
+    "demandDesc": "Department of Public Enterprises",
+    "actuals2425": {
+      "revenue": 21.38,
+      "capital": 0.64,
+      "total": 22.02
+    },
+    "be2526": {
+      "revenue": 28.6,
+      "capital": 0.57,
+      "total": 29.17
+    },
+    "re2526": {
+      "revenue": 26.69,
+      "capital": 0.57,
+      "total": 27.26
+    },
+    "be2627": {
+      "revenue": 28.94,
+      "capital": 0.66,
+      "total": 29.6
+    }
+  },
+  {
+    "ministry": "President, Parliament, UPSC & Vice-President Secretariat",
+    "demandNo": 83,
+    "demandDesc": "Secretariat of the Vice-President",
+    "actuals2425": {
+      "revenue": 10.69,
+      "capital": 0.29,
+      "total": 10.98
+    },
+    "be2526": {
+      "revenue": 12.11,
+      "capital": 0.31,
+      "total": 12.42
+    },
+    "re2526": {
+      "revenue": 11.98,
+      "capital": 0.16,
+      "total": 12.14
+    },
+    "be2627": {
+      "revenue": 11.39,
+      "capital": 0.31,
+      "total": 11.7
+    }
+  }
+]

@@ -44,7 +44,7 @@ const Index = () => {
                   <span className="text-foreground font-medium tnum">₹53.47 lakh crore</span> in <span className="tnum">2026</span> — the Union Budget is the longest-running record of how a nation prioritises itself.
                 </p>
                 <p>
-                  Every fiscal year, the government plans how taxes, borrowings and other revenue will be raised and spent. <span className="text-foreground font-medium">Koshtha.AI</span> lets you explore that plan at the most granular level it is published — ministry, demand, major head, sub-head, all the way down to the object head.
+                  Every fiscal year, the government plans how taxes, borrowings and other revenue will be raised and spent. <span className="text-foreground font-medium">Koshtha</span> lets you explore that plan at the most granular level it is published — ministry, demand, major head, sub-head, all the way down to the object head.
                 </p>
               </div>
 
@@ -89,8 +89,7 @@ const Index = () => {
               n="01"
               title="Ministry"
               dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head.`}
-              to="/explorer/ministry/magri"
-              badge="Live: Agriculture"
+              to="/explorer"
             />
             <EntryTile
               n="02"
@@ -119,7 +118,7 @@ const Index = () => {
               {topMinistries.map((m, i) => (
                 <Link
                   key={m.id}
-                  to={m.id === "magri" ? "/explorer/ministry/magri" : `/explorer?ministry=${m.id}`}
+                  to={`/explorer?ministry=${m.id}`}
                   className="bg-card p-6 hover:bg-muted/50 transition-colors group"
                 >
                   <div className="flex items-baseline justify-between gap-4">
