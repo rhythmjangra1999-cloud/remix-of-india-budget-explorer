@@ -263,6 +263,15 @@ function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
   );
 }
 
+interface MHTableProps {
+  rows: MajorHeadRow[];
+  demandNo?: number;
+  ministry?: string;
+  demandDesc?: string;
+}
+
+function MajorHeadTable({ rows, demandNo, ministry, demandDesc }: MHTableProps) {
+  const [sortKey, setSortKey] = useState<MHSort>("section");
 
 // ── All-demands overview table ───────────────────────────────────────────────
 type OvSort = "demandNo" | "actuals2425" | "be2526" | "re2526" | "be2627" | "yoy";
