@@ -167,9 +167,6 @@ export function SchemeTableView({ fy }: { fy: string }) {
           <p className="text-sm text-muted-foreground">
             {SCHEMES.length} schemes · ₹{(grandTotal / 100000).toFixed(2)} lakh cr · click a type to drill down
           </p>
-          <Button variant="outline" size="sm" onClick={() => exportCsv(SCHEMES, "all")}>
-            <Download className="h-4 w-4" /> Export all
-          </Button>
         </div>
         <div className="rounded-sm border border-border bg-card overflow-hidden">
           <table className="w-full text-sm">
@@ -223,12 +220,6 @@ export function SchemeTableView({ fy }: { fy: string }) {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <Breadcrumb />
-          <Button
-            variant="outline" size="sm"
-            onClick={() => exportCsv(SCHEMES.filter((s) => s.schemeType === selectedType), selectedType.replace(/\s+/g, "-"))}
-          >
-            <Download className="h-4 w-4" /> Export
-          </Button>
         </div>
         <p className="text-xs text-muted-foreground">
           {byMinistry.length} ministries · ₹{(typeTotal / 100000).toFixed(2)} lakh cr · click a ministry to see its schemes
@@ -279,12 +270,6 @@ export function SchemeTableView({ fy }: { fy: string }) {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <Breadcrumb />
-        <Button
-          variant="outline" size="sm"
-          onClick={() => exportCsv(schemeRows, `${selectedType}-${selectedMinistry}`.replace(/\s+/g, "-").slice(0, 60))}
-        >
-          <Download className="h-4 w-4" /> Export
-        </Button>
       </div>
       <div className="flex flex-wrap items-center gap-3">
         <Input

@@ -86,9 +86,6 @@ export function TableView({ ministries, fy, onSelect, totalBudget }: Props) {
           onChange={(e) => setQ(e.target.value)}
           className="max-w-sm"
         />
-        <Button variant="outline" size="sm" onClick={exportCsv}>
-          <Download className="h-4 w-4" /> Export CSV
-        </Button>
         <span className="text-xs text-muted-foreground">{rows.length} ministries</span>
       </div>
 

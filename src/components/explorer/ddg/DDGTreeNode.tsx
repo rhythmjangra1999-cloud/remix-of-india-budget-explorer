@@ -32,11 +32,10 @@ function YoY({ v }: { v: number | null }) {
 }
 
 function GapBadge({ flag }: { flag?: string | null }) {
-  if (!flag) return null;
+  if (!flag || flag === "SMALL_BASE") return null;
   const styles: Record<string, string> = {
     DISCONTINUED: "bg-rose-50 text-rose-700",
     NEW: "bg-blue-50 text-blue-700",
-    SMALL_BASE: "bg-amber-50 text-amber-700",
     TOKEN: "bg-slate-100 text-slate-600",
   };
   return <span className={`rounded-sm px-1 py-0.5 text-[9px] font-medium uppercase tracking-wider ${styles[flag] ?? ""}`}>{flag.replace("_", " ")}</span>;

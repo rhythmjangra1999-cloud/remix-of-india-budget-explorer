@@ -26,10 +26,9 @@ function YoYPill({ value }: { value: number | null }) {
 }
 
 function StatusPill({ status }: { status: ReturnType<typeof getMHStatus> }) {
-  if (!status) return null;
+  if (!status || status === "SMALL_BASE") return null;
   const styles: Record<string, string> = {
     DISCONTINUED: "bg-red-500/15 text-red-700 dark:text-red-400",
-    SMALL_BASE: "bg-amber-500/15 text-amber-700 dark:text-amber-400",
     NEW: "bg-blue-500/15 text-blue-700 dark:text-blue-400",
   };
   return (
@@ -125,12 +124,6 @@ export function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
             className="w-full pl-8 pr-3 py-1.5 text-sm rounded-md border border-input bg-background"
           />
         </div>
-        <button
-          onClick={exportCsv}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-sm border border-border bg-card hover:bg-muted transition-colors"
-        >
-          <Download className="h-3.5 w-3.5" /> CSV
-        </button>
         <span className="text-xs text-muted-foreground ml-auto">{sorted.length} heads · ₹ Cr</span>
       </div>
 

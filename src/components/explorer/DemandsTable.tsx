@@ -185,9 +185,6 @@ export function DemandsTable({ ministries, demands, onSelect }: Props) {
           <SortChip k="size" label="Size (BE 26-27)" />
           <SortChip k="yoy" label="YoY %" />
         </div>
-        <Button variant="outline" size="sm" onClick={exportCsv}>
-          <Download className="h-4 w-4" /> CSV
-        </Button>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
