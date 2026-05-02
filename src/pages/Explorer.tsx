@@ -28,12 +28,11 @@ function YoYPill({ value }: { value: number | null }) {
 
 // ── Status pill ──────────────────────────────────────────────────────────────
 function StatusPill({ status }: { status: ReturnType<typeof getMHStatus> }) {
-  if (!status) return null;
+  if (!status || status === "SMALL_BASE") return null;
   const styles = {
     DISCONTINUED: "bg-rose-50 text-rose-700",
-    SMALL_BASE:   "bg-amber-50 text-amber-700",
     NEW:          "bg-blue-50 text-blue-700",
-  };
+  } as Record<string, string>;
   return <span className={`rounded-sm px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider ${styles[status]}`}>{status.replace("_", " ")}</span>;
 }
 
@@ -189,9 +188,6 @@ function MajorHeadTable({ rows, demandNo, ministry, demandDesc }: MHTableProps) 
           <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
           <input value={filter} onChange={e => setFilter(e.target.value)} placeholder="Filter heads…" className="w-full pl-8 pr-3 py-1.5 text-sm rounded-md border border-input bg-background" />
         </div>
-        <button onClick={exportCsv} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs hover:bg-muted transition-colors">
-          <Download className="h-3.5 w-3.5" /> CSV
-        </button>
         <span className="text-xs text-muted-foreground">{filtered.length} heads</span>
       </div>
       <div className="rounded-md border border-border overflow-hidden">
@@ -379,9 +375,6 @@ function AllDemandsOverview({ section, onSelect }: { section: Section; onSelect:
           <h2 className="text-lg font-serif font-semibold">All Demands · {section.charAt(0).toUpperCase() + section.slice(1)}</h2>
           <p className="text-xs text-muted-foreground mt-0.5">Click any row to see the Major Head breakdown. Click column headers to sort ↑↓.</p>
         </div>
-        <button onClick={exportCsv} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs hover:bg-muted transition-colors flex-shrink-0">
-          <Download className="h-3.5 w-3.5" /> CSV
-        </button>
       </div>
 
       {/* Sort-filter pills */}
@@ -574,9 +567,6 @@ function MinistryDetail({ ministry, section, onSelectDemand }: { ministry: strin
             <YoYPill value={yoy} />
           </div>
         </div>
-        <button onClick={exportCsv} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs hover:bg-muted transition-colors flex-shrink-0">
-          <Download className="h-3.5 w-3.5" /> CSV
-        </button>
       </div>
 
       {/* Sort-filter pills */}

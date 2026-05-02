@@ -118,7 +118,7 @@ const MinistryAgri = () => {
             <TabsContent value="major" className="mt-6">
               <MajorHeadTable rows={majorHeads} />
               <p className="mt-3 text-xs text-muted-foreground">
-                Aggregated to Major Head × Section. Click column headers to sort. Use the search to filter, "CSV" to export.
+                Aggregated to Major Head × Section. Click column headers to sort. Use the search to filter.
               </p>
             </TabsContent>
 
@@ -138,7 +138,7 @@ const MinistryAgri = () => {
               <div className="grid gap-4 md:grid-cols-4 mb-6">
                 <FlagCard icon={Sparkles} label="NEW lines" count={ALL_AGRI.filter((r) => r.gapFlag === "NEW").length} dek="Created in BE 2026-27 with no prior allocation." tone="success" />
                 <FlagCard icon={XOctagon} label="DISCONTINUED" count={ALL_AGRI.filter((r) => r.gapFlag === "DISCONTINUED").length} dek="No BE 2026-27 despite prior allocation." tone="danger" />
-                <FlagCard icon={AlertTriangle} label="SMALL_BASE" count={ALL_AGRI.filter((r) => r.gapFlag === "SMALL_BASE").length} dek="Base < ₹10 cr — YoY % is unstable." tone="warn" />
+                
                 <FlagCard icon={AlertTriangle} label="TOKEN" count={ALL_AGRI.filter((r) => r.gapFlag === "TOKEN").length} dek="Base < ₹10 lakh — placeholder allocation." tone="warn" />
               </div>
 
