@@ -482,13 +482,16 @@ function ExpenditureBudgetCard({ demand }: { demand: DemandSummary }) {
   const totalCurr = getValue(demand, "be2627", "total");
   const totalPrev = getValue(demand, "be2526", "total");
   const totalRe   = getValue(demand, "re2526", "total");
+  const totalAct  = getValue(demand, "actuals2425", "total");
   const recCurr = getRecovery(demand.demandNo, "be2627");
   const recPrev = getRecovery(demand.demandNo, "be2526");
   const recRe   = getRecovery(demand.demandNo, "re2526");
-  const hasRec = recCurr !== null;
-  const v    = hasRec ? totalCurr - (recCurr ?? 0) : totalCurr;
-  const prev = recPrev !== null ? totalPrev - recPrev : totalPrev;
-  const re   = recRe   !== null ? totalRe   - recRe   : totalRe;
+  const recAct  = getRecovery(demand.demandNo, "actuals2425");
+  const hasAnyRec = [recCurr, recPrev, recRe, recAct].some((r) => r !== null && r !== 0);
+  const v    = totalCurr - (recCurr ?? 0);
+  const prev = totalPrev - (recPrev ?? 0);
+  const re   = totalRe   - (recRe   ?? 0);
+  const act  = totalAct  - (recAct  ?? 0);
   const yoy = computeYoY(v, prev);
   return (
     <div className="rounded-md border border-border bg-card p-4">
@@ -497,12 +500,13 @@ function ExpenditureBudgetCard({ demand }: { demand: DemandSummary }) {
         <span className="font-serif text-2xl font-bold tnum">{formatCrore(v, true)}</span>
         <YoYPill value={yoy} />
       </div>
-      <div className="mt-1 text-[10px] text-muted-foreground tnum">
-        BE 25-26: {formatCrore(prev, true)} · RE 25-26: {formatCrore(re, true)}
+      <div className="mt-1 text-[10px] text-muted-foreground tnum space-y-0.5">
+        <div>Actuals 24-25: {formatCrore(act, true)}</div>
+        <div>BE 25-26: {formatCrore(prev, true)} · RE 25-26: {formatCrore(re, true)}</div>
       </div>
       <div className="mt-1 text-[10px] text-muted-foreground italic">
-        {hasRec
-          ? `Total − Recoveries (${formatCrore(recCurr ?? 0, true)})`
+        {hasAnyRec
+          ? `Total − Recoveries (BE 26-27: ${formatCrore(recCurr ?? 0, true)}; Actuals 24-25: ${formatCrore(recAct ?? 0, true)})`
           : "Recoveries not reported for this demand"}
       </div>
     </div>
