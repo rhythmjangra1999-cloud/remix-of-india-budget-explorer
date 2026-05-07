@@ -65,7 +65,7 @@ const Index = () => {
 
             {/* Headline figures — 2 stats only */}
             <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Gross Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="" />
+              <Stat label="Total Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="net of recoveries" />
               <Stat label="Fiscal year" value="2026-27" sub={`updated ${BUDGET_META.lastUpdated}`} />
             </div>
           </div>
@@ -127,7 +127,7 @@ const Index = () => {
                     {m.name}
                   </div>
                   <div className="mt-2 text-xs text-muted-foreground">
-                    {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of gross Union Budget
+                    {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
                   </div>
                 </Link>
               ))}
