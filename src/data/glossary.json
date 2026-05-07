@@ -1,0 +1,47 @@
+{
+  "charged": {
+    "term": "Charged Expenditure",
+    "short": "Non-votable expenditure charged on the Consolidated Fund of India.",
+    "long": "Outflows that Parliament cannot vote on — they are 'charged' on the Consolidated Fund. Typical items: interest on debt, salaries of constitutional posts (President, Judges, CAG), and court decrees. They are debated but not put to vote."
+  },
+  "voted": {
+    "term": "Voted Expenditure",
+    "short": "Expenditure approved by Parliament through Demands for Grants.",
+    "long": "Every voted item is presented as a Demand for Grants and put to vote in the Lok Sabha. This is where Parliament exercises its power of the purse — most ministry spending is voted."
+  },
+  "revenue": {
+    "term": "Revenue Section",
+    "short": "Recurring spending that does not create assets — salaries, subsidies, grants, interest.",
+    "long": "Revenue expenditure is consumed in the year — it doesn't add to the government's assets. Examples: PM-KISAN cash transfer, fertiliser subsidy, salaries, pensions."
+  },
+  "capital": {
+    "term": "Capital Section",
+    "short": "Spending that creates assets or reduces liabilities.",
+    "long": "Capital expenditure builds something durable — infrastructure, equipment, equity in PSUs — or repays debt. Higher capital share usually signals investment intent."
+  },
+  "grandTotal": {
+    "term": "Grand Total",
+    "short": "Revenue Section + Capital Section, before recoveries.",
+    "long": "The gross outflow proposed for a Demand. It sums every Major Head under the Revenue and Capital sections."
+  },
+  "recoveries": {
+    "term": "Recoveries",
+    "short": "Receipts adjusted against expenditure (e.g. cost recovered from states/users).",
+    "long": "Money flowing back into a Demand — fees, cost recovered from states, repayments of loans. Shown as a deduction so the net 'Expenditure Provision' reflects true outflow."
+  },
+  "expenditureProvision": {
+    "term": "Expenditure Provision",
+    "short": "Grand Total − Recoveries. The net amount actually budgeted to be spent.",
+    "long": "This is the figure that hits the Consolidated Fund net of recoveries. When recoveries are large relative to gross, the provision can be much smaller than the headline Grand Total."
+  },
+  "majorHead": {
+    "term": "Major Head",
+    "short": "4-digit functional code grouping spending by purpose (e.g. 2401 Crop Husbandry).",
+    "long": "The top of the LSMMH-DDOH-OH classification. Major Head 2401 is Crop Husbandry, 2415 is Agricultural Research, 3601 is Grants-in-aid to States. They are the same across Centre and States."
+  },
+  "ddg": {
+    "term": "Detailed Demand for Grants (DDG)",
+    "short": "The line-item-level booklet a ministry publishes alongside the Budget.",
+    "long": "DDGs break each Demand down to Sub-Head and Object-Head — the lowest layer of the budget. This is where you see PM-KISAN transfers vs. office expenses vs. subsidies."
+  }
+}
