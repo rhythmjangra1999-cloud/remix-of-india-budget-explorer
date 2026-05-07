@@ -63,9 +63,9 @@ export function MinorHeadInline({ demandNo, majorHead, majorHeadName, onOpenShee
             {rows.map((r) => {
               const yoy = ddgYoY(r.be2627, r.be2526);
               return (
-                <tr key={`${r.section}-${r.minorHead}`} className="hover:bg-muted/30">
+                <tr key={`${r.section}-${r.code}`} className="hover:bg-muted/30">
                   <td className="px-2 py-1.5 capitalize text-muted-foreground">{r.section}</td>
-                  <td className="px-2 py-1.5 font-mono text-muted-foreground">{r.minorHead}</td>
+                  <td className="px-2 py-1.5 font-mono text-muted-foreground">{r.code}</td>
                   <td className="px-2 py-1.5 max-w-[260px] truncate" title={r.minorHeadName}>{r.minorHeadName}</td>
                   <td className="px-2 py-1.5 text-right tnum">{fmt(r.actuals2425)}</td>
                   <td className="px-2 py-1.5 text-right tnum">{fmt(r.be2526)}</td>

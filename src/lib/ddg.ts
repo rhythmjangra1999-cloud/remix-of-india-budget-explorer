@@ -49,6 +49,8 @@ export function getDDGLeaves(demandNo: number, majorHead: string): DDGLeaf[] {
 }
 
 export interface MinorHeadRow {
+  code: string; // "subMajor.minor", e.g. "00.103"
+  subMajor: string;
   minorHead: string;
   minorHeadName: string;
   section: string;
@@ -57,7 +59,7 @@ export interface MinorHeadRow {
   re2526: number | null;
   be2627: number | null;
   leafCount: number;
-  share: number; // share of MH BE 26-27 (0..1)
+  share: number;
 }
 
 export function getMinorHeadSummary(demandNo: number, majorHead: string): MinorHeadRow[] {
@@ -66,16 +68,19 @@ export function getMinorHeadSummary(demandNo: number, majorHead: string): MinorH
   const mhTotal = sumKey(leaves, "be2627") ?? 0;
   const groups = new Map<string, DDGLeaf[]>();
   for (const r of leaves) {
-    const key = `${r.section}::${r.minorHead}::${r.minorHeadName}`;
+    const key = `${r.section}::${r.subMajor}.${r.minorHead}::${r.minorHeadName}`;
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(r);
   }
   const rows: MinorHeadRow[] = [];
   for (const [key, rs] of groups) {
-    const [section, minorHead, minorHeadName] = key.split("::");
+    const [section, code, minorHeadName] = key.split("::");
+    const [subMajor, minorHead] = code.split(".");
     const be2627 = sumKey(rs, "be2627");
     rows.push({
       section,
+      code,
+      subMajor,
       minorHead,
       minorHeadName,
       actuals2425: sumKey(rs, "actuals2425"),
@@ -95,7 +100,7 @@ export function getMinorHeadSummary(demandNo: number, majorHead: string): MinorH
 
 // ── Tree structure ───────────────────────────────────────────────────────────
 export interface DDGNode {
-  level: "subMajor" | "minor" | "sub" | "detailed" | "object";
+  level: "minor" | "subHead" | "object";
   code: string;
   name: string;
   fullCode: string;
@@ -111,16 +116,13 @@ export interface DDGNode {
 
 export function buildDDGTree(demandNo: number, majorHead: string): DDGNode[] {
   const leaves = getDDGLeaves(demandNo, majorHead);
-  // group by subMajor → minor → sub → detailed → object
   type Bucket = { rows: DDGLeaf[]; children: Map<string, Bucket>; name: string; section: string };
   const root = new Map<string, Bucket>();
 
   for (const r of leaves) {
     const path = [
-      { code: r.subMajor, name: r.subMajor === "00" ? "(no sub-major)" : `Sub-Major ${r.subMajor}` },
-      { code: r.minorHead, name: r.minorHeadName || `Minor Head ${r.minorHead}` },
-      { code: r.subHead, name: r.subHeadName || `Sub-Head ${r.subHead}` },
-      { code: r.detailedHead, name: r.detailedHead === "00" ? "(default)" : `Detailed ${r.detailedHead}` },
+      { code: `${r.subMajor}.${r.minorHead}`, name: r.minorHeadName || `Minor Head ${r.minorHead}` },
+      { code: `${r.subHead}.${r.detailedHead}`, name: r.subHeadName || `Sub-Head ${r.subHead}.${r.detailedHead}` },
       { code: r.objectHead, name: r.objectHeadName || `Object ${r.objectHead}` },
     ];
     let level = root;
@@ -130,15 +132,11 @@ export function buildDDGTree(demandNo: number, majorHead: string): DDGNode[] {
       if (!level.has(key)) level.set(key, { rows: [], children: new Map(), name: seg.name, section: r.section });
       const b = level.get(key)!;
       b.rows.push(r);
-      if (i === path.length - 1) {
-        // attach leaf gap info onto the object-level row
-        // (handled when building node)
-      }
       level = b.children;
     }
   }
 
-  const levels: DDGNode["level"][] = ["subMajor", "minor", "sub", "detailed", "object"];
+  const levels: DDGNode["level"][] = ["minor", "subHead", "object"];
 
   function build(map: Map<string, Bucket>, depth: number, parentCode: string): DDGNode[] {
     const nodes: DDGNode[] = [];
@@ -166,7 +164,6 @@ export function buildDDGTree(demandNo: number, majorHead: string): DDGNode[] {
     return nodes;
   }
 
-  // top level: prefix with majorHead so fullCode resembles 2401.00.103...
   return build(root, 0, majorHead);
 }
 
