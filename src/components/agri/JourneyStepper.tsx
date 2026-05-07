@@ -21,7 +21,7 @@ export function JourneyStepper({ current, onChange }: Props) {
   const currentIdx = STEPS.findIndex((s) => s.id === current);
   return (
     <div data-tour="stepper" className="border border-border rounded-md bg-card p-3">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2">
         {STEPS.map((s, i) => {
           const isActive = i === currentIdx;
           const isDone = i < currentIdx;

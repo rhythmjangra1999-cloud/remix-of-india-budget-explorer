@@ -8,6 +8,7 @@ import { AgriInsights } from "@/components/agri/AgriInsights";
 import { Definition } from "@/components/agri/Definition";
 import { TourProvider, useTour } from "@/components/tour/TourProvider";
 import { SchemeTableView } from "@/components/explorer/SchemeTableView";
+import { BudgetBuilder } from "@/components/builder/BudgetBuilder";
 import {
   DG_SUMMARY, getMajorHeads, getValue, computeYoY, formatCrore,
   type DemandSummary, type YearKey, type Section,
@@ -304,6 +305,8 @@ function AgriJourneyInner() {
             {step === "majorheads" && <MajorHeadsStep />}
             {step === "schemes"    && <SchemesStep />}
             {step === "insights"   && <InsightsStep />}
+            {step === "tutorial"   && <TutorialStep onStart={startTour} />}
+            {step === "builder"    && <BudgetBuilder embedded defaults={{ dataset: "majorHeads", ministries: ["Ministry of Agriculture and Farmers Welfare"] }} />}
           </div>
           <JourneyNav current={step} onChange={setJourneyStep} />
         </section>
