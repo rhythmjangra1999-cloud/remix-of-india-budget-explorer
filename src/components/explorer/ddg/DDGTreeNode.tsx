@@ -13,10 +13,8 @@ interface Props {
 }
 
 const LEVEL_LABELS: Record<DDGNode["level"], string> = {
-  subMajor: "Sub-Major",
   minor: "Minor",
-  sub: "Sub",
-  detailed: "Detailed",
+  subHead: "Sub-Head",
   object: "Object",
 };
 
