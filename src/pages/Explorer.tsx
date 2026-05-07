@@ -13,6 +13,14 @@ import {
   getMHStatus, YEAR_LABELS,
   type YearKey, type Section, type DemandSummary, type MajorHeadRow,
 } from "@/lib/dg";
+import recoveriesData from "@/data/dg-recoveries.json";
+
+const RECOVERIES = recoveriesData as Record<string, Partial<Record<YearKey, number>>>;
+function getRecovery(demandNo: number, year: YearKey): number | null {
+  const r = RECOVERIES[String(demandNo)];
+  const v = r?.[year];
+  return typeof v === "number" ? v : null;
+}
 
 // ── YoY pill ────────────────────────────────────────────────────────────────
 function YoYPill({ value }: { value: number | null }) {
