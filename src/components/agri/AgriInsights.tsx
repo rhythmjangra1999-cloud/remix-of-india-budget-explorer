@@ -69,7 +69,7 @@ function LinksList({ links }: { links: { title: string; outlet: string; url: str
 
 // 1 — Charged vs Voted
 function ChargedVotedInsight() {
-  const cv = chargedVoted as Record<string, { voted: number; charged: number }>;
+  const cv = chargedVoted as unknown as Record<string, { voted: number; charged: number }>;
   const rows = AGRI_DEMANDS.map((no) => {
     const d = agriDemand(no)!;
     const v = cv[String(no)]?.voted ?? 0;
