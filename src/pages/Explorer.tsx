@@ -500,12 +500,7 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
         <DemandSummaryCard label="Total Revenue" demand={demand} section="revenue" accent={section === "revenue"} />
         <DemandSummaryCard label="Total Capital" demand={demand} section="capital" accent={section === "capital"} />
         <DemandSummaryCard label="Overall Total" demand={demand} section="total"   accent={section === "total"} />
-        <DemandSummaryCard
-          label="Expenditure Budget"
-          demand={demand}
-          section="total"
-          footnote="Total − Recoveries (recoveries reported only at Union level)"
-        />
+        <ExpenditureBudgetCard demand={demand} />
       </div>
 
       {/* Major heads table (all heads under this demand) */}
