@@ -13,6 +13,14 @@ import {
   getMHStatus, YEAR_LABELS,
   type YearKey, type Section, type DemandSummary, type MajorHeadRow,
 } from "@/lib/dg";
+import recoveriesData from "@/data/dg-recoveries.json";
+
+const RECOVERIES = recoveriesData as Record<string, Partial<Record<YearKey, number>>>;
+function getRecovery(demandNo: number, year: YearKey): number | null {
+  const r = RECOVERIES[String(demandNo)];
+  const v = r?.[year];
+  return typeof v === "number" ? v : null;
+}
 
 // ── YoY pill ────────────────────────────────────────────────────────────────
 function YoYPill({ value }: { value: number | null }) {
@@ -470,6 +478,37 @@ function DemandSummaryCard({
   );
 }
 
+function ExpenditureBudgetCard({ demand }: { demand: DemandSummary }) {
+  const totalCurr = getValue(demand, "be2627", "total");
+  const totalPrev = getValue(demand, "be2526", "total");
+  const totalRe   = getValue(demand, "re2526", "total");
+  const recCurr = getRecovery(demand.demandNo, "be2627");
+  const recPrev = getRecovery(demand.demandNo, "be2526");
+  const recRe   = getRecovery(demand.demandNo, "re2526");
+  const hasRec = recCurr !== null;
+  const v    = hasRec ? totalCurr - (recCurr ?? 0) : totalCurr;
+  const prev = recPrev !== null ? totalPrev - recPrev : totalPrev;
+  const re   = recRe   !== null ? totalRe   - recRe   : totalRe;
+  const yoy = computeYoY(v, prev);
+  return (
+    <div className="rounded-md border border-border bg-card p-4">
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Expenditure Budget</div>
+      <div className="mt-1 flex items-baseline gap-2">
+        <span className="font-serif text-2xl font-bold tnum">{formatCrore(v, true)}</span>
+        <YoYPill value={yoy} />
+      </div>
+      <div className="mt-1 text-[10px] text-muted-foreground tnum">
+        BE 25-26: {formatCrore(prev, true)} · RE 25-26: {formatCrore(re, true)}
+      </div>
+      <div className="mt-1 text-[10px] text-muted-foreground italic">
+        {hasRec
+          ? `Total − Recoveries (${formatCrore(recCurr ?? 0, true)})`
+          : "Recoveries not reported for this demand"}
+      </div>
+    </div>
+  );
+}
+
 function DemandDetail({ demandNo, section }: { demandNo: number; section: Section }) {
   const demand = getDemand(demandNo);
   if (!demand) return <div className="p-8 text-muted-foreground">Demand not found.</div>;
@@ -492,12 +531,7 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
         <DemandSummaryCard label="Total Revenue" demand={demand} section="revenue" accent={section === "revenue"} />
         <DemandSummaryCard label="Total Capital" demand={demand} section="capital" accent={section === "capital"} />
         <DemandSummaryCard label="Overall Total" demand={demand} section="total"   accent={section === "total"} />
-        <DemandSummaryCard
-          label="Expenditure Budget"
-          demand={demand}
-          section="total"
-          footnote="Total − Recoveries (recoveries reported only at Union level)"
-        />
+        <ExpenditureBudgetCard demand={demand} />
       </div>
 
       {/* Major heads table (all heads under this demand) */}
