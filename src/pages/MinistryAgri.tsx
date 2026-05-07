@@ -34,7 +34,7 @@ const MinistryAgri = () => {
   const movers = useMemo(() => topMovers(rows), [rows]);
   const majorHeads = useMemo(() => getMajorHeads(rows), [rows]);
 
-  const flagged = useMemo(() => ALL_AGRI.filter((r) => r.gapFlag), []);
+  const flagged = useMemo(() => ALL_AGRI.filter((r) => r.gapFlag && r.gapFlag !== "TOKEN" && r.gapFlag !== "SMALL_BASE"), []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
