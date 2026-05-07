@@ -1,90 +1,110 @@
-## Problem
+## Goal
 
-The DDG drill-down currently renders **five** levels under each Major Head:
+Build a guided "explore Agriculture end-to-end" flow so a first-time visitor can travel from the Ministry overview, down to Demands (DAFW/DARE), into Major Heads, and onward to Schemes — with a dedicated **Insights** tab and a step-by-step **Tutorial** overlay anchored to real Agri data.
 
-```text
-Sub-Major (00) → Minor (103) → Sub (15) → Detailed (01) → Object (31)
-```
+---
 
-This produces noisy, redundant rows like "Sub-Major 02 / Sub-Major 02" and "Detailed 02 / Detailed 02" because the source data only labels combined codes, not individual segments.
+## 1. User journey (the spine)
 
-The correct CGA budget code hierarchy (from the rules you sent) is:
-
-| Code pattern | Level | Example |
-|---|---|---|
-| `XXXX` | Major Head | `2401` Crop Husbandry |
-| `XX.XXX` | Sub-Major + Minor (single level) | `00.103` Seeds |
-| `XX.XX` | Sub-Head + Detailed (single level) | `15.01` Statutory Body |
-| `XX.XX.XX` | Object Head (leaf) | `31` Grants-in-aid-General |
-
-So the tree under a Major Head should be **3 levels deep**, not 5.
-
-## Fix
-
-### 1. `src/lib/ddg.ts` — rebuild tree as 3 levels
-
-Replace the `buildDDGTree` grouping path:
+A persistent **JourneyStepper** at the top of `MinistryAgri` and the related Explorer views, showing where the user is:
 
 ```text
-// before
-[ subMajor, minor, sub, detailed, object ]
-
-// after
-[ `${subMajor}.${minor}` ,  `${sub}.${detailed}` ,  object ]
+[1 Ministry] → [2 Demands] → [3 Major Heads] → [4 Schemes] → [5 Insights]
 ```
 
-`DDGNode.level` becomes one of `"minor" | "subHead" | "object"` (renamed for clarity).
+- Each step is a clickable chip. Active step is highlighted; completed steps get a check.
+- State is held in the URL (`?step=demands&demand=1`) so the tutorial and deep links work.
+- A "Next →" / "← Back" pair sits at the bottom of each step's content.
 
-Node naming rules:
-- Minor node → `code = "${subMajor}.${minor}"`, `name = minorHeadName` (e.g. `00.103 Seeds (Minor Head)`).
-- Sub-Head node → `code = "${sub}.${detailed}"`, `name = subHeadName` (e.g. `15.01 Statutory Body`).
-- Object node → `code = objectHead`, `name = objectHeadName`.
+### Step content
+1. **Ministry** — current `MinistryAgri` hero + KPIs + DemandsOverview cards.
+2. **Demands** — DAFW vs DARE side-by-side: Grand Total, Revenue/Capital split, Recoveries, Expenditure Provision (the four cards already on Explorer, reused).
+3. **Major Heads** — `MajorHeadTable` filtered to the chosen demand, with a "Top contributors" mini-bar above.
+4. **Schemes** — scheme/transfer view (reuse `SchemeTableView`) scoped to Agriculture.
+5. **Insights** — new tab (see §2).
 
-The `MinorHeadRow` summary used by Tier 1 stays one row per `subMajor.minor` group (already effectively the case; key changes from `minorHead` alone to `${subMajor}.${minorHead}` so two different sub-majors with the same minor code don't collide).
+---
 
-### 2. `MinorHeadInline.tsx` — show full `subMajor.minor` code
+## 2. Insights tab (the analytical payoff)
 
-Display the prefixed code (`00.103`) instead of just `103`. No structural changes.
+A new `AgriInsights` component rendered as the final step. Five insight cards, each with a one-line takeaway, a small chart/number, and a "Read more" expand:
 
-### 3. `DDGTreeNode.tsx` — drop the `subMajor` and `detailed` labels
+1. **Charged vs Voted**
+   - Definition block (Charged = non-votable, e.g. interest, court decrees; Voted = Parliament-approved).
+   - Show the Charged/Voted split for DAFW and DARE.
+   - Commentary: typical drivers (debt servicing, statutory transfers, salaries of constitutional posts).
 
-- Update `LEVEL_LABELS` to the new three-level enum: `Minor`, `Sub-Head`, `Object`.
-- Default expand depth: open Minor by default; Sub-Head and Object collapsed (the previous default of "expand to depth 2" remains correct for a 3-level tree).
-- Search/`hideTokens` logic unchanged.
+2. **Revenue vs Capital — YoY delta**
+   - Bars: BE 25-26 vs BE 26-27 for Revenue and Capital, per demand.
+   - Auto-generated narrative: "Capital outlay rose X% — typically signals push on irrigation/infra; Revenue dipped Y% — usually subsidy rationalisation."
+   - "Related coverage" panel: 3 curated article links (PIB / The Hindu / Indian Express on Agri budget). Stored in `src/data/agri-insights-links.json` for now; future Perplexity hook noted.
 
-### 4. `DDGSheet.tsx` — header column unchanged
+3. **Recoveries as % of Grand Total**
+   - Big number: `Recoveries / Grand Total` for the ministry and per demand.
+   - Threshold band: <2% normal · 2-10% watch · >10% high (interpretation: high recoveries with high gross outlay can signal churn / low net delivery).
+   - Sparkline across Actuals 24-25 → BE 25-26 → RE 25-26 → BE 26-27.
 
-The column grid (`Hierarchy / Actuals / BE25 / RE25 / BE26 / YoY`) and totals are unchanged. Only the body uses the new node shape.
+4. **Major Head contribution**
+   - Horizontal bar of top 8 Major Heads by BE 26-27 share of demand total.
+   - Toggle: "Share this year" vs "YoY change in share" (which heads are gaining/losing weight).
 
-### 5. Re-verify the source data
+5. **Expenditure Provision arithmetic**
+   - Visual equation: `Grand Total − Recoveries = Expenditure Provision`, populated with live Agri numbers.
+   - Comparison strip: same equation for Union total vs Agri, so the user sees scale.
 
-The existing `src/data/ddgs/agri-ddg.json` already has the correct flat columns from the FY26-27 CSVs (`sub_major`, `minor_head`, `sub_head`, `detailed_head`, `object_head`, `sub_head_name`, etc.). It does **not** need to be regenerated — the bug is purely in how `buildDDGTree` groups it. After the change, the tree for `2401 / Demand 1` will look like:
+---
 
-```text
-00.103  Seeds (Minor Head)              ₹ … 
-  15.01  Statutory Body                  ₹ …
-    31   Grants-in-aid-General           ₹ …
-    35   Grants for creation of …        ₹ …
-    36   Grants-in-aid-Salaries          ₹ …
-  24.01  Establishment                   ₹ …
-    01   Salaries                        ₹ …
-    02   Wages                           ₹ …
-    …
-02.797  Transfer to Reserve Funds…       ₹ …
-  02.00  Pradhan Mantri Fasal Bima Yojna ₹ …
-    63   Inter Account Transfers         ₹ …
-```
+## 3. Tutorial overlay
 
-## Files
+A lightweight, dismissible coach-mark tour using Agri as the example. Triggered by:
+- A "Take the tour" button in the Ministry header.
+- First-visit auto-open (stored in `localStorage: agri-tour-seen`).
 
-- edit — `src/lib/ddg.ts` (rewrite `buildDDGTree`, narrow `DDGNode["level"]` union, adjust `getMinorHeadSummary` key to `subMajor.minor`).
-- edit — `src/components/explorer/ddg/DDGTreeNode.tsx` (new `LEVEL_LABELS`, no other behaviour change).
-- edit — `src/components/explorer/ddg/MinorHeadInline.tsx` (display `subMajor.minor` code).
-- no change — `DDGSheet.tsx`, `agri-ddg.json`, totals/aggregations.
+### Tour stops (8 steps)
+1. Ministry header — "This is the ministry-level view…"
+2. KPI strip — what BE / YoY / Revenue / Capital mean.
+3. JourneyStepper — "You'll move through these 5 steps."
+4. Demands cards — Grand Total composition.
+5. **Expenditure Budget card** — explain `Total − Recoveries` with the live Agri numbers.
+6. Major Heads table — sorting, status pills, codes.
+7. Schemes view — how money reaches states/beneficiaries.
+8. Insights tab — what to look for.
 
-## Acceptance
+Implementation: a small custom `<TourProvider>` (no new dep) that renders a fixed overlay with a spotlight rectangle around `data-tour="step-id"` targets. Keyboard: `→`/`←`/`Esc`.
 
-- Opening `2401 Crop Husbandry` no longer shows the duplicated "Sub-Major 02 / Sub-Major 02" or "Detailed 02 / Detailed 02" rows.
-- Tree under each Major Head is exactly 3 levels deep (Minor → Sub-Head → Object).
-- Codes shown match CGA convention: `00.103`, `15.01`, `31` etc.; `fullCode` on hover stays the dotted leaf code (`2401.00.103.15.01.31`).
-- Subtotals at every level still equal the sum of their children.
+---
+
+## 4. Definitions / glossary
+
+Add a `<Definition>` inline component (hover/tap popover) used wherever these terms appear: **Charged**, **Voted**, **Revenue Section**, **Capital Section**, **Grand Total**, **Recoveries**, **Expenditure Provision**, **Major Head**, **DDG**. Definitions stored in `src/data/glossary.json`.
+
+---
+
+## Technical details
+
+- **Routing**: keep `/explorer/agri` (or `/ministry/agriculture`) as the journey root; sub-steps via `?step=` so deep-links + tutorial both work.
+- **New files**:
+  - `src/components/agri/JourneyStepper.tsx`
+  - `src/components/agri/AgriInsights.tsx` (+ small subcomponents per insight)
+  - `src/components/agri/Definition.tsx`
+  - `src/components/tour/TourProvider.tsx`, `TourSpotlight.tsx`
+  - `src/data/glossary.json`, `src/data/agri-insights-links.json`
+- **Reuse**: `DemandsOverview`, `MajorHeadTable`, `SchemeTableView`, `ExpenditureBudgetCard` (lift from `Explorer.tsx` into `src/components/explorer/ExpenditureBudgetCard.tsx` so both Explorer and Insights share it).
+- **Data**: Charged/Voted split is not in our JSONs yet — add a `voted`/`charged` aggregate per demand in `src/data/agri-charged-voted.json` (you'll provide the numbers, or we estimate from existing rows where `voted` flag exists).
+- **No backend** required for v1. Article links are static; we can wire Perplexity later for live "related coverage".
+
+---
+
+## Out of scope (v1)
+
+- Live news fetch (Perplexity/Firecrawl) — stub with curated links.
+- Charged/Voted interactive drill — only summary numbers in v1.
+- Mobile tour polish beyond basic responsive — desktop-first.
+
+---
+
+## Open questions
+
+1. Charged/Voted numbers — do you have a source sheet, or should we derive from the existing DDG `voted` flag where present?
+2. For "related coverage", okay with 3 hand-picked links per insight for v1, then add Perplexity later?
+3. Should the journey replace the current `MinistryAgri` page, or live alongside it at `/ministry/agriculture/journey`?

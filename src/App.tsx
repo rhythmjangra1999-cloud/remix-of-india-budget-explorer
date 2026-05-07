@@ -9,6 +9,7 @@ import Methodology from "./pages/Methodology.tsx";
 import Findings from "./pages/Findings.tsx";
 import About from "./pages/About.tsx";
 import MinistryAgri from "./pages/MinistryAgri.tsx";
+import AgriJourney from "./pages/AgriJourney.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,8 @@ const App = () => (
           <Route path="/methodology" element={<Methodology />} />
           <Route path="/about" element={<About />} />
           <Route path="/explorer/ministry/magri" element={<MinistryAgri />} />
+          <Route path="/explorer/ministry/agriculture" element={<AgriJourney />} />
+          <Route path="/agri-journey" element={<AgriJourney />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

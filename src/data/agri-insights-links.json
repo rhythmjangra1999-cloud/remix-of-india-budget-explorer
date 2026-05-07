@@ -1,0 +1,15 @@
+{
+  "revenueCapital": [
+    { "title": "Budget 2025-26: Agriculture allocation analysis", "outlet": "PIB", "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2099234" },
+    { "title": "Why farm capex is rising slowly", "outlet": "The Hindu BusinessLine", "url": "https://www.thehindubusinessline.com/economy/agri-business/" },
+    { "title": "Fertiliser subsidy drives Revenue spend in DAFW", "outlet": "Indian Express", "url": "https://indianexpress.com/section/business/economy/" }
+  ],
+  "recoveries": [
+    { "title": "Understanding recoveries in the Demand for Grants", "outlet": "PRS India", "url": "https://prsindia.org/budgets/parliament" },
+    { "title": "How NABARD recoveries reduce net DAFW outlay", "outlet": "Business Standard", "url": "https://www.business-standard.com/topic/agriculture-budget" }
+  ],
+  "majorHead": [
+    { "title": "Crop Husbandry (Head 2401) — what it covers", "outlet": "CGA Classification", "url": "https://cga.nic.in/" },
+    { "title": "Agricultural Research (Head 2415) trends", "outlet": "ICAR", "url": "https://icar.org.in/" }
+  ]
+}
