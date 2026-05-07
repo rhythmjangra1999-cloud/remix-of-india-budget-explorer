@@ -1,100 +1,90 @@
-## Goal
+## Problem
 
-Let users drill from a Major Head row inside a Demand all the way down to object-head detail (the same hierarchy as the uploaded `1.1.FY27.csv`: Major → Sub-Major → Minor → Sub-Head → Detailed → Object). Keep the current Demand page calm — no third nested table directly on the page.
-
-## UX pattern — two tiers, no clutter
-
-We keep the current Major Heads table exactly as it is (with Revenue/Capital subtotals + Grand Total). We add **two complementary entry points** off each Major Head row:
+The DDG drill-down currently renders **five** levels under each Major Head:
 
 ```text
-[ Code | Major Head Name | Section | Actuals | BE25 | RE25 | BE26-27 | YoY | ▸ ]
-                                                                            │
-                  click ▸ on row  ──►  inline accordion expands underneath
-                                       (Minor Head summary, ~5–15 rows)
-                                       │
-                                       └── "Open full breakdown ↗"  ──►  side sheet (Sheet/Drawer)
-                                                                          full Major→Minor→Sub→Object tree
-                                                                          with search, gap badges, CSV
+Sub-Major (00) → Minor (103) → Sub (15) → Detailed (01) → Object (31)
 ```
 
-### Tier 1 — Inline expand (Minor Head summary)
-- Adds a chevron column to `MajorHeadTable`. Clicking expands an in-table row showing **only Minor Head subtotals** for that Major Head: code · name · 4 yrs · YoY · share-of-MH bar.
-- Typical 3–15 rows per MH — small enough not to overwhelm.
-- Multiple rows can be expanded; expand-all/collapse-all buttons in the toolbar.
-- Subtotal/Grand Total rows are not expandable.
+This produces noisy, redundant rows like "Sub-Major 02 / Sub-Major 02" and "Detailed 02 / Detailed 02" because the source data only labels combined codes, not individual segments.
 
-### Tier 2 — Side sheet (full DDG tree)
-- A "View full breakdown ↗" link inside the expanded row, plus a clickable Major Head name, opens a right-side **Sheet** (existing `components/ui/sheet.tsx`).
-- The sheet shows the full nested tree for that Major Head: **Sub-Major → Minor → Sub-Head → Detailed → Object**, with subtotals at every level.
-- Sheet header: MH code + name, demand context, BE 26-27 with YoY pill, gap-flag count chips (DISCONTINUED · NEW · SMALL_BASE · TOKEN).
-- Body: collapsible tree (default expanded to Minor; deeper levels lazy-expand). Each leaf shows object-head name, 4 years, YoY pill, full code (`2401.00.103.15.01.31`), and a gap badge if applicable.
-- Sheet toolbar: search, "Hide token/small-base rows" toggle, CSV export of just this MH.
-- Mobile: same Sheet slides up as bottom drawer.
+The correct CGA budget code hierarchy (from the rules you sent) is:
 
-This keeps the Demand page surface unchanged; depth is opt-in per MH.
+| Code pattern | Level | Example |
+|---|---|---|
+| `XXXX` | Major Head | `2401` Crop Husbandry |
+| `XX.XXX` | Sub-Major + Minor (single level) | `00.103` Seeds |
+| `XX.XX` | Sub-Head + Detailed (single level) | `15.01` Statutory Body |
+| `XX.XX.XX` | Object Head (leaf) | `31` Grants-in-aid-General |
 
-## Coverage scope
+So the tree under a Major Head should be **3 levels deep**, not 5.
 
-DDG drill-down only lights up for Major Heads we have detailed data for. For others the chevron is replaced by a "—" with a tooltip "Detailed DG not yet parsed" — same pattern as the existing coverage chips. Initial coverage = Agriculture (DAFW Demand 1 + DARE Demand 2) from the uploaded CSVs.
+## Fix
 
-## Data model
+### 1. `src/lib/ddg.ts` — rebuild tree as 3 levels
 
-New file `src/data/ddgs/agri-ddg.json` produced by a one-off conversion of `1.1.FY27.csv` + `1.2.FY27.csv`. Each leaf row already exists in the CSV; we keep the flat shape and build the tree in-memory.
+Replace the `buildDDGTree` grouping path:
 
-```ts
-type DDGLeaf = {
-  id: string;            // full_code, e.g. "2401.00.103.15.01.31"
-  ministry: "DAFW" | "DARE" | string;
-  demandNo: number;
-  section: "Revenue" | "Capital";
-  majorHead: string;     // "2401"
-  majorHeadName: string;
-  subMajor: string;      // "00"
-  minorHead: string;     // "103"
-  minorHeadName: string;
-  subHead: string;       // "15"
-  detailedHead: string;  // "01"
-  subHeadName: string;
-  objectHead: string;    // "31"
-  objectHeadName: string;
-  actuals2425: number | null;
-  be2526: number | null;
-  re2526: number | null;
-  be2627: number | null;
-  gapFlag: "DISCONTINUED" | "NEW" | "SMALL_BASE" | "TOKEN" | null;
-  gapReason: string | null;
-};
+```text
+// before
+[ subMajor, minor, sub, detailed, object ]
+
+// after
+[ `${subMajor}.${minor}` ,  `${sub}.${detailed}` ,  object ]
 ```
 
-`src/lib/ddg.ts` exposes:
-- `getDDGLeaves(demandNo, majorHead)` → flat leaves
-- `buildDDGTree(leaves)` → nested SubMajor→Minor→Sub→Detailed→Object with subtotals at each node
-- `getMinorHeadSummary(demandNo, majorHead)` → Tier-1 rows (one per Minor Head) with subtotals
-- `hasDDG(demandNo, majorHead)` → boolean for chevron enable
-- `getGapCounts(leaves)` → `{ DISCONTINUED, NEW, SMALL_BASE, TOKEN }`
+`DDGNode.level` becomes one of `"minor" | "subHead" | "object"` (renamed for clarity).
 
-Figures stay in ₹ Lakh inside the source rows (CSV uses lakh) and are converted to ₹ Cr at render via existing `formatCrore`. We'll divide by 100 once on load to keep a single unit (₹ Cr) across Tier 1, Tier 2, and CSV export so totals reconcile with the existing Major Head table.
+Node naming rules:
+- Minor node → `code = "${subMajor}.${minor}"`, `name = minorHeadName` (e.g. `00.103 Seeds (Minor Head)`).
+- Sub-Head node → `code = "${sub}.${detailed}"`, `name = subHeadName` (e.g. `15.01 Statutory Body`).
+- Object node → `code = objectHead`, `name = objectHeadName`.
+
+The `MinorHeadRow` summary used by Tier 1 stays one row per `subMajor.minor` group (already effectively the case; key changes from `minorHead` alone to `${subMajor}.${minorHead}` so two different sub-majors with the same minor code don't collide).
+
+### 2. `MinorHeadInline.tsx` — show full `subMajor.minor` code
+
+Display the prefixed code (`00.103`) instead of just `103`. No structural changes.
+
+### 3. `DDGTreeNode.tsx` — drop the `subMajor` and `detailed` labels
+
+- Update `LEVEL_LABELS` to the new three-level enum: `Minor`, `Sub-Head`, `Object`.
+- Default expand depth: open Minor by default; Sub-Head and Object collapsed (the previous default of "expand to depth 2" remains correct for a 3-level tree).
+- Search/`hideTokens` logic unchanged.
+
+### 4. `DDGSheet.tsx` — header column unchanged
+
+The column grid (`Hierarchy / Actuals / BE25 / RE25 / BE26 / YoY`) and totals are unchanged. Only the body uses the new node shape.
+
+### 5. Re-verify the source data
+
+The existing `src/data/ddgs/agri-ddg.json` already has the correct flat columns from the FY26-27 CSVs (`sub_major`, `minor_head`, `sub_head`, `detailed_head`, `object_head`, `sub_head_name`, etc.). It does **not** need to be regenerated — the bug is purely in how `buildDDGTree` groups it. After the change, the tree for `2401 / Demand 1` will look like:
+
+```text
+00.103  Seeds (Minor Head)              ₹ … 
+  15.01  Statutory Body                  ₹ …
+    31   Grants-in-aid-General           ₹ …
+    35   Grants for creation of …        ₹ …
+    36   Grants-in-aid-Salaries          ₹ …
+  24.01  Establishment                   ₹ …
+    01   Salaries                        ₹ …
+    02   Wages                           ₹ …
+    …
+02.797  Transfer to Reserve Funds…       ₹ …
+  02.00  Pradhan Mantri Fasal Bima Yojna ₹ …
+    63   Inter Account Transfers         ₹ …
+```
 
 ## Files
 
-- new — `src/data/ddgs/agri-ddg.json` (generated from the two CSVs)
-- new — `src/lib/ddg.ts` (loaders + tree builder + aggregations)
-- new — `src/components/explorer/ddg/MinorHeadInline.tsx` (Tier 1 row body)
-- new — `src/components/explorer/ddg/DDGSheet.tsx` (Tier 2 side sheet with the recursive tree)
-- new — `src/components/explorer/ddg/DDGTreeNode.tsx` (recursive node renderer)
-- edit — `src/pages/Explorer.tsx` → `MajorHeadTable`: add chevron col, expanded state set, "View full breakdown" trigger, and selectedMH state to drive the sheet
-- edit — `src/components/explorer/agri/MajorHeadTable.tsx` (mirror the same affordance for the dedicated Agriculture page so behaviour is consistent)
-
-## What stays the same
-
-- Demand header (3 summary cards: Revenue / Capital / Total) — unchanged.
-- Major Head table rows, subtotals, Grand Total — unchanged.
-- Sidebar, section toggle, sort chips, CSV export of MH table — unchanged.
-- No new tab on the page; the deep view is a transient sheet.
+- edit — `src/lib/ddg.ts` (rewrite `buildDDGTree`, narrow `DDGNode["level"]` union, adjust `getMinorHeadSummary` key to `subMajor.minor`).
+- edit — `src/components/explorer/ddg/DDGTreeNode.tsx` (new `LEVEL_LABELS`, no other behaviour change).
+- edit — `src/components/explorer/ddg/MinorHeadInline.tsx` (display `subMajor.minor` code).
+- no change — `DDGSheet.tsx`, `agri-ddg.json`, totals/aggregations.
 
 ## Acceptance
 
-- Click the chevron on `2401 Crop Husbandry` (Demand 1, DAFW) → inline row reveals Minor Head subtotals (Seeds, Crop Insurance, etc.) with 4-yr figures + YoY.
-- Click "View full breakdown ↗" → right sheet opens with the full Sub-Major→Minor→Sub→Object tree, gap badges, search, and CSV export limited to that MH.
-- Major Heads without detailed data show a disabled chevron with tooltip — no broken state.
-- Subtotals at every level reconcile to the parent figure within ±1 ₹ Cr (rounding).
+- Opening `2401 Crop Husbandry` no longer shows the duplicated "Sub-Major 02 / Sub-Major 02" or "Detailed 02 / Detailed 02" rows.
+- Tree under each Major Head is exactly 3 levels deep (Minor → Sub-Head → Object).
+- Codes shown match CGA convention: `00.103`, `15.01`, `31` etc.; `fullCode` on hover stays the dotted leaf code (`2401.00.103.15.01.31`).
+- Subtotals at every level still equal the sum of their children.
