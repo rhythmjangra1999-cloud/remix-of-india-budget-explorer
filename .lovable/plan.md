@@ -1,110 +1,144 @@
-## Goal
+# Budget Analysis Builder
 
-Build a guided "explore Agriculture end-to-end" flow so a first-time visitor can travel from the Ministry overview, down to Demands (DAFW/DARE), into Major Heads, and onward to Schemes — with a dedicated **Insights** tab and a step-by-step **Tutorial** overlay anchored to real Agri data.
+A new tab placed **after Tutorial** in the AgriJourney stepper (and reusable across the site). Inspired by Oracle's Financial Analysis "Subject Area → Filters → Columns → Pivot/Visualize → Save" workflow, but scoped to public-budget data we already have in `src/data/`.
+
+The user assembles their own analysis: pick *what* to compare, *how* to slice it, *which years*, then visualise it as a table, bar, line, or treemap — and save the configuration as a shareable URL.
 
 ---
 
-## 1. User journey (the spine)
+## 1. Mental model (Oracle parallel)
 
-A persistent **JourneyStepper** at the top of `MinistryAgri` and the related Explorer views, showing where the user is:
+| Oracle FA concept | Our equivalent |
+|---|---|
+| Subject Area | **Dataset** — Ministries / Demands / Major Heads / Schemes / DDG line items |
+| Dimensions | Group-by axes — Ministry, Demand, Section (Rev/Cap), Voted/Charged, Major Head, Scheme, State |
+| Facts / Measures | Amount fields — Actuals 24-25, BE 25-26, RE 25-26, BE 26-27, YoY %, Share %, Recoveries, Net Provision |
+| Filters | Slicers — Ministry list, FY, Section, Voted/Charged, Major Head code prefix, Scheme name search, Amount range |
+| Views | Visualisations — Table, Pivot, Bar, Stacked Bar, Line (YoY), Treemap, Sankey |
+| Saved Analysis | URL-encoded config + "My Analyses" in localStorage |
+
+---
+
+## 2. Builder layout
 
 ```text
-[1 Ministry] → [2 Demands] → [3 Major Heads] → [4 Schemes] → [5 Insights]
+┌───────────────────────────────────────────────────────────────────────┐
+│  Budget Analysis Builder                          [Reset] [Save] [↗] │
+├──────────────┬────────────────────────────────────────────────────────┤
+│ 1. Dataset   │  ○ Ministries  ○ Demands  ● Major Heads  ○ Schemes    │
+│ 2. Compare   │  Rows: [Ministry ▾]   Columns: [FY ▾]                  │
+│ 3. Measure   │  [BE 26-27 ▾]  □ show YoY  □ show Share %              │
+│ 4. Filters   │  Ministry: [Agri ×][Health ×] +                        │
+│              │  Section:  ● All ○ Revenue ○ Capital                   │
+│              │  Type:     ● All ○ Voted ○ Charged                     │
+│              │  Major Head prefix: [24__]                             │
+│              │  Min amount: [____] Cr   Max: [____] Cr                │
+│ 5. View      │  [Table] [Pivot] [Bar] [Stacked] [Line YoY] [Treemap] │
+├──────────────┴────────────────────────────────────────────────────────┤
+│                       ── Visualisation area ──                        │
+│                                                                       │
+│  [Top-N selector]   [Sort: Value desc ▾]   [Export CSV] [Copy link]   │
+└───────────────────────────────────────────────────────────────────────┘
 ```
 
-- Each step is a clickable chip. Active step is highlighted; completed steps get a check.
-- State is held in the URL (`?step=demands&demand=1`) so the tutorial and deep links work.
-- A "Next →" / "← Back" pair sits at the bottom of each step's content.
+---
 
-### Step content
-1. **Ministry** — current `MinistryAgri` hero + KPIs + DemandsOverview cards.
-2. **Demands** — DAFW vs DARE side-by-side: Grand Total, Revenue/Capital split, Recoveries, Expenditure Provision (the four cards already on Explorer, reused).
-3. **Major Heads** — `MajorHeadTable` filtered to the chosen demand, with a "Top contributors" mini-bar above.
-4. **Schemes** — scheme/transfer view (reuse `SchemeTableView`) scoped to Agriculture.
-5. **Insights** — new tab (see §2).
+## 3. Filters in detail
+
+**Scope filters** (define the rows that enter the analysis)
+- **Ministry** — multi-select chips, "All 102", "DDG-available only", presets ("Top 10 by BE 26-27", "Social sector", "Infrastructure")
+- **Demand** — multi-select, dependent on ministry
+- **Major Head** — search by code (2401) or name; prefix match (24__ for Agri-related)
+- **Scheme / Sub-scheme** — text search across `schemes.json`
+- **State** — for `transfers.json` only
+
+**Attribute filters** (refine the slice)
+- **Section**: All / Revenue / Capital
+- **Voted vs Charged**: All / Voted / Charged
+- **Confidence**: validated / parsed / ocr-needed (inherited from data)
+- **Has recoveries**: yes/no
+- **Centrally Sponsored vs Central Sector** (where flagged)
+
+**Quantitative filters**
+- Amount range slider on the chosen measure
+- YoY change band (e.g. only items with > +20% or < −10%)
+- Share-of-parent threshold (e.g. > 1% of demand)
+
+**Time filters**
+- Year picker — multi-select across {Actuals 24-25, BE 25-26, RE 25-26, BE 26-27}
+- "Compare two years" toggle → enables Δ and Δ% columns
 
 ---
 
-## 2. Insights tab (the analytical payoff)
+## 4. Cross-ministry & cross-scheme flexibility
 
-A new `AgriInsights` component rendered as the final step. Five insight cards, each with a one-line takeaway, a small chart/number, and a "Read more" expand:
+These are the "power moves" the builder unlocks that today's Explorer cannot do:
 
-1. **Charged vs Voted**
-   - Definition block (Charged = non-votable, e.g. interest, court decrees; Voted = Parliament-approved).
-   - Show the Charged/Voted split for DAFW and DARE.
-   - Commentary: typical drivers (debt servicing, statutory transfers, salaries of constitutional posts).
-
-2. **Revenue vs Capital — YoY delta**
-   - Bars: BE 25-26 vs BE 26-27 for Revenue and Capital, per demand.
-   - Auto-generated narrative: "Capital outlay rose X% — typically signals push on irrigation/infra; Revenue dipped Y% — usually subsidy rationalisation."
-   - "Related coverage" panel: 3 curated article links (PIB / The Hindu / Indian Express on Agri budget). Stored in `src/data/agri-insights-links.json` for now; future Perplexity hook noted.
-
-3. **Recoveries as % of Grand Total**
-   - Big number: `Recoveries / Grand Total` for the ministry and per demand.
-   - Threshold band: <2% normal · 2-10% watch · >10% high (interpretation: high recoveries with high gross outlay can signal churn / low net delivery).
-   - Sparkline across Actuals 24-25 → BE 25-26 → RE 25-26 → BE 26-27.
-
-4. **Major Head contribution**
-   - Horizontal bar of top 8 Major Heads by BE 26-27 share of demand total.
-   - Toggle: "Share this year" vs "YoY change in share" (which heads are gaining/losing weight).
-
-5. **Expenditure Provision arithmetic**
-   - Visual equation: `Grand Total − Recoveries = Expenditure Provision`, populated with live Agri numbers.
-   - Comparison strip: same equation for Union total vs Agri, so the user sees scale.
+1. **Cross-ministry Major Head rollup** — pick MH 2401 and see every ministry that books to it, ranked.
+2. **Scheme-name search across ministries** — e.g. "PMAY" returns Housing + Rural rows side-by-side.
+3. **Ministry basket vs Ministry basket** — group A: {Agri, FAHD, Food Processing}; group B: {Rural, Jal Shakti}; compare totals & YoY.
+4. **Recoveries leaderboard** — order any dataset by recoveries-as-% of gross.
+5. **Capital-intensity ranking** — Capital ÷ Grand Total across selected ministries.
+6. **YoY shock detector** — filter where |Δ| > X% between RE 25-26 and BE 26-27.
+7. **State-share view** (when transfers data present) — pivot scheme × state.
+8. **What-if scaler** — apply a "+5%" or "deflator" multiplier on a measure (read-only modelling).
 
 ---
 
-## 3. Tutorial overlay
+## 5. Output / Visualisation
 
-A lightweight, dismissible coach-mark tour using Agri as the example. Triggered by:
-- A "Take the tour" button in the Ministry header.
-- First-visit auto-open (stored in `localStorage: agri-tour-seen`).
+Same data, switchable:
+- **Table** — sortable, sticky header, CSV export
+- **Pivot** — rows × columns × measure (Excel-like)
+- **Bar / Stacked Bar** — top-N with "Other" bucket
+- **Line** — only when a year dimension is on an axis (YoY trend)
+- **Treemap** — hierarchical share (Ministry → Demand → MH)
+- **Sankey** — only when source+target dimensions chosen (Ministry → State, Scheme → MH)
 
-### Tour stops (8 steps)
-1. Ministry header — "This is the ministry-level view…"
-2. KPI strip — what BE / YoY / Revenue / Capital mean.
-3. JourneyStepper — "You'll move through these 5 steps."
-4. Demands cards — Grand Total composition.
-5. **Expenditure Budget card** — explain `Total − Recoveries` with the live Agri numbers.
-6. Major Heads table — sorting, status pills, codes.
-7. Schemes view — how money reaches states/beneficiaries.
-8. Insights tab — what to look for.
-
-Implementation: a small custom `<TourProvider>` (no new dep) that renders a fixed overlay with a spotlight rectangle around `data-tour="step-id"` targets. Keyboard: `→`/`←`/`Esc`.
+Common controls: Top-N, sort, log scale toggle, "show as % of total".
 
 ---
 
-## 4. Definitions / glossary
+## 6. Save & share
 
-Add a `<Definition>` inline component (hover/tap popover) used wherever these terms appear: **Charged**, **Voted**, **Revenue Section**, **Capital Section**, **Grand Total**, **Recoveries**, **Expenditure Provision**, **Major Head**, **DDG**. Definitions stored in `src/data/glossary.json`.
-
----
-
-## Technical details
-
-- **Routing**: keep `/explorer/agri` (or `/ministry/agriculture`) as the journey root; sub-steps via `?step=` so deep-links + tutorial both work.
-- **New files**:
-  - `src/components/agri/JourneyStepper.tsx`
-  - `src/components/agri/AgriInsights.tsx` (+ small subcomponents per insight)
-  - `src/components/agri/Definition.tsx`
-  - `src/components/tour/TourProvider.tsx`, `TourSpotlight.tsx`
-  - `src/data/glossary.json`, `src/data/agri-insights-links.json`
-- **Reuse**: `DemandsOverview`, `MajorHeadTable`, `SchemeTableView`, `ExpenditureBudgetCard` (lift from `Explorer.tsx` into `src/components/explorer/ExpenditureBudgetCard.tsx` so both Explorer and Insights share it).
-- **Data**: Charged/Voted split is not in our JSONs yet — add a `voted`/`charged` aggregate per demand in `src/data/agri-charged-voted.json` (you'll provide the numbers, or we estimate from existing rows where `voted` flag exists).
-- **No backend** required for v1. Article links are static; we can wire Perplexity later for live "related coverage".
+- **URL state**: every selection encoded as `?b=<base64-json>` so a link reproduces the exact analysis.
+- **My Analyses** (localStorage): name + timestamp + config; list in a side drawer.
+- **Export**: CSV of the current table; PNG of the current chart (html-to-image).
+- **Embed snippet** (later) — readonly iframe of the view.
 
 ---
 
-## Out of scope (v1)
+## 7. Technical sketch
 
-- Live news fetch (Perplexity/Firecrawl) — stub with curated links.
-- Charged/Voted interactive drill — only summary numbers in v1.
-- Mobile tour polish beyond basic responsive — desktop-first.
+New files:
+- `src/pages/AnalysisBuilder.tsx` — standalone page at `/builder`
+- `src/components/builder/` — `DatasetPicker.tsx`, `FilterPanel.tsx`, `MeasureBar.tsx`, `ViewSwitcher.tsx`, `ResultTable.tsx`, `ResultChart.tsx`, `SavedAnalyses.tsx`
+- `src/lib/builder/` — `schema.ts` (typed config), `query.ts` (pure function: config + raw data → rows), `encode.ts` (URL ↔ config)
+- `src/data/builder-presets.json` — curated starter analyses ("Top 10 ministries YoY", "MH 2401 across ministries", "Recoveries leaderboard")
+
+Stepper integration:
+- Add `"builder"` step id to `JourneyStepper.tsx` after `"tutorial"` (label: **Budget Analysis Builder**).
+- In `AgriJourney.tsx`, render `<AnalysisBuilder embedded defaultDataset="majorHeads" defaultFilters={{ministry:["magri"]}} />` so the Agri journey opens the builder pre-scoped to Agri but the user can clear filters to go cross-ministry.
+
+Data sources reused (no new backend):
+- `ministries.json`, `demands.json`, `dg-summary` (via `lib/dg`), `ddgs.json`, `schemes.json`, `transfers.json`, `dg-recoveries.json`.
+
+Pure-function `query()` keeps the UI dumb: filter → group → aggregate → sort → top-N. Same function powers Table/Pivot/Chart so the numbers always match.
+
+---
+
+## 8. Out of scope (v1)
+
+- Joins across arbitrary datasets (e.g. DDG line items + transfers in one query) — limited to the chosen dataset
+- Server-side persistence of saved analyses (localStorage only)
+- PDF export, scheduled reports, role-based sharing
+- AI/NL prompt-to-analysis (good v2)
 
 ---
 
 ## Open questions
 
-1. Charged/Voted numbers — do you have a source sheet, or should we derive from the existing DDG `voted` flag where present?
-2. For "related coverage", okay with 3 hand-picked links per insight for v1, then add Perplexity later?
-3. Should the journey replace the current `MinistryAgri` page, or live alongside it at `/ministry/agriculture/journey`?
+1. **Entry point** — only inside Agri Journey stepper, or also a top-nav link `/builder` reachable from anywhere? (Recommend both.)
+2. **Default dataset** when opened from Agri tab — Major Heads (current Agri context) or Demands?
+3. **Presets** — want me to seed 5–6 curated analyses, or ship empty and let users build from scratch?
+4. **Chart library** — reuse existing Recharts (already in repo) or add a pivot grid lib for the Pivot view?

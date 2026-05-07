@@ -8,6 +8,7 @@ import { AgriInsights } from "@/components/agri/AgriInsights";
 import { Definition } from "@/components/agri/Definition";
 import { TourProvider, useTour } from "@/components/tour/TourProvider";
 import { SchemeTableView } from "@/components/explorer/SchemeTableView";
+import { BudgetBuilder } from "@/components/builder/BudgetBuilder";
 import {
   DG_SUMMARY, getMajorHeads, getValue, computeYoY, formatCrore,
   type DemandSummary, type YearKey, type Section,
@@ -226,6 +227,23 @@ function InsightsStep() {
   return <div data-tour="insights"><AgriInsights /></div>;
 }
 
+// ── Step 6: Tutorial ─────────────────────────────────────────────────────────
+function TutorialStep({ onStart }: { onStart: () => void }) {
+  return (
+    <div className="rounded-md border border-border bg-card p-8 text-center space-y-4">
+      <h2 className="font-serif text-2xl font-semibold">Take the guided tour</h2>
+      <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+        An 8-step coach-mark walk-through of the Agriculture journey — from headline KPIs to insights.
+        Use it any time you want a refresher on what each section means.
+      </p>
+      <button onClick={onStart}
+        className="inline-flex items-center gap-2 rounded-sm bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90">
+        <PlayCircle className="h-4 w-4" /> Start tour
+      </button>
+    </div>
+  );
+}
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 function AgriJourneyInner() {
   const [params, setParams] = useSearchParams();
@@ -304,6 +322,8 @@ function AgriJourneyInner() {
             {step === "majorheads" && <MajorHeadsStep />}
             {step === "schemes"    && <SchemesStep />}
             {step === "insights"   && <InsightsStep />}
+            {step === "tutorial"   && <TutorialStep onStart={startTour} />}
+            {step === "builder"    && <BudgetBuilder embedded defaults={{ dataset: "majorHeads", ministries: ["Ministry of Agriculture and Farmers Welfare"] }} />}
           </div>
           <JourneyNav current={step} onChange={setJourneyStep} />
         </section>

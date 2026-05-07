@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-export type JourneyStepId = "ministry" | "demands" | "majorheads" | "schemes" | "insights";
+export type JourneyStepId = "ministry" | "demands" | "majorheads" | "schemes" | "insights" | "tutorial" | "builder";
 
 const STEPS: { id: JourneyStepId; label: string; sub: string }[] = [
   { id: "ministry",   label: "Ministry",     sub: "The big picture" },
@@ -8,6 +8,8 @@ const STEPS: { id: JourneyStepId; label: string; sub: string }[] = [
   { id: "majorheads", label: "Major Heads",  sub: "Where it goes" },
   { id: "schemes",    label: "Schemes",      sub: "How it reaches" },
   { id: "insights",   label: "Insights",     sub: "What it means" },
+  { id: "tutorial",   label: "Tutorial",     sub: "Take the tour" },
+  { id: "builder",    label: "Budget Analysis Builder", sub: "Build your own slice" },
 ];
 
 interface Props {
@@ -19,7 +21,7 @@ export function JourneyStepper({ current, onChange }: Props) {
   const currentIdx = STEPS.findIndex((s) => s.id === current);
   return (
     <div data-tour="stepper" className="border border-border rounded-md bg-card p-3">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2">
         {STEPS.map((s, i) => {
           const isActive = i === currentIdx;
           const isDone = i < currentIdx;
