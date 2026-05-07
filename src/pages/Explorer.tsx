@@ -448,8 +448,8 @@ function AllDemandsOverview({ section, onSelect }: { section: Section; onSelect:
 
 // ── Demand detail panel ──────────────────────────────────────────────────────
 function DemandSummaryCard({
-  label, demand, section, accent,
-}: { label: string; demand: DemandSummary; section: Section; accent?: boolean }) {
+  label, demand, section, accent, footnote,
+}: { label: string; demand: DemandSummary; section: Section; accent?: boolean; footnote?: string }) {
   const v = getValue(demand, "be2627", section);
   const prev = getValue(demand, "be2526", section);
   const yoy = computeYoY(v, prev);
@@ -463,6 +463,9 @@ function DemandSummaryCard({
       <div className="mt-1 text-[10px] text-muted-foreground tnum">
         BE 25-26: {formatCrore(prev, true)} · RE 25-26: {formatCrore(getValue(demand, "re2526", section), true)}
       </div>
+      {footnote && (
+        <div className="mt-1 text-[10px] text-muted-foreground italic">{footnote}</div>
+      )}
     </div>
   );
 }
@@ -484,11 +487,17 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
         </div>
       </div>
 
-      {/* Section totals — Revenue · Capital · Overall */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {/* Section totals — Revenue · Capital · Overall · Expenditure Budget */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <DemandSummaryCard label="Total Revenue" demand={demand} section="revenue" accent={section === "revenue"} />
         <DemandSummaryCard label="Total Capital" demand={demand} section="capital" accent={section === "capital"} />
         <DemandSummaryCard label="Overall Total" demand={demand} section="total"   accent={section === "total"} />
+        <DemandSummaryCard
+          label="Expenditure Budget"
+          demand={demand}
+          section="total"
+          footnote="Total − Recoveries (recoveries reported only at Union level)"
+        />
       </div>
 
       {/* Major heads table (all heads under this demand) */}
