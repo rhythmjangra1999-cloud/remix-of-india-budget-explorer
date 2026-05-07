@@ -30,7 +30,7 @@ function YoY({ v }: { v: number | null }) {
 }
 
 function GapBadge({ flag }: { flag?: string | null }) {
-  if (!flag || flag === "SMALL_BASE") return null;
+  if (!flag || flag === "SMALL_BASE" || flag === "TOKEN") return null;
   const styles: Record<string, string> = {
     DISCONTINUED: "bg-rose-50 text-rose-700",
     NEW: "bg-blue-50 text-blue-700",
