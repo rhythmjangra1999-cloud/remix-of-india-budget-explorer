@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Top 15 ministries by BE 26-27",
+    "config": { "dataset": "ministries", "groupBy": "ministry", "ministries": [], "section": "all", "voted": "all", "mhPrefix": "", "schemeQ": "", "year": "be2627", "compareYear": "be2526", "measure": "be2627", "topN": 15, "sortDir": "desc", "view": "bar" }
+  },
+  {
+    "name": "Recoveries leaderboard (Demands)",
+    "config": { "dataset": "demands", "groupBy": "demand", "ministries": [], "section": "all", "voted": "all", "mhPrefix": "", "schemeQ": "", "year": "be2627", "compareYear": "be2526", "measure": "recoveries", "topN": 20, "sortDir": "desc", "view": "table" }
+  },
+  {
+    "name": "MH 2401 Crop Husbandry across ministries",
+    "config": { "dataset": "majorHeads", "groupBy": "ministry", "ministries": [], "section": "all", "voted": "all", "mhPrefix": "2401", "schemeQ": "", "year": "be2627", "compareYear": "be2526", "measure": "be2627", "topN": 20, "sortDir": "desc", "view": "bar" }
+  },
+  {
+    "name": "Capital-intensity ranking (Demands)",
+    "config": { "dataset": "demands", "groupBy": "demand", "ministries": [], "section": "all", "voted": "all", "mhPrefix": "", "schemeQ": "", "year": "be2627", "compareYear": "be2526", "measure": "capitalShare", "topN": 20, "sortDir": "desc", "view": "bar" }
+  },
+  {
+    "name": "PM-KISAN-style schemes (search 'PM')",
+    "config": { "dataset": "schemes", "groupBy": "scheme", "ministries": [], "section": "all", "voted": "all", "mhPrefix": "", "schemeQ": "PM", "year": "be2627", "compareYear": "be2526", "measure": "be2627", "topN": 20, "sortDir": "desc", "view": "bar" }
+  },
+  {
+    "name": "YoY shock detector (Demands)",
+    "config": { "dataset": "demands", "groupBy": "demand", "ministries": [], "section": "all", "voted": "all", "mhPrefix": "", "schemeQ": "", "year": "be2627", "compareYear": "be2526", "measure": "yoy", "topN": 20, "sortDir": "desc", "view": "table" }
+  }
+]
