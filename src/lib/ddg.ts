@@ -160,7 +160,12 @@ export function buildDDGTree(demandNo: number, majorHead: string): DDGNode[] {
       };
       nodes.push(node);
     }
-    nodes.sort((a, b) => (b.be2627 ?? 0) - (a.be2627 ?? 0));
+    if (depth === levels.length - 1) {
+      // Object level: sort numerically by object-head code (e.g. 11, 12, 13…)
+      nodes.sort((a, b) => (parseInt(a.code, 10) || 0) - (parseInt(b.code, 10) || 0));
+    } else {
+      nodes.sort((a, b) => (b.be2627 ?? 0) - (a.be2627 ?? 0));
+    }
     return nodes;
   }
 

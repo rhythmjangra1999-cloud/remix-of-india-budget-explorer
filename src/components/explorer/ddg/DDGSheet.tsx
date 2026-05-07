@@ -75,7 +75,7 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
             <div className="ml-auto flex flex-wrap gap-1">
               {gaps.DISCONTINUED > 0 && <span className="rounded-sm bg-rose-50 text-rose-700 px-1.5 py-0.5 text-[10px] font-medium">{gaps.DISCONTINUED} discontinued</span>}
               {gaps.NEW > 0 && <span className="rounded-sm bg-blue-50 text-blue-700 px-1.5 py-0.5 text-[10px] font-medium">{gaps.NEW} new</span>}
-              {gaps.TOKEN > 0 && <span className="rounded-sm bg-slate-100 text-slate-600 px-1.5 py-0.5 text-[10px] font-medium">{gaps.TOKEN} token</span>}
+              
             </div>
           </div>
         </SheetHeader>
@@ -91,10 +91,6 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
               className="w-full pl-8 pr-3 py-1.5 text-xs rounded-md border border-input bg-background"
             />
           </div>
-          <label className="flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer">
-            <input type="checkbox" checked={hideTokens} onChange={(e) => setHideTokens(e.target.checked)} />
-            Hide token / small-base rows
-          </label>
         </div>
 
         {/* Tree header row */}

@@ -34,7 +34,7 @@ const MinistryAgri = () => {
   const movers = useMemo(() => topMovers(rows), [rows]);
   const majorHeads = useMemo(() => getMajorHeads(rows), [rows]);
 
-  const flagged = useMemo(() => ALL_AGRI.filter((r) => r.gapFlag), []);
+  const flagged = useMemo(() => ALL_AGRI.filter((r) => r.gapFlag && r.gapFlag !== "TOKEN" && r.gapFlag !== "SMALL_BASE"), []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -139,7 +139,7 @@ const MinistryAgri = () => {
                 <FlagCard icon={Sparkles} label="NEW lines" count={ALL_AGRI.filter((r) => r.gapFlag === "NEW").length} dek="Created in BE 2026-27 with no prior allocation." tone="success" />
                 <FlagCard icon={XOctagon} label="DISCONTINUED" count={ALL_AGRI.filter((r) => r.gapFlag === "DISCONTINUED").length} dek="No BE 2026-27 despite prior allocation." tone="danger" />
                 
-                <FlagCard icon={AlertTriangle} label="TOKEN" count={ALL_AGRI.filter((r) => r.gapFlag === "TOKEN").length} dek="Base < ₹10 lakh — placeholder allocation." tone="warn" />
+                
               </div>
 
               <div className="rounded-sm border border-border bg-card overflow-hidden">
