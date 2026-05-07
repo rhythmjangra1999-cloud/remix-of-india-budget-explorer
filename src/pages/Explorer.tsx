@@ -528,6 +528,14 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
         <div className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">
           BE 2026-27 · current view: {section}
         </div>
+        {(demandNo === 1 || demandNo === 2) && (
+          <a
+            href="/agri-journey"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-sm border border-primary text-primary px-3 py-1.5 text-xs font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            ▶ Take the guided Agriculture journey (with tutorial & insights)
+          </a>
+        )}
       </div>
 
       {/* Section totals — Revenue · Capital · Overall · Expenditure Budget */}
