@@ -1,33 +1,24 @@
 import { useMemo, useState } from "react";
 import { Plus, Trash2, Download, Printer, Info } from "lucide-react";
 import { DG_SUMMARY, type YearKey, type Section } from "@/lib/dg";
-import ddgsRaw from "@/data/ddgs.json";
-import demandsRaw from "@/data/demands.json";
+import { DDG_LEAVES, type DDGLeaf } from "@/lib/ddg";
 import recoveriesRaw from "@/data/dg-recoveries.json";
 
 // ---------- data plumbing ----------
-type DDGRow = {
-  ministryId: string; demandId: string; majorHead: string;
-  minorHead?: string; subHead?: string; objectHead: string;
-  amounts: { FY26?: number; FY27?: number };
-  revenue?: boolean;
-};
-const DDGS = ddgsRaw as DDGRow[];
-const DEMANDS_META = demandsRaw as Array<{ id: string; ministryId: string; number: number; title: string }>;
 const RECOV = recoveriesRaw as Record<string, Partial<Record<YearKey, number>>>;
 
-// demandNo -> demandId (for ddg lookup)
-const demandIdByNo = new Map<number, string>();
-for (const d of DEMANDS_META) demandIdByNo.set(d.number, d.id);
+// Demands with DDG (object-head) coverage
+const DDG_DEMAND_NOS = Array.from(new Set(DDG_LEAVES.map(l => l.demandNo))).sort((a, b) => a - b);
+const DDG_HAS = (n: number) => DDG_DEMAND_NOS.includes(n);
 
 // ---------- year metadata ----------
 type Type = "dg" | "eb" | "ddg";
 
-const YEARS: { key: YearKey; label: string; ddg: boolean }[] = [
-  { key: "actuals2425", label: "FY24-25 Actuals", ddg: false },
-  { key: "be2526",      label: "FY25-26 BE",      ddg: true  },
-  { key: "re2526",      label: "FY25-26 RE",      ddg: false },
-  { key: "be2627",      label: "FY26-27 BE",      ddg: true  },
+const YEARS: { key: YearKey; label: string }[] = [
+  { key: "actuals2425", label: "FY24-25 Actuals" },
+  { key: "be2526",      label: "FY25-26 BE"      },
+  { key: "re2526",      label: "FY25-26 RE"      },
+  { key: "be2627",      label: "FY26-27 BE"      },
 ];
 const YEAR_LABEL: Record<YearKey, string> = Object.fromEntries(YEARS.map(y => [y.key, y.label])) as Record<YearKey, string>;
 const PREV_YEAR: Partial<Record<YearKey, YearKey>> = {
@@ -35,16 +26,11 @@ const PREV_YEAR: Partial<Record<YearKey, YearKey>> = {
   re2526: "be2526",
   be2627: "re2526",
 };
-function ddgYear(y: YearKey): "FY26" | "FY27" | null {
-  if (y === "be2526") return "FY26";
-  if (y === "be2627") return "FY27";
-  return null;
-}
 
 const TYPES: { key: Type; label: string; help: string }[] = [
   { key: "dg",  label: "DG (Gross)",         help: "Gross provision in the Demand for Grants" },
   { key: "eb",  label: "Expenditure Budget", help: "Net of recoveries (DG − Recoveries)" },
-  { key: "ddg", label: "DDG (Object-head)",  help: "Detailed line item from the DDG document" },
+  { key: "ddg", label: "DDG (Detailed)",     help: "Drill into Major → Minor → Sub → Object head" },
 ];
 
 // ---------- ministries / demands ----------
@@ -53,32 +39,41 @@ function demandsOf(min: string) {
   return DG_SUMMARY.filter(d => d.ministry === min).sort((a, b) => a.demandNo - b.demandNo);
 }
 
+// ---------- DDG helpers ----------
+function ddgLeavesFor(sel: Selection): DDGLeaf[] {
+  if (sel.demandNo === "all") return [];
+  let rows = DDG_LEAVES.filter(r => r.demandNo === sel.demandNo);
+  if (sel.section === "revenue") rows = rows.filter(r => r.section === "Revenue");
+  else if (sel.section === "capital") rows = rows.filter(r => r.section === "Capital");
+  if (sel.majorHead)  rows = rows.filter(r => r.majorHead === sel.majorHead);
+  if (sel.minorHead)  rows = rows.filter(r => `${r.subMajor}.${r.minorHead}` === sel.minorHead);
+  if (sel.subHead)    rows = rows.filter(r => `${r.subHead}.${r.detailedHead}` === sel.subHead);
+  if (sel.objectHead) rows = rows.filter(r => r.objectHead === sel.objectHead);
+  return rows;
+}
+function uniqOpts<T>(arr: T[], key: (t: T) => string, label: (t: T) => string): { value: string; label: string }[] {
+  const seen = new Map<string, string>();
+  for (const a of arr) { const k = key(a); if (!seen.has(k)) seen.set(k, label(a)); }
+  return Array.from(seen, ([value, l]) => ({ value, label: l })).sort((a, b) => a.label.localeCompare(b.label));
+}
+
 // ---------- core calculations ----------
 function grandTotalForYear(y: YearKey): number {
   return DG_SUMMARY.reduce((s, d) => s + (d[y].total ?? 0), 0);
 }
 
-// Returns numeric value for selection or null if not available
 function calcValue(sel: Selection, year: YearKey): number | null {
-  const { ministry, demandNo, type, section, ddgRowIdx } = sel;
+  const { ministry, demandNo, type, section } = sel;
 
   if (type === "ddg") {
-    const dy = ddgYear(year);
-    if (!dy) return null;
-    if (demandNo === "all") return null; // require specific demand
-    const did = demandIdByNo.get(demandNo);
-    if (!did) return null;
-    const rows = DDGS.filter(r => r.demandId === did);
-    if (ddgRowIdx == null) {
-      // sum filtered by section
-      return rows
-        .filter(r => section === "total" ? true : section === "revenue" ? r.revenue : !r.revenue)
-        .reduce((s, r) => s + (r.amounts[dy] ?? 0), 0);
-    }
-    return rows[ddgRowIdx]?.amounts[dy] ?? null;
+    if (demandNo === "all") return null;
+    const rows = ddgLeavesFor(sel);
+    if (!rows.length) return null;
+    let any = false; let s = 0;
+    for (const r of rows) { const v = r[year]; if (typeof v === "number") { s += v; any = true; } }
+    return any ? s : null;
   }
 
-  // DG / EB
   const demands = demandNo === "all"
     ? DG_SUMMARY.filter(d => d.ministry === ministry)
     : DG_SUMMARY.filter(d => d.ministry === ministry && d.demandNo === demandNo);
@@ -87,7 +82,6 @@ function calcValue(sel: Selection, year: YearKey): number | null {
   let val = demands.reduce((s, d) => s + (d[year][section] ?? 0), 0);
   if (type === "eb") {
     const rec = demands.reduce((s, d) => s + Math.abs(RECOV[String(d.demandNo)]?.[year] ?? 0), 0);
-    // Apply recovery only on total (recoveries in DG_RECOV are total figures)
     if (section === "total") val -= rec;
   }
   return val;
@@ -101,7 +95,10 @@ interface Selection {
   type: Type;
   section: Section;
   year: YearKey;
-  ddgRowIdx?: number; // for DDG: pick a specific object-head row, else sum
+  majorHead?: string;
+  minorHead?: string; // "subMajor.minorHead"
+  subHead?: string;   // "subHead.detailedHead"
+  objectHead?: string;
 }
 
 function newSelection(): Selection {
@@ -190,10 +187,31 @@ export default function ReportBuilder() {
       <div className="space-y-3">
         {sels.map((s, idx) => {
           const c = computed[idx];
-          const ddgDisabled = s.type === "ddg" && !ddgYear(s.year);
           const dems = demandsOf(s.ministry);
-          const did = s.demandNo !== "all" ? demandIdByNo.get(s.demandNo) : null;
-          const ddgRows = did ? DDGS.filter(r => r.demandId === did) : [];
+
+          // DDG drill-down options for this selection (cascading)
+          const ddgScope = s.type === "ddg" && s.demandNo !== "all"
+            ? DDG_LEAVES.filter(r => r.demandNo === s.demandNo &&
+                (s.section === "total" ? true : s.section === "revenue" ? r.section === "Revenue" : r.section === "Capital"))
+            : [];
+          const mhOpts = uniqOpts(ddgScope, r => r.majorHead, r => `${r.majorHead} · ${r.majorHeadName}`);
+          const minOpts = s.majorHead
+            ? uniqOpts(ddgScope.filter(r => r.majorHead === s.majorHead),
+                r => `${r.subMajor}.${r.minorHead}`,
+                r => `${r.subMajor}.${r.minorHead} · ${r.minorHeadName}`)
+            : [];
+          const subOpts = s.minorHead
+            ? uniqOpts(ddgScope.filter(r => r.majorHead === s.majorHead && `${r.subMajor}.${r.minorHead}` === s.minorHead),
+                r => `${r.subHead}.${r.detailedHead}`,
+                r => `${r.subHead}.${r.detailedHead} · ${r.subHeadName || "—"}`)
+            : [];
+          const objOpts = s.subHead
+            ? uniqOpts(ddgScope.filter(r => r.majorHead === s.majorHead && `${r.subMajor}.${r.minorHead}` === s.minorHead && `${r.subHead}.${r.detailedHead}` === s.subHead),
+                r => r.objectHead,
+                r => `${r.objectHead} · ${r.objectHeadName}`)
+            : [];
+
+          const ddgUnavailable = s.type === "ddg" && s.demandNo !== "all" && !DDG_HAS(s.demandNo as number);
 
           return (
             <div key={s.id} className="rounded-lg border border-border bg-card p-4">
@@ -210,38 +228,38 @@ export default function ReportBuilder() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-                {/* Ministry */}
                 <Field label="Ministry">
                   <select value={s.ministry}
-                    onChange={e => update(s.id, { ministry: e.target.value, demandNo: "all", ddgRowIdx: undefined })}
+                    onChange={e => update(s.id, { ministry: e.target.value, demandNo: "all", majorHead: undefined, minorHead: undefined, subHead: undefined, objectHead: undefined })}
                     className={inputCls}>
                     {MINISTRIES.map(m => <option key={m} value={m}>{m}</option>)}
                   </select>
                 </Field>
 
-                {/* Demand */}
                 <Field label="Demand">
                   <select value={String(s.demandNo)}
                     onChange={e => {
                       const v = e.target.value;
-                      update(s.id, { demandNo: v === "all" ? "all" : Number(v), ddgRowIdx: undefined });
+                      update(s.id, { demandNo: v === "all" ? "all" : Number(v), majorHead: undefined, minorHead: undefined, subHead: undefined, objectHead: undefined });
                     }}
                     className={inputCls}>
                     <option value="all">All demands (ministry total)</option>
-                    {dems.map(d => <option key={d.demandNo} value={d.demandNo}>D{d.demandNo} · {d.demandDesc}</option>)}
+                    {dems.map(d => (
+                      <option key={d.demandNo} value={d.demandNo}>
+                        D{d.demandNo} · {d.demandDesc}{DDG_HAS(d.demandNo) ? " ●" : ""}
+                      </option>
+                    ))}
                   </select>
                 </Field>
 
-                {/* Type */}
                 <Field label="Type">
                   <select value={s.type}
-                    onChange={e => update(s.id, { type: e.target.value as Type, ddgRowIdx: undefined })}
+                    onChange={e => update(s.id, { type: e.target.value as Type, majorHead: undefined, minorHead: undefined, subHead: undefined, objectHead: undefined })}
                     className={inputCls}>
                     {TYPES.map(t => <option key={t.key} value={t.key}>{t.label}</option>)}
                   </select>
                 </Field>
 
-                {/* Section */}
                 <Field label="Section">
                   <select value={s.section}
                     onChange={e => update(s.id, { section: e.target.value as Section })}
@@ -252,39 +270,62 @@ export default function ReportBuilder() {
                   </select>
                 </Field>
 
-                {/* Year */}
                 <Field label="Year">
                   <select value={s.year}
                     onChange={e => update(s.id, { year: e.target.value as YearKey })}
                     className={inputCls}>
-                    {YEARS.map(y => (
-                      <option key={y.key} value={y.key} disabled={s.type === "ddg" && !y.ddg}>
-                        {y.label}{s.type === "ddg" && !y.ddg ? " (no DDG)" : ""}
-                      </option>
-                    ))}
+                    {YEARS.map(y => <option key={y.key} value={y.key}>{y.label}</option>)}
                   </select>
                 </Field>
 
-                {/* DDG row picker */}
+                {/* DDG drill-down */}
                 {s.type === "ddg" && (
-                  <Field label="DDG line (optional)" className="md:col-span-2 lg:col-span-5">
-                    {ddgRows.length === 0 ? (
-                      <div className="text-xs text-muted-foreground italic px-2 py-1.5">
-                        DDG not yet available for this demand. (Currently covered: Police, J&K Transfers, DoPPG, Ports & Shipping.)
+                  <div className="md:col-span-2 lg:col-span-5 grid grid-cols-1 md:grid-cols-4 gap-3 pt-2 border-t border-dashed border-border">
+                    {ddgUnavailable ? (
+                      <div className="md:col-span-4 text-xs text-muted-foreground italic">
+                        DDG not yet available for this demand. Currently covered: {DDG_DEMAND_NOS.map(n => `D${n}`).join(", ")}.
+                      </div>
+                    ) : s.demandNo === "all" ? (
+                      <div className="md:col-span-4 text-xs text-muted-foreground italic">
+                        Pick a specific demand to drill into Major → Minor → Sub → Object head.
                       </div>
                     ) : (
-                      <select value={s.ddgRowIdx == null ? "all" : String(s.ddgRowIdx)}
-                        onChange={e => update(s.id, { ddgRowIdx: e.target.value === "all" ? undefined : Number(e.target.value) })}
-                        className={inputCls}>
-                        <option value="all">Sum of all object-heads (filtered by section)</option>
-                        {ddgRows.map((r, i) => (
-                          <option key={i} value={i}>
-                            {r.majorHead} → {r.objectHead} ({r.revenue ? "Rev" : "Cap"})
-                          </option>
-                        ))}
-                      </select>
+                      <>
+                        <Field label="Major Head">
+                          <select value={s.majorHead ?? ""}
+                            onChange={e => update(s.id, { majorHead: e.target.value || undefined, minorHead: undefined, subHead: undefined, objectHead: undefined })}
+                            className={inputCls}>
+                            <option value="">All major heads</option>
+                            {mhOpts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                          </select>
+                        </Field>
+                        <Field label="Minor Head">
+                          <select value={s.minorHead ?? ""} disabled={!s.majorHead}
+                            onChange={e => update(s.id, { minorHead: e.target.value || undefined, subHead: undefined, objectHead: undefined })}
+                            className={inputCls}>
+                            <option value="">All minor heads</option>
+                            {minOpts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                          </select>
+                        </Field>
+                        <Field label="Sub / Detailed Head">
+                          <select value={s.subHead ?? ""} disabled={!s.minorHead}
+                            onChange={e => update(s.id, { subHead: e.target.value || undefined, objectHead: undefined })}
+                            className={inputCls}>
+                            <option value="">All sub-heads</option>
+                            {subOpts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                          </select>
+                        </Field>
+                        <Field label="Object Head">
+                          <select value={s.objectHead ?? ""} disabled={!s.subHead}
+                            onChange={e => update(s.id, { objectHead: e.target.value || undefined })}
+                            className={inputCls}>
+                            <option value="">All object heads</option>
+                            {objOpts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                          </select>
+                        </Field>
+                      </>
                     )}
-                  </Field>
+                  </div>
                 )}
               </div>
 
@@ -293,7 +334,7 @@ export default function ReportBuilder() {
                 <Stat label="Value" value={fmtCr(c.value)} accent />
                 <Stat label="% of Union Budget" value={c.share == null ? "—" : `${c.share.toFixed(3)}%`} sub={`grand: ${fmtCr(grandTotalForYear(s.year))}`} />
                 <Stat label={`YoY vs ${c.prevYear ? YEAR_LABEL[c.prevYear] : "—"}`} value={fmtPct(c.yoy)} sub={c.prevVal != null ? `prev: ${fmtCr(c.prevVal)}` : undefined} />
-                {ddgDisabled && <span className="text-destructive">DDG unavailable for this year</span>}
+                {ddgUnavailable && <span className="text-destructive">DDG not yet covered for this demand</span>}
               </div>
             </div>
           );
