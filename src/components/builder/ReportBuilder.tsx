@@ -334,7 +334,7 @@ export default function ReportBuilder() {
                 <Stat label="Value" value={fmtCr(c.value)} accent />
                 <Stat label="% of Union Budget" value={c.share == null ? "—" : `${c.share.toFixed(3)}%`} sub={`grand: ${fmtCr(grandTotalForYear(s.year))}`} />
                 <Stat label={`YoY vs ${c.prevYear ? YEAR_LABEL[c.prevYear] : "—"}`} value={fmtPct(c.yoy)} sub={c.prevVal != null ? `prev: ${fmtCr(c.prevVal)}` : undefined} />
-                {ddgDisabled && <span className="text-destructive">DDG unavailable for this year</span>}
+                {ddgUnavailable && <span className="text-destructive">DDG not yet covered for this demand</span>}
               </div>
             </div>
           );
