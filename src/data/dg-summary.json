@@ -22,6 +22,11 @@
       "revenue": 0.0,
       "capital": 9534445.88,
       "total": 9534445.88
+    },
+    "be2627Net": {
+      "revenue": null,
+      "capital": null,
+      "total": 0
     }
   },
   {
@@ -47,6 +52,11 @@
       "revenue": 1443971.79,
       "capital": 0.0,
       "total": 1443971.79
+    },
+    "be2627Net": {
+      "revenue": 1403971.79,
+      "capital": null,
+      "total": 1403971.79
     }
   },
   {
@@ -72,6 +82,11 @@
       "revenue": 385733.33,
       "capital": 499261.97,
       "total": 884995.3
+    },
+    "be2627Net": {
+      "revenue": 3547.32,
+      "capital": 277830,
+      "total": 281377.32
     }
   },
   {
@@ -97,6 +112,11 @@
       "revenue": 193821.61,
       "capital": 247853.0,
       "total": 441674.61
+    },
+    "be2627Net": {
+      "revenue": 167801.61,
+      "capital": 226381.91,
+      "total": 394183.52
     }
   },
   {
@@ -122,6 +142,11 @@
       "revenue": 31276.46,
       "capital": 378027.0,
       "total": 409303.46
+    },
+    "be2627Net": {
+      "revenue": 15707.85,
+      "capital": 294167.45,
+      "total": 309875.3
     }
   },
   {
@@ -147,6 +172,11 @@
       "revenue": 373255.44,
       "capital": 0.0,
       "total": 373255.44
+    },
+    "be2627Net": {
+      "revenue": 365478.98,
+      "capital": null,
+      "total": 365478.98
     }
   },
   {
@@ -172,6 +202,11 @@
       "revenue": 235024.58,
       "capital": 50022.62,
       "total": 285047.2
+    },
+    "be2627Net": {
+      "revenue": 235024.58,
+      "capital": 22.62,
+      "total": 235047.2
     }
   },
   {
@@ -197,6 +232,11 @@
       "revenue": 240764.18,
       "capital": 4.63,
       "total": 240768.81
+    },
+    "be2627Net": {
+      "revenue": 194364.18,
+      "capital": 4.63,
+      "total": 194368.81
     }
   },
   {
@@ -222,6 +262,11 @@
       "revenue": 232451.62,
       "capital": 109.76,
       "total": 232561.38
+    },
+    "be2627Net": {
+      "revenue": 130451.62,
+      "capital": 109.76,
+      "total": 130561.38
     }
   },
   {
@@ -245,6 +290,11 @@
     },
     "be2627": {
       "revenue": 0.0,
+      "capital": 219306.47,
+      "total": 219306.47
+    },
+    "be2627Net": {
+      "revenue": null,
       "capital": 219306.47,
       "total": 219306.47
     }
@@ -272,6 +322,11 @@
       "revenue": 187153.64,
       "capital": 8.89,
       "total": 187162.53
+    },
+    "be2627Net": {
+      "revenue": 170935.64,
+      "capital": 8.89,
+      "total": 170944.53
     }
   },
   {
@@ -297,6 +352,11 @@
       "revenue": 179338.22,
       "capital": 0.0,
       "total": 179338.22
+    },
+    "be2627Net": {
+      "revenue": 171338.22,
+      "capital": null,
+      "total": 171338.22
     }
   },
   {
@@ -322,6 +382,11 @@
       "revenue": 153601.13,
       "capital": 21272.5,
       "total": 174873.63
+    },
+    "be2627Net": {
+      "revenue": 152530.06,
+      "capital": 21272.47,
+      "total": 173802.53
     }
   },
   {
@@ -347,6 +412,11 @@
       "revenue": 150292.41,
       "capital": 0.85,
       "total": 150293.26
+    },
+    "be2627Net": {
+      "revenue": 83561.41,
+      "capital": 0.85,
+      "total": 83562.26
     }
   },
   {
@@ -372,6 +442,11 @@
       "revenue": 137835.25,
       "capital": 2928.3,
       "total": 140763.55
+    },
+    "be2627Net": {
+      "revenue": 98780.91,
+      "capital": 2928.3,
+      "total": 101709.21
     }
   },
   {
@@ -397,6 +472,11 @@
       "revenue": 5029.89,
       "capital": 126297.48,
       "total": 131327.37
+    },
+    "be2627Net": {
+      "revenue": 4249.65,
+      "capital": 16309.46,
+      "total": 20559.11
     }
   },
   {
@@ -422,6 +502,11 @@
       "revenue": 101500.0,
       "capital": 0.0,
       "total": 101500.0
+    },
+    "be2627Net": {
+      "revenue": 97500,
+      "capital": null,
+      "total": 97500
     }
   },
   {
@@ -447,6 +532,11 @@
       "revenue": 30716.02,
       "capital": 67274.93,
       "total": 97990.95
+    },
+    "be2627Net": {
+      "revenue": 26716.02,
+      "capital": 47274.92,
+      "total": 73990.94
     }
   },
   {
@@ -472,6 +562,11 @@
       "revenue": 50883.31,
       "capital": 38876.88,
       "total": 89760.19
+    },
+    "be2627Net": {
+      "revenue": 50714.32,
+      "capital": 34808.07,
+      "total": 85522.39
     }
   },
   {
@@ -497,6 +592,11 @@
       "revenue": 78493.54,
       "capital": 2.68,
       "total": 78496.22
+    },
+    "be2627Net": {
+      "revenue": 55724.54,
+      "capital": 2.68,
+      "total": 55727.22
     }
   },
   {
@@ -519,6 +619,11 @@
       "total": 23031.08
     },
     "be2627": {
+      "revenue": 74893.66,
+      "capital": 1.2,
+      "total": 74894.86
+    },
+    "be2627Net": {
       "revenue": 74893.66,
       "capital": 1.2,
       "total": 74894.86
@@ -547,6 +652,11 @@
       "revenue": 51991.36,
       "capital": 11823.25,
       "total": 63814.61
+    },
+    "be2627Net": {
+      "revenue": 16851.36,
+      "capital": 11703.25,
+      "total": 28554.61
     }
   },
   {
@@ -572,6 +682,11 @@
       "revenue": 44611.14,
       "capital": 3.53,
       "total": 44614.67
+    },
+    "be2627Net": {
+      "revenue": 32911.14,
+      "capital": 3.53,
+      "total": 32914.67
     }
   },
   {
@@ -596,6 +711,11 @@
     "be2627": {
       "revenue": 43290.29,
       "capital": 0.0,
+      "total": 43290.29
+    },
+    "be2627Net": {
+      "revenue": 43290.29,
+      "capital": null,
       "total": 43290.29
     }
   },
@@ -622,6 +742,11 @@
       "revenue": 41600.49,
       "capital": 1249.51,
       "total": 42850.0
+    },
+    "be2627Net": {
+      "revenue": 27026.57,
+      "capital": 1249.51,
+      "total": 28276.08
     }
   },
   {
@@ -647,6 +772,11 @@
       "revenue": 25629.3,
       "capital": 12793.41,
       "total": 38422.71
+    },
+    "be2627Net": {
+      "revenue": 14157.51,
+      "capital": 9966.41,
+      "total": 24123.92
     }
   },
   {
@@ -672,6 +802,11 @@
       "revenue": 37414.77,
       "capital": 238.45,
       "total": 37653.22
+    },
+    "be2627Net": {
+      "revenue": 30204.77,
+      "capital": 238.45,
+      "total": 30443.22
     }
   },
   {
@@ -694,6 +829,11 @@
       "total": 12688.05
     },
     "be2627": {
+      "revenue": 32625.33,
+      "capital": 40.98,
+      "total": 32666.31
+    },
+    "be2627Net": {
       "revenue": 32625.33,
       "capital": 40.98,
       "total": 32666.31
@@ -722,6 +862,11 @@
       "revenue": 30853.45,
       "capital": 361.02,
       "total": 31214.47
+    },
+    "be2627Net": {
+      "revenue": 29635.83,
+      "capital": 361.02,
+      "total": 29996.85
     }
   },
   {
@@ -747,6 +892,11 @@
       "revenue": 28632.42,
       "capital": 5.64,
       "total": 28638.06
+    },
+    "be2627Net": {
+      "revenue": 28177.42,
+      "capital": 5.64,
+      "total": 28183.06
     }
   },
   {
@@ -769,6 +919,11 @@
       "total": 11921.58
     },
     "be2627": {
+      "revenue": 7963.94,
+      "capital": 20085.38,
+      "total": 28049.32
+    },
+    "be2627Net": {
       "revenue": 7963.94,
       "capital": 20085.38,
       "total": 28049.32
@@ -797,6 +952,11 @@
       "revenue": 26077.13,
       "capital": 1606.0,
       "total": 27683.13
+    },
+    "be2627Net": {
+      "revenue": 26076.63,
+      "capital": 1606,
+      "total": 27682.63
     }
   },
   {
@@ -822,6 +982,11 @@
       "revenue": 26182.32,
       "capital": 475.66,
       "total": 26657.98
+    },
+    "be2627Net": {
+      "revenue": 19437.32,
+      "capital": 475.66,
+      "total": 19912.98
     }
   },
   {
@@ -844,6 +1009,11 @@
       "total": 12095.98
     },
     "be2627": {
+      "revenue": 22647.26,
+      "capital": 1919.01,
+      "total": 24566.27
+    },
+    "be2627Net": {
       "revenue": 22647.26,
       "capital": 1919.01,
       "total": 24566.27
@@ -872,6 +1042,11 @@
       "revenue": 20711.2,
       "capital": 1412.78,
       "total": 22123.98
+    },
+    "be2627Net": {
+      "revenue": 20706.2,
+      "capital": 1412.77,
+      "total": 22118.97
     }
   },
   {
@@ -894,6 +1069,11 @@
       "total": 20232.95
     },
     "be2627": {
+      "revenue": 21234.15,
+      "capital": 398.81,
+      "total": 21632.96
+    },
+    "be2627Net": {
       "revenue": 21234.15,
       "capital": 398.81,
       "total": 21632.96
@@ -922,6 +1102,11 @@
       "revenue": 15389.54,
       "capital": 32.43,
       "total": 15421.97
+    },
+    "be2627Net": {
+      "revenue": 15389.54,
+      "capital": 32.43,
+      "total": 15421.97
     }
   },
   {
@@ -947,6 +1132,11 @@
       "revenue": 10320.12,
       "capital": 4986.45,
       "total": 15306.57
+    },
+    "be2627Net": {
+      "revenue": 10320.12,
+      "capital": 4984.45,
+      "total": 15304.57
     }
   },
   {
@@ -972,6 +1162,11 @@
       "revenue": 14418.02,
       "capital": 9.57,
       "total": 14427.59
+    },
+    "be2627Net": {
+      "revenue": 13678.02,
+      "capital": 9.57,
+      "total": 13687.59
     }
   },
   {
@@ -994,6 +1189,11 @@
       "total": 12448.6
     },
     "be2627": {
+      "revenue": 7329.71,
+      "capital": 6375.92,
+      "total": 13705.63
+    },
+    "be2627Net": {
       "revenue": 7329.71,
       "capital": 6375.92,
       "total": 13705.63
@@ -1022,6 +1222,11 @@
       "revenue": 12559.51,
       "capital": 126.29,
       "total": 12685.8
+    },
+    "be2627Net": {
+      "revenue": 9759.51,
+      "capital": 126.29,
+      "total": 9885.8
     }
   },
   {
@@ -1044,6 +1249,11 @@
       "total": 8616.15
     },
     "be2627": {
+      "revenue": 6851.7,
+      "capital": 5119.13,
+      "total": 11970.83
+    },
+    "be2627Net": {
       "revenue": 6851.7,
       "capital": 5119.13,
       "total": 11970.83
@@ -1072,6 +1282,11 @@
       "revenue": 9878.54,
       "capital": 508.81,
       "total": 10387.35
+    },
+    "be2627Net": {
+      "revenue": 9878.54,
+      "capital": 508.81,
+      "total": 10387.35
     }
   },
   {
@@ -1094,6 +1309,11 @@
       "total": 10280.83
     },
     "be2627": {
+      "revenue": 9964.95,
+      "capital": 2.45,
+      "total": 9967.4
+    },
+    "be2627Net": {
       "revenue": 9964.95,
       "capital": 2.45,
       "total": 9967.4
@@ -1122,6 +1342,11 @@
       "revenue": 7937.08,
       "capital": 2.82,
       "total": 7939.9
+    },
+    "be2627Net": {
+      "revenue": 7937.08,
+      "capital": 2.82,
+      "total": 7939.9
     }
   },
   {
@@ -1147,6 +1372,11 @@
       "revenue": 6665.31,
       "capital": 168.97,
       "total": 6834.28
+    },
+    "be2627Net": {
+      "revenue": 6270.19,
+      "capital": 166.65,
+      "total": 6436.84
     }
   },
   {
@@ -1169,6 +1399,11 @@
       "total": 4479.2
     },
     "be2627": {
+      "revenue": 2247.7,
+      "capital": 4564.6,
+      "total": 6812.3
+    },
+    "be2627Net": {
       "revenue": 2247.7,
       "capital": 4564.6,
       "total": 6812.3
@@ -1197,6 +1432,11 @@
       "revenue": 6760.29,
       "capital": 5.33,
       "total": 6765.62
+    },
+    "be2627Net": {
+      "revenue": 6760.29,
+      "capital": 5.33,
+      "total": 6765.62
     }
   },
   {
@@ -1222,6 +1462,11 @@
       "revenue": 6138.08,
       "capital": 597.86,
       "total": 6735.94
+    },
+    "be2627Net": {
+      "revenue": 6083.08,
+      "capital": 597.86,
+      "total": 6680.94
     }
   },
   {
@@ -1247,6 +1492,11 @@
       "revenue": 6506.24,
       "capital": 55.62,
       "total": 6561.86
+    },
+    "be2627Net": {
+      "revenue": 5506.24,
+      "capital": 55.62,
+      "total": 5561.86
     }
   },
   {
@@ -1272,6 +1522,11 @@
       "revenue": 5939.52,
       "capital": 606.0,
       "total": 6545.52
+    },
+    "be2627Net": {
+      "revenue": 5275.15,
+      "capital": 445.02,
+      "total": 5720.17
     }
   },
   {
@@ -1297,6 +1552,11 @@
       "revenue": 5915.95,
       "capital": 447.51,
       "total": 6363.46
+    },
+    "be2627Net": {
+      "revenue": 5705.95,
+      "capital": 447.51,
+      "total": 6153.46
     }
   },
   {
@@ -1319,6 +1579,11 @@
       "total": 4369.7
     },
     "be2627": {
+      "revenue": 5929.42,
+      "capital": 1.8,
+      "total": 5931.22
+    },
+    "be2627Net": {
       "revenue": 5929.42,
       "capital": 1.8,
       "total": 5931.22
@@ -1347,6 +1612,11 @@
       "revenue": 5825.76,
       "capital": 47.31,
       "total": 5873.07
+    },
+    "be2627Net": {
+      "revenue": 5825.76,
+      "capital": 47.31,
+      "total": 5873.07
     }
   },
   {
@@ -1372,6 +1642,11 @@
       "revenue": 4464.88,
       "capital": 1299.92,
       "total": 5764.8
+    },
+    "be2627Net": {
+      "revenue": 3964.88,
+      "capital": 1199.92,
+      "total": 5164.8
     }
   },
   {
@@ -1394,6 +1669,11 @@
       "total": 5551.29
     },
     "be2627": {
+      "revenue": 5457.75,
+      "capital": 45.14,
+      "total": 5502.89
+    },
+    "be2627Net": {
       "revenue": 5457.75,
       "capital": 45.14,
       "total": 5502.89
@@ -1422,6 +1702,11 @@
       "revenue": 5269.52,
       "capital": 9.49,
       "total": 5279.01
+    },
+    "be2627Net": {
+      "revenue": 5269.52,
+      "capital": 9.49,
+      "total": 5279.01
     }
   },
   {
@@ -1447,6 +1732,11 @@
       "revenue": 992.32,
       "capital": 4224.8,
       "total": 5217.12
+    },
+    "be2627Net": {
+      "revenue": 992.32,
+      "capital": 109.68,
+      "total": 1102
     }
   },
   {
@@ -1472,6 +1762,11 @@
       "revenue": 5135.33,
       "capital": 1.0,
       "total": 5136.33
+    },
+    "be2627Net": {
+      "revenue": 2653.33,
+      "capital": 1,
+      "total": 2654.33
     }
   },
   {
@@ -1497,6 +1792,11 @@
       "revenue": 4976.43,
       "capital": 2.73,
       "total": 4979.16
+    },
+    "be2627Net": {
+      "revenue": 4061.43,
+      "capital": 2.73,
+      "total": 4064.16
     }
   },
   {
@@ -1522,6 +1822,11 @@
       "revenue": 2552.51,
       "capital": 2327.05,
       "total": 4879.56
+    },
+    "be2627Net": {
+      "revenue": 2542.26,
+      "capital": 2327.05,
+      "total": 4869.31
     }
   },
   {
@@ -1544,6 +1849,11 @@
       "total": 3927.64
     },
     "be2627": {
+      "revenue": 4819.4,
+      "capital": 1.81,
+      "total": 4821.21
+    },
+    "be2627Net": {
       "revenue": 4819.4,
       "capital": 1.81,
       "total": 4821.21
@@ -1572,6 +1882,11 @@
       "revenue": 4552.8,
       "capital": 163.65,
       "total": 4716.45
+    },
+    "be2627Net": {
+      "revenue": 3642.8,
+      "capital": 163.65,
+      "total": 3806.45
     }
   },
   {
@@ -1597,6 +1912,11 @@
       "revenue": 4459.59,
       "capital": 249.47,
       "total": 4709.06
+    },
+    "be2627Net": {
+      "revenue": 4259.59,
+      "capital": 249.47,
+      "total": 4509.06
     }
   },
   {
@@ -1619,6 +1939,11 @@
       "total": 6103.02
     },
     "be2627": {
+      "revenue": 4494.56,
+      "capital": 57.38,
+      "total": 4551.94
+    },
+    "be2627Net": {
       "revenue": 4494.56,
       "capital": 57.38,
       "total": 4551.94
@@ -1647,6 +1972,11 @@
       "revenue": 4403.95,
       "capital": 93.42,
       "total": 4497.37
+    },
+    "be2627Net": {
+      "revenue": 4380.75,
+      "capital": 93.42,
+      "total": 4474.17
     }
   },
   {
@@ -1669,6 +1999,11 @@
       "total": 3346.54
     },
     "be2627": {
+      "revenue": 4461.51,
+      "capital": 18.37,
+      "total": 4479.88
+    },
+    "be2627Net": {
       "revenue": 4461.51,
       "capital": 18.37,
       "total": 4479.88
@@ -1697,6 +2032,11 @@
       "revenue": 4190.56,
       "capital": 222.8,
       "total": 4413.36
+    },
+    "be2627Net": {
+      "revenue": 3536.66,
+      "capital": 222.8,
+      "total": 3759.46
     }
   },
   {
@@ -1719,6 +2059,11 @@
       "total": 3671.82
     },
     "be2627": {
+      "revenue": 4381.86,
+      "capital": 27.07,
+      "total": 4408.93
+    },
+    "be2627Net": {
       "revenue": 4381.86,
       "capital": 27.07,
       "total": 4408.93
@@ -1747,6 +2092,11 @@
       "revenue": 4388.12,
       "capital": 2.2,
       "total": 4390.32
+    },
+    "be2627Net": {
+      "revenue": 3633.12,
+      "capital": 2.2,
+      "total": 3635.32
     }
   },
   {
@@ -1772,6 +2122,11 @@
       "revenue": 3082.19,
       "capital": 716.04,
       "total": 3798.23
+    },
+    "be2627Net": {
+      "revenue": 3073.19,
+      "capital": 716.04,
+      "total": 3789.23
     }
   },
   {
@@ -1797,6 +2152,11 @@
       "revenue": 3686.99,
       "capital": 59.97,
       "total": 3746.96
+    },
+    "be2627Net": {
+      "revenue": 3686.99,
+      "capital": 59.96,
+      "total": 3746.95
     }
   },
   {
@@ -1819,6 +2179,11 @@
       "total": 3517.88
     },
     "be2627": {
+      "revenue": 3517.87,
+      "capital": 0.01,
+      "total": 3517.88
+    },
+    "be2627Net": {
       "revenue": 3517.87,
       "capital": 0.01,
       "total": 3517.88
@@ -1847,6 +2212,11 @@
       "revenue": 3446.0,
       "capital": 0.0,
       "total": 3446.0
+    },
+    "be2627Net": {
+      "revenue": 3446,
+      "capital": null,
+      "total": 3446
     }
   },
   {
@@ -1871,6 +2241,11 @@
     "be2627": {
       "revenue": 3216.63,
       "capital": 200.0,
+      "total": 3416.63
+    },
+    "be2627Net": {
+      "revenue": 3216.63,
+      "capital": 200,
       "total": 3416.63
     }
   },
@@ -1897,6 +2272,11 @@
       "revenue": 3395.62,
       "capital": 4.38,
       "total": 3400.0
+    },
+    "be2627Net": {
+      "revenue": 3395.62,
+      "capital": 4.38,
+      "total": 3400
     }
   },
   {
@@ -1922,6 +2302,11 @@
       "revenue": 2523.11,
       "capital": 597.71,
       "total": 3120.82
+    },
+    "be2627Net": {
+      "revenue": 1915.31,
+      "capital": 597.71,
+      "total": 2513.02
     }
   },
   {
@@ -1947,6 +2332,11 @@
       "revenue": 1735.2,
       "capital": 1100.0,
       "total": 2835.2
+    },
+    "be2627Net": {
+      "revenue": 1732.7,
+      "capital": 1100,
+      "total": 2832.7
     }
   },
   {
@@ -1969,6 +2359,11 @@
       "total": 1732.95
     },
     "be2627": {
+      "revenue": 2732.27,
+      "capital": 29.53,
+      "total": 2761.8
+    },
+    "be2627Net": {
       "revenue": 2732.27,
       "capital": 29.53,
       "total": 2761.8
@@ -1997,6 +2392,11 @@
       "revenue": 2454.37,
       "capital": 153.08,
       "total": 2607.45
+    },
+    "be2627Net": {
+      "revenue": 2454.37,
+      "capital": 153.08,
+      "total": 2607.45
     }
   },
   {
@@ -2022,6 +2422,11 @@
       "revenue": 2433.88,
       "capital": 4.53,
       "total": 2438.41
+    },
+    "be2627Net": {
+      "revenue": 2433.87,
+      "capital": 4.53,
+      "total": 2438.4
     }
   },
   {
@@ -2047,6 +2452,11 @@
       "revenue": 2057.87,
       "capital": 45.0,
       "total": 2102.87
+    },
+    "be2627Net": {
+      "revenue": 2057.87,
+      "capital": 45,
+      "total": 2102.87
     }
   },
   {
@@ -2069,6 +2479,11 @@
       "total": 981.31
     },
     "be2627": {
+      "revenue": 1742.84,
+      "capital": 1.9,
+      "total": 1744.74
+    },
+    "be2627Net": {
       "revenue": 1742.84,
       "capital": 1.9,
       "total": 1744.74
@@ -2097,6 +2512,11 @@
       "revenue": 1362.99,
       "capital": 346.11,
       "total": 1709.1
+    },
+    "be2627Net": {
+      "revenue": 1336.49,
+      "capital": 345.86,
+      "total": 1682.35
     }
   },
   {
@@ -2119,6 +2539,11 @@
       "total": 1291.6
     },
     "be2627": {
+      "revenue": 1668.35,
+      "capital": 1.37,
+      "total": 1669.72
+    },
+    "be2627Net": {
       "revenue": 1668.35,
       "capital": 1.37,
       "total": 1669.72
@@ -2147,6 +2572,11 @@
       "revenue": 968.01,
       "capital": 380.0,
       "total": 1348.01
+    },
+    "be2627Net": {
+      "revenue": 968.01,
+      "capital": 380,
+      "total": 1348.01
     }
   },
   {
@@ -2169,6 +2599,11 @@
       "total": 848.24
     },
     "be2627": {
+      "revenue": 1203.38,
+      "capital": 28.78,
+      "total": 1232.16
+    },
+    "be2627Net": {
       "revenue": 1203.38,
       "capital": 28.78,
       "total": 1232.16
@@ -2197,6 +2632,11 @@
       "revenue": 1186.88,
       "capital": 3.28,
       "total": 1190.16
+    },
+    "be2627Net": {
+      "revenue": 1186.88,
+      "capital": 3.28,
+      "total": 1190.16
     }
   },
   {
@@ -2222,6 +2662,11 @@
       "revenue": 978.17,
       "capital": 30.83,
       "total": 1009.0
+    },
+    "be2627Net": {
+      "revenue": 978.17,
+      "capital": 30.83,
+      "total": 1009
     }
   },
   {
@@ -2244,6 +2689,11 @@
       "total": 633.13
     },
     "be2627": {
+      "revenue": 566.19,
+      "capital": 55.92,
+      "total": 622.11
+    },
+    "be2627Net": {
       "revenue": 566.19,
       "capital": 55.92,
       "total": 622.11
@@ -2272,6 +2722,11 @@
       "revenue": 451.4,
       "capital": 74.13,
       "total": 525.53
+    },
+    "be2627Net": {
+      "revenue": 451.4,
+      "capital": 74.13,
+      "total": 525.53
     }
   },
   {
@@ -2294,6 +2749,11 @@
       "total": 481.33
     },
     "be2627": {
+      "revenue": 471.32,
+      "capital": 11.67,
+      "total": 482.99
+    },
+    "be2627Net": {
       "revenue": 471.32,
       "capital": 11.67,
       "total": 482.99
@@ -2322,6 +2782,11 @@
       "revenue": 439.84,
       "capital": 3.34,
       "total": 443.18
+    },
+    "be2627Net": {
+      "revenue": 439.84,
+      "capital": 3.34,
+      "total": 443.18
     }
   },
   {
@@ -2344,6 +2809,11 @@
       "total": 432.89
     },
     "be2627": {
+      "revenue": 421.09,
+      "capital": 21.85,
+      "total": 442.94
+    },
+    "be2627Net": {
       "revenue": 421.09,
       "capital": 21.85,
       "total": 442.94
@@ -2372,6 +2842,11 @@
       "revenue": 367.69,
       "capital": 14.53,
       "total": 382.22
+    },
+    "be2627Net": {
+      "revenue": 367.69,
+      "capital": 14.53,
+      "total": 382.22
     }
   },
   {
@@ -2394,6 +2869,11 @@
       "total": 185.57
     },
     "be2627": {
+      "revenue": 184.7,
+      "capital": 1.02,
+      "total": 185.72
+    },
+    "be2627Net": {
       "revenue": 184.7,
       "capital": 1.02,
       "total": 185.72
@@ -2422,6 +2902,11 @@
       "revenue": 133.1,
       "capital": 4.1,
       "total": 137.2
+    },
+    "be2627Net": {
+      "revenue": 133.1,
+      "capital": 4.1,
+      "total": 137.2
     }
   },
   {
@@ -2444,6 +2929,11 @@
       "total": 66.31
     },
     "be2627": {
+      "revenue": 61.18,
+      "capital": 7.27,
+      "total": 68.45
+    },
+    "be2627Net": {
       "revenue": 61.18,
       "capital": 7.27,
       "total": 68.45
@@ -2472,6 +2962,11 @@
       "revenue": 54.25,
       "capital": 1.67,
       "total": 55.92
+    },
+    "be2627Net": {
+      "revenue": 54.25,
+      "capital": 1.67,
+      "total": 55.92
     }
   },
   {
@@ -2494,6 +2989,11 @@
       "total": 50.66
     },
     "be2627": {
+      "revenue": 52.85,
+      "capital": 1.71,
+      "total": 54.56
+    },
+    "be2627Net": {
       "revenue": 52.85,
       "capital": 1.71,
       "total": 54.56
@@ -2522,6 +3022,11 @@
       "revenue": 28.94,
       "capital": 0.66,
       "total": 29.6
+    },
+    "be2627Net": {
+      "revenue": 28.94,
+      "capital": 0.66,
+      "total": 29.6
     }
   },
   {
@@ -2544,6 +3049,11 @@
       "total": 12.14
     },
     "be2627": {
+      "revenue": 11.39,
+      "capital": 0.31,
+      "total": 11.7
+    },
+    "be2627Net": {
       "revenue": 11.39,
       "capital": 0.31,
       "total": 11.7

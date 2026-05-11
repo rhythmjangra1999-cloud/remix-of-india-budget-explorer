@@ -119,15 +119,25 @@ const Index = () => {
                     <div className="font-mono text-xs text-muted-foreground">
                       {String(i + 1).padStart(2, "0")}
                     </div>
-                    <div className="font-serif text-xl tnum font-semibold">
-                      {formatCr(m.totals.FY27 ?? 0, { compact: true })}
+                    <div className="text-right">
+                      <div className="font-serif text-xl tnum font-semibold">
+                        {formatCr(m.totals.FY27 ?? 0, { compact: true })}
+                      </div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Gross</div>
                     </div>
                   </div>
                   <div className="mt-3 font-serif text-lg leading-snug group-hover:text-primary transition-colors">
                     {m.name}
                   </div>
-                  <div className="mt-2 text-xs text-muted-foreground">
-                    {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
+                  <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
+                    <span>
+                      {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
+                    </span>
+                    {m.netFY27 != null && (
+                      <span className="tnum font-mono">
+                        Net {formatCr(m.netFY27, { compact: true })}
+                      </span>
+                    )}
                   </div>
                 </Link>
               ))}
