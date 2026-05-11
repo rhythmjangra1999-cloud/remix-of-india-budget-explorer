@@ -422,15 +422,15 @@ export default function ReportBuilder() {
                 <tr className="bg-muted">
                   <th className="border-b border-border px-2 py-1.5 text-left text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">Item</th>
                   {activeYears.map(y => (
-                    <>
+                    <Fragment key={y.key}>
                       {splitRevCap && (
                         <>
-                          <th key={y.key + "r"} className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: REV }}>{y.short} Rev</th>
-                          <th key={y.key + "c"} className="border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: CAP }}>{y.short} Cap</th>
+                          <th className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: REV }}>{y.short} Rev</th>
+                          <th className="border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: CAP }}>{y.short} Cap</th>
                         </>
                       )}
-                      <th key={y.key + "t"} className={`border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em] ${splitRevCap ? "" : "border-l"}`} style={{ color: TOT }}>{y.short} Total</th>
-                    </>
+                      <th className={`border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em] ${splitRevCap ? "" : "border-l"}`} style={{ color: TOT }}>{y.short} Total</th>
+                    </Fragment>
                   ))}
                   {showPct && <th className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: PCT }}>% Budget</th>}
                 </tr>
@@ -450,15 +450,15 @@ export default function ReportBuilder() {
                     {activeYears.map(y => {
                       const c = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
                       return (
-                        <>
+                        <Fragment key={y.key}>
                           {splitRevCap && (
                             <>
-                              <td key={y.key + "r"} className="border-l border-border px-2 py-1.5 text-right">{fmtNum(c.revenue)}</td>
-                              <td key={y.key + "c"} className="px-2 py-1.5 text-right">{fmtNum(c.capital)}</td>
+                              <td className="border-l border-border px-2 py-1.5 text-right">{fmtNum(c.revenue)}</td>
+                              <td className="px-2 py-1.5 text-right">{fmtNum(c.capital)}</td>
                             </>
                           )}
-                          <td key={y.key + "t"} className={`px-2 py-1.5 text-right font-medium ${splitRevCap ? "" : "border-l border-border"}`}>{fmtNum(c.total)}</td>
-                        </>
+                          <td className={`px-2 py-1.5 text-right font-medium ${splitRevCap ? "" : "border-l border-border"}`}>{fmtNum(c.total)}</td>
+                        </Fragment>
                       );
                     })}
                     {showPct && (
