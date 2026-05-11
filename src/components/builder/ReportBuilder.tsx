@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
-import { Plus, Trash2, Download, Printer, Info } from "lucide-react";
+import { Fragment, useMemo, useState } from "react";
+import { Plus, Trash2, Download, Printer, Info, ChevronDown, ChevronRight } from "lucide-react";
 import { DG_SUMMARY, type YearKey, type Section } from "@/lib/dg";
 import { DDG_LEAVES, type DDGLeaf } from "@/lib/ddg";
 import recoveriesRaw from "@/data/dg-recoveries.json";
+import DeepDivePanel from "./DeepDivePanel";
 
 // ---------- data plumbing ----------
 const RECOV = recoveriesRaw as Record<string, Partial<Record<YearKey, number>>>;
@@ -127,6 +128,22 @@ function fmtPct(v: number | null): string {
 // ---------- UI ----------
 export default function ReportBuilder() {
   const [sels, setSels] = useState<Selection[]>(() => [newSelection(), { ...newSelection(), year: "be2526" }]);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  function addFromDeepDive(p: { ministry: string; demandNo: number; section: Section; majorHead?: string; minorHead?: string; subHead?: string; objectHead?: string }) {
+    setSels(prev => [...prev, {
+      ...newSelection(),
+      ministry: p.ministry,
+      demandNo: p.demandNo,
+      type: "ddg",
+      section: p.section,
+      majorHead: p.majorHead,
+      minorHead: p.minorHead,
+      subHead: p.subHead,
+      objectHead: p.objectHead,
+      year: "be2627",
+    }]);
+  }
 
   function update(id: string, patch: Partial<Selection>) {
     setSels(prev => prev.map(s => s.id === id ? { ...s, ...patch } : s));
@@ -401,24 +418,56 @@ export default function ReportBuilder() {
                   <th className="px-3 py-2 text-right">Value</th>
                   <th className="px-3 py-2 text-right">% Union Budget</th>
                   <th className="px-3 py-2 text-right">YoY</th>
+                  <th className="px-3 py-2"></th>
                 </tr>
               </thead>
               <tbody>
-                {computed.map((c, i) => (
-                  <tr key={c.sel.id} className="border-t border-border">
-                    <td className="px-3 py-2 text-muted-foreground">{i + 1}</td>
-                    <td className="px-3 py-2 max-w-[18rem] truncate" title={c.sel.ministry}>{c.sel.ministry}</td>
-                    <td className="px-3 py-2">{c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`}</td>
-                    <td className="px-3 py-2 uppercase text-xs tracking-wide">{c.sel.type}</td>
-                    <td className="px-3 py-2 capitalize">{c.sel.section}</td>
-                    <td className="px-3 py-2">{YEAR_LABEL[c.sel.year]}</td>
-                    <td className="px-3 py-2 text-right tabular-nums font-medium">{fmtCr(c.value)}</td>
-                    <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{c.share == null ? "—" : `${c.share.toFixed(3)}%`}</td>
-                    <td className={`px-3 py-2 text-right tabular-nums ${(c.yoy ?? 0) > 0 ? "text-emerald-600" : (c.yoy ?? 0) < 0 ? "text-destructive" : "text-muted-foreground"}`}>
-                      {fmtPct(c.yoy)}
-                    </td>
-                  </tr>
-                ))}
+                {computed.map((c, i) => {
+                  const isOpen = expandedId === c.sel.id;
+                  return (
+                    <Fragment key={c.sel.id}>
+                      <tr className="border-t border-border">
+                        <td className="px-3 py-2 text-muted-foreground">{i + 1}</td>
+                        <td className="px-3 py-2 max-w-[18rem] truncate" title={c.sel.ministry}>{c.sel.ministry}</td>
+                        <td className="px-3 py-2">{c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`}</td>
+                        <td className="px-3 py-2 uppercase text-xs tracking-wide">{c.sel.type}</td>
+                        <td className="px-3 py-2 capitalize">{c.sel.section}</td>
+                        <td className="px-3 py-2">{YEAR_LABEL[c.sel.year]}</td>
+                        <td className="px-3 py-2 text-right tabular-nums font-medium">{fmtCr(c.value)}</td>
+                        <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{c.share == null ? "—" : `${c.share.toFixed(3)}%`}</td>
+                        <td className={`px-3 py-2 text-right tabular-nums ${(c.yoy ?? 0) > 0 ? "text-emerald-600" : (c.yoy ?? 0) < 0 ? "text-destructive" : "text-muted-foreground"}`}>
+                          {fmtPct(c.yoy)}
+                        </td>
+                        <td className="px-3 py-2 text-right">
+                          <button
+                            onClick={() => setExpandedId(isOpen ? null : c.sel.id)}
+                            className="text-xs px-2 py-1 rounded border border-border hover:bg-primary/10 hover:text-primary hover:border-primary inline-flex items-center gap-1"
+                            title="Drill into Major → Minor → Sub → Object head"
+                          >
+                            {isOpen ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
+                            Deep dive
+                          </button>
+                        </td>
+                      </tr>
+                      {isOpen && (
+                        <tr>
+                          <td colSpan={10} className="p-0">
+                            <DeepDivePanel
+                              ministry={c.sel.ministry}
+                              demandNo={c.sel.demandNo}
+                              year={c.sel.year}
+                              section={c.sel.section}
+                              onAddSelection={addFromDeepDive}
+                              onPickDemand={(dn) => {
+                                update(c.sel.id, { demandNo: dn, majorHead: undefined, minorHead: undefined, subHead: undefined, objectHead: undefined });
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      )}
+                    </Fragment>
+                  );
+                })}
               </tbody>
             </table>
           </div>
