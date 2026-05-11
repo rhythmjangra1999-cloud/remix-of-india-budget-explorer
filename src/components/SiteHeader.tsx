@@ -26,6 +26,9 @@ export function SiteHeader() {
           <NavLink to="/findings" className={linkClass} activeClassName={activeClass}>
             Findings
           </NavLink>
+          <NavLink to="/builder" className={linkClass} activeClassName={activeClass}>
+            Builder
+          </NavLink>
           <NavLink to="/methodology" className={linkClass} activeClassName={activeClass}>
             Tutorial
           </NavLink>
