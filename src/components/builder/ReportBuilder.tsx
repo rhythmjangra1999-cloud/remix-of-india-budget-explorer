@@ -129,9 +129,7 @@ function fmtPct(v: number | null): string {
 
 // ---------- UI ----------
 export default function ReportBuilder() {
-  const [sels, setSels] = useState<Selection[]>(() => [
-    { ...newSelection(), ministry: "Ministry of Agriculture and Farmers Welfare" in DG_SUMMARY ? "" : MINISTRIES[0] },
-  ]);
+  const [sels, setSels] = useState<Selection[]>(() => [newSelection(), { ...newSelection(), year: "be2526" }]);
 
   function update(id: string, patch: Partial<Selection>) {
     setSels(prev => prev.map(s => s.id === id ? { ...s, ...patch } : s));
