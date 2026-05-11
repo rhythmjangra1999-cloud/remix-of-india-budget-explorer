@@ -1,33 +1,24 @@
 import { useMemo, useState } from "react";
 import { Plus, Trash2, Download, Printer, Info } from "lucide-react";
 import { DG_SUMMARY, type YearKey, type Section } from "@/lib/dg";
-import ddgsRaw from "@/data/ddgs.json";
-import demandsRaw from "@/data/demands.json";
+import { DDG_LEAVES, type DDGLeaf } from "@/lib/ddg";
 import recoveriesRaw from "@/data/dg-recoveries.json";
 
 // ---------- data plumbing ----------
-type DDGRow = {
-  ministryId: string; demandId: string; majorHead: string;
-  minorHead?: string; subHead?: string; objectHead: string;
-  amounts: { FY26?: number; FY27?: number };
-  revenue?: boolean;
-};
-const DDGS = ddgsRaw as DDGRow[];
-const DEMANDS_META = demandsRaw as Array<{ id: string; ministryId: string; number: number; title: string }>;
 const RECOV = recoveriesRaw as Record<string, Partial<Record<YearKey, number>>>;
 
-// demandNo -> demandId (for ddg lookup)
-const demandIdByNo = new Map<number, string>();
-for (const d of DEMANDS_META) demandIdByNo.set(d.number, d.id);
+// Demands with DDG (object-head) coverage
+const DDG_DEMAND_NOS = Array.from(new Set(DDG_LEAVES.map(l => l.demandNo))).sort((a, b) => a - b);
+const DDG_HAS = (n: number) => DDG_DEMAND_NOS.includes(n);
 
 // ---------- year metadata ----------
 type Type = "dg" | "eb" | "ddg";
 
-const YEARS: { key: YearKey; label: string; ddg: boolean }[] = [
-  { key: "actuals2425", label: "FY24-25 Actuals", ddg: false },
-  { key: "be2526",      label: "FY25-26 BE",      ddg: true  },
-  { key: "re2526",      label: "FY25-26 RE",      ddg: false },
-  { key: "be2627",      label: "FY26-27 BE",      ddg: true  },
+const YEARS: { key: YearKey; label: string }[] = [
+  { key: "actuals2425", label: "FY24-25 Actuals" },
+  { key: "be2526",      label: "FY25-26 BE"      },
+  { key: "re2526",      label: "FY25-26 RE"      },
+  { key: "be2627",      label: "FY26-27 BE"      },
 ];
 const YEAR_LABEL: Record<YearKey, string> = Object.fromEntries(YEARS.map(y => [y.key, y.label])) as Record<YearKey, string>;
 const PREV_YEAR: Partial<Record<YearKey, YearKey>> = {
@@ -35,16 +26,11 @@ const PREV_YEAR: Partial<Record<YearKey, YearKey>> = {
   re2526: "be2526",
   be2627: "re2526",
 };
-function ddgYear(y: YearKey): "FY26" | "FY27" | null {
-  if (y === "be2526") return "FY26";
-  if (y === "be2627") return "FY27";
-  return null;
-}
 
 const TYPES: { key: Type; label: string; help: string }[] = [
   { key: "dg",  label: "DG (Gross)",         help: "Gross provision in the Demand for Grants" },
   { key: "eb",  label: "Expenditure Budget", help: "Net of recoveries (DG − Recoveries)" },
-  { key: "ddg", label: "DDG (Object-head)",  help: "Detailed line item from the DDG document" },
+  { key: "ddg", label: "DDG (Detailed)",     help: "Drill into Major → Minor → Sub → Object head" },
 ];
 
 // ---------- ministries / demands ----------
@@ -53,32 +39,41 @@ function demandsOf(min: string) {
   return DG_SUMMARY.filter(d => d.ministry === min).sort((a, b) => a.demandNo - b.demandNo);
 }
 
+// ---------- DDG helpers ----------
+function ddgLeavesFor(sel: Selection): DDGLeaf[] {
+  if (sel.demandNo === "all") return [];
+  let rows = DDG_LEAVES.filter(r => r.demandNo === sel.demandNo);
+  if (sel.section === "revenue") rows = rows.filter(r => r.section === "Revenue");
+  else if (sel.section === "capital") rows = rows.filter(r => r.section === "Capital");
+  if (sel.majorHead)  rows = rows.filter(r => r.majorHead === sel.majorHead);
+  if (sel.minorHead)  rows = rows.filter(r => `${r.subMajor}.${r.minorHead}` === sel.minorHead);
+  if (sel.subHead)    rows = rows.filter(r => `${r.subHead}.${r.detailedHead}` === sel.subHead);
+  if (sel.objectHead) rows = rows.filter(r => r.objectHead === sel.objectHead);
+  return rows;
+}
+function uniqOpts<T>(arr: T[], key: (t: T) => string, label: (t: T) => string): { value: string; label: string }[] {
+  const seen = new Map<string, string>();
+  for (const a of arr) { const k = key(a); if (!seen.has(k)) seen.set(k, label(a)); }
+  return Array.from(seen, ([value, l]) => ({ value, label: l })).sort((a, b) => a.label.localeCompare(b.label));
+}
+
 // ---------- core calculations ----------
 function grandTotalForYear(y: YearKey): number {
   return DG_SUMMARY.reduce((s, d) => s + (d[y].total ?? 0), 0);
 }
 
-// Returns numeric value for selection or null if not available
 function calcValue(sel: Selection, year: YearKey): number | null {
-  const { ministry, demandNo, type, section, ddgRowIdx } = sel;
+  const { ministry, demandNo, type, section } = sel;
 
   if (type === "ddg") {
-    const dy = ddgYear(year);
-    if (!dy) return null;
-    if (demandNo === "all") return null; // require specific demand
-    const did = demandIdByNo.get(demandNo);
-    if (!did) return null;
-    const rows = DDGS.filter(r => r.demandId === did);
-    if (ddgRowIdx == null) {
-      // sum filtered by section
-      return rows
-        .filter(r => section === "total" ? true : section === "revenue" ? r.revenue : !r.revenue)
-        .reduce((s, r) => s + (r.amounts[dy] ?? 0), 0);
-    }
-    return rows[ddgRowIdx]?.amounts[dy] ?? null;
+    if (demandNo === "all") return null;
+    const rows = ddgLeavesFor(sel);
+    if (!rows.length) return null;
+    let any = false; let s = 0;
+    for (const r of rows) { const v = r[year]; if (typeof v === "number") { s += v; any = true; } }
+    return any ? s : null;
   }
 
-  // DG / EB
   const demands = demandNo === "all"
     ? DG_SUMMARY.filter(d => d.ministry === ministry)
     : DG_SUMMARY.filter(d => d.ministry === ministry && d.demandNo === demandNo);
@@ -87,7 +82,6 @@ function calcValue(sel: Selection, year: YearKey): number | null {
   let val = demands.reduce((s, d) => s + (d[year][section] ?? 0), 0);
   if (type === "eb") {
     const rec = demands.reduce((s, d) => s + Math.abs(RECOV[String(d.demandNo)]?.[year] ?? 0), 0);
-    // Apply recovery only on total (recoveries in DG_RECOV are total figures)
     if (section === "total") val -= rec;
   }
   return val;
@@ -101,7 +95,10 @@ interface Selection {
   type: Type;
   section: Section;
   year: YearKey;
-  ddgRowIdx?: number; // for DDG: pick a specific object-head row, else sum
+  majorHead?: string;
+  minorHead?: string; // "subMajor.minorHead"
+  subHead?: string;   // "subHead.detailedHead"
+  objectHead?: string;
 }
 
 function newSelection(): Selection {
