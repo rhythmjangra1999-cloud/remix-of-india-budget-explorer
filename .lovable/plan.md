@@ -1,144 +1,49 @@
-# Budget Analysis Builder
+## Goal
 
-A new tab placed **after Tutorial** in the AgriJourney stepper (and reusable across the site). Inspired by Oracle's Financial Analysis "Subject Area → Filters → Columns → Pivot/Visualize → Save" workflow, but scoped to public-budget data we already have in `src/data/`.
+In **Budget Analysis Builder**, allow the user to "Deep Dive" any row of the comparison table (and chart) into the full DDG hierarchy: **Ministry → Demand → Major Head → Minor Head → Sub/Detailed Head → Object Head**, with year values, share-of-demand, and YoY shown at every level.
 
-The user assembles their own analysis: pick *what* to compare, *how* to slice it, *which years*, then visualise it as a table, bar, line, or treemap — and save the configuration as a shareable URL.
+Today, DDG drill is only available when a row's *Type* is set to `DDG` and a single demand is picked. The user wants drilling to be a one-click action on **any** row, regardless of how it was originally configured.
 
----
+## UX
 
-## 1. Mental model (Oracle parallel)
+In the Comparison table, add a **"Deep dive"** action (chevron icon) at the end of every row. Clicking it expands an inline panel directly under that row (accordion style — only one open at a time) containing:
 
-| Oracle FA concept | Our equivalent |
-|---|---|
-| Subject Area | **Dataset** — Ministries / Demands / Major Heads / Schemes / DDG line items |
-| Dimensions | Group-by axes — Ministry, Demand, Section (Rev/Cap), Voted/Charged, Major Head, Scheme, State |
-| Facts / Measures | Amount fields — Actuals 24-25, BE 25-26, RE 25-26, BE 26-27, YoY %, Share %, Recoveries, Net Provision |
-| Filters | Slicers — Ministry list, FY, Section, Voted/Charged, Major Head code prefix, Scheme name search, Amount range |
-| Views | Visualisations — Table, Pivot, Bar, Stacked Bar, Line (YoY), Treemap, Sankey |
-| Saved Analysis | URL-encoded config + "My Analyses" in localStorage |
+1. **Header strip** — Ministry • Demand (or "All demands") • Year (with prev-year toggle for YoY).
+2. **Coverage notice** — if DDG isn't available for the demand(s), show "Object-head detail not yet ingested for this demand. Showing Major-head split from DG schedule instead." and fall back to `DG_MAJOR_HEADS` for the breakdown.
+3. **Drill tree** (default expanded to Major Head level):
 
----
+   ```text
+   Major Head 2401 — Crop Husbandry        ₹12,345 Cr   23.1%   +4.2%
+     └ Minor 00.001 — Direction & Admin     ₹  450 Cr    0.8%   +1.0%
+        └ Sub 01.02 — PM-KISAN                ₹  300 Cr    0.6%   +0.5%
+            └ Object 31 — Grants-in-aid        ₹  280 Cr    0.5%   +0.5%
+   ```
 
-## 2. Builder layout
+   Each level: name, value (selected year), % of parent, YoY vs previous year. Collapsible rows (click to expand children). Each level also has a small "Add as new selection" button that pushes that exact slice into the comparison list.
 
-```text
-┌───────────────────────────────────────────────────────────────────────┐
-│  Budget Analysis Builder                          [Reset] [Save] [↗] │
-├──────────────┬────────────────────────────────────────────────────────┤
-│ 1. Dataset   │  ○ Ministries  ○ Demands  ● Major Heads  ○ Schemes    │
-│ 2. Compare   │  Rows: [Ministry ▾]   Columns: [FY ▾]                  │
-│ 3. Measure   │  [BE 26-27 ▾]  □ show YoY  □ show Share %              │
-│ 4. Filters   │  Ministry: [Agri ×][Health ×] +                        │
-│              │  Section:  ● All ○ Revenue ○ Capital                   │
-│              │  Type:     ● All ○ Voted ○ Charged                     │
-│              │  Major Head prefix: [24__]                             │
-│              │  Min amount: [____] Cr   Max: [____] Cr                │
-│ 5. View      │  [Table] [Pivot] [Bar] [Stacked] [Line YoY] [Treemap] │
-├──────────────┴────────────────────────────────────────────────────────┤
-│                       ── Visualisation area ──                        │
-│                                                                       │
-│  [Top-N selector]   [Sort: Value desc ▾]   [Export CSV] [Copy link]   │
-└───────────────────────────────────────────────────────────────────────┘
-```
+4. **Year switcher + Section filter** local to the panel (defaults to the row's year + section, but the user can change without affecting the source row).
 
----
+5. **Top-N bar** — a compact horizontal bar chart of the largest 10 children at the currently focused level, for quick visual scan.
 
-## 3. Filters in detail
+6. **Export this view** — CSV of the expanded tree.
 
-**Scope filters** (define the rows that enter the analysis)
-- **Ministry** — multi-select chips, "All 102", "DDG-available only", presets ("Top 10 by BE 26-27", "Social sector", "Infrastructure")
-- **Demand** — multi-select, dependent on ministry
-- **Major Head** — search by code (2401) or name; prefix match (24__ for Agri-related)
-- **Scheme / Sub-scheme** — text search across `schemes.json`
-- **State** — for `transfers.json` only
+If the row's `demandNo === "all"` (ministry total), the deep dive opens at **Demand list** for that ministry, then continues into Major→…→Object once a demand is picked inline.
 
-**Attribute filters** (refine the slice)
-- **Section**: All / Revenue / Capital
-- **Voted vs Charged**: All / Voted / Charged
-- **Confidence**: validated / parsed / ocr-needed (inherited from data)
-- **Has recoveries**: yes/no
-- **Centrally Sponsored vs Central Sector** (where flagged)
+## Technical Notes
 
-**Quantitative filters**
-- Amount range slider on the chosen measure
-- YoY change band (e.g. only items with > +20% or < −10%)
-- Share-of-parent threshold (e.g. > 1% of demand)
+- New component: `src/components/builder/DeepDivePanel.tsx` — pure presentation, takes `{ ministry, demandNo, year, section, onAddSelection }`.
+- Tree builder helper in same file: groups `DDG_LEAVES` (filtered by demandNo + section) into a nested `Node` tree keyed by `majorHead → subMajor.minorHead → subHead.detailedHead → objectHead`. Each node holds aggregated values for all 4 years so the local year switcher is instant.
+- DG-only fallback: if no DDG leaves for the demand, build a single-level tree from `DG_MAJOR_HEADS` for that demand.
+- In `ReportBuilder.tsx`:
+  - Add `expandedId: string | null` state.
+  - Add a chevron button per table row that toggles `expandedId`.
+  - When expanded, render an extra `<tr><td colSpan=9><DeepDivePanel … /></td></tr>` directly below the row.
+  - Wire `onAddSelection(partial)` to `setSels(prev => [...prev, { ...newSelection(), ...partial, type: "ddg" }])` so users can promote a drilled level into the main comparison.
+- Reuse existing formatters (`fmtCr`, `fmtPct`) and `inputCls`/`Field`/`Stat` helpers — no new design tokens.
+- No data changes; no other files touched besides `ReportBuilder.tsx` and the new `DeepDivePanel.tsx`.
 
-**Time filters**
-- Year picker — multi-select across {Actuals 24-25, BE 25-26, RE 25-26, BE 26-27}
-- "Compare two years" toggle → enables Δ and Δ% columns
+## Out of Scope
 
----
-
-## 4. Cross-ministry & cross-scheme flexibility
-
-These are the "power moves" the builder unlocks that today's Explorer cannot do:
-
-1. **Cross-ministry Major Head rollup** — pick MH 2401 and see every ministry that books to it, ranked.
-2. **Scheme-name search across ministries** — e.g. "PMAY" returns Housing + Rural rows side-by-side.
-3. **Ministry basket vs Ministry basket** — group A: {Agri, FAHD, Food Processing}; group B: {Rural, Jal Shakti}; compare totals & YoY.
-4. **Recoveries leaderboard** — order any dataset by recoveries-as-% of gross.
-5. **Capital-intensity ranking** — Capital ÷ Grand Total across selected ministries.
-6. **YoY shock detector** — filter where |Δ| > X% between RE 25-26 and BE 26-27.
-7. **State-share view** (when transfers data present) — pivot scheme × state.
-8. **What-if scaler** — apply a "+5%" or "deflator" multiplier on a measure (read-only modelling).
-
----
-
-## 5. Output / Visualisation
-
-Same data, switchable:
-- **Table** — sortable, sticky header, CSV export
-- **Pivot** — rows × columns × measure (Excel-like)
-- **Bar / Stacked Bar** — top-N with "Other" bucket
-- **Line** — only when a year dimension is on an axis (YoY trend)
-- **Treemap** — hierarchical share (Ministry → Demand → MH)
-- **Sankey** — only when source+target dimensions chosen (Ministry → State, Scheme → MH)
-
-Common controls: Top-N, sort, log scale toggle, "show as % of total".
-
----
-
-## 6. Save & share
-
-- **URL state**: every selection encoded as `?b=<base64-json>` so a link reproduces the exact analysis.
-- **My Analyses** (localStorage): name + timestamp + config; list in a side drawer.
-- **Export**: CSV of the current table; PNG of the current chart (html-to-image).
-- **Embed snippet** (later) — readonly iframe of the view.
-
----
-
-## 7. Technical sketch
-
-New files:
-- `src/pages/AnalysisBuilder.tsx` — standalone page at `/builder`
-- `src/components/builder/` — `DatasetPicker.tsx`, `FilterPanel.tsx`, `MeasureBar.tsx`, `ViewSwitcher.tsx`, `ResultTable.tsx`, `ResultChart.tsx`, `SavedAnalyses.tsx`
-- `src/lib/builder/` — `schema.ts` (typed config), `query.ts` (pure function: config + raw data → rows), `encode.ts` (URL ↔ config)
-- `src/data/builder-presets.json` — curated starter analyses ("Top 10 ministries YoY", "MH 2401 across ministries", "Recoveries leaderboard")
-
-Stepper integration:
-- Add `"builder"` step id to `JourneyStepper.tsx` after `"tutorial"` (label: **Budget Analysis Builder**).
-- In `AgriJourney.tsx`, render `<AnalysisBuilder embedded defaultDataset="majorHeads" defaultFilters={{ministry:["magri"]}} />` so the Agri journey opens the builder pre-scoped to Agri but the user can clear filters to go cross-ministry.
-
-Data sources reused (no new backend):
-- `ministries.json`, `demands.json`, `dg-summary` (via `lib/dg`), `ddgs.json`, `schemes.json`, `transfers.json`, `dg-recoveries.json`.
-
-Pure-function `query()` keeps the UI dumb: filter → group → aggregate → sort → top-N. Same function powers Table/Pivot/Chart so the numbers always match.
-
----
-
-## 8. Out of scope (v1)
-
-- Joins across arbitrary datasets (e.g. DDG line items + transfers in one query) — limited to the chosen dataset
-- Server-side persistence of saved analyses (localStorage only)
-- PDF export, scheduled reports, role-based sharing
-- AI/NL prompt-to-analysis (good v2)
-
----
-
-## Open questions
-
-1. **Entry point** — only inside Agri Journey stepper, or also a top-nav link `/builder` reachable from anywhere? (Recommend both.)
-2. **Default dataset** when opened from Agri tab — Major Heads (current Agri context) or Demands?
-3. **Presets** — want me to seed 5–6 curated analyses, or ship empty and let users build from scratch?
-4. **Chart library** — reuse existing Recharts (already in repo) or add a pivot grid lib for the Pivot view?
+- Cross-demand DDG aggregation when `demandNo === "all"` (we open the demand list first instead).
+- Persisting expansion state to URL.
+- Editing values; this is read-only analysis.
