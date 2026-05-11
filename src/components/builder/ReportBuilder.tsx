@@ -1,494 +1,412 @@
-import { Fragment, useMemo, useState } from "react";
-import { Download, Printer } from "lucide-react";
-import { DG_SUMMARY, DG_META, type YearKey } from "@/lib/dg";
+import { useMemo, useState } from "react";
+import { Plus, Trash2, Download, Printer, Info } from "lucide-react";
+import { DG_SUMMARY, type YearKey, type Section } from "@/lib/dg";
 import ddgsRaw from "@/data/ddgs.json";
+import demandsRaw from "@/data/demands.json";
+import recoveriesRaw from "@/data/dg-recoveries.json";
 
-// ---------- constants ----------
-const GRAND = DG_META.grossBe2627Cr;
-
-const YEAR_META: { key: YearKey; short: string; long: string; ddg: boolean }[] = [
-  { key: "actuals2425", short: "Actuals 24-25", long: "FY24-25 Actuals", ddg: false },
-  { key: "be2526",      short: "BE 25-26",      long: "FY25-26 BE",      ddg: true  }, // DDG FY26
-  { key: "re2526",      short: "RE 25-26",      long: "FY25-26 RE",      ddg: false },
-  { key: "be2627",      short: "BE 26-27",      long: "FY26-27 BE",      ddg: true  }, // DDG FY27
-];
-
-type Dataset = "expbudget" | "dgs" | "ddg";
-
-const DATASETS: { key: Dataset; label: string; sub: string }[] = [
-  { key: "expbudget", label: "Expenditure Budget", sub: "Ministry rollups" },
-  { key: "dgs",       label: "Demands for Grants", sub: "102 demands" },
-  { key: "ddg",       label: "Detailed DGs",       sub: "Object-head line items" },
-];
-
-// HSL palette (uses project tokens via direct hsl values matching index.css spirit)
-const REV = "hsl(160 60% 38%)";
-const CAP = "hsl(18 70% 52%)";
-const TOT = "hsl(212 74% 37%)";
-const PCT = "hsl(248 55% 65%)";
-
-const MCOLORS = [
-  "hsl(212 74% 37%)", "hsl(160 60% 38%)", "hsl(18 70% 52%)", "hsl(248 55% 65%)",
-  "hsl(35 78% 41%)", "hsl(168 78% 25%)", "hsl(12 70% 36%)", "hsl(95 70% 25%)",
-  "hsl(28 86% 28%)", "hsl(338 50% 41%)", "hsl(212 84% 27%)", "hsl(168 78% 18%)",
-  "hsl(15 70% 18%)", "hsl(248 50% 25%)", "hsl(28 80% 22%)",
-];
-
-// ---------- types ----------
-type Cell = { revenue: number; capital: number; total: number };
-type Row = {
-  key: string;
-  no?: number;
-  name: string;
-  ministry: string;
-  byYear: Partial<Record<YearKey, Cell>>;
-};
-
-// ---------- helpers ----------
-const fmtNum = (v: number) => !v ? "—" : v.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtCompact = (v: number) =>
-  v >= 100000 ? `₹${(v / 100000).toFixed(2)} L Cr` :
-  v >= 1000   ? `₹${(v / 1000).toFixed(1)}K Cr` :
-  `₹${fmtNum(v)} Cr`;
-
-const cellOf = (s: { revenue: number | null; capital: number | null; total: number | null } | undefined): Cell =>
-  ({ revenue: s?.revenue ?? 0, capital: s?.capital ?? 0, total: s?.total ?? 0 });
-
-// ---------- dataset builders ----------
-function buildExpBudget(): Row[] {
-  const map = new Map<string, Row>();
-  for (const d of DG_SUMMARY) {
-    const r = map.get(d.ministry) ?? { key: d.ministry, name: d.ministry, ministry: d.ministry, byYear: {} };
-    for (const y of YEAR_META) {
-      const cur = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
-      const c = cellOf(d[y.key]);
-      r.byYear[y.key] = { revenue: cur.revenue + c.revenue, capital: cur.capital + c.capital, total: cur.total + c.total };
-    }
-    map.set(d.ministry, r);
-  }
-  return Array.from(map.values());
-}
-
-function buildDGs(): Row[] {
-  return DG_SUMMARY.map(d => ({
-    key: `D${d.demandNo}`,
-    no: d.demandNo,
-    name: d.demandDesc,
-    ministry: d.ministry,
-    byYear: Object.fromEntries(YEAR_META.map(y => [y.key, cellOf(d[y.key])])) as Row["byYear"],
-  }));
-}
-
-// DDG only has FY26 / FY27. We aggregate by majorHead × demand for readability.
-type DDG = {
-  ministryId: string; demandId: string; majorHead: string; minorHead?: string;
-  subHead?: string; objectHead: string; revenue?: boolean;
+// ---------- data plumbing ----------
+type DDGRow = {
+  ministryId: string; demandId: string; majorHead: string;
+  minorHead?: string; subHead?: string; objectHead: string;
   amounts: { FY26?: number; FY27?: number };
+  revenue?: boolean;
 };
+const DDGS = ddgsRaw as DDGRow[];
+const DEMANDS_META = demandsRaw as Array<{ id: string; ministryId: string; number: number; title: string }>;
+const RECOV = recoveriesRaw as Record<string, Partial<Record<YearKey, number>>>;
 
-function buildDDG(): Row[] {
-  const ddgs = ddgsRaw as DDG[];
-  // ministryId → display ministry name from DG_SUMMARY (best-effort match by demandId number)
-  const demandToMinistry = new Map<number, string>();
-  for (const d of DG_SUMMARY) demandToMinistry.set(d.demandNo, d.ministry);
+// demandNo -> demandId (for ddg lookup)
+const demandIdByNo = new Map<number, string>();
+for (const d of DEMANDS_META) demandIdByNo.set(d.number, d.id);
 
-  const map = new Map<string, Row>();
-  for (const r of ddgs) {
-    const demandNo = parseInt(r.demandId.replace(/^d0*/, ""), 10);
-    const ministry = demandToMinistry.get(demandNo) ?? r.ministryId;
-    const key = `${r.demandId}|${r.majorHead}|${r.minorHead ?? ""}|${r.subHead ?? ""}|${r.objectHead}`;
-    const name = `${r.objectHead}${r.subHead ? " · " + r.subHead : ""}${r.minorHead ? " · " + r.minorHead : ""}`;
-    const isRev = r.revenue !== false;
-    const fy26 = r.amounts.FY26 ?? 0;
-    const fy27 = r.amounts.FY27 ?? 0;
-    const make = (v: number): Cell => isRev
-      ? { revenue: v, capital: 0, total: v }
-      : { revenue: 0, capital: v, total: v };
-    map.set(key, {
-      key, name: `${r.majorHead} → ${name}`, ministry,
-      byYear: { be2526: make(fy26), be2627: make(fy27) },
-    });
+// ---------- year metadata ----------
+type Type = "dg" | "eb" | "ddg";
+
+const YEARS: { key: YearKey; label: string; ddg: boolean }[] = [
+  { key: "actuals2425", label: "FY24-25 Actuals", ddg: false },
+  { key: "be2526",      label: "FY25-26 BE",      ddg: true  },
+  { key: "re2526",      label: "FY25-26 RE",      ddg: false },
+  { key: "be2627",      label: "FY26-27 BE",      ddg: true  },
+];
+const YEAR_LABEL: Record<YearKey, string> = Object.fromEntries(YEARS.map(y => [y.key, y.label])) as Record<YearKey, string>;
+const PREV_YEAR: Partial<Record<YearKey, YearKey>> = {
+  be2526: "actuals2425",
+  re2526: "be2526",
+  be2627: "re2526",
+};
+function ddgYear(y: YearKey): "FY26" | "FY27" | null {
+  if (y === "be2526") return "FY26";
+  if (y === "be2627") return "FY27";
+  return null;
+}
+
+const TYPES: { key: Type; label: string; help: string }[] = [
+  { key: "dg",  label: "DG (Gross)",         help: "Gross provision in the Demand for Grants" },
+  { key: "eb",  label: "Expenditure Budget", help: "Net of recoveries (DG − Recoveries)" },
+  { key: "ddg", label: "DDG (Object-head)",  help: "Detailed line item from the DDG document" },
+];
+
+// ---------- ministries / demands ----------
+const MINISTRIES = Array.from(new Set(DG_SUMMARY.map(d => d.ministry))).sort();
+function demandsOf(min: string) {
+  return DG_SUMMARY.filter(d => d.ministry === min).sort((a, b) => a.demandNo - b.demandNo);
+}
+
+// ---------- core calculations ----------
+function grandTotalForYear(y: YearKey): number {
+  return DG_SUMMARY.reduce((s, d) => s + (d[y].total ?? 0), 0);
+}
+
+// Returns numeric value for selection or null if not available
+function calcValue(sel: Selection, year: YearKey): number | null {
+  const { ministry, demandNo, type, section, ddgRowIdx } = sel;
+
+  if (type === "ddg") {
+    const dy = ddgYear(year);
+    if (!dy) return null;
+    if (demandNo === "all") return null; // require specific demand
+    const did = demandIdByNo.get(demandNo);
+    if (!did) return null;
+    const rows = DDGS.filter(r => r.demandId === did);
+    if (ddgRowIdx == null) {
+      // sum filtered by section
+      return rows
+        .filter(r => section === "total" ? true : section === "revenue" ? r.revenue : !r.revenue)
+        .reduce((s, r) => s + (r.amounts[dy] ?? 0), 0);
+    }
+    return rows[ddgRowIdx]?.amounts[dy] ?? null;
   }
-  return Array.from(map.values());
+
+  // DG / EB
+  const demands = demandNo === "all"
+    ? DG_SUMMARY.filter(d => d.ministry === ministry)
+    : DG_SUMMARY.filter(d => d.ministry === ministry && d.demandNo === demandNo);
+  if (!demands.length) return null;
+
+  let val = demands.reduce((s, d) => s + (d[year][section] ?? 0), 0);
+  if (type === "eb") {
+    const rec = demands.reduce((s, d) => s + Math.abs(RECOV[String(d.demandNo)]?.[year] ?? 0), 0);
+    // Apply recovery only on total (recoveries in DG_RECOV are total figures)
+    if (section === "total") val -= rec;
+  }
+  return val;
 }
 
-// ---------- chart ----------
-function BarChart({ data, primaryYear, splitRevCap }:
-  { data: Row[]; primaryYear: YearKey; splitRevCap: boolean }) {
-  const vals = data.map(d => d.byYear[primaryYear]?.total ?? 0);
-  const maxVal = Math.max(...vals, 1);
-  const barH = 18, gap = 4, labelW = 220, numW = 90, chartW = 460;
-  const height = data.length * (barH + gap) + 20;
-  return (
-    <svg width="100%" viewBox={`0 0 ${labelW + chartW + numW} ${height}`} style={{ fontSize: 10 }}>
-      {data.map((d, i) => {
-        const cell = d.byYear[primaryYear] ?? { revenue: 0, capital: 0, total: 0 };
-        const y = i * (barH + gap) + 10;
-        const revW = splitRevCap ? (cell.revenue / maxVal) * chartW : 0;
-        const capW = splitRevCap ? (cell.capital / maxVal) * chartW : 0;
-        const totW = !splitRevCap ? (cell.total / maxVal) * chartW : 0;
-        return (
-          <g key={d.key}>
-            <text x={labelW - 6} y={y + barH / 2 + 3} textAnchor="end" className="fill-muted-foreground" fontSize={10}>
-              {d.name.length > 32 ? d.name.slice(0, 30) + "…" : d.name}
-            </text>
-            {splitRevCap && <rect x={labelW} y={y} width={Math.max(revW, 1)} height={barH * 0.5} fill={REV} rx={2} />}
-            {splitRevCap && <rect x={labelW} y={y + barH * 0.5 + 1} width={Math.max(capW, 1)} height={barH * 0.5 - 1} fill={CAP} rx={2} />}
-            {!splitRevCap && <rect x={labelW} y={y} width={Math.max(totW, 1)} height={barH} fill={TOT} rx={2} />}
-            <text x={labelW + chartW + 6} y={y + barH / 2 + 3} className="fill-foreground" fontSize={10}>{fmtCompact(cell.total)}</text>
-          </g>
-        );
-      })}
-    </svg>
-  );
+// ---------- selection model ----------
+interface Selection {
+  id: string;
+  ministry: string;
+  demandNo: number | "all";
+  type: Type;
+  section: Section;
+  year: YearKey;
+  ddgRowIdx?: number; // for DDG: pick a specific object-head row, else sum
 }
 
-// ---------- main ----------
-export default function ReportBuilder() {
-  const [dataset, setDataset] = useState<Dataset>("dgs");
-  const [years, setYears] = useState<Record<YearKey, boolean>>({
-    actuals2425: false, be2526: false, re2526: false, be2627: true,
-  });
-  const [splitRevCap, setSplitRevCap] = useState(true);
-  const [showPct, setShowPct] = useState(false);
-  const [sortKey, setSortKey] = useState("primary_desc");
-  const [search, setSearch] = useState("");
-  const [showChart, setShowChart] = useState(true);
-
-  // build rows for the chosen dataset
-  const allRows: Row[] = useMemo(() => {
-    if (dataset === "expbudget") return buildExpBudget();
-    if (dataset === "ddg") return buildDDG();
-    return buildDGs();
-  }, [dataset]);
-
-  // ministry list & per-row selection
-  const ministryList = useMemo(
-    () => Array.from(new Set(allRows.map(r => r.ministry))).sort(),
-    [allRows]
-  );
-  const ministryColor: Record<string, string> = useMemo(
-    () => Object.fromEntries(ministryList.map((m, i) => [m, MCOLORS[i % MCOLORS.length]])),
-    [ministryList]
-  );
-
-  const [selected, setSelected] = useState<Set<string>>(new Set());
-  // initialize / reset selection when dataset changes
-  useMemo(() => { setSelected(new Set(allRows.map(r => r.key))); }, [allRows]);
-
-  const toggleRow = (k: string) => setSelected(prev => {
-    const s = new Set(prev); s.has(k) ? s.delete(k) : s.add(k); return s;
-  });
-  const selectAll = (v: boolean) => setSelected(v ? new Set(allRows.map(r => r.key)) : new Set());
-
-  // year availability per dataset
-  const yearAvailable = (y: YearKey) => dataset === "ddg" ? YEAR_META.find(m => m.key === y)!.ddg : true;
-  const activeYears = YEAR_META.filter(y => years[y.key] && yearAvailable(y.key));
-  const primaryYear: YearKey = activeYears[activeYears.length - 1]?.key ?? "be2627";
-
-  const sorted = useMemo(() => {
-    const filtered = allRows
-      .filter(r => selected.has(r.key))
-      .filter(r => !search ||
-        r.name.toLowerCase().includes(search.toLowerCase()) ||
-        r.ministry.toLowerCase().includes(search.toLowerCase()));
-    const valOf = (r: Row, y: YearKey, k: keyof Cell = "total") => r.byYear[y]?.[k] ?? 0;
-    if (sortKey === "primary_desc") filtered.sort((a, b) => valOf(b, primaryYear) - valOf(a, primaryYear));
-    else if (sortKey === "primary_asc") filtered.sort((a, b) => valOf(a, primaryYear) - valOf(b, primaryYear));
-    else if (sortKey === "rev_desc") filtered.sort((a, b) => valOf(b, primaryYear, "revenue") - valOf(a, primaryYear, "revenue"));
-    else if (sortKey === "cap_desc") filtered.sort((a, b) => valOf(b, primaryYear, "capital") - valOf(a, primaryYear, "capital"));
-    else if (sortKey === "name_asc") filtered.sort((a, b) => a.name.localeCompare(b.name));
-    return filtered;
-  }, [allRows, selected, sortKey, search, primaryYear]);
-
-  // totals across selected rows for each active year
-  const totalsByYear: Record<string, Cell> = useMemo(() => {
-    const out: Record<string, Cell> = {};
-    for (const y of activeYears) {
-      const acc: Cell = { revenue: 0, capital: 0, total: 0 };
-      for (const r of sorted) {
-        const c = r.byYear[y.key];
-        if (!c) continue;
-        acc.revenue += c.revenue; acc.capital += c.capital; acc.total += c.total;
-      }
-      out[y.key] = acc;
-    }
-    return out;
-  }, [sorted, activeYears]);
-
-  const primaryTotal = totalsByYear[primaryYear] ?? { revenue: 0, capital: 0, total: 0 };
-
-  const exportCSV = () => {
-    const head = ["Key", "Name", "Ministry"];
-    for (const y of activeYears) {
-      if (splitRevCap) { head.push(`${y.short} Rev`, `${y.short} Cap`); }
-      head.push(`${y.short} Total`);
-    }
-    if (showPct) head.push(`% of Budget (${YEAR_META.find(m => m.key === primaryYear)!.short})`);
-    const lines = [head.join(",")];
-    for (const r of sorted) {
-      const row = [r.key, `"${r.name.replace(/"/g, '""')}"`, r.ministry];
-      for (const y of activeYears) {
-        const c = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
-        if (splitRevCap) row.push(String(c.revenue), String(c.capital));
-        row.push(String(c.total));
-      }
-      if (showPct) {
-        const t = r.byYear[primaryYear]?.total ?? 0;
-        row.push(((t / GRAND) * 100).toFixed(4));
-      }
-      lines.push(row.join(","));
-    }
-    const b = new Blob([lines.join("\n")], { type: "text/csv" });
-    const a = document.createElement("a"); a.href = URL.createObjectURL(b);
-    a.download = `koshtha_${dataset}.csv`; a.click();
+function newSelection(): Selection {
+  return {
+    id: Math.random().toString(36).slice(2, 9),
+    ministry: MINISTRIES[0],
+    demandNo: "all",
+    type: "dg",
+    section: "total",
+    year: "be2627",
   };
+}
+
+// ---------- formatters ----------
+function fmtCr(v: number | null): string {
+  if (v == null || isNaN(v)) return "—";
+  if (Math.abs(v) >= 100000) return `₹${(v / 100000).toFixed(2)} L Cr`;
+  return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 2 })} Cr`;
+}
+function fmtPct(v: number | null): string {
+  if (v == null || isNaN(v) || !isFinite(v)) return "—";
+  const sign = v > 0 ? "+" : "";
+  return `${sign}${v.toFixed(1)}%`;
+}
+
+// ---------- UI ----------
+export default function ReportBuilder() {
+  const [sels, setSels] = useState<Selection[]>(() => [
+    { ...newSelection(), ministry: "Ministry of Agriculture and Farmers Welfare" in DG_SUMMARY ? "" : MINISTRIES[0] },
+  ]);
+
+  function update(id: string, patch: Partial<Selection>) {
+    setSels(prev => prev.map(s => s.id === id ? { ...s, ...patch } : s));
+  }
+  function remove(id: string) {
+    setSels(prev => prev.filter(s => s.id !== id));
+  }
+  function add() {
+    setSels(prev => [...prev, newSelection()]);
+  }
+
+  // computed rows
+  const computed = useMemo(() => sels.map(s => {
+    const value = calcValue(s, s.year);
+    const grand = grandTotalForYear(s.year);
+    const share = value != null && grand ? (value / grand) * 100 : null;
+    const prevY = PREV_YEAR[s.year];
+    const prevVal = prevY ? calcValue(s, prevY) : null;
+    const yoy = (value != null && prevVal != null && prevVal !== 0)
+      ? ((value - prevVal) / Math.abs(prevVal)) * 100
+      : null;
+    return { sel: s, value, share, yoy, prevYear: prevY, prevVal };
+  }), [sels]);
+
+  const maxVal = Math.max(0, ...computed.map(c => Math.abs(c.value ?? 0)));
+
+  function exportCSV() {
+    const head = ["#", "Ministry", "Demand", "Type", "Section", "Year", "Value (₹ Cr)", "% of Union Budget", "YoY %"];
+    const lines = [head.join(",")];
+    computed.forEach((c, i) => {
+      const dem = c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`;
+      lines.push([
+        i + 1, `"${c.sel.ministry}"`, dem, c.sel.type.toUpperCase(),
+        c.sel.section, YEAR_LABEL[c.sel.year],
+        c.value?.toFixed(2) ?? "", c.share?.toFixed(2) ?? "", c.yoy?.toFixed(2) ?? ""
+      ].join(","));
+    });
+    const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "budget-comparison.csv";
+    a.click();
+  }
 
   return (
-    <div className="text-sm">
-      {/* TOP BAR */}
-      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2.5">
-          <span className="text-[15px] font-medium">Report builder</span>
-          <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] text-primary">
-            {DATASETS.find(d => d.key === dataset)!.label}
-          </span>
-          <span className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-[11px] text-muted-foreground">
-            {sorted.length} row{sorted.length !== 1 ? "s" : ""}
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          {([
-            ["primary_desc", `${YEAR_META.find(y=>y.key===primaryYear)!.short} ↓`],
-            ["rev_desc", "Revenue ↓"],
-            ["cap_desc", "Capital ↓"],
-            ["name_asc", "Name A–Z"],
-          ] as [string, string][]).map(([k, l]) => (
-            <button
-              key={k}
-              onClick={() => setSortKey(k)}
-              className={`rounded-md border px-2.5 py-1 text-[11px] transition-colors ${
-                sortKey === k
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-transparent text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-              }`}
-            >{l}</button>
-          ))}
+    <div className="space-y-6">
+      {/* Flow help */}
+      <div className="rounded-lg border border-border bg-muted/30 px-4 py-3 flex gap-3 text-xs">
+        <Info className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+        <div className="text-muted-foreground leading-relaxed">
+          <span className="text-foreground font-medium">How to read:</span>{" "}
+          Ministries submit <strong>Demands for Grants (DG)</strong> → the <strong>Expenditure Budget</strong> nets out recoveries → in-year, departments publish the <strong>Detailed DG (DDG)</strong> with object-head detail.
+          Pick a Ministry, Demand, Type and Year for each row, then compare.
         </div>
       </div>
 
-      {/* DATASET TABS */}
-      <div className="mb-3 grid grid-cols-3 gap-2">
-        {DATASETS.map(d => {
-          const on = dataset === d.key;
+      {/* Selections */}
+      <div className="space-y-3">
+        {sels.map((s, idx) => {
+          const c = computed[idx];
+          const ddgDisabled = s.type === "ddg" && !ddgYear(s.year);
+          const dems = demandsOf(s.ministry);
+          const did = s.demandNo !== "all" ? demandIdByNo.get(s.demandNo) : null;
+          const ddgRows = did ? DDGS.filter(r => r.demandId === did) : [];
+
           return (
-            <button
-              key={d.key}
-              onClick={() => setDataset(d.key)}
-              className={`rounded-lg border px-3 py-2 text-left transition-colors ${
-                on ? "border-primary bg-primary/10" : "border-border bg-card hover:bg-accent"
-              }`}
-            >
-              <div className={`text-[12px] font-medium ${on ? "text-primary" : "text-foreground"}`}>{d.label}</div>
-              <div className="text-[10px] text-muted-foreground">{d.sub}</div>
-            </button>
+            <div key={s.id} className="rounded-lg border border-border bg-card p-4">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="h-7 w-7 rounded-full bg-primary/10 text-primary text-xs font-semibold flex items-center justify-center">{idx + 1}</div>
+                  <div className="text-xs text-muted-foreground">Selection {idx + 1}</div>
+                </div>
+                {sels.length > 1 && (
+                  <button onClick={() => remove(s.id)} className="text-xs text-muted-foreground hover:text-destructive flex items-center gap-1">
+                    <Trash2 className="h-3.5 w-3.5" /> Remove
+                  </button>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                {/* Ministry */}
+                <Field label="Ministry">
+                  <select value={s.ministry}
+                    onChange={e => update(s.id, { ministry: e.target.value, demandNo: "all", ddgRowIdx: undefined })}
+                    className={inputCls}>
+                    {MINISTRIES.map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </Field>
+
+                {/* Demand */}
+                <Field label="Demand">
+                  <select value={String(s.demandNo)}
+                    onChange={e => {
+                      const v = e.target.value;
+                      update(s.id, { demandNo: v === "all" ? "all" : Number(v), ddgRowIdx: undefined });
+                    }}
+                    className={inputCls}>
+                    <option value="all">All demands (ministry total)</option>
+                    {dems.map(d => <option key={d.demandNo} value={d.demandNo}>D{d.demandNo} · {d.demandDesc}</option>)}
+                  </select>
+                </Field>
+
+                {/* Type */}
+                <Field label="Type">
+                  <select value={s.type}
+                    onChange={e => update(s.id, { type: e.target.value as Type, ddgRowIdx: undefined })}
+                    className={inputCls}>
+                    {TYPES.map(t => <option key={t.key} value={t.key}>{t.label}</option>)}
+                  </select>
+                </Field>
+
+                {/* Section */}
+                <Field label="Section">
+                  <select value={s.section}
+                    onChange={e => update(s.id, { section: e.target.value as Section })}
+                    className={inputCls}>
+                    <option value="total">Total</option>
+                    <option value="revenue">Revenue</option>
+                    <option value="capital">Capital</option>
+                  </select>
+                </Field>
+
+                {/* Year */}
+                <Field label="Year">
+                  <select value={s.year}
+                    onChange={e => update(s.id, { year: e.target.value as YearKey })}
+                    className={inputCls}>
+                    {YEARS.map(y => (
+                      <option key={y.key} value={y.key} disabled={s.type === "ddg" && !y.ddg}>
+                        {y.label}{s.type === "ddg" && !y.ddg ? " (no DDG)" : ""}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+
+                {/* DDG row picker */}
+                {s.type === "ddg" && (
+                  <Field label="DDG line (optional)" className="md:col-span-2 lg:col-span-5">
+                    {ddgRows.length === 0 ? (
+                      <div className="text-xs text-muted-foreground italic px-2 py-1.5">
+                        DDG not yet available for this demand. (Currently covered: Police, J&K Transfers, DoPPG, Ports & Shipping.)
+                      </div>
+                    ) : (
+                      <select value={s.ddgRowIdx == null ? "all" : String(s.ddgRowIdx)}
+                        onChange={e => update(s.id, { ddgRowIdx: e.target.value === "all" ? undefined : Number(e.target.value) })}
+                        className={inputCls}>
+                        <option value="all">Sum of all object-heads (filtered by section)</option>
+                        {ddgRows.map((r, i) => (
+                          <option key={i} value={i}>
+                            {r.majorHead} → {r.objectHead} ({r.revenue ? "Rev" : "Cap"})
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </Field>
+                )}
+              </div>
+
+              {/* result chip */}
+              <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
+                <Stat label="Value" value={fmtCr(c.value)} accent />
+                <Stat label="% of Union Budget" value={c.share == null ? "—" : `${c.share.toFixed(3)}%`} sub={`grand: ${fmtCr(grandTotalForYear(s.year))}`} />
+                <Stat label={`YoY vs ${c.prevYear ? YEAR_LABEL[c.prevYear] : "—"}`} value={fmtPct(c.yoy)} sub={c.prevVal != null ? `prev: ${fmtCr(c.prevVal)}` : undefined} />
+                {ddgDisabled && <span className="text-destructive">DDG unavailable for this year</span>}
+              </div>
+            </div>
           );
         })}
+
+        <button onClick={add} className="w-full rounded-lg border border-dashed border-border hover:border-primary hover:bg-primary/5 px-4 py-3 text-sm text-muted-foreground hover:text-primary flex items-center justify-center gap-2 transition-colors">
+          <Plus className="h-4 w-4" /> Add another selection to compare
+        </button>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-[240px_1fr]">
-        {/* LEFT */}
-        <div className="space-y-2">
-          {/* YEARS */}
-          <div className="rounded-xl border border-border bg-card p-3">
-            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.07em] text-muted-foreground">Years</div>
-            {YEAR_META.map(y => {
-              const avail = yearAvailable(y.key);
-              const on = years[y.key] && avail;
+      {/* Comparison table + chart */}
+      {sels.length > 0 && (
+        <div className="rounded-lg border border-border bg-card overflow-hidden">
+          <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+            <div>
+              <h3 className="font-serif text-lg font-semibold">Comparison</h3>
+              <p className="text-xs text-muted-foreground mt-0.5">Side-by-side trends across {sels.length} selection{sels.length > 1 ? "s" : ""}</p>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={exportCSV} className="text-xs px-3 py-1.5 rounded-md border border-border hover:bg-muted flex items-center gap-1.5">
+                <Download className="h-3.5 w-3.5" /> CSV
+              </button>
+              <button onClick={() => window.print()} className="text-xs px-3 py-1.5 rounded-md border border-border hover:bg-muted flex items-center gap-1.5">
+                <Printer className="h-3.5 w-3.5" /> Print
+              </button>
+            </div>
+          </div>
+
+          {/* mini bar chart */}
+          <div className="px-4 py-4 border-b border-border space-y-2">
+            {computed.map((c, i) => {
+              const w = c.value != null && maxVal ? (Math.abs(c.value) / maxVal) * 100 : 0;
               return (
-                <button
-                  key={y.key}
-                  disabled={!avail}
-                  onClick={() => setYears(s => ({ ...s, [y.key]: !s[y.key] }))}
-                  className={`mb-1 flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-[11px] transition-colors ${
-                    on ? "border-primary bg-primary/10 text-primary" :
-                    avail ? "border-border bg-transparent text-muted-foreground hover:bg-accent" :
-                    "cursor-not-allowed border-dashed border-border bg-muted/40 text-muted-foreground/50"
-                  }`}
-                >
-                  <span>{y.long}</span>
-                  {!avail && <span className="text-[9px]">n/a</span>}
-                </button>
+                <div key={c.sel.id} className="flex items-center gap-3">
+                  <div className="w-6 text-xs text-muted-foreground tabular-nums">#{i + 1}</div>
+                  <div className="flex-1 h-6 bg-muted/40 rounded relative overflow-hidden">
+                    <div className="h-full rounded bg-primary/80" style={{ width: `${w}%` }} />
+                    <div className="absolute inset-0 flex items-center px-2 text-xs font-medium">
+                      {fmtCr(c.value)}
+                    </div>
+                  </div>
+                  <div className="w-24 text-xs text-right text-muted-foreground">
+                    {c.share == null ? "—" : `${c.share.toFixed(2)}%`}
+                  </div>
+                  <div className={`w-20 text-xs text-right tabular-nums ${(c.yoy ?? 0) > 0 ? "text-emerald-600" : (c.yoy ?? 0) < 0 ? "text-destructive" : "text-muted-foreground"}`}>
+                    {fmtPct(c.yoy)}
+                  </div>
+                </div>
               );
             })}
-            <div className="mt-2 border-t border-border pt-2">
-              <label className="mb-1 flex cursor-pointer items-center gap-2 text-[11px]">
-                <input type="checkbox" checked={splitRevCap} onChange={() => setSplitRevCap(v => !v)} className="accent-primary" />
-                Split Revenue / Capital
-              </label>
-              <label className="flex cursor-pointer items-center gap-2 text-[11px]">
-                <input type="checkbox" checked={showPct} onChange={() => setShowPct(v => !v)} className="accent-primary" />
-                Show % of budget
-              </label>
-            </div>
           </div>
 
-          {/* ROWS picker */}
-          <div className="rounded-xl border border-border bg-card p-3">
-            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
-              {dataset === "expbudget" ? "Ministries" : dataset === "ddg" ? "Line items" : "Demands"}
-            </div>
-            <input
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              placeholder="Search…"
-              className="mb-1.5 w-full rounded-md border border-border bg-background px-2 py-1 text-[11px] focus:outline-none focus:ring-1 focus:ring-ring"
-            />
-            <div className="mb-1.5 flex justify-between text-[10px]">
-              <button onClick={() => selectAll(true)} className="text-primary hover:underline">Select all</button>
-              <button onClick={() => selectAll(false)} className="text-primary hover:underline">Clear</button>
-            </div>
-            <div className="max-h-80 overflow-y-auto pr-1">
-              {ministryList.map(m => {
-                const ds = allRows.filter(r => r.ministry === m &&
-                  (!search || r.name.toLowerCase().includes(search.toLowerCase()) || m.toLowerCase().includes(search.toLowerCase())));
-                if (!ds.length) return null;
-                return (
-                  <div key={m}>
-                    <div className="px-0 pb-0.5 pt-1 text-[9.5px] font-medium uppercase tracking-[0.06em] text-muted-foreground">{m}</div>
-                    {ds.map(r => (
-                      <label key={r.key} className="flex cursor-pointer items-center gap-1.5 py-0.5 text-[11px] text-foreground">
-                        <input type="checkbox" checked={selected.has(r.key)} onChange={() => toggleRow(r.key)} className="accent-primary" />
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: ministryColor[m] }} />
-                        <span className="leading-tight">{r.name}</span>
-                      </label>
-                    ))}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT */}
-        <div>
-          {/* STATS */}
-          <div className="mb-2.5 grid grid-cols-3 gap-2">
-            {([["Revenue", primaryTotal.revenue, REV], ["Capital", primaryTotal.capital, CAP], ["Total", primaryTotal.total, TOT]] as const).map(([label, val, col]) => (
-              <div key={label} className="rounded-lg bg-muted px-3 py-2.5">
-                <div className="mb-0.5 text-[10px] uppercase tracking-[0.07em] text-muted-foreground">
-                  {label} · {YEAR_META.find(y => y.key === primaryYear)!.short}
-                </div>
-                <div className="text-[17px] font-medium" style={{ color: col }}>{fmtCompact(val)}</div>
-                {label === "Total" && (
-                  <div className="mt-0.5 text-[10px] text-muted-foreground">
-                    {((val / GRAND) * 100).toFixed(1)}% of Union Budget
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* CHART */}
-          <div className="mb-2.5 rounded-xl border border-border bg-card p-3">
-            <div className="mb-2.5 flex items-center justify-between">
-              <div className="flex gap-3 text-[11px] text-foreground">
-                <span className="text-muted-foreground">Chart year:</span>
-                <strong>{YEAR_META.find(y => y.key === primaryYear)!.long}</strong>
-                {splitRevCap ? (
-                  <>
-                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: REV }} />Revenue</span>
-                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: CAP }} />Capital</span>
-                  </>
-                ) : (
-                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: TOT }} />Total</span>
-                )}
-              </div>
-              <button
-                onClick={() => setShowChart(x => !x)}
-                className="rounded-md border border-border px-2 py-1 text-[11px] text-muted-foreground hover:bg-accent"
-              >{showChart ? "Hide chart" : "Show chart"}</button>
-            </div>
-            {showChart && sorted.length > 0 && <BarChart data={sorted.slice(0, 20)} primaryYear={primaryYear} splitRevCap={splitRevCap} />}
-            {showChart && sorted.length === 0 && (
-              <div className="p-8 text-center text-[12px] text-muted-foreground">No rows selected</div>
-            )}
-          </div>
-
-          {/* TABLE */}
-          <div className="mb-2.5 overflow-x-auto rounded-xl border border-border bg-card">
-            <table className="w-full border-collapse text-[11.5px]">
-              <thead>
-                <tr className="bg-muted">
-                  <th className="border-b border-border px-2 py-1.5 text-left text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">Item</th>
-                  {activeYears.map(y => (
-                    <Fragment key={y.key}>
-                      {splitRevCap && (
-                        <>
-                          <th className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: REV }}>{y.short} Rev</th>
-                          <th className="border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: CAP }}>{y.short} Cap</th>
-                        </>
-                      )}
-                      <th className={`border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em] ${splitRevCap ? "" : "border-l"}`} style={{ color: TOT }}>{y.short} Total</th>
-                    </Fragment>
-                  ))}
-                  {showPct && <th className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: PCT }}>% Budget</th>}
+          {/* table */}
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="px-3 py-2 text-left">#</th>
+                  <th className="px-3 py-2 text-left">Ministry</th>
+                  <th className="px-3 py-2 text-left">Demand</th>
+                  <th className="px-3 py-2 text-left">Type</th>
+                  <th className="px-3 py-2 text-left">Section</th>
+                  <th className="px-3 py-2 text-left">Year</th>
+                  <th className="px-3 py-2 text-right">Value</th>
+                  <th className="px-3 py-2 text-right">% Union Budget</th>
+                  <th className="px-3 py-2 text-right">YoY</th>
                 </tr>
               </thead>
               <tbody>
-                {sorted.length === 0 ? (
-                  <tr><td colSpan={1 + activeYears.length * (splitRevCap ? 3 : 1) + (showPct ? 1 : 0)} className="p-8 text-center text-muted-foreground">No rows selected</td></tr>
-                ) : sorted.map(r => (
-                  <tr key={r.key} className="border-b border-border last:border-0">
-                    <td className="px-2 py-1.5">
-                      <span className="mr-1.5 rounded px-1.5 py-px text-[10px] font-medium"
-                            style={{ background: ministryColor[r.ministry] + "22", color: ministryColor[r.ministry] }}>
-                        {r.ministry}
-                      </span>
-                      {r.name}
+                {computed.map((c, i) => (
+                  <tr key={c.sel.id} className="border-t border-border">
+                    <td className="px-3 py-2 text-muted-foreground">{i + 1}</td>
+                    <td className="px-3 py-2 max-w-[18rem] truncate" title={c.sel.ministry}>{c.sel.ministry}</td>
+                    <td className="px-3 py-2">{c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`}</td>
+                    <td className="px-3 py-2 uppercase text-xs tracking-wide">{c.sel.type}</td>
+                    <td className="px-3 py-2 capitalize">{c.sel.section}</td>
+                    <td className="px-3 py-2">{YEAR_LABEL[c.sel.year]}</td>
+                    <td className="px-3 py-2 text-right tabular-nums font-medium">{fmtCr(c.value)}</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{c.share == null ? "—" : `${c.share.toFixed(3)}%`}</td>
+                    <td className={`px-3 py-2 text-right tabular-nums ${(c.yoy ?? 0) > 0 ? "text-emerald-600" : (c.yoy ?? 0) < 0 ? "text-destructive" : "text-muted-foreground"}`}>
+                      {fmtPct(c.yoy)}
                     </td>
-                    {activeYears.map(y => {
-                      const c = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
-                      return (
-                        <Fragment key={y.key}>
-                          {splitRevCap && (
-                            <>
-                              <td className="border-l border-border px-2 py-1.5 text-right">{fmtNum(c.revenue)}</td>
-                              <td className="px-2 py-1.5 text-right">{fmtNum(c.capital)}</td>
-                            </>
-                          )}
-                          <td className={`px-2 py-1.5 text-right font-medium ${splitRevCap ? "" : "border-l border-border"}`}>{fmtNum(c.total)}</td>
-                        </Fragment>
-                      );
-                    })}
-                    {showPct && (
-                      <td className="border-l border-border px-2 py-1.5 text-right" style={{ color: PCT }}>
-                        {(((r.byYear[primaryYear]?.total ?? 0) / GRAND) * 100).toFixed(3)}%
-                      </td>
-                    )}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
-          {/* EXPORT */}
-          <div className="flex flex-wrap items-center gap-2">
-            <button onClick={exportCSV} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-transparent px-3 py-1.5 text-[12px] hover:bg-accent">
-              <Download className="h-3.5 w-3.5" /> Export CSV
-            </button>
-            <button onClick={() => window.print()} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-transparent px-3 py-1.5 text-[12px] hover:bg-accent">
-              <Printer className="h-3.5 w-3.5" /> Print / PDF
-            </button>
-            <div className="ml-auto flex items-center gap-1.5 text-[11px] text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: REV }} />
-              Selected total ({YEAR_META.find(y => y.key === primaryYear)!.short}):
-              <strong className="text-foreground">{fmtCompact(primaryTotal.total)}</strong>
-              <span>({((primaryTotal.total / GRAND) * 100).toFixed(1)}% of {fmtCompact(GRAND)})</span>
-            </div>
-          </div>
         </div>
-      </div>
+      )}
+    </div>
+  );
+}
+
+// ---------- small UI helpers ----------
+const inputCls = "w-full text-sm rounded-md border border-input bg-background px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-ring";
+
+function Field({ label, children, className = "" }: { label: string; children: React.ReactNode; className?: string }) {
+  return (
+    <div className={className}>
+      <label className="text-[11px] uppercase tracking-wide text-muted-foreground font-medium block mb-1">{label}</label>
+      {children}
+    </div>
+  );
+}
+
+function Stat({ label, value, sub, accent }: { label: string; value: string; sub?: string; accent?: boolean }) {
+  return (
+    <div className="flex flex-col">
+      <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</span>
+      <span className={`text-sm tabular-nums ${accent ? "font-semibold text-foreground" : "text-foreground"}`}>{value}</span>
+      {sub && <span className="text-[10px] text-muted-foreground">{sub}</span>}
     </div>
   );
 }
