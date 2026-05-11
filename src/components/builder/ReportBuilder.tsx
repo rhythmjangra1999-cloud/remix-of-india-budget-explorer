@@ -425,8 +425,8 @@ export default function ReportBuilder() {
                 {computed.map((c, i) => {
                   const isOpen = expandedId === c.sel.id;
                   return (
-                    <>
-                      <tr key={c.sel.id} className="border-t border-border">
+                    <Fragment key={c.sel.id}>
+                      <tr className="border-t border-border">
                         <td className="px-3 py-2 text-muted-foreground">{i + 1}</td>
                         <td className="px-3 py-2 max-w-[18rem] truncate" title={c.sel.ministry}>{c.sel.ministry}</td>
                         <td className="px-3 py-2">{c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`}</td>
@@ -450,7 +450,7 @@ export default function ReportBuilder() {
                         </td>
                       </tr>
                       {isOpen && (
-                        <tr key={c.sel.id + "-dd"}>
+                        <tr>
                           <td colSpan={10} className="p-0">
                             <DeepDivePanel
                               ministry={c.sel.ministry}
@@ -459,14 +459,13 @@ export default function ReportBuilder() {
                               section={c.sel.section}
                               onAddSelection={addFromDeepDive}
                               onPickDemand={(dn) => {
-                                // Mutate this row's selection so the panel re-renders with that demand
                                 update(c.sel.id, { demandNo: dn, majorHead: undefined, minorHead: undefined, subHead: undefined, objectHead: undefined });
                               }}
                             />
                           </td>
                         </tr>
                       )}
-                    </>
+                    </Fragment>
                   );
                 })}
               </tbody>
