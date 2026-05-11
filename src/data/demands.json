@@ -6,11 +6,14 @@
     "title": "Department of Agriculture and Farmers Welfare",
     "amounts": {
       "FY26": 127290.36,
-      "FY27": 130561.40,
-      "FY26_RE": 121300.00,
-      "FY25_Actual": 115420.00,
+      "FY27": 130561.4,
+      "FY26_RE": 121300.0,
+      "FY25_Actual": 115420.0,
       "FY27_Revenue": 130451.55,
-      "FY27_Capital": 109.85
+      "FY27_Capital": 109.85,
+      "FY27_Net": 130561.38,
+      "FY27_NetRevenue": 130451.62,
+      "FY27_NetCapital": 109.76
     },
     "confidence": "validated"
   },
@@ -23,9 +26,12 @@
       "FY26": 10033.07,
       "FY27": 9967.41,
       "FY26_RE": 10033.07,
-      "FY25_Actual": 9504.00,
+      "FY25_Actual": 9504.0,
       "FY27_Revenue": 9967.41,
-      "FY27_Capital": 0
+      "FY27_Capital": 0,
+      "FY27_Net": 9967.4,
+      "FY27_NetRevenue": 9964.95,
+      "FY27_NetCapital": 2.45
     },
     "confidence": "validated"
   },
@@ -40,7 +46,10 @@
       "FY26_RE": 37181.72,
       "FY25_Actual": 36616.6,
       "FY27_Revenue": 25629.3,
-      "FY27_Capital": 12793.41
+      "FY27_Capital": 12793.41,
+      "FY27_Net": 24123.92,
+      "FY27_NetRevenue": 14157.51,
+      "FY27_NetCapital": 9966.41
     },
     "confidence": "validated"
   },
@@ -55,7 +64,10 @@
       "FY26_RE": 3671.82,
       "FY25_Actual": 3468.63,
       "FY27_Revenue": 4381.86,
-      "FY27_Capital": 27.07
+      "FY27_Capital": 27.07,
+      "FY27_Net": 4408.93,
+      "FY27_NetRevenue": 4381.86,
+      "FY27_NetCapital": 27.07
     },
     "confidence": "validated"
   },
@@ -70,7 +82,10 @@
       "FY26_RE": 185.57,
       "FY25_Actual": 1607.75,
       "FY27_Revenue": 184.7,
-      "FY27_Capital": 1.02
+      "FY27_Capital": 1.02,
+      "FY27_Net": 185.72,
+      "FY27_NetRevenue": 184.7,
+      "FY27_NetCapital": 1.02
     },
     "confidence": "validated"
   },
@@ -85,7 +100,10 @@
       "FY26_RE": 215148.63,
       "FY25_Actual": 191824.18,
       "FY27_Revenue": 187153.64,
-      "FY27_Capital": 8.89
+      "FY27_Capital": 8.89,
+      "FY27_Net": 170944.53,
+      "FY27_NetRevenue": 170935.64,
+      "FY27_NetCapital": 8.89
     },
     "confidence": "validated"
   },
@@ -100,7 +118,10 @@
       "FY26_RE": 4369.7,
       "FY25_Actual": 3018.79,
       "FY27_Revenue": 5929.42,
-      "FY27_Capital": 1.8
+      "FY27_Capital": 1.8,
+      "FY27_Net": 5931.22,
+      "FY27_NetRevenue": 5929.42,
+      "FY27_NetCapital": 1.8
     },
     "confidence": "validated"
   },
@@ -115,7 +136,10 @@
       "FY26_RE": 2055.49,
       "FY25_Actual": 2606.2,
       "FY27_Revenue": 2057.87,
-      "FY27_Capital": 45.0
+      "FY27_Capital": 45.0,
+      "FY27_Net": 2102.87,
+      "FY27_NetRevenue": 2057.87,
+      "FY27_NetCapital": 45
     },
     "confidence": "validated"
   },
@@ -130,7 +154,10 @@
       "FY26_RE": 1240.96,
       "FY25_Actual": 850.88,
       "FY27_Revenue": 4388.12,
-      "FY27_Capital": 2.2
+      "FY27_Capital": 2.2,
+      "FY27_Net": 3635.32,
+      "FY27_NetRevenue": 3633.12,
+      "FY27_NetCapital": 2.2
     },
     "confidence": "validated"
   },
@@ -145,7 +172,10 @@
       "FY26_RE": 6606.02,
       "FY25_Actual": 5538.93,
       "FY27_Revenue": 5825.76,
-      "FY27_Capital": 47.31
+      "FY27_Capital": 47.31,
+      "FY27_Net": 5873.07,
+      "FY27_NetRevenue": 5825.76,
+      "FY27_NetCapital": 47.31
     },
     "confidence": "validated"
   },
@@ -160,7 +190,10 @@
       "FY26_RE": 8616.15,
       "FY25_Actual": 7902.06,
       "FY27_Revenue": 6851.7,
-      "FY27_Capital": 5119.13
+      "FY27_Capital": 5119.13,
+      "FY27_Net": 11970.83,
+      "FY27_NetRevenue": 6851.7,
+      "FY27_NetCapital": 5119.13
     },
     "confidence": "validated"
   },
@@ -175,7 +208,10 @@
       "FY26_RE": 40382.11,
       "FY25_Actual": 38718.98,
       "FY27_Revenue": 41600.49,
-      "FY27_Capital": 1249.51
+      "FY27_Capital": 1249.51,
+      "FY27_Net": 28276.08,
+      "FY27_NetRevenue": 27026.57,
+      "FY27_NetCapital": 1249.51
     },
     "confidence": "validated"
   },
@@ -190,7 +226,10 @@
       "FY26_RE": 101827.66,
       "FY25_Actual": 131859.47,
       "FY27_Revenue": 30716.02,
-      "FY27_Capital": 67274.93
+      "FY27_Capital": 67274.93,
+      "FY27_Net": 73990.94,
+      "FY27_NetRevenue": 26716.02,
+      "FY27_NetCapital": 47274.92
     },
     "confidence": "validated"
   },
@@ -205,7 +244,10 @@
       "FY26_RE": 3418.02,
       "FY25_Actual": 7356.77,
       "FY27_Revenue": 4403.95,
-      "FY27_Capital": 93.42
+      "FY27_Capital": 93.42,
+      "FY27_Net": 4474.17,
+      "FY27_NetRevenue": 4380.75,
+      "FY27_NetCapital": 93.42
     },
     "confidence": "validated"
   },
@@ -220,7 +262,10 @@
       "FY26_RE": 285047.65,
       "FY25_Actual": 232151.92,
       "FY27_Revenue": 235024.58,
-      "FY27_Capital": 50022.62
+      "FY27_Capital": 50022.62,
+      "FY27_Net": 235047.2,
+      "FY27_NetRevenue": 235024.58,
+      "FY27_NetCapital": 22.62
     },
     "confidence": "validated"
   },
@@ -235,7 +280,10 @@
       "FY26_RE": 981.31,
       "FY25_Actual": 738.0,
       "FY27_Revenue": 1742.84,
-      "FY27_Capital": 1.9
+      "FY27_Capital": 1.9,
+      "FY27_Net": 1744.74,
+      "FY27_NetRevenue": 1742.84,
+      "FY27_NetCapital": 1.9
     },
     "confidence": "validated"
   },
@@ -250,7 +298,10 @@
       "FY26_RE": 8969.43,
       "FY25_Actual": 710.48,
       "FY27_Revenue": 6506.24,
-      "FY27_Capital": 55.62
+      "FY27_Capital": 55.62,
+      "FY27_Net": 5561.86,
+      "FY27_NetRevenue": 5506.24,
+      "FY27_NetCapital": 55.62
     },
     "confidence": "validated"
   },
@@ -265,7 +316,10 @@
       "FY26_RE": 3550.09,
       "FY25_Actual": 3260.0,
       "FY27_Revenue": 3216.63,
-      "FY27_Capital": 200.0
+      "FY27_Capital": 200.0,
+      "FY27_Net": 3416.63,
+      "FY27_NetRevenue": 3216.63,
+      "FY27_NetCapital": 200
     },
     "confidence": "validated"
   },
@@ -280,7 +334,10 @@
       "FY26_RE": 60263.12,
       "FY25_Actual": 57313.74,
       "FY27_Revenue": 51991.36,
-      "FY27_Capital": 11823.25
+      "FY27_Capital": 11823.25,
+      "FY27_Net": 28554.61,
+      "FY27_NetRevenue": 16851.36,
+      "FY27_NetCapital": 11703.25
     },
     "confidence": "validated"
   },
@@ -295,7 +352,10 @@
       "FY26_RE": 359007.64,
       "FY25_Actual": 301120.54,
       "FY27_Revenue": 373255.44,
-      "FY27_Capital": 0.0
+      "FY27_Capital": 0.0,
+      "FY27_Net": 365478.98,
+      "FY27_NetRevenue": 365478.98,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -310,7 +370,10 @@
       "FY26_RE": 186454.2,
       "FY25_Actual": 159768.4,
       "FY27_Revenue": 0.0,
-      "FY27_Capital": 219306.47
+      "FY27_Capital": 219306.47,
+      "FY27_Net": 219306.47,
+      "FY27_NetRevenue": null,
+      "FY27_NetCapital": 219306.47
     },
     "confidence": "validated"
   },
@@ -325,7 +388,10 @@
       "FY26_RE": 169186.5,
       "FY25_Actual": 157653.65,
       "FY27_Revenue": 179338.22,
-      "FY27_Capital": 0.0
+      "FY27_Capital": 0.0,
+      "FY27_Net": 171338.22,
+      "FY27_NetRevenue": 171338.22,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -340,7 +406,10 @@
       "FY26_RE": 4479.2,
       "FY25_Actual": 3447.71,
       "FY27_Revenue": 2247.7,
-      "FY27_Capital": 4564.6
+      "FY27_Capital": 4564.6,
+      "FY27_Net": 6812.3,
+      "FY27_NetRevenue": 2247.7,
+      "FY27_NetCapital": 4564.6
     },
     "confidence": "validated"
   },
@@ -355,7 +424,10 @@
       "FY26_RE": 3388.27,
       "FY25_Actual": 3386.73,
       "FY27_Revenue": 3082.19,
-      "FY27_Capital": 716.04
+      "FY27_Capital": 716.04,
+      "FY27_Net": 3789.23,
+      "FY27_NetRevenue": 3073.19,
+      "FY27_NetCapital": 716.04
     },
     "confidence": "validated"
   },
@@ -370,7 +442,10 @@
       "FY26_RE": 129541.14,
       "FY25_Actual": 117984.44,
       "FY27_Revenue": 150292.41,
-      "FY27_Capital": 0.85
+      "FY27_Capital": 0.85,
+      "FY27_Net": 83562.26,
+      "FY27_NetRevenue": 83561.41,
+      "FY27_NetCapital": 0.85
     },
     "confidence": "validated"
   },
@@ -385,7 +460,10 @@
       "FY26_RE": 70278.93,
       "FY25_Actual": 61755.93,
       "FY27_Revenue": 78493.54,
-      "FY27_Capital": 2.68
+      "FY27_Capital": 2.68,
+      "FY27_Net": 55727.22,
+      "FY27_NetRevenue": 55724.54,
+      "FY27_NetCapital": 2.68
     },
     "confidence": "validated"
   },
@@ -400,7 +478,10 @@
       "FY26_RE": 20232.95,
       "FY25_Actual": 13670.52,
       "FY27_Revenue": 21234.15,
-      "FY27_Capital": 398.81
+      "FY27_Capital": 398.81,
+      "FY27_Net": 21632.96,
+      "FY27_NetRevenue": 21234.15,
+      "FY27_NetCapital": 398.81
     },
     "confidence": "validated"
   },
@@ -415,7 +496,10 @@
       "FY26_RE": 4017.31,
       "FY25_Actual": 2684.92,
       "FY27_Revenue": 4190.56,
-      "FY27_Capital": 222.8
+      "FY27_Capital": 222.8,
+      "FY27_Net": 3759.46,
+      "FY27_NetRevenue": 3536.66,
+      "FY27_NetCapital": 222.8
     },
     "confidence": "validated"
   },
@@ -430,7 +514,10 @@
       "FY26_RE": 21752.25,
       "FY25_Actual": 27824.25,
       "FY27_Revenue": 20711.2,
-      "FY27_Capital": 1412.78
+      "FY27_Capital": 1412.78,
+      "FY27_Net": 22118.97,
+      "FY27_NetRevenue": 20706.2,
+      "FY27_NetCapital": 1412.77
     },
     "confidence": "validated"
   },
@@ -445,7 +532,10 @@
       "FY26_RE": 140024.14,
       "FY25_Actual": 54946.01,
       "FY27_Revenue": 5029.89,
-      "FY27_Capital": 126297.48
+      "FY27_Capital": 126297.48,
+      "FY27_Net": 20559.11,
+      "FY27_NetRevenue": 4249.65,
+      "FY27_NetCapital": 16309.46
     },
     "confidence": "validated"
   },
@@ -460,7 +550,10 @@
       "FY26_RE": 510.87,
       "FY25_Actual": 487.07,
       "FY27_Revenue": 451.4,
-      "FY27_Capital": 74.13
+      "FY27_Capital": 74.13,
+      "FY27_Net": 525.53,
+      "FY27_NetRevenue": 451.4,
+      "FY27_NetCapital": 74.13
     },
     "confidence": "validated"
   },
@@ -475,7 +568,10 @@
       "FY26_RE": 3696.63,
       "FY25_Actual": 4031.3,
       "FY27_Revenue": 3686.99,
-      "FY27_Capital": 59.97
+      "FY27_Capital": 59.97,
+      "FY27_Net": 3746.95,
+      "FY27_NetRevenue": 3686.99,
+      "FY27_NetCapital": 59.96
     },
     "confidence": "validated"
   },
@@ -490,7 +586,10 @@
       "FY26_RE": 27.26,
       "FY25_Actual": 22.02,
       "FY27_Revenue": 28.94,
-      "FY27_Capital": 0.66
+      "FY27_Capital": 0.66,
+      "FY27_Net": 29.6,
+      "FY27_NetRevenue": 28.94,
+      "FY27_NetCapital": 0.66
     },
     "confidence": "validated"
   },
@@ -505,7 +604,10 @@
       "FY26_RE": 33.71,
       "FY25_Actual": 45.61,
       "FY27_Revenue": 54.25,
-      "FY27_Capital": 1.67
+      "FY27_Capital": 1.67,
+      "FY27_Net": 55.92,
+      "FY27_NetRevenue": 54.25,
+      "FY27_NetCapital": 1.67
     },
     "confidence": "validated"
   },
@@ -520,7 +622,10 @@
       "FY26_RE": 21042.72,
       "FY25_Actual": 159922.15,
       "FY27_Revenue": 2523.11,
-      "FY27_Capital": 597.71
+      "FY27_Capital": 597.71,
+      "FY27_Net": 2513.02,
+      "FY27_NetRevenue": 1915.31,
+      "FY27_NetCapital": 597.71
     },
     "confidence": "validated"
   },
@@ -535,7 +640,10 @@
       "FY26_RE": 12732.08,
       "FY25_Actual": 11441.2,
       "FY27_Revenue": 10320.12,
-      "FY27_Capital": 4986.45
+      "FY27_Capital": 4986.45,
+      "FY27_Net": 15304.57,
+      "FY27_NetRevenue": 10320.12,
+      "FY27_NetCapital": 4984.45
     },
     "confidence": "validated"
   },
@@ -550,7 +658,10 @@
       "FY26_RE": 41496.72,
       "FY25_Actual": 38818.21,
       "FY27_Revenue": 26077.13,
-      "FY27_Capital": 1606.0
+      "FY27_Capital": 1606.0,
+      "FY27_Net": 27682.63,
+      "FY27_NetRevenue": 26076.63,
+      "FY27_NetCapital": 1606
     },
     "confidence": "validated"
   },
@@ -565,7 +676,10 @@
       "FY26_RE": 7073.72,
       "FY25_Actual": 6587.4,
       "FY27_Revenue": 6665.31,
-      "FY27_Capital": 168.97
+      "FY27_Capital": 168.97,
+      "FY27_Net": 6436.84,
+      "FY27_NetRevenue": 6270.19,
+      "FY27_NetCapital": 166.65
     },
     "confidence": "validated"
   },
@@ -580,7 +694,10 @@
       "FY26_RE": 1352307.49,
       "FY25_Actual": 1164271.06,
       "FY27_Revenue": 1443971.79,
-      "FY27_Capital": 0.0
+      "FY27_Capital": 0.0,
+      "FY27_Net": 1403971.79,
+      "FY27_NetRevenue": 1403971.79,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -595,7 +712,10 @@
       "FY26_RE": 8177058.62,
       "FY25_Actual": 8500778.9,
       "FY27_Revenue": 0.0,
-      "FY27_Capital": 9534445.88
+      "FY27_Capital": 9534445.88,
+      "FY27_Net": 0,
+      "FY27_NetRevenue": null,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -610,7 +730,10 @@
       "FY26_RE": 94756.0,
       "FY25_Actual": 93361.15,
       "FY27_Revenue": 101500.0,
-      "FY27_Capital": 0.0
+      "FY27_Capital": 0.0,
+      "FY27_Net": 97500,
+      "FY27_NetRevenue": 97500,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -625,7 +748,10 @@
       "FY26_RE": 399692.01,
       "FY25_Actual": 331961.16,
       "FY27_Revenue": 193821.61,
-      "FY27_Capital": 247853.0
+      "FY27_Capital": 247853.0,
+      "FY27_Net": 394183.52,
+      "FY27_NetRevenue": 167801.61,
+      "FY27_NetCapital": 226381.91
     },
     "confidence": "validated"
   },
@@ -640,7 +766,10 @@
       "FY26_RE": 1732.95,
       "FY25_Actual": 1127.92,
       "FY27_Revenue": 2732.27,
-      "FY27_Capital": 29.53
+      "FY27_Capital": 29.53,
+      "FY27_Net": 2761.8,
+      "FY27_NetRevenue": 2732.27,
+      "FY27_NetCapital": 29.53
     },
     "confidence": "validated"
   },
@@ -655,7 +784,10 @@
       "FY26_RE": 5482.83,
       "FY25_Actual": 3649.25,
       "FY27_Revenue": 5915.95,
-      "FY27_Capital": 447.51
+      "FY27_Capital": 447.51,
+      "FY27_Net": 6153.46,
+      "FY27_NetRevenue": 5705.95,
+      "FY27_NetCapital": 447.51
     },
     "confidence": "validated"
   },
@@ -670,7 +802,10 @@
       "FY26_RE": 4221.57,
       "FY25_Actual": 2866.82,
       "FY27_Revenue": 4976.43,
-      "FY27_Capital": 2.73
+      "FY27_Capital": 2.73,
+      "FY27_Net": 4064.16,
+      "FY27_NetRevenue": 4061.43,
+      "FY27_NetCapital": 2.73
     },
     "confidence": "validated"
   },
@@ -685,7 +820,10 @@
       "FY26_RE": 126647.79,
       "FY25_Actual": 106122.84,
       "FY27_Revenue": 137835.25,
-      "FY27_Capital": 2928.3
+      "FY27_Capital": 2928.3,
+      "FY27_Net": 101709.21,
+      "FY27_NetRevenue": 98780.91,
+      "FY27_NetCapital": 2928.3
     },
     "confidence": "validated"
   },
@@ -700,7 +838,10 @@
       "FY26_RE": 3927.64,
       "FY25_Actual": 3383.93,
       "FY27_Revenue": 4819.4,
-      "FY27_Capital": 1.81
+      "FY27_Capital": 1.81,
+      "FY27_Net": 4821.21,
+      "FY27_NetRevenue": 4819.4,
+      "FY27_NetCapital": 1.81
     },
     "confidence": "validated"
   },
@@ -715,7 +856,10 @@
       "FY26_RE": 5293.85,
       "FY25_Actual": 2686.55,
       "FY27_Revenue": 7937.08,
-      "FY27_Capital": 2.82
+      "FY27_Capital": 2.82,
+      "FY27_Net": 7939.9,
+      "FY27_NetRevenue": 7937.08,
+      "FY27_NetCapital": 2.82
     },
     "confidence": "validated"
   },
@@ -730,7 +874,10 @@
       "FY26_RE": 7480.15,
       "FY25_Actual": 5694.77,
       "FY27_Revenue": 9878.54,
-      "FY27_Capital": 508.81
+      "FY27_Capital": 508.81,
+      "FY27_Net": 10387.35,
+      "FY27_NetRevenue": 9878.54,
+      "FY27_NetCapital": 508.81
     },
     "confidence": "validated"
   },
@@ -745,7 +892,10 @@
       "FY26_RE": 7116.46,
       "FY25_Actual": 5630.11,
       "FY27_Revenue": 992.32,
-      "FY27_Capital": 4224.8
+      "FY27_Capital": 4224.8,
+      "FY27_Net": 1102,
+      "FY27_NetRevenue": 992.32,
+      "FY27_NetCapital": 109.68
     },
     "confidence": "validated"
   },
@@ -760,7 +910,10 @@
       "FY26_RE": 163204.65,
       "FY25_Actual": 147979.7,
       "FY27_Revenue": 153601.13,
-      "FY27_Capital": 21272.5
+      "FY27_Capital": 21272.5,
+      "FY27_Net": 173802.53,
+      "FY27_NetRevenue": 152530.06,
+      "FY27_NetCapital": 21272.47
     },
     "confidence": "validated"
   },
@@ -775,7 +928,10 @@
       "FY26_RE": 7442.89,
       "FY25_Actual": 5999.14,
       "FY27_Revenue": 6138.08,
-      "FY27_Capital": 597.86
+      "FY27_Capital": 597.86,
+      "FY27_Net": 6680.94,
+      "FY27_NetRevenue": 6083.08,
+      "FY27_NetCapital": 597.86
     },
     "confidence": "validated"
   },
@@ -790,7 +946,10 @@
       "FY26_RE": 6465.77,
       "FY25_Actual": 6598.19,
       "FY27_Revenue": 5939.52,
-      "FY27_Capital": 606.0
+      "FY27_Capital": 606.0,
+      "FY27_Net": 5720.17,
+      "FY27_NetRevenue": 5275.15,
+      "FY27_NetCapital": 445.02
     },
     "confidence": "validated"
   },
@@ -805,7 +964,10 @@
       "FY26_RE": 2743.14,
       "FY25_Actual": 2651.25,
       "FY27_Revenue": 1735.2,
-      "FY27_Capital": 1100.0
+      "FY27_Capital": 1100.0,
+      "FY27_Net": 2832.7,
+      "FY27_NetRevenue": 1732.7,
+      "FY27_NetCapital": 1100
     },
     "confidence": "validated"
   },
@@ -820,7 +982,10 @@
       "FY26_RE": 7390.68,
       "FY25_Actual": 4894.62,
       "FY27_Revenue": 2552.51,
-      "FY27_Capital": 2327.05
+      "FY27_Capital": 2327.05,
+      "FY27_Net": 4869.31,
+      "FY27_NetRevenue": 2542.26,
+      "FY27_NetCapital": 2327.05
     },
     "confidence": "validated"
   },
@@ -835,7 +1000,10 @@
       "FY26_RE": 1607.85,
       "FY25_Actual": 1627.77,
       "FY27_Revenue": 1362.99,
-      "FY27_Capital": 346.11
+      "FY27_Capital": 346.11,
+      "FY27_Net": 1682.35,
+      "FY27_NetRevenue": 1336.49,
+      "FY27_NetCapital": 345.86
     },
     "confidence": "validated"
   },
@@ -850,7 +1018,10 @@
       "FY26_RE": 1242.0,
       "FY25_Actual": 1108.0,
       "FY27_Revenue": 968.01,
-      "FY27_Capital": 380.0
+      "FY27_Capital": 380.0,
+      "FY27_Net": 1348.01,
+      "FY27_NetRevenue": 968.01,
+      "FY27_NetCapital": 380
     },
     "confidence": "validated"
   },
@@ -865,7 +1036,10 @@
       "FY26_RE": 41340.22,
       "FY25_Actual": 46000.06,
       "FY27_Revenue": 43290.29,
-      "FY27_Capital": 0.0
+      "FY27_Capital": 0.0,
+      "FY27_Net": 43290.29,
+      "FY27_NetRevenue": 43290.29,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -880,7 +1054,10 @@
       "FY26_RE": 3517.88,
       "FY25_Actual": 3302.36,
       "FY27_Revenue": 3517.87,
-      "FY27_Capital": 0.01
+      "FY27_Capital": 0.01,
+      "FY27_Net": 3517.88,
+      "FY27_NetRevenue": 3517.87,
+      "FY27_NetCapital": 0.01
     },
     "confidence": "validated"
   },
@@ -895,7 +1072,10 @@
       "FY26_RE": 63302.92,
       "FY25_Actual": 59143.75,
       "FY27_Revenue": 50883.31,
-      "FY27_Capital": 38876.88
+      "FY27_Capital": 38876.88,
+      "FY27_Net": 85522.39,
+      "FY27_NetRevenue": 50714.32,
+      "FY27_NetCapital": 34808.07
     },
     "confidence": "validated"
   },
@@ -910,7 +1090,10 @@
       "FY26_RE": 6103.02,
       "FY25_Actual": 4306.77,
       "FY27_Revenue": 4494.56,
-      "FY27_Capital": 57.38
+      "FY27_Capital": 57.38,
+      "FY27_Net": 4551.94,
+      "FY27_NetRevenue": 4494.56,
+      "FY27_NetCapital": 57.38
     },
     "confidence": "validated"
   },
@@ -925,7 +1108,10 @@
       "FY26_RE": 24239.55,
       "FY25_Actual": 26611.6,
       "FY27_Revenue": 26182.32,
-      "FY27_Capital": 475.66
+      "FY27_Capital": 475.66,
+      "FY27_Net": 19912.98,
+      "FY27_NetRevenue": 19437.32,
+      "FY27_NetCapital": 475.66
     },
     "confidence": "validated"
   },
@@ -940,7 +1126,10 @@
       "FY26_RE": 23031.08,
       "FY25_Actual": 26258.66,
       "FY27_Revenue": 74893.66,
-      "FY27_Capital": 1.2
+      "FY27_Capital": 1.2,
+      "FY27_Net": 74894.86,
+      "FY27_NetRevenue": 74893.66,
+      "FY27_NetCapital": 1.2
     },
     "confidence": "validated"
   },
@@ -955,7 +1144,10 @@
       "FY26_RE": 12688.05,
       "FY25_Actual": 11436.49,
       "FY27_Revenue": 32625.33,
-      "FY27_Capital": 40.98
+      "FY27_Capital": 40.98,
+      "FY27_Net": 32666.31,
+      "FY27_NetRevenue": 32625.33,
+      "FY27_NetCapital": 40.98
     },
     "confidence": "validated"
   },
@@ -970,7 +1162,10 @@
       "FY26_RE": 5389.87,
       "FY25_Actual": 7411.97,
       "FY27_Revenue": 4459.59,
-      "FY27_Capital": 249.47
+      "FY27_Capital": 249.47,
+      "FY27_Net": 4509.06,
+      "FY27_NetRevenue": 4259.59,
+      "FY27_NetCapital": 249.47
     },
     "confidence": "validated"
   },
@@ -985,7 +1180,10 @@
       "FY26_RE": 373.29,
       "FY25_Actual": 350.49,
       "FY27_Revenue": 367.69,
-      "FY27_Capital": 14.53
+      "FY27_Capital": 14.53,
+      "FY27_Net": 382.22,
+      "FY27_NetRevenue": 367.69,
+      "FY27_NetCapital": 14.53
     },
     "confidence": "validated"
   },
@@ -1000,7 +1198,10 @@
       "FY26_RE": 633.13,
       "FY25_Actual": 598.55,
       "FY27_Revenue": 566.19,
-      "FY27_Capital": 55.92
+      "FY27_Capital": 55.92,
+      "FY27_Net": 622.11,
+      "FY27_NetRevenue": 566.19,
+      "FY27_NetCapital": 55.92
     },
     "confidence": "validated"
   },
@@ -1015,7 +1216,10 @@
       "FY26_RE": 12095.98,
       "FY25_Actual": 9700.34,
       "FY27_Revenue": 22647.26,
-      "FY27_Capital": 1919.01
+      "FY27_Capital": 1919.01,
+      "FY27_Net": 24566.27,
+      "FY27_NetRevenue": 22647.26,
+      "FY27_NetCapital": 1919.01
     },
     "confidence": "validated"
   },
@@ -1030,7 +1234,10 @@
       "FY26_RE": 3515.14,
       "FY25_Actual": 3507.26,
       "FY27_Revenue": 4552.8,
-      "FY27_Capital": 163.65
+      "FY27_Capital": 163.65,
+      "FY27_Net": 3806.45,
+      "FY27_NetRevenue": 3642.8,
+      "FY27_NetCapital": 163.65
     },
     "confidence": "validated"
   },
@@ -1045,7 +1252,10 @@
       "FY26_RE": 2160.45,
       "FY25_Actual": 1396.01,
       "FY27_Revenue": 3395.62,
-      "FY27_Capital": 4.38
+      "FY27_Capital": 4.38,
+      "FY27_Net": 3400,
+      "FY27_NetRevenue": 3395.62,
+      "FY27_NetCapital": 4.38
     },
     "confidence": "validated"
   },
@@ -1060,7 +1270,10 @@
       "FY26_RE": 27801.22,
       "FY25_Actual": 23299.19,
       "FY27_Revenue": 44611.14,
-      "FY27_Capital": 3.53
+      "FY27_Capital": 3.53,
+      "FY27_Net": 32914.67,
+      "FY27_NetRevenue": 32911.14,
+      "FY27_NetCapital": 3.53
     },
     "confidence": "validated"
   },
@@ -1075,7 +1288,10 @@
       "FY26_RE": 965.96,
       "FY25_Actual": 850.3,
       "FY27_Revenue": 1186.88,
-      "FY27_Capital": 3.28
+      "FY27_Capital": 3.28,
+      "FY27_Net": 1190.16,
+      "FY27_NetRevenue": 1186.88,
+      "FY27_NetCapital": 3.28
     },
     "confidence": "validated"
   },
@@ -1090,7 +1306,10 @@
       "FY26_RE": 66.31,
       "FY25_Actual": 63.02,
       "FY27_Revenue": 61.18,
-      "FY27_Capital": 7.27
+      "FY27_Capital": 7.27,
+      "FY27_Net": 68.45,
+      "FY27_NetRevenue": 61.18,
+      "FY27_NetCapital": 7.27
     },
     "confidence": "validated"
   },
@@ -1105,7 +1324,10 @@
       "FY26_RE": 2525.07,
       "FY25_Actual": 2509.43,
       "FY27_Revenue": 2454.37,
-      "FY27_Capital": 153.08
+      "FY27_Capital": 153.08,
+      "FY27_Net": 2607.45,
+      "FY27_NetRevenue": 2454.37,
+      "FY27_NetCapital": 153.08
     },
     "confidence": "validated"
   },
@@ -1120,7 +1342,10 @@
       "FY26_RE": 50.66,
       "FY25_Actual": 48.44,
       "FY27_Revenue": 52.85,
-      "FY27_Capital": 1.71
+      "FY27_Capital": 1.71,
+      "FY27_Net": 54.56,
+      "FY27_NetRevenue": 52.85,
+      "FY27_NetCapital": 1.71
     },
     "confidence": "validated"
   },
@@ -1135,7 +1360,10 @@
       "FY26_RE": 32934.47,
       "FY25_Actual": 19887.49,
       "FY27_Revenue": 37414.77,
-      "FY27_Capital": 238.45
+      "FY27_Capital": 238.45,
+      "FY27_Net": 30443.22,
+      "FY27_NetRevenue": 30204.77,
+      "FY27_NetCapital": 238.45
     },
     "confidence": "validated"
   },
@@ -1150,7 +1378,10 @@
       "FY26_RE": 848.24,
       "FY25_Actual": 282.61,
       "FY27_Revenue": 1203.38,
-      "FY27_Capital": 28.78
+      "FY27_Capital": 28.78,
+      "FY27_Net": 1232.16,
+      "FY27_NetRevenue": 1203.38,
+      "FY27_NetCapital": 28.78
     },
     "confidence": "validated"
   },
@@ -1165,7 +1396,10 @@
       "FY26_RE": 3464.11,
       "FY25_Actual": 3378.27,
       "FY27_Revenue": 4464.88,
-      "FY27_Capital": 1299.92
+      "FY27_Capital": 1299.92,
+      "FY27_Net": 5164.8,
+      "FY27_NetRevenue": 3964.88,
+      "FY27_NetCapital": 1199.92
     },
     "confidence": "validated"
   },
@@ -1180,7 +1414,10 @@
       "FY26_RE": 22797.24,
       "FY25_Actual": 22532.94,
       "FY27_Revenue": 30853.45,
-      "FY27_Capital": 361.02
+      "FY27_Capital": 361.02,
+      "FY27_Net": 29996.85,
+      "FY27_NetRevenue": 29635.83,
+      "FY27_NetCapital": 361.02
     },
     "confidence": "validated"
   },
@@ -1195,7 +1432,10 @@
       "FY26_RE": 141.83,
       "FY25_Actual": 124.31,
       "FY27_Revenue": 133.1,
-      "FY27_Capital": 4.1
+      "FY27_Capital": 4.1,
+      "FY27_Net": 137.2,
+      "FY27_NetRevenue": 133.1,
+      "FY27_NetCapital": 4.1
     },
     "confidence": "validated"
   },
@@ -1210,7 +1450,10 @@
       "FY26_RE": 923.0,
       "FY25_Actual": 696.46,
       "FY27_Revenue": 978.17,
-      "FY27_Capital": 30.83
+      "FY27_Capital": 30.83,
+      "FY27_Net": 1009,
+      "FY27_NetRevenue": 978.17,
+      "FY27_NetCapital": 30.83
     },
     "confidence": "validated"
   },
@@ -1225,7 +1468,10 @@
       "FY26_RE": 481.33,
       "FY25_Actual": 412.06,
       "FY27_Revenue": 471.32,
-      "FY27_Capital": 11.67
+      "FY27_Capital": 11.67,
+      "FY27_Net": 482.99,
+      "FY27_NetRevenue": 471.32,
+      "FY27_NetCapital": 11.67
     },
     "confidence": "validated"
   },
@@ -1240,7 +1486,10 @@
       "FY26_RE": 12.14,
       "FY25_Actual": 10.98,
       "FY27_Revenue": 11.39,
-      "FY27_Capital": 0.31
+      "FY27_Capital": 0.31,
+      "FY27_Net": 11.7,
+      "FY27_NetRevenue": 11.39,
+      "FY27_NetCapital": 0.31
     },
     "confidence": "validated"
   },
@@ -1255,7 +1504,10 @@
       "FY26_RE": 432.89,
       "FY25_Actual": 427.09,
       "FY27_Revenue": 421.09,
-      "FY27_Capital": 21.85
+      "FY27_Capital": 21.85,
+      "FY27_Net": 442.94,
+      "FY27_NetRevenue": 421.09,
+      "FY27_NetCapital": 21.85
     },
     "confidence": "validated"
   },
@@ -1270,7 +1522,10 @@
       "FY26_RE": 793160.6,
       "FY25_Actual": 764346.5,
       "FY27_Revenue": 385733.33,
-      "FY27_Capital": 499261.97
+      "FY27_Capital": 499261.97,
+      "FY27_Net": 281377.32,
+      "FY27_NetRevenue": 3547.32,
+      "FY27_NetCapital": 277830
     },
     "confidence": "validated"
   },
@@ -1285,7 +1540,10 @@
       "FY26_RE": 380018.87,
       "FY25_Actual": 369216.91,
       "FY27_Revenue": 31276.46,
-      "FY27_Capital": 378027.0
+      "FY27_Capital": 378027.0,
+      "FY27_Net": 309875.3,
+      "FY27_NetRevenue": 15707.85,
+      "FY27_NetCapital": 294167.45
     },
     "confidence": "validated"
   },
@@ -1300,7 +1558,10 @@
       "FY26_RE": 285995.61,
       "FY25_Actual": 270048.83,
       "FY27_Revenue": 240764.18,
-      "FY27_Capital": 4.63
+      "FY27_Capital": 4.63,
+      "FY27_Net": 194368.81,
+      "FY27_NetRevenue": 194364.18,
+      "FY27_NetCapital": 4.63
     },
     "confidence": "validated"
   },
@@ -1315,7 +1576,10 @@
       "FY26_RE": 3245.04,
       "FY25_Actual": 3722.27,
       "FY27_Revenue": 5135.33,
-      "FY27_Capital": 1.0
+      "FY27_Capital": 1.0,
+      "FY27_Net": 2654.33,
+      "FY27_NetRevenue": 2653.33,
+      "FY27_NetCapital": 1
     },
     "confidence": "validated"
   },
@@ -1330,7 +1594,10 @@
       "FY26_RE": 11921.58,
       "FY25_Actual": 5122.35,
       "FY27_Revenue": 7963.94,
-      "FY27_Capital": 20085.38
+      "FY27_Capital": 20085.38,
+      "FY27_Net": 28049.32,
+      "FY27_NetRevenue": 7963.94,
+      "FY27_NetCapital": 20085.38
     },
     "confidence": "validated"
   },
@@ -1345,7 +1612,10 @@
       "FY26_RE": 2830.45,
       "FY25_Actual": 1998.0,
       "FY27_Revenue": 3446.0,
-      "FY27_Capital": 0.0
+      "FY27_Capital": 0.0,
+      "FY27_Net": 3446,
+      "FY27_NetRevenue": 3446,
+      "FY27_NetCapital": null
     },
     "confidence": "validated"
   },
@@ -1360,7 +1630,10 @@
       "FY26_RE": 6433.16,
       "FY25_Actual": 6270.94,
       "FY27_Revenue": 6760.29,
-      "FY27_Capital": 5.33
+      "FY27_Capital": 5.33,
+      "FY27_Net": 6765.62,
+      "FY27_NetRevenue": 6760.29,
+      "FY27_NetCapital": 5.33
     },
     "confidence": "validated"
   },
@@ -1375,7 +1648,10 @@
       "FY26_RE": 4703.54,
       "FY25_Actual": 5253.98,
       "FY27_Revenue": 12559.51,
-      "FY27_Capital": 126.29
+      "FY27_Capital": 126.29,
+      "FY27_Net": 9885.8,
+      "FY27_NetRevenue": 9759.51,
+      "FY27_NetCapital": 126.29
     },
     "confidence": "validated"
   },
@@ -1390,7 +1666,10 @@
       "FY26_RE": 11922.43,
       "FY25_Actual": 10409.0,
       "FY27_Revenue": 14418.02,
-      "FY27_Capital": 9.57
+      "FY27_Capital": 9.57,
+      "FY27_Net": 13687.59,
+      "FY27_NetRevenue": 13678.02,
+      "FY27_NetCapital": 9.57
     },
     "confidence": "validated"
   },
@@ -1405,7 +1684,10 @@
       "FY26_RE": 1291.6,
       "FY25_Actual": 1112.61,
       "FY27_Revenue": 1668.35,
-      "FY27_Capital": 1.37
+      "FY27_Capital": 1.37,
+      "FY27_Net": 1669.72,
+      "FY27_NetRevenue": 1668.35,
+      "FY27_NetCapital": 1.37
     },
     "confidence": "validated"
   },
@@ -1420,7 +1702,10 @@
       "FY26_RE": 12448.6,
       "FY25_Actual": 11518.65,
       "FY27_Revenue": 7329.71,
-      "FY27_Capital": 6375.92
+      "FY27_Capital": 6375.92,
+      "FY27_Net": 13705.63,
+      "FY27_NetRevenue": 7329.71,
+      "FY27_NetCapital": 6375.92
     },
     "confidence": "validated"
   },
@@ -1435,7 +1720,10 @@
       "FY26_RE": 5551.29,
       "FY25_Actual": 4020.74,
       "FY27_Revenue": 5457.75,
-      "FY27_Capital": 45.14
+      "FY27_Capital": 45.14,
+      "FY27_Net": 5502.89,
+      "FY27_NetRevenue": 5457.75,
+      "FY27_NetCapital": 45.14
     },
     "confidence": "validated"
   },
@@ -1450,7 +1738,10 @@
       "FY26_RE": 4857.44,
       "FY25_Actual": 8539.07,
       "FY27_Revenue": 439.84,
-      "FY27_Capital": 3.34
+      "FY27_Capital": 3.34,
+      "FY27_Net": 443.18,
+      "FY27_NetRevenue": 439.84,
+      "FY27_NetCapital": 3.34
     },
     "confidence": "validated"
   },
@@ -1465,7 +1756,10 @@
       "FY26_RE": 5766.68,
       "FY25_Actual": 2998.47,
       "FY27_Revenue": 5269.52,
-      "FY27_Capital": 9.49
+      "FY27_Capital": 9.49,
+      "FY27_Net": 5279.01,
+      "FY27_NetRevenue": 5269.52,
+      "FY27_NetCapital": 9.49
     },
     "confidence": "validated"
   },
@@ -1480,7 +1774,10 @@
       "FY26_RE": 1310.3,
       "FY25_Actual": 457.35,
       "FY27_Revenue": 2433.88,
-      "FY27_Capital": 4.53
+      "FY27_Capital": 4.53,
+      "FY27_Net": 2438.4,
+      "FY27_NetRevenue": 2433.87,
+      "FY27_NetCapital": 4.53
     },
     "confidence": "validated"
   },
@@ -1495,7 +1792,10 @@
       "FY26_RE": 10824.18,
       "FY25_Actual": 10173.22,
       "FY27_Revenue": 15389.54,
-      "FY27_Capital": 32.43
+      "FY27_Capital": 32.43,
+      "FY27_Net": 15421.97,
+      "FY27_NetRevenue": 15389.54,
+      "FY27_NetCapital": 32.43
     },
     "confidence": "validated"
   },
@@ -1510,7 +1810,10 @@
       "FY26_RE": 24651.91,
       "FY25_Actual": 25029.49,
       "FY27_Revenue": 28632.42,
-      "FY27_Capital": 5.64
+      "FY27_Capital": 5.64,
+      "FY27_Net": 28183.06,
+      "FY27_NetRevenue": 28177.42,
+      "FY27_NetCapital": 5.64
     },
     "confidence": "validated"
   },
@@ -1525,7 +1828,10 @@
       "FY26_RE": 3346.54,
       "FY25_Actual": 2833.06,
       "FY27_Revenue": 4461.51,
-      "FY27_Capital": 18.37
+      "FY27_Capital": 18.37,
+      "FY27_Net": 4479.88,
+      "FY27_NetRevenue": 4461.51,
+      "FY27_NetCapital": 18.37
     },
     "confidence": "validated"
   }

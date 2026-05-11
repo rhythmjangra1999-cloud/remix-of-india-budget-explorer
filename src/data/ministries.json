@@ -7,7 +7,11 @@
       "FY26": 11170904.43,
       "FY27": 11710222.46
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 1972509.48,
+    "netRevenueFY27": 1722326.88,
+    "netCapitalFY27": 250182.6,
+    "shareNetFY27": 0.368879
   },
   {
     "id": "mor",
@@ -17,7 +21,11 @@
       "FY26": 820310.75,
       "FY27": 884995.3
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 281377.32,
+    "netRevenueFY27": 3547.32,
+    "netCapitalFY27": 277830,
+    "shareNetFY27": 0.05262
   },
   {
     "id": "mod",
@@ -27,7 +35,11 @@
       "FY26": 727178.15,
       "FY27": 835714.74
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 784678.28,
+    "netRevenueFY27": 553668.56,
+    "netCapitalFY27": 231009.72,
+    "shareNetFY27": 0.146742
   },
   {
     "id": "morth",
@@ -37,7 +49,11 @@
       "FY26": 362373.16,
       "FY27": 409303.46
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 309875.3,
+    "netRevenueFY27": 15707.85,
+    "netCapitalFY27": 294167.45,
+    "shareNetFY27": 0.05795
   },
   {
     "id": "mcaf",
@@ -47,7 +63,11 @@
       "FY26": 265823.29,
       "FY27": 289544.57
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 239521.37,
+    "netRevenueFY27": 239405.33,
+    "netCapitalFY27": 116.04,
+    "shareNetFY27": 0.044793
   },
   {
     "id": "mha",
@@ -57,7 +77,11 @@
       "FY26": 241293.45,
       "FY27": 261339.6
     },
-    "ddgAvailable": true
+    "ddgAvailable": true,
+    "netFY27": 255233.53,
+    "netRevenueFY27": 228146.77,
+    "netCapitalFY27": 27086.76,
+    "shareNetFY27": 0.047731
   },
   {
     "id": "mord",
@@ -67,7 +91,11 @@
       "FY26": 291536.73,
       "FY27": 245905.14
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 197023.14,
+    "netRevenueFY27": 197017.51,
+    "netCapitalFY27": 5.63,
+    "shareNetFY27": 0.036845
   },
   {
     "id": "magri",
@@ -78,7 +106,11 @@
       "FY26": 137323.43,
       "FY27": 140528.81
     },
-    "ddgAvailable": true
+    "ddgAvailable": true,
+    "netFY27": 140528.78,
+    "netRevenueFY27": 140416.57,
+    "netCapitalFY27": 112.21,
+    "shareNetFY27": 0.02628
   },
   {
     "id": "moe",
@@ -88,7 +120,11 @@
       "FY26": 211771.31,
       "FY27": 228789.48
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 139289.48,
+    "netRevenueFY27": 139285.95,
+    "netCapitalFY27": 3.53,
+    "shareNetFY27": 0.026048
   },
   {
     "id": "mchem",
@@ -98,7 +134,11 @@
       "FY26": 189545.21,
       "FY27": 193279.47
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 177061.47,
+    "netRevenueFY27": 177049.76,
+    "netCapitalFY27": 11.71,
+    "shareNetFY27": 0.033112
   },
   {
     "id": "mohfw",
@@ -108,7 +148,11 @@
       "FY26": 126960.49,
       "FY27": 145584.76
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 106530.42,
+    "netRevenueFY27": 103600.31,
+    "netCapitalFY27": 2930.11,
+    "shareNetFY27": 0.019922
   },
   {
     "id": "mcomm",
@@ -118,7 +162,11 @@
       "FY26": 150723.23,
       "FY27": 140840.95
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 102267.02,
+    "netRevenueFY27": 53742.59,
+    "netCapitalFY27": 48524.43,
+    "shareNetFY27": 0.019125
   },
   {
     "id": "mjs",
@@ -128,7 +176,11 @@
       "FY26": 107391.92,
       "FY27": 101552.84
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 94807.84,
+    "netRevenueFY27": 94330.98,
+    "netCapitalFY27": 476.86,
+    "shareNetFY27": 0.01773
   },
   {
     "id": "mohua",
@@ -138,7 +190,11 @@
       "FY26": 101918.31,
       "FY27": 89760.19
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 85522.39,
+    "netRevenueFY27": 50714.32,
+    "netCapitalFY27": 34808.07,
+    "shareNetFY27": 0.015994
   },
   {
     "id": "mnre",
@@ -148,7 +204,11 @@
       "FY26": 31749.38,
       "FY27": 44614.67
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 32914.67,
+    "netRevenueFY27": 32911.14,
+    "netCapitalFY27": 3.53,
+    "shareNetFY27": 0.006155
   },
   {
     "id": "datom",
@@ -158,7 +218,11 @@
       "FY26": 37482.93,
       "FY27": 38422.71
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 24123.92,
+    "netRevenueFY27": 14157.51,
+    "netCapitalFY27": 9966.41,
+    "shareNetFY27": 0.004511
   },
   {
     "id": "most",
@@ -168,7 +232,11 @@
       "FY26": 38613.32,
       "FY27": 38260.94
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 38260.94,
+    "netRevenueFY27": 18170.23,
+    "netCapitalFY27": 20090.71,
+    "shareNetFY27": 0.007155
   },
   {
     "id": "mopng",
@@ -178,7 +246,11 @@
       "FY26": 26702.93,
       "FY27": 37653.22
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 30443.22,
+    "netRevenueFY27": 30204.77,
+    "netCapitalFY27": 238.45,
+    "shareNetFY27": 0.005693
   },
   {
     "id": "mole",
@@ -188,7 +260,11 @@
       "FY26": 32646.19,
       "FY27": 32666.31
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 32666.31,
+    "netRevenueFY27": 32625.33,
+    "netCapitalFY27": 40.98,
+    "shareNetFY27": 0.006109
   },
   {
     "id": "mopwr",
@@ -198,7 +274,11 @@
       "FY26": 23047.08,
       "FY27": 31214.47
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 29996.85,
+    "netRevenueFY27": 29635.83,
+    "netCapitalFY27": 361.02,
+    "shareNetFY27": 0.00561
   },
   {
     "id": "mwcd",
@@ -208,7 +288,11 @@
       "FY26": 27389.69,
       "FY27": 28638.06
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 28183.06,
+    "netRevenueFY27": 28177.42,
+    "netCapitalFY27": 5.64,
+    "shareNetFY27": 0.005271
   },
   {
     "id": "msme",
@@ -218,7 +302,11 @@
       "FY26": 23168.15,
       "FY27": 24566.27
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 24566.27,
+    "netRevenueFY27": 22647.26,
+    "netCapitalFY27": 1919.01,
+    "shareNetFY27": 0.004594
   },
   {
     "id": "mea",
@@ -228,7 +316,11 @@
       "FY26": 20516.62,
       "FY27": 22123.98
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 22118.97,
+    "netRevenueFY27": 20706.2,
+    "netCapitalFY27": 1412.77,
+    "shareNetFY27": 0.004136
   },
   {
     "id": "meity",
@@ -238,7 +330,11 @@
       "FY26": 26026.25,
       "FY27": 21632.96
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 21632.96,
+    "netRevenueFY27": 21234.15,
+    "netCapitalFY27": 398.81,
+    "shareNetFY27": 0.004046
   },
   {
     "id": "mcom",
@@ -248,7 +344,11 @@
       "FY26": 18446.05,
       "FY27": 17843.9
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 17843.9,
+    "netRevenueFY27": 12677.46,
+    "netCapitalFY27": 5166.44,
+    "shareNetFY27": 0.003337
   },
   {
     "id": "msje",
@@ -258,7 +358,11 @@
       "FY26": 15439.42,
       "FY27": 16097.31
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 15357.31,
+    "netRevenueFY27": 15346.37,
+    "netCapitalFY27": 10.94,
+    "shareNetFY27": 0.002872
   },
   {
     "id": "motrib",
@@ -268,7 +372,11 @@
       "FY26": 14925.81,
       "FY27": 15421.97
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 15421.97,
+    "netRevenueFY27": 15389.54,
+    "netCapitalFY27": 32.43,
+    "shareNetFY27": 0.002884
   },
   {
     "id": "dospace",
@@ -278,7 +386,11 @@
       "FY26": 13416.2,
       "FY27": 13705.63
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 13705.63,
+    "netRevenueFY27": 7329.71,
+    "netCapitalFY27": 6375.92,
+    "shareNetFY27": 0.002563
   },
   {
     "id": "msde",
@@ -288,7 +400,11 @@
       "FY26": 8300.1,
       "FY27": 12685.8
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 9885.8,
+    "netRevenueFY27": 9759.51,
+    "netCapitalFY27": 126.29,
+    "shareNetFY27": 0.001849
   },
   {
     "id": "mfahd",
@@ -298,7 +414,11 @@
       "FY26": 7759.07,
       "FY27": 9125.26
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 8915.26,
+    "netRevenueFY27": 8438.22,
+    "netCapitalFY27": 477.04,
+    "shareNetFY27": 0.001667
   },
   {
     "id": "mhi",
@@ -308,7 +428,11 @@
       "FY26": 7680.23,
       "FY27": 7939.9
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 7939.9,
+    "netRevenueFY27": 7937.08,
+    "netCapitalFY27": 2.82,
+    "shareNetFY27": 0.001485
   },
   {
     "id": "mdoner",
@@ -318,7 +442,11 @@
       "FY26": 5915.0,
       "FY27": 6812.3
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 6812.3,
+    "netRevenueFY27": 2247.7,
+    "netCapitalFY27": 4564.6,
+    "shareNetFY27": 0.001274
   },
   {
     "id": "mcorp",
@@ -328,7 +456,11 @@
       "FY26": 11586.19,
       "FY27": 6561.86
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 5561.86,
+    "netRevenueFY27": 5506.24,
+    "netCapitalFY27": 55.62,
+    "shareNetFY27": 0.00104
   },
   {
     "id": "mopsw",
@@ -338,7 +470,11 @@
       "FY26": 4035.58,
       "FY27": 5764.8
     },
-    "ddgAvailable": true
+    "ddgAvailable": true,
+    "netFY27": 5164.8,
+    "netRevenueFY27": 3964.88,
+    "netCapitalFY27": 1199.92,
+    "shareNetFY27": 0.000966
   },
   {
     "id": "molj",
@@ -348,7 +484,11 @@
       "FY26": 6050.37,
       "FY27": 5713.39
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 5513.39,
+    "netRevenueFY27": 5193.47,
+    "netCapitalFY27": 319.92,
+    "shareNetFY27": 0.001031
   },
   {
     "id": "mospi",
@@ -358,7 +498,11 @@
       "FY26": 5471.06,
       "FY27": 5502.89
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 5502.89,
+    "netRevenueFY27": 5457.75,
+    "netCapitalFY27": 45.14,
+    "shareNetFY27": 0.001029
   },
   {
     "id": "motex",
@@ -368,7 +512,11 @@
       "FY26": 5272.0,
       "FY27": 5279.01
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 5279.01,
+    "netRevenueFY27": 5269.52,
+    "netCapitalFY27": 9.49,
+    "shareNetFY27": 0.000987
   },
   {
     "id": "mfpi",
@@ -378,7 +526,11 @@
       "FY26": 5267.6,
       "FY27": 4979.16
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 4064.16,
+    "netRevenueFY27": 4061.43,
+    "netCapitalFY27": 2.73,
+    "shareNetFY27": 0.00076
   },
   {
     "id": "mom",
@@ -388,7 +540,11 @@
       "FY26": 3538.0,
       "FY27": 4716.45
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 3806.45,
+    "netRevenueFY27": 3642.8,
+    "netCapitalFY27": 163.65,
+    "shareNetFY27": 0.000712
   },
   {
     "id": "mib",
@@ -398,7 +554,11 @@
       "FY26": 4358.38,
       "FY27": 4551.94
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 4551.94,
+    "netRevenueFY27": 4494.56,
+    "netCapitalFY27": 57.38,
+    "shareNetFY27": 0.000851
   },
   {
     "id": "moyas",
@@ -408,7 +568,11 @@
       "FY26": 3794.3,
       "FY27": 4479.88
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 4479.88,
+    "netRevenueFY27": 4461.51,
+    "netCapitalFY27": 18.37,
+    "shareNetFY27": 0.000838
   },
   {
     "id": "moefcc",
@@ -418,7 +582,11 @@
       "FY26": 4056.07,
       "FY27": 4413.36
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 3759.46,
+    "netRevenueFY27": 3536.66,
+    "netCapitalFY27": 222.8,
+    "shareNetFY27": 0.000703
   },
   {
     "id": "mayush",
@@ -428,7 +596,11 @@
       "FY26": 3992.9,
       "FY27": 4408.93
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 4408.93,
+    "netRevenueFY27": 4381.86,
+    "netCapitalFY27": 27.07,
+    "shareNetFY27": 0.000825
   },
   {
     "id": "mcoal",
@@ -438,7 +610,11 @@
       "FY26": 1251.2,
       "FY27": 4390.32
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 3635.32,
+    "netRevenueFY27": 3633.12,
+    "netCapitalFY27": 2.2,
+    "shareNetFY27": 0.00068
   },
   {
     "id": "moes",
@@ -448,7 +624,11 @@
       "FY26": 3658.08,
       "FY27": 3798.23
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 3789.23,
+    "netRevenueFY27": 3073.19,
+    "netCapitalFY27": 716.04,
+    "shareNetFY27": 0.000709
   },
   {
     "id": "mcult",
@@ -458,7 +638,11 @@
       "FY26": 3360.96,
       "FY27": 3416.63
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 3416.63,
+    "netRevenueFY27": 3216.63,
+    "netCapitalFY27": 200,
+    "shareNetFY27": 0.000639
   },
   {
     "id": "moma",
@@ -468,7 +652,11 @@
       "FY26": 3350.0,
       "FY27": 3400.0
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 3400,
+    "netRevenueFY27": 3395.62,
+    "netCapitalFY27": 4.38,
+    "shareNetFY27": 0.000636
   },
   {
     "id": "moppg",
@@ -478,7 +666,11 @@
       "FY26": 2708.53,
       "FY27": 2662.01
     },
-    "ddgAvailable": true
+    "ddgAvailable": true,
+    "netFY27": 2662.01,
+    "netRevenueFY27": 2507.22,
+    "netCapitalFY27": 154.79,
+    "shareNetFY27": 0.000498
   },
   {
     "id": "motour",
@@ -488,7 +680,11 @@
       "FY26": 2541.07,
       "FY27": 2438.41
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 2438.4,
+    "netRevenueFY27": 2433.87,
+    "netCapitalFY27": 4.53,
+    "shareNetFY27": 0.000456
   },
   {
     "id": "mca",
@@ -498,7 +694,11 @@
       "FY26": 2400.31,
       "FY27": 2102.87
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 2102.87,
+    "netRevenueFY27": 2057.87,
+    "netCapitalFY27": 45,
+    "shareNetFY27": 0.000393
   },
   {
     "id": "mpres",
@@ -518,7 +718,11 @@
       "FY26": 1186.29,
       "FY27": 1744.74
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 1744.74,
+    "netRevenueFY27": 1742.84,
+    "netCapitalFY27": 1.9,
+    "shareNetFY27": 0.000326
   },
   {
     "id": "mopl",
@@ -528,7 +732,11 @@
       "FY26": 1006.06,
       "FY27": 1232.16
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 1232.16,
+    "netRevenueFY27": 1203.38,
+    "netCapitalFY27": 28.78,
+    "shareNetFY27": 0.00023
   },
   {
     "id": "mopr",
@@ -538,7 +746,11 @@
       "FY26": 1185.0,
       "FY27": 1190.16
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 1190.16,
+    "netRevenueFY27": 1186.88,
+    "netCapitalFY27": 3.28,
+    "shareNetFY27": 0.000223
   },
   {
     "id": "mosteel",
@@ -548,7 +760,11 @@
       "FY26": 3362.0,
       "FY27": 443.18
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 443.18,
+    "netRevenueFY27": 439.84,
+    "netCapitalFY27": 3.34,
+    "shareNetFY27": 8.3e-05
   },
   {
     "id": "mopa",
@@ -558,6 +774,10 @@
       "FY26": 66.56,
       "FY27": 68.45
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 68.45,
+    "netRevenueFY27": 61.18,
+    "netCapitalFY27": 7.27,
+    "shareNetFY27": 1.3e-05
   }
 ]
