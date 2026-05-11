@@ -1,51 +1,27 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { Download, Printer } from "lucide-react";
+import { DG_SUMMARY, DG_META, type YearKey } from "@/lib/dg";
+import ddgsRaw from "@/data/ddgs.json";
 
-const GRAND = 5347314.81;
+// ---------- constants ----------
+const GRAND = DG_META.grossBe2627Cr;
 
-type Demand = { no: number; name: string; ministry: string; revenue: number; capital: number; total: number };
-
-const DEMANDS: Demand[] = [
-  { no: 1, name: "Dept. of Agriculture & Farmers Welfare", ministry: "Agriculture", revenue: 130451.62, capital: 109.76, total: 130561.38 },
-  { no: 2, name: "Dept. of Agricultural Research & Education", ministry: "Agriculture", revenue: 9964.95, capital: 2.45, total: 9967.40 },
-  { no: 3, name: "Atomic Energy", ministry: "Atomic Energy", revenue: 14157.51, capital: 9966.41, total: 24123.92 },
-  { no: 4, name: "Ministry of Ayush", ministry: "Ayush", revenue: 4381.86, capital: 27.07, total: 4408.93 },
-  { no: 6, name: "Dept. of Fertilisers", ministry: "Chemicals", revenue: 170935.64, capital: 8.89, total: 170944.53 },
-  { no: 7, name: "Dept. of Pharmaceuticals", ministry: "Chemicals", revenue: 5929.42, capital: 1.80, total: 5931.22 },
-  { no: 13, name: "Dept. of Telecommunications", ministry: "Communications", revenue: 26716.02, capital: 47274.92, total: 73990.94 },
-  { no: 15, name: "Dept. of Food & Public Distribution", ministry: "Consumer Affairs", revenue: 235024.58, capital: 22.62, total: 235047.20 },
-  { no: 19, name: "Ministry of Defence (Civil)", ministry: "Defence", revenue: 16851.36, capital: 11703.25, total: 28554.61 },
-  { no: 20, name: "Defence Services (Revenue)", ministry: "Defence", revenue: 365478.98, capital: 0, total: 365478.98 },
-  { no: 21, name: "Capital Outlay on Defence", ministry: "Defence", revenue: 0, capital: 219306.47, total: 219306.47 },
-  { no: 22, name: "Defence Pensions", ministry: "Defence", revenue: 171338.22, capital: 0, total: 171338.22 },
-  { no: 25, name: "Dept. of School Education & Literacy", ministry: "Education", revenue: 83561.41, capital: 0.85, total: 83562.26 },
-  { no: 26, name: "Dept. of Higher Education", ministry: "Education", revenue: 55724.54, capital: 2.68, total: 55727.22 },
-  { no: 27, name: "Ministry of Electronics & IT", ministry: "MEITY", revenue: 21234.15, capital: 398.81, total: 21632.96 },
-  { no: 29, name: "Ministry of External Affairs", ministry: "External Affairs", revenue: 20706.20, capital: 1412.77, total: 22118.97 },
-  { no: 39, name: "Interest Payments", ministry: "Finance", revenue: 1403971.79, capital: 0, total: 1403971.79 },
-  { no: 41, name: "Pensions", ministry: "Finance", revenue: 97500.00, capital: 0, total: 97500.00 },
-  { no: 42, name: "Transfers to States", ministry: "Finance", revenue: 167801.61, capital: 226381.91, total: 394183.52 },
-  { no: 46, name: "Dept. of Health & Family Welfare", ministry: "Health", revenue: 98780.91, capital: 2928.30, total: 101709.21 },
-  { no: 51, name: "Police", ministry: "Home Affairs", revenue: 152530.06, capital: 21272.47, total: 173802.53 },
-  { no: 58, name: "Transfers to J&K", ministry: "Home Affairs", revenue: 43290.29, capital: 0, total: 43290.29 },
-  { no: 60, name: "Ministry of Housing & Urban Affairs", ministry: "Housing", revenue: 50714.32, capital: 34808.07, total: 85522.39 },
-  { no: 63, name: "Dept. of Drinking Water & Sanitation", ministry: "Jal Shakti", revenue: 74893.66, capital: 1.20, total: 74894.86 },
-  { no: 64, name: "Ministry of Labour & Employment", ministry: "Labour", revenue: 32625.33, capital: 40.98, total: 32666.31 },
-  { no: 68, name: "Ministry of MSME", ministry: "MSME", revenue: 22647.26, capital: 1919.01, total: 24566.27 },
-  { no: 71, name: "Ministry of Renewable Energy", ministry: "Renewable Energy", revenue: 32911.14, capital: 3.53, total: 32914.67 },
-  { no: 76, name: "Ministry of Petroleum & Natural Gas", ministry: "Petroleum", revenue: 30204.77, capital: 238.45, total: 30443.22 },
-  { no: 79, name: "Ministry of Power", ministry: "Power", revenue: 29635.83, capital: 361.02, total: 29996.85 },
-  { no: 85, name: "Ministry of Railways", ministry: "Railways", revenue: 3547.32, capital: 277830.00, total: 281377.32 },
-  { no: 86, name: "Ministry of Road Transport & Highways", ministry: "Roads", revenue: 15707.85, capital: 294167.45, total: 309875.30 },
-  { no: 87, name: "Dept. of Rural Development", ministry: "Rural Dev.", revenue: 194364.18, capital: 4.63, total: 194368.81 },
-  { no: 89, name: "Dept. of Science & Technology", ministry: "Science & Tech", revenue: 7963.94, capital: 20085.38, total: 28049.32 },
-  { no: 95, name: "Dept. of Space", ministry: "Space", revenue: 7329.71, capital: 6375.92, total: 13705.63 },
-  { no: 100, name: "Ministry of Tribal Affairs", ministry: "Tribal Affairs", revenue: 15389.54, capital: 32.43, total: 15421.97 },
-  { no: 101, name: "Ministry of Women & Child Development", ministry: "WCD", revenue: 28177.42, capital: 5.64, total: 28183.06 },
-  { no: 102, name: "Ministry of Youth Affairs & Sports", ministry: "Youth & Sports", revenue: 4461.51, capital: 18.37, total: 4479.88 },
+const YEAR_META: { key: YearKey; short: string; long: string; ddg: boolean }[] = [
+  { key: "actuals2425", short: "Actuals 24-25", long: "FY24-25 Actuals", ddg: false },
+  { key: "be2526",      short: "BE 25-26",      long: "FY25-26 BE",      ddg: true  }, // DDG FY26
+  { key: "re2526",      short: "RE 25-26",      long: "FY25-26 RE",      ddg: false },
+  { key: "be2627",      short: "BE 26-27",      long: "FY26-27 BE",      ddg: true  }, // DDG FY27
 ];
 
-// Use HSL colors aligned with project palette (chart-1..5 + accent oranges/purples)
+type Dataset = "expbudget" | "dgs" | "ddg";
+
+const DATASETS: { key: Dataset; label: string; sub: string }[] = [
+  { key: "expbudget", label: "Expenditure Budget", sub: "Ministry rollups" },
+  { key: "dgs",       label: "Demands for Grants", sub: "102 demands" },
+  { key: "ddg",       label: "Detailed DGs",       sub: "Object-head line items" },
+];
+
+// HSL palette (uses project tokens via direct hsl values matching index.css spirit)
 const REV = "hsl(160 60% 38%)";
 const CAP = "hsl(18 70% 52%)";
 const TOT = "hsl(212 74% 37%)";
@@ -57,38 +33,109 @@ const MCOLORS = [
   "hsl(28 86% 28%)", "hsl(338 50% 41%)", "hsl(212 84% 27%)", "hsl(168 78% 18%)",
   "hsl(15 70% 18%)", "hsl(248 50% 25%)", "hsl(28 80% 22%)",
 ];
-const ministryList = Array.from(new Set(DEMANDS.map(d => d.ministry))).sort();
-const ministryColor: Record<string, string> = Object.fromEntries(
-  ministryList.map((m, i) => [m, MCOLORS[i % MCOLORS.length]])
-);
 
+// ---------- types ----------
+type Cell = { revenue: number; capital: number; total: number };
+type Row = {
+  key: string;
+  no?: number;
+  name: string;
+  ministry: string;
+  byYear: Partial<Record<YearKey, Cell>>;
+};
+
+// ---------- helpers ----------
 const fmtNum = (v: number) => !v ? "—" : v.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtCompact = (v: number) => v >= 100000 ? `₹${(v / 100000).toFixed(2)} L Cr` : v >= 1000 ? `₹${(v / 1000).toFixed(1)}K Cr` : `₹${fmtNum(v)} Cr`;
+const fmtCompact = (v: number) =>
+  v >= 100000 ? `₹${(v / 100000).toFixed(2)} L Cr` :
+  v >= 1000   ? `₹${(v / 1000).toFixed(1)}K Cr` :
+  `₹${fmtNum(v)} Cr`;
 
-type Metrics = { rev: boolean; cap: boolean; tot: boolean; pct: boolean };
+const cellOf = (s: { revenue: number | null; capital: number | null; total: number | null } | undefined): Cell =>
+  ({ revenue: s?.revenue ?? 0, capital: s?.capital ?? 0, total: s?.total ?? 0 });
 
-function BarChart({ data, metrics }: { data: Demand[]; metrics: Metrics }) {
-  const maxVal = Math.max(...data.map(d => d.total), 1);
-  const barH = 18, gap = 4, labelW = 200, numW = 90;
-  const chartW = 460;
+// ---------- dataset builders ----------
+function buildExpBudget(): Row[] {
+  const map = new Map<string, Row>();
+  for (const d of DG_SUMMARY) {
+    const r = map.get(d.ministry) ?? { key: d.ministry, name: d.ministry, ministry: d.ministry, byYear: {} };
+    for (const y of YEAR_META) {
+      const cur = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
+      const c = cellOf(d[y.key]);
+      r.byYear[y.key] = { revenue: cur.revenue + c.revenue, capital: cur.capital + c.capital, total: cur.total + c.total };
+    }
+    map.set(d.ministry, r);
+  }
+  return Array.from(map.values());
+}
+
+function buildDGs(): Row[] {
+  return DG_SUMMARY.map(d => ({
+    key: `D${d.demandNo}`,
+    no: d.demandNo,
+    name: d.demandDesc,
+    ministry: d.ministry,
+    byYear: Object.fromEntries(YEAR_META.map(y => [y.key, cellOf(d[y.key])])) as Row["byYear"],
+  }));
+}
+
+// DDG only has FY26 / FY27. We aggregate by majorHead × demand for readability.
+type DDG = {
+  ministryId: string; demandId: string; majorHead: string; minorHead?: string;
+  subHead?: string; objectHead: string; revenue?: boolean;
+  amounts: { FY26?: number; FY27?: number };
+};
+
+function buildDDG(): Row[] {
+  const ddgs = ddgsRaw as DDG[];
+  // ministryId → display ministry name from DG_SUMMARY (best-effort match by demandId number)
+  const demandToMinistry = new Map<number, string>();
+  for (const d of DG_SUMMARY) demandToMinistry.set(d.demandNo, d.ministry);
+
+  const map = new Map<string, Row>();
+  for (const r of ddgs) {
+    const demandNo = parseInt(r.demandId.replace(/^d0*/, ""), 10);
+    const ministry = demandToMinistry.get(demandNo) ?? r.ministryId;
+    const key = `${r.demandId}|${r.majorHead}|${r.minorHead ?? ""}|${r.subHead ?? ""}|${r.objectHead}`;
+    const name = `${r.objectHead}${r.subHead ? " · " + r.subHead : ""}${r.minorHead ? " · " + r.minorHead : ""}`;
+    const isRev = r.revenue !== false;
+    const fy26 = r.amounts.FY26 ?? 0;
+    const fy27 = r.amounts.FY27 ?? 0;
+    const make = (v: number): Cell => isRev
+      ? { revenue: v, capital: 0, total: v }
+      : { revenue: 0, capital: v, total: v };
+    map.set(key, {
+      key, name: `${r.majorHead} → ${name}`, ministry,
+      byYear: { be2526: make(fy26), be2627: make(fy27) },
+    });
+  }
+  return Array.from(map.values());
+}
+
+// ---------- chart ----------
+function BarChart({ data, primaryYear, splitRevCap }:
+  { data: Row[]; primaryYear: YearKey; splitRevCap: boolean }) {
+  const vals = data.map(d => d.byYear[primaryYear]?.total ?? 0);
+  const maxVal = Math.max(...vals, 1);
+  const barH = 18, gap = 4, labelW = 220, numW = 90, chartW = 460;
   const height = data.length * (barH + gap) + 20;
   return (
     <svg width="100%" viewBox={`0 0 ${labelW + chartW + numW} ${height}`} style={{ fontSize: 10 }}>
       {data.map((d, i) => {
+        const cell = d.byYear[primaryYear] ?? { revenue: 0, capital: 0, total: 0 };
         const y = i * (barH + gap) + 10;
-        const showSplit = metrics.rev || metrics.cap;
-        const revW = metrics.rev ? (d.revenue / maxVal) * chartW : 0;
-        const capW = metrics.cap ? (d.capital / maxVal) * chartW : 0;
-        const totW = (!showSplit && metrics.tot) ? (d.total / maxVal) * chartW : 0;
+        const revW = splitRevCap ? (cell.revenue / maxVal) * chartW : 0;
+        const capW = splitRevCap ? (cell.capital / maxVal) * chartW : 0;
+        const totW = !splitRevCap ? (cell.total / maxVal) * chartW : 0;
         return (
-          <g key={d.no}>
+          <g key={d.key}>
             <text x={labelW - 6} y={y + barH / 2 + 3} textAnchor="end" className="fill-muted-foreground" fontSize={10}>
-              {d.name.length > 30 ? d.name.slice(0, 28) + "…" : d.name}
+              {d.name.length > 32 ? d.name.slice(0, 30) + "…" : d.name}
             </text>
-            {metrics.rev && <rect x={labelW} y={y} width={Math.max(revW, 1)} height={barH * 0.5} fill={REV} rx={2} />}
-            {metrics.cap && <rect x={labelW} y={y + barH * 0.5 + 1} width={Math.max(capW, 1)} height={barH * 0.5 - 1} fill={CAP} rx={2} />}
-            {totW > 0 && <rect x={labelW} y={y} width={Math.max(totW, 1)} height={barH} fill={TOT} rx={2} />}
-            <text x={labelW + chartW + 6} y={y + barH / 2 + 3} className="fill-foreground" fontSize={10}>{fmtCompact(d.total)}</text>
+            {splitRevCap && <rect x={labelW} y={y} width={Math.max(revW, 1)} height={barH * 0.5} fill={REV} rx={2} />}
+            {splitRevCap && <rect x={labelW} y={y + barH * 0.5 + 1} width={Math.max(capW, 1)} height={barH * 0.5 - 1} fill={CAP} rx={2} />}
+            {!splitRevCap && <rect x={labelW} y={y} width={Math.max(totW, 1)} height={barH} fill={TOT} rx={2} />}
+            <text x={labelW + chartW + 6} y={y + barH / 2 + 3} className="fill-foreground" fontSize={10}>{fmtCompact(cell.total)}</text>
           </g>
         );
       })}
@@ -96,69 +143,127 @@ function BarChart({ data, metrics }: { data: Demand[]; metrics: Metrics }) {
   );
 }
 
+// ---------- main ----------
 export default function ReportBuilder() {
-  const [selected, setSelected] = useState<Set<number>>(new Set(DEMANDS.map(d => d.no)));
-  const [metrics, setMetrics] = useState<Metrics>({ rev: true, cap: true, tot: true, pct: false });
-  const [sortKey, setSortKey] = useState("total_desc");
+  const [dataset, setDataset] = useState<Dataset>("dgs");
+  const [years, setYears] = useState<Record<YearKey, boolean>>({
+    actuals2425: false, be2526: false, re2526: false, be2627: true,
+  });
+  const [splitRevCap, setSplitRevCap] = useState(true);
+  const [showPct, setShowPct] = useState(false);
+  const [sortKey, setSortKey] = useState("primary_desc");
   const [search, setSearch] = useState("");
   const [showChart, setShowChart] = useState(true);
 
-  const toggleDemand = (no: number) => setSelected(prev => {
-    const s = new Set(prev); s.has(no) ? s.delete(no) : s.add(no); return s;
-  });
-  const selectAll = (v: boolean) => setSelected(v ? new Set(DEMANDS.map(d => d.no)) : new Set());
-  const toggleMetric = (k: keyof Metrics) => setMetrics(m => ({ ...m, [k]: !m[k] }));
+  // build rows for the chosen dataset
+  const allRows: Row[] = useMemo(() => {
+    if (dataset === "expbudget") return buildExpBudget();
+    if (dataset === "ddg") return buildDDG();
+    return buildDGs();
+  }, [dataset]);
 
-  const sorted = useMemo(() => {
-    const ds = DEMANDS.filter(d => selected.has(d.no));
-    if (sortKey === "total_desc") ds.sort((a, b) => b.total - a.total);
-    else if (sortKey === "total_asc") ds.sort((a, b) => a.total - b.total);
-    else if (sortKey === "revenue_desc") ds.sort((a, b) => b.revenue - a.revenue);
-    else if (sortKey === "capital_desc") ds.sort((a, b) => b.capital - a.capital);
-    else if (sortKey === "name_asc") ds.sort((a, b) => a.name.localeCompare(b.name));
-    return ds;
-  }, [selected, sortKey]);
-
-  const totR = sorted.reduce((a, d) => a + d.revenue, 0);
-  const totC = sorted.reduce((a, d) => a + d.capital, 0);
-  const totT = sorted.reduce((a, d) => a + d.total, 0);
-  const maxT = Math.max(...sorted.map(d => d.total), 1);
-
-  const filteredList = useMemo(() =>
-    DEMANDS.filter(d => !search || d.name.toLowerCase().includes(search.toLowerCase()) || d.ministry.toLowerCase().includes(search.toLowerCase())),
-    [search]
+  // ministry list & per-row selection
+  const ministryList = useMemo(
+    () => Array.from(new Set(allRows.map(r => r.ministry))).sort(),
+    [allRows]
+  );
+  const ministryColor: Record<string, string> = useMemo(
+    () => Object.fromEntries(ministryList.map((m, i) => [m, MCOLORS[i % MCOLORS.length]])),
+    [ministryList]
   );
 
-  const exportCSV = () => {
-    const cols = ["No", "Demand", "Ministry", "Revenue (₹ Cr)", "Capital (₹ Cr)", "Total (₹ Cr)", "% of Budget"];
-    const rows = [cols.join(","), ...sorted.map(d =>
-      [d.no, `"${d.name}"`, d.ministry, d.revenue, d.capital, d.total, ((d.total / GRAND) * 100).toFixed(4)].join(",")
-    )];
-    const b = new Blob([rows.join("\n")], { type: "text/csv" });
-    const a = document.createElement("a"); a.href = URL.createObjectURL(b);
-    a.download = "koshtha_BE2026-27.csv"; a.click();
-  };
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  // initialize / reset selection when dataset changes
+  useMemo(() => { setSelected(new Set(allRows.map(r => r.key))); }, [allRows]);
 
-  const sortBtns: [string, string][] = [
-    ["total_desc", "Total ↓"], ["revenue_desc", "Revenue ↓"], ["capital_desc", "Capital ↓"], ["name_asc", "Name A–Z"],
-  ];
-  const metricCfg: [keyof Metrics, string, string][] = [
-    ["rev", REV, "Revenue"], ["cap", CAP, "Capital"], ["tot", TOT, "Total"], ["pct", PCT, "% of budget"],
-  ];
+  const toggleRow = (k: string) => setSelected(prev => {
+    const s = new Set(prev); s.has(k) ? s.delete(k) : s.add(k); return s;
+  });
+  const selectAll = (v: boolean) => setSelected(v ? new Set(allRows.map(r => r.key)) : new Set());
+
+  // year availability per dataset
+  const yearAvailable = (y: YearKey) => dataset === "ddg" ? YEAR_META.find(m => m.key === y)!.ddg : true;
+  const activeYears = YEAR_META.filter(y => years[y.key] && yearAvailable(y.key));
+  const primaryYear: YearKey = activeYears[activeYears.length - 1]?.key ?? "be2627";
+
+  const sorted = useMemo(() => {
+    const filtered = allRows
+      .filter(r => selected.has(r.key))
+      .filter(r => !search ||
+        r.name.toLowerCase().includes(search.toLowerCase()) ||
+        r.ministry.toLowerCase().includes(search.toLowerCase()));
+    const valOf = (r: Row, y: YearKey, k: keyof Cell = "total") => r.byYear[y]?.[k] ?? 0;
+    if (sortKey === "primary_desc") filtered.sort((a, b) => valOf(b, primaryYear) - valOf(a, primaryYear));
+    else if (sortKey === "primary_asc") filtered.sort((a, b) => valOf(a, primaryYear) - valOf(b, primaryYear));
+    else if (sortKey === "rev_desc") filtered.sort((a, b) => valOf(b, primaryYear, "revenue") - valOf(a, primaryYear, "revenue"));
+    else if (sortKey === "cap_desc") filtered.sort((a, b) => valOf(b, primaryYear, "capital") - valOf(a, primaryYear, "capital"));
+    else if (sortKey === "name_asc") filtered.sort((a, b) => a.name.localeCompare(b.name));
+    return filtered;
+  }, [allRows, selected, sortKey, search, primaryYear]);
+
+  // totals across selected rows for each active year
+  const totalsByYear: Record<string, Cell> = useMemo(() => {
+    const out: Record<string, Cell> = {};
+    for (const y of activeYears) {
+      const acc: Cell = { revenue: 0, capital: 0, total: 0 };
+      for (const r of sorted) {
+        const c = r.byYear[y.key];
+        if (!c) continue;
+        acc.revenue += c.revenue; acc.capital += c.capital; acc.total += c.total;
+      }
+      out[y.key] = acc;
+    }
+    return out;
+  }, [sorted, activeYears]);
+
+  const primaryTotal = totalsByYear[primaryYear] ?? { revenue: 0, capital: 0, total: 0 };
+
+  const exportCSV = () => {
+    const head = ["Key", "Name", "Ministry"];
+    for (const y of activeYears) {
+      if (splitRevCap) { head.push(`${y.short} Rev`, `${y.short} Cap`); }
+      head.push(`${y.short} Total`);
+    }
+    if (showPct) head.push(`% of Budget (${YEAR_META.find(m => m.key === primaryYear)!.short})`);
+    const lines = [head.join(",")];
+    for (const r of sorted) {
+      const row = [r.key, `"${r.name.replace(/"/g, '""')}"`, r.ministry];
+      for (const y of activeYears) {
+        const c = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
+        if (splitRevCap) row.push(String(c.revenue), String(c.capital));
+        row.push(String(c.total));
+      }
+      if (showPct) {
+        const t = r.byYear[primaryYear]?.total ?? 0;
+        row.push(((t / GRAND) * 100).toFixed(4));
+      }
+      lines.push(row.join(","));
+    }
+    const b = new Blob([lines.join("\n")], { type: "text/csv" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(b);
+    a.download = `koshtha_${dataset}.csv`; a.click();
+  };
 
   return (
     <div className="text-sm">
-      {/* Header */}
+      {/* TOP BAR */}
       <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2.5">
           <span className="text-[15px] font-medium">Report builder</span>
-          <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] text-primary">BE 2026-27</span>
+          <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] text-primary">
+            {DATASETS.find(d => d.key === dataset)!.label}
+          </span>
           <span className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-[11px] text-muted-foreground">
-            {sorted.length} demand{sorted.length !== 1 ? "s" : ""}
+            {sorted.length} row{sorted.length !== 1 ? "s" : ""}
           </span>
         </div>
-        <div className="flex gap-1.5">
-          {sortBtns.map(([k, l]) => (
+        <div className="flex flex-wrap gap-1.5">
+          {([
+            ["primary_desc", `${YEAR_META.find(y=>y.key===primaryYear)!.short} ↓`],
+            ["rev_desc", "Revenue ↓"],
+            ["cap_desc", "Capital ↓"],
+            ["name_asc", "Name A–Z"],
+          ] as [string, string][]).map(([k, l]) => (
             <button
               key={k}
               onClick={() => setSortKey(k)}
@@ -172,62 +277,90 @@ export default function ReportBuilder() {
         </div>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-[220px_1fr]">
+      {/* DATASET TABS */}
+      <div className="mb-3 grid grid-cols-3 gap-2">
+        {DATASETS.map(d => {
+          const on = dataset === d.key;
+          return (
+            <button
+              key={d.key}
+              onClick={() => setDataset(d.key)}
+              className={`rounded-lg border px-3 py-2 text-left transition-colors ${
+                on ? "border-primary bg-primary/10" : "border-border bg-card hover:bg-accent"
+              }`}
+            >
+              <div className={`text-[12px] font-medium ${on ? "text-primary" : "text-foreground"}`}>{d.label}</div>
+              <div className="text-[10px] text-muted-foreground">{d.sub}</div>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-[240px_1fr]">
         {/* LEFT */}
         <div className="space-y-2">
-          {/* Columns */}
+          {/* YEARS */}
           <div className="rounded-xl border border-border bg-card p-3">
-            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.07em] text-muted-foreground">Columns</div>
-            {metricCfg.map(([k, c, l]) => {
-              const on = metrics[k];
+            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.07em] text-muted-foreground">Years</div>
+            {YEAR_META.map(y => {
+              const avail = yearAvailable(y.key);
+              const on = years[y.key] && avail;
               return (
                 <button
-                  key={k}
-                  onClick={() => toggleMetric(k)}
-                  className="mb-1 flex w-full items-center gap-1.5 rounded-md border px-2 py-1.5 text-[11px] transition-colors"
-                  style={{
-                    borderColor: on ? c : "hsl(var(--border))",
-                    background: on ? c + "22" : "transparent",
-                    color: on ? c : "hsl(var(--muted-foreground))",
-                  }}
+                  key={y.key}
+                  disabled={!avail}
+                  onClick={() => setYears(s => ({ ...s, [y.key]: !s[y.key] }))}
+                  className={`mb-1 flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-[11px] transition-colors ${
+                    on ? "border-primary bg-primary/10 text-primary" :
+                    avail ? "border-border bg-transparent text-muted-foreground hover:bg-accent" :
+                    "cursor-not-allowed border-dashed border-border bg-muted/40 text-muted-foreground/50"
+                  }`}
                 >
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-sm" style={{ background: c }} />
-                  {l}
+                  <span>{y.long}</span>
+                  {!avail && <span className="text-[9px]">n/a</span>}
                 </button>
               );
             })}
+            <div className="mt-2 border-t border-border pt-2">
+              <label className="mb-1 flex cursor-pointer items-center gap-2 text-[11px]">
+                <input type="checkbox" checked={splitRevCap} onChange={() => setSplitRevCap(v => !v)} className="accent-primary" />
+                Split Revenue / Capital
+              </label>
+              <label className="flex cursor-pointer items-center gap-2 text-[11px]">
+                <input type="checkbox" checked={showPct} onChange={() => setShowPct(v => !v)} className="accent-primary" />
+                Show % of budget
+              </label>
+            </div>
           </div>
 
-          {/* Demand selector */}
+          {/* ROWS picker */}
           <div className="rounded-xl border border-border bg-card p-3">
-            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.07em] text-muted-foreground">Demands</div>
+            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
+              {dataset === "expbudget" ? "Ministries" : dataset === "ddg" ? "Line items" : "Demands"}
+            </div>
             <input
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search…"
-              className="mb-1.5 w-full rounded-md border border-border bg-background px-2 py-1 text-[11px] text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+              className="mb-1.5 w-full rounded-md border border-border bg-background px-2 py-1 text-[11px] focus:outline-none focus:ring-1 focus:ring-ring"
             />
             <div className="mb-1.5 flex justify-between text-[10px]">
               <button onClick={() => selectAll(true)} className="text-primary hover:underline">Select all</button>
               <button onClick={() => selectAll(false)} className="text-primary hover:underline">Clear</button>
             </div>
-            <div className="max-h-80 overflow-y-auto">
+            <div className="max-h-80 overflow-y-auto pr-1">
               {ministryList.map(m => {
-                const ds = filteredList.filter(d => d.ministry === m);
+                const ds = allRows.filter(r => r.ministry === m &&
+                  (!search || r.name.toLowerCase().includes(search.toLowerCase()) || m.toLowerCase().includes(search.toLowerCase())));
                 if (!ds.length) return null;
                 return (
                   <div key={m}>
                     <div className="px-0 pb-0.5 pt-1 text-[9.5px] font-medium uppercase tracking-[0.06em] text-muted-foreground">{m}</div>
-                    {ds.map(d => (
-                      <label key={d.no} className="flex cursor-pointer items-center gap-1.5 py-0.5 text-[11px] text-foreground">
-                        <input
-                          type="checkbox"
-                          checked={selected.has(d.no)}
-                          onChange={() => toggleDemand(d.no)}
-                          className="cursor-pointer accent-primary"
-                        />
+                    {ds.map(r => (
+                      <label key={r.key} className="flex cursor-pointer items-center gap-1.5 py-0.5 text-[11px] text-foreground">
+                        <input type="checkbox" checked={selected.has(r.key)} onChange={() => toggleRow(r.key)} className="accent-primary" />
                         <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: ministryColor[m] }} />
-                        <span className="leading-tight">{d.name}</span>
+                        <span className="leading-tight">{r.name}</span>
                       </label>
                     ))}
                   </div>
@@ -239,105 +372,119 @@ export default function ReportBuilder() {
 
         {/* RIGHT */}
         <div>
-          {/* Stats */}
+          {/* STATS */}
           <div className="mb-2.5 grid grid-cols-3 gap-2">
-            {([["Revenue", fmtCompact(totR), REV], ["Capital", fmtCompact(totC), CAP], ["Total", fmtCompact(totT), TOT]] as const).map(([label, val, col]) => (
+            {([["Revenue", primaryTotal.revenue, REV], ["Capital", primaryTotal.capital, CAP], ["Total", primaryTotal.total, TOT]] as const).map(([label, val, col]) => (
               <div key={label} className="rounded-lg bg-muted px-3 py-2.5">
-                <div className="mb-0.5 text-[10px] uppercase tracking-[0.07em] text-muted-foreground">{label}</div>
-                <div className="text-[17px] font-medium" style={{ color: col }}>{val}</div>
+                <div className="mb-0.5 text-[10px] uppercase tracking-[0.07em] text-muted-foreground">
+                  {label} · {YEAR_META.find(y => y.key === primaryYear)!.short}
+                </div>
+                <div className="text-[17px] font-medium" style={{ color: col }}>{fmtCompact(val)}</div>
                 {label === "Total" && (
                   <div className="mt-0.5 text-[10px] text-muted-foreground">
-                    {((totT / GRAND) * 100).toFixed(1)}% of Union Budget
+                    {((val / GRAND) * 100).toFixed(1)}% of Union Budget
                   </div>
                 )}
               </div>
             ))}
           </div>
 
-          {/* Chart */}
+          {/* CHART */}
           <div className="mb-2.5 rounded-xl border border-border bg-card p-3">
             <div className="mb-2.5 flex items-center justify-between">
-              <div className="flex gap-2 text-[11px] text-foreground">
-                {metrics.rev && <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: REV }} />Revenue</span>}
-                {metrics.cap && <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: CAP }} />Capital</span>}
+              <div className="flex gap-3 text-[11px] text-foreground">
+                <span className="text-muted-foreground">Chart year:</span>
+                <strong>{YEAR_META.find(y => y.key === primaryYear)!.long}</strong>
+                {splitRevCap ? (
+                  <>
+                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: REV }} />Revenue</span>
+                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: CAP }} />Capital</span>
+                  </>
+                ) : (
+                  <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm" style={{ background: TOT }} />Total</span>
+                )}
               </div>
               <button
                 onClick={() => setShowChart(x => !x)}
-                className="rounded-md border border-border px-2 py-1 text-[11px] text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-              >
-                {showChart ? "Hide chart" : "Show chart"}
-              </button>
+                className="rounded-md border border-border px-2 py-1 text-[11px] text-muted-foreground hover:bg-accent"
+              >{showChart ? "Hide chart" : "Show chart"}</button>
             </div>
-            {showChart && sorted.length > 0 && <BarChart data={sorted.slice(0, 20)} metrics={metrics} />}
+            {showChart && sorted.length > 0 && <BarChart data={sorted.slice(0, 20)} primaryYear={primaryYear} splitRevCap={splitRevCap} />}
             {showChart && sorted.length === 0 && (
-              <div className="p-8 text-center text-[12px] text-muted-foreground">No demands selected</div>
+              <div className="p-8 text-center text-[12px] text-muted-foreground">No rows selected</div>
             )}
           </div>
 
-          {/* Table */}
-          <div className="mb-2.5 overflow-hidden rounded-xl border border-border bg-card">
-            <table className="w-full table-fixed border-collapse text-[11.5px]">
+          {/* TABLE */}
+          <div className="mb-2.5 overflow-x-auto rounded-xl border border-border bg-card">
+            <table className="w-full border-collapse text-[11.5px]">
               <thead>
                 <tr className="bg-muted">
-                  <th className="w-8 border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">#</th>
-                  <th className="border-b border-border px-2 py-1.5 text-left text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">Demand</th>
-                  {metrics.rev && <th className="w-28 border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: REV }}>Revenue ₹ Cr</th>}
-                  {metrics.cap && <th className="w-28 border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: CAP }}>Capital ₹ Cr</th>}
-                  {metrics.tot && <th className="w-28 border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: TOT }}>Total ₹ Cr</th>}
-                  {metrics.pct && <th className="w-20 border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: PCT }}>% Budget</th>}
+                  <th className="border-b border-border px-2 py-1.5 text-left text-[10px] font-medium uppercase tracking-[0.06em] text-muted-foreground">Item</th>
+                  {activeYears.map(y => (
+                    <Fragment key={y.key}>
+                      {splitRevCap && (
+                        <>
+                          <th className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: REV }}>{y.short} Rev</th>
+                          <th className="border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: CAP }}>{y.short} Cap</th>
+                        </>
+                      )}
+                      <th className={`border-b border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em] ${splitRevCap ? "" : "border-l"}`} style={{ color: TOT }}>{y.short} Total</th>
+                    </Fragment>
+                  ))}
+                  {showPct && <th className="border-b border-l border-border px-2 py-1.5 text-right text-[10px] font-medium uppercase tracking-[0.06em]" style={{ color: PCT }}>% Budget</th>}
                 </tr>
               </thead>
               <tbody>
                 {sorted.length === 0 ? (
-                  <tr><td colSpan={6} className="p-8 text-center text-muted-foreground">No demands selected</td></tr>
-                ) : sorted.map(d => (
-                  <tr key={d.no} className="border-b border-border last:border-0">
-                    <td className="px-2 py-1.5 text-right text-[10px] text-muted-foreground">{d.no}</td>
-                    <td className="px-2 py-1.5 text-foreground">
-                      <span
-                        className="mr-1.5 rounded px-1.5 py-px text-[10px] font-medium"
-                        style={{ background: ministryColor[d.ministry] + "22", color: ministryColor[d.ministry] }}
-                      >{d.ministry}</span>
-                      {d.name}
+                  <tr><td colSpan={1 + activeYears.length * (splitRevCap ? 3 : 1) + (showPct ? 1 : 0)} className="p-8 text-center text-muted-foreground">No rows selected</td></tr>
+                ) : sorted.map(r => (
+                  <tr key={r.key} className="border-b border-border last:border-0">
+                    <td className="px-2 py-1.5">
+                      <span className="mr-1.5 rounded px-1.5 py-px text-[10px] font-medium"
+                            style={{ background: ministryColor[r.ministry] + "22", color: ministryColor[r.ministry] }}>
+                        {r.ministry}
+                      </span>
+                      {r.name}
                     </td>
-                    {metrics.rev && (
-                      <td className="px-2 py-1.5 text-right">
-                        {fmtNum(d.revenue)}
-                        <span className="ml-1 inline-block h-1 rounded-sm align-middle opacity-60" style={{ background: REV, width: Math.round((d.revenue / maxT) * 40) + "px" }} />
+                    {activeYears.map(y => {
+                      const c = r.byYear[y.key] ?? { revenue: 0, capital: 0, total: 0 };
+                      return (
+                        <Fragment key={y.key}>
+                          {splitRevCap && (
+                            <>
+                              <td className="border-l border-border px-2 py-1.5 text-right">{fmtNum(c.revenue)}</td>
+                              <td className="px-2 py-1.5 text-right">{fmtNum(c.capital)}</td>
+                            </>
+                          )}
+                          <td className={`px-2 py-1.5 text-right font-medium ${splitRevCap ? "" : "border-l border-border"}`}>{fmtNum(c.total)}</td>
+                        </Fragment>
+                      );
+                    })}
+                    {showPct && (
+                      <td className="border-l border-border px-2 py-1.5 text-right" style={{ color: PCT }}>
+                        {(((r.byYear[primaryYear]?.total ?? 0) / GRAND) * 100).toFixed(3)}%
                       </td>
                     )}
-                    {metrics.cap && (
-                      <td className="px-2 py-1.5 text-right">
-                        {fmtNum(d.capital)}
-                        <span className="ml-1 inline-block h-1 rounded-sm align-middle opacity-60" style={{ background: CAP, width: Math.round((d.capital / maxT) * 40) + "px" }} />
-                      </td>
-                    )}
-                    {metrics.tot && <td className="px-2 py-1.5 text-right font-medium">{fmtNum(d.total)}</td>}
-                    {metrics.pct && <td className="px-2 py-1.5 text-right" style={{ color: PCT }}>{((d.total / GRAND) * 100).toFixed(3)}%</td>}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          {/* Export */}
+          {/* EXPORT */}
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={exportCSV}
-              className="inline-flex items-center gap-1.5 rounded-md border border-border bg-transparent px-3 py-1.5 text-[12px] text-foreground hover:bg-accent hover:text-accent-foreground"
-            >
+            <button onClick={exportCSV} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-transparent px-3 py-1.5 text-[12px] hover:bg-accent">
               <Download className="h-3.5 w-3.5" /> Export CSV
             </button>
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center gap-1.5 rounded-md border border-border bg-transparent px-3 py-1.5 text-[12px] text-foreground hover:bg-accent hover:text-accent-foreground"
-            >
+            <button onClick={() => window.print()} className="inline-flex items-center gap-1.5 rounded-md border border-border bg-transparent px-3 py-1.5 text-[12px] hover:bg-accent">
               <Printer className="h-3.5 w-3.5" /> Print / PDF
             </button>
             <div className="ml-auto flex items-center gap-1.5 text-[11px] text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full" style={{ background: REV }} />
-              Selected total: <strong className="text-foreground">{fmtCompact(totT)}</strong>
-              <span className="ml-1">({((totT / GRAND) * 100).toFixed(1)}% of ₹53.47 L Cr budget)</span>
+              Selected total ({YEAR_META.find(y => y.key === primaryYear)!.short}):
+              <strong className="text-foreground">{fmtCompact(primaryTotal.total)}</strong>
+              <span>({((primaryTotal.total / GRAND) * 100).toFixed(1)}% of {fmtCompact(GRAND)})</span>
             </div>
           </div>
         </div>
