@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { BudgetBuilder } from "@/components/builder/BudgetBuilder";
+import ReportBuilder from "@/components/builder/ReportBuilder";
 
 export default function Builder() {
   return (
@@ -24,7 +24,7 @@ export default function Builder() {
           </div>
         </section>
         <section className="container py-6">
-          <BudgetBuilder />
+          <ReportBuilder />
         </section>
       </main>
       <SiteFooter />
