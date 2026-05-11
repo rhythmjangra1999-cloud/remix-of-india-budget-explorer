@@ -128,6 +128,22 @@ function fmtPct(v: number | null): string {
 // ---------- UI ----------
 export default function ReportBuilder() {
   const [sels, setSels] = useState<Selection[]>(() => [newSelection(), { ...newSelection(), year: "be2526" }]);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  function addFromDeepDive(p: { ministry: string; demandNo: number; section: Section; majorHead?: string; minorHead?: string; subHead?: string; objectHead?: string }) {
+    setSels(prev => [...prev, {
+      ...newSelection(),
+      ministry: p.ministry,
+      demandNo: p.demandNo,
+      type: "ddg",
+      section: p.section,
+      majorHead: p.majorHead,
+      minorHead: p.minorHead,
+      subHead: p.subHead,
+      objectHead: p.objectHead,
+      year: "be2627",
+    }]);
+  }
 
   function update(id: string, patch: Partial<Selection>) {
     setSels(prev => prev.map(s => s.id === id ? { ...s, ...patch } : s));
