@@ -488,14 +488,18 @@ function ExpenditureBudgetCard({ demand }: { demand: DemandSummary }) {
   const recRe   = getRecovery(demand.demandNo, "re2526");
   const recAct  = getRecovery(demand.demandNo, "actuals2425");
   const hasAnyRec = [recCurr, recPrev, recRe, recAct].some((r) => r !== null && r !== 0);
-  const v    = totalCurr - (recCurr ?? 0);
+  // Prefer authoritative Net BE 26-27 from SBE when available; otherwise derive Total − Recoveries.
+  const netCurrSBE = demand.be2627Net?.total ?? null;
+  const v    = netCurrSBE ?? (totalCurr - (recCurr ?? 0));
+  const recCurrEffective = netCurrSBE !== null ? (totalCurr - netCurrSBE) : (recCurr ?? 0);
   const prev = totalPrev - (recPrev ?? 0);
   const re   = totalRe   - (recRe   ?? 0);
   const act  = totalAct  - (recAct  ?? 0);
   const yoy = computeYoY(v, prev);
+  const showRec = hasAnyRec || (netCurrSBE !== null && Math.abs(recCurrEffective) > 0.01);
   return (
     <div className="rounded-md border border-border bg-card p-4">
-      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Expenditure Budget</div>
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Expenditure Budget (Net)</div>
       <div className="mt-1 flex items-baseline gap-2">
         <span className="font-serif text-2xl font-bold tnum">{formatCrore(v, true)}</span>
         <YoYPill value={yoy} />
@@ -505,8 +509,8 @@ function ExpenditureBudgetCard({ demand }: { demand: DemandSummary }) {
         <div>BE 25-26: {formatCrore(prev, true)} · RE 25-26: {formatCrore(re, true)}</div>
       </div>
       <div className="mt-1 text-[10px] text-muted-foreground italic">
-        {hasAnyRec
-          ? `Total − Recoveries (BE 26-27: ${formatCrore(recCurr ?? 0, true)}; Actuals 24-25: ${formatCrore(recAct ?? 0, true)})`
+        {showRec
+          ? `Total − Recoveries (BE 26-27 recoveries: ${formatCrore(recCurrEffective, true)})`
           : "Recoveries not reported for this demand"}
       </div>
     </div>

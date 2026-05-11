@@ -13,6 +13,7 @@ export interface DemandSummary {
   be2526:      { revenue: number | null; capital: number | null; total: number | null };
   re2526:      { revenue: number | null; capital: number | null; total: number | null };
   be2627:      { revenue: number | null; capital: number | null; total: number | null };
+  be2627Net?: { revenue: number | null; capital: number | null; total: number | null };
 }
 
 export interface MajorHeadRow {
