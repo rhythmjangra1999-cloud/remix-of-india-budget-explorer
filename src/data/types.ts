@@ -8,11 +8,25 @@ export interface Ministry {
   name: string;
   slug: string;
   short?: string;
-  totals: Partial<Record<FY, number>>; // ₹ Cr
+  totals: Partial<Record<FY, number>>; // ₹ Cr — gross provision (incl. recoveries)
+  /** Net of recoveries — BE 2026-27 (₹ Cr) */
+  netFY27?: number;
+  netRevenueFY27?: number;
+  netCapitalFY27?: number;
+  /** Net share of grand total (0–1) for BE 2026-27 */
+  shareNetFY27?: number;
   ddgAvailable?: boolean;
 }
 
-export type DemandAmountKey = FY | "FY26_RE" | "FY25_Actual" | "FY27_Revenue" | "FY27_Capital";
+export type DemandAmountKey =
+  | FY
+  | "FY26_RE"
+  | "FY25_Actual"
+  | "FY27_Revenue"
+  | "FY27_Capital"
+  | "FY27_Net"
+  | "FY27_NetRevenue"
+  | "FY27_NetCapital";
 
 export interface Demand {
   id: string;
