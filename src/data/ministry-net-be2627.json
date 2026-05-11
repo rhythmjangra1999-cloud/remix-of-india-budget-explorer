@@ -1,0 +1,401 @@
+[
+  {
+    "ministry": "Ministry of Finance",
+    "revenue": 1722326.88,
+    "capital": 250182.6,
+    "total": 1972509.48,
+    "pct": 0.368878502591846
+  },
+  {
+    "ministry": "Ministry of Defence",
+    "revenue": 553668.56,
+    "capital": 231009.72,
+    "total": 784678.28,
+    "pct": 0.146742488123679
+  },
+  {
+    "ministry": "Ministry of Road Transport and Highways",
+    "revenue": 15707.85,
+    "capital": 294167.45,
+    "total": 309875.3,
+    "pct": 0.0579497020486811
+  },
+  {
+    "ministry": "Ministry of Railways",
+    "revenue": 3547.32,
+    "capital": 277830,
+    "total": 281377.32,
+    "pct": 0.0526203019642302
+  },
+  {
+    "ministry": "Ministry of Home Affairs",
+    "revenue": 228146.77,
+    "capital": 27086.76,
+    "total": 255233.53,
+    "pct": 0.0477311583605829
+  },
+  {
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "revenue": 239405.33,
+    "capital": 116.04,
+    "total": 239521.37,
+    "pct": 0.044792831264034
+  },
+  {
+    "ministry": "Ministry of Rural Development",
+    "revenue": 197017.51,
+    "capital": 5.63,
+    "total": 197023.14,
+    "pct": 0.0368452479423032
+  },
+  {
+    "ministry": "Ministry of Chemicals and Fertilisers",
+    "revenue": 177049.76,
+    "capital": 11.71,
+    "total": 177061.47,
+    "pct": 0.0331122210476327
+  },
+  {
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "revenue": 140416.57,
+    "capital": 112.21,
+    "total": 140528.78,
+    "pct": 0.0262802518634582
+  },
+  {
+    "ministry": "Ministry of Education",
+    "revenue": 139285.95,
+    "capital": 3.53,
+    "total": 139289.48,
+    "pct": 0.0260484906816249
+  },
+  {
+    "ministry": "Ministry of Health and Family Welfare",
+    "revenue": 103600.31,
+    "capital": 2930.11,
+    "total": 106530.42,
+    "pct": 0.0199222270962573
+  },
+  {
+    "ministry": "Ministry of Communications",
+    "revenue": 53742.59,
+    "capital": 48524.43,
+    "total": 102267.02,
+    "pct": 0.0191249297327232
+  },
+  {
+    "ministry": "Ministry of Jal Shakti",
+    "revenue": 94330.98,
+    "capital": 476.86,
+    "total": 94807.84,
+    "pct": 0.017729990353794
+  },
+  {
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "revenue": 50714.32,
+    "capital": 34808.07,
+    "total": 85522.39,
+    "pct": 0.0159935206807097
+  },
+  {
+    "ministry": "Ministry of Science and Technology",
+    "revenue": 18170.23,
+    "capital": 20090.71,
+    "total": 38260.94,
+    "pct": 0.00715516878274089
+  },
+  {
+    "ministry": "Ministry of New and Renewable Energy",
+    "revenue": 32911.14,
+    "capital": 3.53,
+    "total": 32914.67,
+    "pct": 0.00615536417239665
+  },
+  {
+    "ministry": "Ministry of Labour and Employment",
+    "revenue": 32625.33,
+    "capital": 40.98,
+    "total": 32666.31,
+    "pct": 0.00610891843115554
+  },
+  {
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "revenue": 30204.77,
+    "capital": 238.45,
+    "total": 30443.22,
+    "pct": 0.00569317892843492
+  },
+  {
+    "ministry": "Ministry of Power",
+    "revenue": 29635.83,
+    "capital": 361.02,
+    "total": 29996.85,
+    "pct": 0.0056097033868107
+  },
+  {
+    "ministry": "Ministry of Women and Child Development",
+    "revenue": 28177.42,
+    "capital": 5.64,
+    "total": 28183.06,
+    "pct": 0.00527050697432194
+  },
+  {
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "revenue": 22647.26,
+    "capital": 1919.01,
+    "total": 24566.27,
+    "pct": 0.00459413198453524
+  },
+  {
+    "ministry": "Department of Atomic Energy",
+    "revenue": 14157.51,
+    "capital": 9966.41,
+    "total": 24123.92,
+    "pct": 0.00451140822210167
+  },
+  {
+    "ministry": "Ministry of External Affairs",
+    "revenue": 20706.2,
+    "capital": 1412.77,
+    "total": 22118.97,
+    "pct": 0.00413646302600987
+  },
+  {
+    "ministry": "Ministry of Electronics and Information Technology",
+    "revenue": 21234.15,
+    "capital": 398.81,
+    "total": 21632.96,
+    "pct": 0.00404557441793856
+  },
+  {
+    "ministry": "Ministry of Commerce and Industry",
+    "revenue": 12677.46,
+    "capital": 5166.44,
+    "total": 17843.9,
+    "pct": 0.00333698325870588
+  },
+  {
+    "ministry": "Ministry of Tribal Affairs",
+    "revenue": 15389.54,
+    "capital": 32.43,
+    "total": 15421.97,
+    "pct": 0.00288405873751054
+  },
+  {
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "revenue": 15346.37,
+    "capital": 10.94,
+    "total": 15357.31,
+    "pct": 0.00287196668714554
+  },
+  {
+    "ministry": "Department of Space",
+    "revenue": 7329.71,
+    "capital": 6375.92,
+    "total": 13705.63,
+    "pct": 0.00256308642505377
+  },
+  {
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "revenue": 9759.51,
+    "capital": 126.29,
+    "total": 9885.8,
+    "pct": 0.0018487409758469
+  },
+  {
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "revenue": 8438.22,
+    "capital": 477.04,
+    "total": 8915.26,
+    "pct": 0.00166724053413268
+  },
+  {
+    "ministry": "Ministry of Heavy Industries",
+    "revenue": 7937.08,
+    "capital": 2.82,
+    "total": 7939.9,
+    "pct": 0.00148483870542868
+  },
+  {
+    "ministry": "Ministry of Development of North Eastern Region",
+    "revenue": 2247.7,
+    "capital": 4564.6,
+    "total": 6812.3,
+    "pct": 0.0012739665125495
+  },
+  {
+    "ministry": "Ministry of Corporate Affairs",
+    "revenue": 5506.24,
+    "capital": 55.62,
+    "total": 5561.86,
+    "pct": 0.00104012204211332
+  },
+  {
+    "ministry": "Ministry of Law and Justice",
+    "revenue": 5193.47,
+    "capital": 319.92,
+    "total": 5513.39,
+    "pct": 0.0010310576795833
+  },
+  {
+    "ministry": "Ministry of Statistics and Programme Implementation",
+    "revenue": 5457.75,
+    "capital": 45.14,
+    "total": 5502.89,
+    "pct": 0.00102909407721967
+  },
+  {
+    "ministry": "Ministry of Textiles",
+    "revenue": 5269.52,
+    "capital": 9.49,
+    "total": 5279.01,
+    "pct": 0.000987226334632054
+  },
+  {
+    "ministry": "Ministry of Ports, Shipping and Waterways",
+    "revenue": 3964.88,
+    "capital": 1199.92,
+    "total": 5164.8,
+    "pct": 0.000965867951208207
+  },
+  {
+    "ministry": "Ministry of Information and Broadcasting",
+    "revenue": 4494.56,
+    "capital": 57.38,
+    "total": 4551.94,
+    "pct": 0.000851257156486734
+  },
+  {
+    "ministry": "Ministry of Youth Affairs and Sports",
+    "revenue": 4461.51,
+    "capital": 18.37,
+    "total": 4479.88,
+    "pct": 0.000837781233979752
+  },
+  {
+    "ministry": "Ministry of Ayush",
+    "revenue": 4381.86,
+    "capital": 27.07,
+    "total": 4408.93,
+    "pct": 0.000824512892294067
+  },
+  {
+    "ministry": "Ministry of Food Processing Industries",
+    "revenue": 4061.43,
+    "capital": 2.73,
+    "total": 4064.16,
+    "pct": 0.000760037541159841
+  },
+  {
+    "ministry": "Ministry of Mines",
+    "revenue": 3642.8,
+    "capital": 163.65,
+    "total": 3806.45,
+    "pct": 0.000711843258766356
+  },
+  {
+    "ministry": "Ministry of Earth Sciences",
+    "revenue": 3073.19,
+    "capital": 716.04,
+    "total": 3789.23,
+    "pct": 0.00070862295089
+  },
+  {
+    "ministry": "Ministry of Environment, Forests and Climate Change",
+    "revenue": 3536.66,
+    "capital": 222.8,
+    "total": 3759.46,
+    "pct": 0.000703055670664731
+  },
+  {
+    "ministry": "Ministry of Coal",
+    "revenue": 3633.12,
+    "capital": 2.2,
+    "total": 3635.32,
+    "pct": 0.000679840280434135
+  },
+  {
+    "ministry": "Ministry of Culture",
+    "revenue": 3216.63,
+    "capital": 200,
+    "total": 3416.63,
+    "pct": 0.000638943118443404
+  },
+  {
+    "ministry": "Ministry of Minority Affairs",
+    "revenue": 3395.62,
+    "capital": 4.38,
+    "total": 3400,
+    "pct": 0.000635833146318909
+  },
+  {
+    "ministry": "Ministry of Personnel, Public Grievances and Pensions",
+    "revenue": 2507.22,
+    "capital": 154.79,
+    "total": 2662.01,
+    "pct": 0.000497821821715412
+  },
+  {
+    "ministry": "Ministry of Tourism",
+    "revenue": 2433.87,
+    "capital": 4.53,
+    "total": 2438.4,
+    "pct": 0.000456004571760008
+  },
+  {
+    "ministry": "Ministry of Civil Aviation",
+    "revenue": 2057.87,
+    "capital": 45,
+    "total": 2102.87,
+    "pct": 0.000393257190705778
+  },
+  {
+    "ministry": "The President, Parliament, UPSC and VP Secretariat",
+    "revenue": 2015.07,
+    "capital": 68.76,
+    "total": 2083.83,
+    "pct": 0.000389696525086392
+  },
+  {
+    "ministry": "Ministry of Cooperation",
+    "revenue": 1742.84,
+    "capital": 1.9,
+    "total": 1744.74,
+    "pct": 0.000326283389326016
+  },
+  {
+    "ministry": "Ministry of Planning",
+    "revenue": 1203.38,
+    "capital": 28.78,
+    "total": 1232.16,
+    "pct": 0.000230425932225973
+  },
+  {
+    "ministry": "Ministry of Panchayati Raj",
+    "revenue": 1186.88,
+    "capital": 3.28,
+    "total": 1190.16,
+    "pct": 0.000222571522771445
+  },
+  {
+    "ministry": "Ministry of Steel",
+    "revenue": 439.84,
+    "capital": 3.34,
+    "total": 443.18,
+    "pct": 8.28789805251807e-05
+  },
+  {
+    "ministry": "Ministry of Parliamentary Affairs",
+    "revenue": 61.18,
+    "capital": 7.27,
+    "total": 68.45,
+    "pct": 1.2800817313391e-05
+  },
+  {
+    "ministry": "GRAND TOTAL",
+    "revenue": 4125493.52,
+    "capital": 1221821.29,
+    "total": 5347314.81,
+    "pct": "100.00%"
+  }
+]
