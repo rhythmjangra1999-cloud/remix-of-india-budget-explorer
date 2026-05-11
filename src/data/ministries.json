@@ -708,7 +708,11 @@
       "FY26": 1906.9,
       "FY27": 2083.83
     },
-    "ddgAvailable": false
+    "ddgAvailable": false,
+    "netFY27": 2083.83,
+    "netRevenueFY27": 2015.07,
+    "netCapitalFY27": 68.76,
+    "shareNetFY27": 0.00039
   },
   {
     "id": "mcoop",
