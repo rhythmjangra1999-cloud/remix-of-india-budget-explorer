@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { Download, Printer } from "lucide-react";
 import { DG_SUMMARY, DG_META, type YearKey } from "@/lib/dg";
 import ddgsRaw from "@/data/ddgs.json";
