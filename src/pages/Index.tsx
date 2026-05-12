@@ -78,7 +78,7 @@ const Index = () => {
             title="Start from a question"
             sub="Most people come to the Budget with a question. Pick a starting point — every path leads to the same underlying data."
           />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
             <EntryTile
               n="01"
               title="Ministry"
@@ -87,14 +87,8 @@ const Index = () => {
             />
             <EntryTile
               n="02"
-              title="State"
-              dek="A map of India linked to a Sankey: pick a state to trace its budget — own revenue and borrowings, devolution from the Centre and central scheme transfers — through to its allocations."
-              to="/explorer?view=sankey"
-            />
-            <EntryTile
-              n="03"
               title="Scheme"
-              dek="Cross-cutting view of central and centrally-sponsored schemes — outlays, the ministries that run them, and where the money lands at the state level."
+              dek="A cross-cutting view of all centrally-funded schemes — outlays, the ministries that run them, and where the money lands. We're starting with Central Sector and Centrally-Sponsored schemes, mapping each one back to its ministry's DDG (major-head → object-head) and forward to estimated flows into state department budgets."
               to="/explorer?view=schemes"
             />
           </div>
