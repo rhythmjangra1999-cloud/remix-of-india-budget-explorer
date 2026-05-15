@@ -252,4 +252,24 @@ function EntryTile({ n, title, dek, to, badge }: { n: string; title: string; dek
   );
 }
 
+function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: string; to: string; badge?: string }) {
+  return (
+    <Link
+      to={to}
+      className="group relative block border border-border bg-card p-5 hover:border-foreground transition-all"
+    >
+      <div className="flex items-center justify-between">
+        <div className="font-mono text-[10px] text-muted-foreground">{n}</div>
+        {badge && (
+          <span className="text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm bg-muted text-muted-foreground font-medium">
+            {badge}
+          </span>
+        )}
+      </div>
+      <h3 className="mt-3 font-serif text-lg font-semibold leading-tight group-hover:text-primary transition-colors">{title}</h3>
+      <p className="mt-2 text-xs text-foreground/65 leading-relaxed">{dek}</p>
+    </Link>
+  );
+}
+
 export default Index;
