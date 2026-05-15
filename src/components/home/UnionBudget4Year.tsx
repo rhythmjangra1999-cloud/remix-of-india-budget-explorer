@@ -240,27 +240,36 @@ interface SBProps {
   ministries: Ministry[];
   fy: FY;
   totalBudget: number;
+  focus?: { ministry: string; demand?: string } | null;
 }
 
-function Sunburst({ ministries, fy, totalBudget }: SBProps) {
+function Sunburst({ ministries, fy, totalBudget, focus }: SBProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const { containerRef, show, move, hide, Tooltip } = useChartTooltip();
 
   const root = useMemo(() => {
+    const filtered = focus
+      ? ministries.filter((m) => m.name === focus.ministry)
+      : ministries;
     return {
-      name: "Union Budget",
-      children: ministries
+      name: focus ? focus.ministry : "Union Budget",
+      children: filtered
         .filter((m) => (m.totals[fy] ?? 0) > 0)
         .map((m) => ({
           name: m.name,
           value: m.totals[fy],
           children: m.demands
             .filter((d) => (d.totals[fy] ?? 0) > 0)
-            .map((d) => ({ name: d.name, value: d.totals[fy] })),
+            .map((d) => ({
+              name: d.name,
+              value: d.totals[fy],
+              isFocus: focus?.demand === d.name,
+            })),
         })),
     };
-  }, [ministries, fy]);
+  }, [ministries, fy, focus]);
+
 
   useEffect(() => {
     if (!wrapRef.current) return;
