@@ -17,6 +17,9 @@ export interface DDGLeaf {
   subHeadName: string;
   objectHead: string;
   objectHeadName: string;
+  actuals2324: number | null;
+  be2425: number | null;
+  re2425: number | null;
   actuals2425: number | null;
   be2526: number | null;
   re2526: number | null;
@@ -27,7 +30,7 @@ export interface DDGLeaf {
 
 export const DDG_LEAVES = ddgRaw as DDGLeaf[];
 
-const KEYS = ["actuals2425", "be2526", "re2526", "be2627"] as const;
+const KEYS = ["actuals2324", "be2425", "re2425", "actuals2425", "be2526", "re2526", "be2627"] as const;
 export type YearKey = typeof KEYS[number];
 
 function sumKey(rows: DDGLeaf[], k: YearKey): number | null {
@@ -105,6 +108,9 @@ export interface DDGNode {
   name: string;
   fullCode: string;
   section: string;
+  actuals2324: number | null;
+  be2425: number | null;
+  re2425: number | null;
   actuals2425: number | null;
   be2526: number | null;
   re2526: number | null;
@@ -150,6 +156,9 @@ export function buildDDGTree(demandNo: number, majorHead: string): DDGNode[] {
         name: b.name,
         fullCode,
         section: b.section,
+        actuals2324: sumKey(b.rows, "actuals2324"),
+        be2425: sumKey(b.rows, "be2425"),
+        re2425: sumKey(b.rows, "re2425"),
         actuals2425: sumKey(b.rows, "actuals2425"),
         be2526: sumKey(b.rows, "be2526"),
         re2526: sumKey(b.rows, "re2526"),

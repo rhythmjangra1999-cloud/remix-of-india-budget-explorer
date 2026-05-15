@@ -23,19 +23,19 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
   const leaves = useMemo(() => getDDGLeaves(demandNo, majorHead), [demandNo, majorHead]);
   const gaps = useMemo(() => getGapCounts(leaves), [leaves]);
   const totals = useMemo(() => {
-    const sum = (k: "actuals2425" | "be2526" | "re2526" | "be2627") => {
+    const sum = (k: "actuals2324" | "be2425" | "re2425" | "actuals2425" | "be2526" | "re2526" | "be2627") => {
       let s = 0, any = false;
       for (const r of leaves) { const v = r[k]; if (typeof v === "number") { s += v; any = true; } }
       return any ? s : null;
     };
-    return { actuals2425: sum("actuals2425"), be2526: sum("be2526"), re2526: sum("re2526"), be2627: sum("be2627") };
+    return { actuals2324: sum("actuals2324"), be2425: sum("be2425"), re2425: sum("re2425"), actuals2425: sum("actuals2425"), be2526: sum("be2526"), re2526: sum("re2526"), be2627: sum("be2627") };
   }, [leaves]);
   const yoy = ddgYoY(totals.be2627, totals.be2526);
 
   const exportCsv = () => {
-    const hdr = "Full Code,Section,Sub-Major,Minor,Minor Name,Sub,Detailed,Sub Name,Object,Object Name,Actuals 24-25,BE 25-26,RE 25-26,BE 26-27,Gap\n";
+    const hdr = "Full Code,Section,Sub-Major,Minor,Minor Name,Sub,Detailed,Sub Name,Object,Object Name,Actuals 23-24,BE 24-25,RE 24-25,Actuals 24-25,BE 25-26,RE 25-26,BE 26-27,Gap\n";
     const body = leaves.map((r) =>
-      [r.id, r.section, r.subMajor, r.minorHead, `"${r.minorHeadName}"`, r.subHead, r.detailedHead, `"${r.subHeadName}"`, r.objectHead, `"${r.objectHeadName}"`, r.actuals2425 ?? "", r.be2526 ?? "", r.re2526 ?? "", r.be2627 ?? "", r.gapFlag ?? ""].join(",")
+      [r.id, r.section, r.subMajor, r.minorHead, `"${r.minorHeadName}"`, r.subHead, r.detailedHead, `"${r.subHeadName}"`, r.objectHead, `"${r.objectHeadName}"`, r.actuals2324 ?? "", r.be2425 ?? "", r.re2425 ?? "", r.actuals2425 ?? "", r.be2526 ?? "", r.re2526 ?? "", r.be2627 ?? "", r.gapFlag ?? ""].join(",")
     ).join("\n");
     const blob = new Blob([hdr + body], { type: "text/csv" });
     const a = document.createElement("a");
@@ -48,7 +48,7 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
 
   return (
     <Sheet open={open} onOpenChange={(o) => { if (!o) onClose(); }}>
-      <SheetContent side="right" className="w-full sm:max-w-3xl overflow-y-auto p-0">
+      <SheetContent side="right" className="w-full sm:max-w-5xl overflow-y-auto p-0">
         <SheetHeader className="px-5 py-4 border-b border-border bg-muted/30">
           <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
             {ministry} · Demand {demandNo} · {demandDesc}
@@ -63,9 +63,12 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
               <div className="font-serif text-2xl font-bold tnum text-primary">{fmt(totals.be2627)}</div>
             </div>
             <div className="text-xs text-muted-foreground space-y-0.5">
-              <div>BE 25-26: <span className="tnum">{fmt(totals.be2526)}</span></div>
               <div>RE 25-26: <span className="tnum">{fmt(totals.re2526)}</span></div>
+              <div>BE 25-26: <span className="tnum">{fmt(totals.be2526)}</span></div>
               <div>Act 24-25: <span className="tnum">{fmt(totals.actuals2425)}</span></div>
+              <div>RE 24-25: <span className="tnum">{fmt(totals.re2425)}</span></div>
+              <div>BE 24-25: <span className="tnum">{fmt(totals.be2425)}</span></div>
+              <div>Act 23-24: <span className="tnum">{fmt(totals.actuals2324)}</span></div>
             </div>
             {yoy !== null && (
               <div className={`rounded-sm px-2 py-1 text-xs font-medium ${yoy >= 0 ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"}`}>
@@ -94,9 +97,12 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
         </div>
 
         {/* Tree header row */}
-        <div className="px-2 py-2 border-b border-border bg-muted/30 text-[10px] uppercase tracking-wider text-muted-foreground grid grid-cols-[1fr_70px_70px_70px_80px_60px] gap-2">
+        <div className="px-2 py-2 border-b border-border bg-muted/30 text-[10px] uppercase tracking-wider text-muted-foreground grid grid-cols-[1fr_60px_60px_60px_60px_60px_60px_70px_56px] gap-1.5">
           <div>Hierarchy</div>
-          <div className="text-right">Actuals 24-25</div>
+          <div className="text-right">Act 23-24</div>
+          <div className="text-right">BE 24-25</div>
+          <div className="text-right">RE 24-25</div>
+          <div className="text-right">Act 24-25</div>
           <div className="text-right">BE 25-26</div>
           <div className="text-right">RE 25-26</div>
           <div className="text-right">BE 26-27</div>

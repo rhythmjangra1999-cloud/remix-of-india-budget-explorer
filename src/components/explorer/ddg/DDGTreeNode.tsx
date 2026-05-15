@@ -58,7 +58,7 @@ export function DDGTreeNode({ node, depth, defaultExpandLevel, hideTokens, searc
   return (
     <div>
       <div
-        className={`grid grid-cols-[1fr_70px_70px_70px_80px_60px] gap-2 items-center px-2 py-1.5 text-[11px] hover:bg-muted/30 ${depth === 0 ? "bg-muted/40 font-semibold" : ""}`}
+        className={`grid grid-cols-[1fr_60px_60px_60px_60px_60px_60px_70px_56px] gap-1.5 items-center px-2 py-1.5 text-[11px] hover:bg-muted/30 ${depth === 0 ? "bg-muted/40 font-semibold" : ""}`}
         style={{ paddingLeft: `${8 + depth * 14}px` }}
       >
         <div className="flex items-center gap-1.5 min-w-0">
@@ -74,6 +74,9 @@ export function DDGTreeNode({ node, depth, defaultExpandLevel, hideTokens, searc
           <span className="truncate" title={`${node.name} · ${node.fullCode}`}>{node.name}</span>
           <GapBadge flag={node.gapFlag} />
         </div>
+        <div className="text-right tnum text-muted-foreground">{fmt(node.actuals2324)}</div>
+        <div className="text-right tnum text-muted-foreground">{fmt(node.be2425)}</div>
+        <div className="text-right tnum text-muted-foreground">{fmt(node.re2425)}</div>
         <div className="text-right tnum text-muted-foreground">{fmt(node.actuals2425)}</div>
         <div className="text-right tnum text-muted-foreground">{fmt(node.be2526)}</div>
         <div className="text-right tnum text-muted-foreground">{fmt(node.re2526)}</div>
