@@ -87,10 +87,18 @@ const Index = () => {
               to="/explorer"
             />
           </div>
+
+          {/* Sub-tabs after Union Budget */}
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <SubTile n="02" title="Ministry" dek="Drill into any of the 56 ministries — demands, major heads, object heads." to="/explorer" />
+            <SubTile n="03" title="Schemes" dek="Central Sector & Centrally-Sponsored schemes mapped from each ministry's DDG." to="/explorer?view=schemes" badge="Rolling out" />
+            <SubTile n="04" title="State" dek="Estimated flows of central scheme money into each state's department budgets." to="/explorer?view=state" badge="Coming soon" />
+          </div>
         </section>
 
         {/* 4-year sunburst */}
         <UnionBudget4Year />
+
 
 
         {/* Largest ministries strip */}
