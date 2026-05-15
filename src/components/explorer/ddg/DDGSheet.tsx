@@ -48,7 +48,7 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
 
   return (
     <Sheet open={open} onOpenChange={(o) => { if (!o) onClose(); }}>
-      <SheetContent side="right" className="w-full sm:max-w-3xl overflow-y-auto p-0">
+      <SheetContent side="right" className="w-full sm:max-w-5xl overflow-y-auto p-0">
         <SheetHeader className="px-5 py-4 border-b border-border bg-muted/30">
           <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
             {ministry} · Demand {demandNo} · {demandDesc}
