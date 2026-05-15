@@ -412,3 +412,132 @@ function TopMinistries({
     </div>
   );
 }
+
+// ── Search picker ────────────────────────────────────────────────────────────
+type PickResult = { ministry: string; demand?: string };
+
+function SearchPicker({
+  ministries,
+  fy,
+  focus,
+  onPick,
+}: {
+  ministries: Ministry[];
+  fy: FY;
+  focus: PickResult | null;
+  onPick: (p: PickResult | null) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onDoc(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  const matches = useMemo(() => {
+    const lq = q.trim().toLowerCase();
+    type Row = { kind: "ministry" | "demand"; ministry: string; demand?: string; value: number };
+    const rows: Row[] = [];
+    for (const m of ministries) {
+      const mHit = !lq || m.name.toLowerCase().includes(lq);
+      if (mHit) rows.push({ kind: "ministry", ministry: m.name, value: m.totals[fy] });
+      for (const d of m.demands) {
+        if (!lq || d.name.toLowerCase().includes(lq) || m.name.toLowerCase().includes(lq)) {
+          rows.push({ kind: "demand", ministry: m.name, demand: d.name, value: d.totals[fy] });
+        }
+      }
+    }
+    return rows.sort((a, b) => b.value - a.value).slice(0, 40);
+  }, [ministries, q, fy]);
+
+  const label = focus
+    ? focus.demand
+      ? `${focus.ministry.replace(/^Ministry of /, "")} · ${focus.demand}`
+      : focus.ministry
+    : "Search ministries or demands…";
+
+  return (
+    <div ref={ref} className="relative">
+      <div className="flex items-center gap-2 rounded-sm border border-border bg-card px-3 py-2">
+        <span className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Focus</span>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className={`flex-1 text-left text-xs truncate ${focus ? "text-foreground font-medium" : "text-muted-foreground"}`}
+        >
+          {label}
+        </button>
+        {focus && (
+          <button
+            onClick={() => {
+              onPick(null);
+              setQ("");
+            }}
+            className="text-[10px] uppercase tracking-wider text-muted-foreground hover:text-foreground px-1.5 py-0.5 rounded-sm hover:bg-muted"
+            title="Clear focus"
+          >
+            Clear
+          </button>
+        )}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="text-muted-foreground hover:text-foreground text-xs"
+          aria-label="Toggle"
+        >
+          ▾
+        </button>
+      </div>
+      {open && (
+        <div className="absolute z-30 mt-1 w-full rounded-sm border border-border bg-card shadow-lg">
+          <div className="p-2 border-b border-border">
+            <input
+              autoFocus
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Type to filter ministries or demands…"
+              className="w-full px-2 py-1.5 text-xs rounded-sm border border-input bg-background"
+            />
+          </div>
+          <ul className="max-h-72 overflow-y-auto py-1">
+            {matches.length === 0 && (
+              <li className="px-3 py-2 text-xs text-muted-foreground">No matches.</li>
+            )}
+            {matches.map((r, i) => (
+              <li key={i}>
+                <button
+                  onClick={() => {
+                    onPick({ ministry: r.ministry, demand: r.demand });
+                    setOpen(false);
+                  }}
+                  className="w-full flex items-baseline justify-between gap-3 px-3 py-1.5 text-left hover:bg-muted/60 transition-colors"
+                >
+                  <span className="flex items-baseline gap-2 min-w-0">
+                    <span
+                      className={`text-[9px] uppercase tracking-wider font-mono shrink-0 ${
+                        r.kind === "ministry" ? "text-primary" : "text-muted-foreground"
+                      }`}
+                    >
+                      {r.kind === "ministry" ? "MIN" : "DEM"}
+                    </span>
+                    <span className="text-xs truncate">
+                      {r.kind === "ministry"
+                        ? r.ministry
+                        : `${r.ministry.replace(/^Ministry of /, "")} · ${r.demand}`}
+                    </span>
+                  </span>
+                  <span className="text-[10px] font-mono text-muted-foreground shrink-0 tnum">
+                    {formatCr(r.value, { compact: true })}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
