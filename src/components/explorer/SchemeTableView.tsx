@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
-import { ArrowDown, ArrowUp, ArrowLeft, Download, ChevronRight } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowLeft, Download, ChevronRight, ExternalLink } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SCHEMES_RAW from "@/data/schemes.json";
+import { getSchemeMapping, reconColor, type SchemeDDGEntry } from "@/lib/scheme-ddg";
+import { SchemeDDGSheet } from "./SchemeDDGSheet";
 
 interface Scheme {
   fy: string;
