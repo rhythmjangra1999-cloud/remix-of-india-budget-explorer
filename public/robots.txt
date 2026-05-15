@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://fiscal-explorer-bharat.lovable.app/sitemap.xml
