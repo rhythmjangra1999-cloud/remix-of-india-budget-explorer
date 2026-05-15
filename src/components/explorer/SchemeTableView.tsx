@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
-import { ArrowDown, ArrowUp, ArrowLeft, Download, ChevronRight } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowLeft, Download, ChevronRight, ExternalLink } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SCHEMES_RAW from "@/data/schemes.json";
+import { getSchemeMapping, reconColor, type SchemeDDGEntry } from "@/lib/scheme-ddg";
+import { SchemeDDGSheet } from "./SchemeDDGSheet";
 
 interface Scheme {
   fy: string;
@@ -53,6 +55,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
   const [selectedMinistry, setSelectedMinistry] = useState<string>("");
   const [q, setQ] = useState("");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [openEntry, setOpenEntry] = useState<SchemeDDGEntry | null>(null);
 
   // Level 1: totals by type
   const byType = useMemo(() => {
@@ -294,31 +297,58 @@ export function SchemeTableView({ fy }: { fy: string }) {
           <thead className="bg-muted/40 text-xs uppercase tracking-wider text-muted-foreground">
             <tr>
               <th className="px-4 py-3 text-left font-medium">Scheme</th>
+              <th className="px-4 py-3 text-right font-medium w-32">DDG match</th>
               <th className="px-4 py-3 text-right font-medium w-36">Outlay (₹ Cr)</th>
+              <th className="w-8"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            {schemeRows.map((s, i) => (
-              <tr key={`${s.schemeCode}-${i}`} className="hover:bg-muted/20 transition-colors">
-                <td className="px-4 py-3">
-                  <div className="font-medium leading-snug">{s.schemeName}</div>
-                  <div className="text-[11px] text-muted-foreground mt-0.5">
-                    #{s.schemeCode}
-                    {s.ut && <span className="ml-2">{s.ut}</span>}
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-right tnum">
-                  {s.outlayCr === 0 ? (
-                    <span className="text-muted-foreground">—</span>
-                  ) : (
-                    s.outlayCr.toLocaleString("en-IN", { maximumFractionDigits: 2 })
-                  )}
-                </td>
-              </tr>
-            ))}
+            {schemeRows.map((s, i) => {
+              const mapping = getSchemeMapping(s.schemeCode, s.grantCode);
+              const clickable = !!mapping && mapping.matchedLeafIds.length > 0;
+              return (
+                <tr
+                  key={`${s.schemeCode}-${i}`}
+                  onClick={() => clickable && setOpenEntry(mapping!)}
+                  className={`transition-colors ${clickable ? "cursor-pointer hover:bg-muted/30" : "hover:bg-muted/10"}`}
+                >
+                  <td className="px-4 py-3">
+                    <div className="font-medium leading-snug">{s.schemeName}</div>
+                    <div className="text-[11px] text-muted-foreground mt-0.5">
+                      #{s.schemeCode}
+                      {s.ut && <span className="ml-2">{s.ut}</span>}
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 text-right">
+                    {mapping && mapping.matchedLeafIds.length > 0 ? (
+                      <span className={`inline-block rounded-sm border px-1.5 py-0.5 text-[10px] font-medium ${reconColor(mapping.reconStatus)}`}
+                        title={`DDG sum: ₹${mapping.sumMatchedBE2627?.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr (${mapping.matchConfidence})`}
+                      >
+                        {mapping.reconStatus === "match" ? "✓ matches" : mapping.reconStatus === "close" ? "≈ close" : "Δ off"}
+                      </span>
+                    ) : mapping?.ddgAvailableForDemand ? (
+                      <span className="text-[10px] text-muted-foreground italic">no match</span>
+                    ) : (
+                      <span className="text-[10px] text-muted-foreground italic">no DDG</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-right tnum">
+                    {s.outlayCr === 0 ? (
+                      <span className="text-muted-foreground">—</span>
+                    ) : (
+                      s.outlayCr.toLocaleString("en-IN", { maximumFractionDigits: 2 })
+                    )}
+                  </td>
+                  <td className="px-2 py-3 text-muted-foreground">
+                    {clickable && <ChevronRight className="h-4 w-4" />}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
+      <SchemeDDGSheet open={!!openEntry} onClose={() => setOpenEntry(null)} entry={openEntry} />
     </div>
   );
 }

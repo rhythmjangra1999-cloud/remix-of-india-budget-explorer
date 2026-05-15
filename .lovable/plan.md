@@ -1,47 +1,70 @@
+# Scheme → DDG Mapping & Drill-Down
+
 ## Goal
 
-1. On the homepage, collapse the "Three ways in" section's two tiles down to a **single "Union Budget"** entry tile.
-2. Add a new visual section to the homepage showing the **4-year Union Budget data (FY24 → FY27)** from the uploaded Excel, anchored by a **sunburst chart** (Union Budget → Ministry → Demand) with a year selector, plus a small supporting view.
+For every Centrally Sponsored / Central Sector scheme in `schemes.json`, find where it appears inside the demand's DDG (Major Head → Sub-Major → Minor → Sub-Head/Detailed → Object Head) using fuzzy name matching. Show users a per-scheme breakdown of every DDG leaf row (with all year columns) that maps to it, and a total reconciliation against the scheme's recorded outlay.
 
-## Files to add
+## Approach
 
-- `src/data/union-4year.json` — generated from `India_Budget_4Year_FY24_to_FY27.xlsx`. Shape:
-  ```ts
-  {
-    years: ["FY24","FY25","FY26","FY27"],
-    yearLabels: { FY24: "BE 2023-24", ... },
-    totals: { FY24: number, ... }, // ₹ Cr
-    ministries: [{
-      name: string,
-      totals: { FY24, FY25, FY26, FY27 },
-      revenue: { FY24, ... },
-      capital: { FY24, ... },
-      demands: [{ name, totals: {...}, revenue: {...}, capital: {...} }]
-    }]
-  }
-  ```
-  Built once via a small node script (`scripts/build-union-4year.ts`) from the workbook's "All Demands — 4 Years" sheet (161 rows, ministry headers in caps + numbered demand rows). Script committed; output JSON committed.
+### 1. Build a static mapping file (one-time, offline)
 
-- `src/components/home/UnionBudget4Year.tsx` — section component containing:
-  - Year toggle: FY24 / FY25 / FY26 / FY27 (FY27 default)
-  - Headline stat strip: total budget for selected year + YoY delta vs previous year
-  - **Sunburst** (D3, similar pattern to existing `SunburstView.tsx` / `AgriSunburst.tsx`): rings = Union Budget → Ministry → Demand. Hover shows name + ₹ Cr + % of Union Budget. Click a ministry slice → navigate to `/explorer?ministry=…` when an id mapping exists, else no-op.
-  - Compact bar list to the right (or below on mobile): top 10 ministries for the selected year with revenue/capital split bars.
-  - Footer caption: "Source: Union Budget Demands for Grants, FY 2023-24 to FY 2026-27. ₹ Crores, net of receipts & recoveries."
+Script: `scripts/build-scheme-ddg-map.ts` (run via Python in sandbox, output JSON).
 
-## Files to edit
+For each scheme:
+- Filter DDG leaves to the same demand number (`grantCode === demandNo`).
+- Search DDG leaves where any of `minorHeadName`, `subHeadName`, `detailedHead`name, or `objectHeadName` substring-matches the scheme name (after normalization: lowercase, strip punctuation, collapse spaces, drop common stopwords like "scheme", "programme", "mission", "national", "pradhan mantri" only when both sides have them).
+- Use a **two-pass strategy**:
+  1. Exact normalized match on a sub-head/detailed-head/minor-head node → take **all descendant leaves** under that node.
+  2. Token-overlap fallback (Jaccard ≥ 0.6 on significant tokens, min 2 shared significant tokens) → take matching leaves.
+- Record for each scheme: `matchedLeafIds[]`, `matchKey` (which name level matched), `matchConfidence` ("exact" | "fuzzy" | "none"), and the **summed total** across matched leaves for BE 2026-27.
+- Compute `reconciliation = sumMatchedBE2627 - scheme.outlayCr` and a `reconStatus` ("match" within ±1 Cr, "close" within ±5%, "off", "unmatched").
 
-- `src/pages/Index.tsx`:
-  - In the "Three ways in" section, replace the 2-tile grid with a single full-width `EntryTile` for **Union Budget** (`/explorer`). Update kicker/title copy ("One way in" / keep "Start from a question" — TBD; default: keep title, change `sub` to single-path wording).
-  - Insert `<UnionBudget4Year />` as a new section between the entry tile and the "six largest ministries" strip, on its own bordered band (similar visual treatment to `BudgetHistoryChart` block).
+Output: `src/data/scheme-ddg-map.json` shape:
+```ts
+{
+  schemes: [{
+    schemeCode, schemeName, schemeType, ministry, demandNo,
+    outlayCr, sumMatchedBE2627, reconStatus,
+    matchedLeafIds: string[],   // leaf.id values from all-ddg.json
+    matchedAtLevel: "minor" | "subHead" | "object" | null,
+    matchConfidence: "exact" | "fuzzy" | "none"
+  }]
+}
+```
 
-## Visualization details
+### 2. Loader: `src/lib/scheme-ddg.ts`
 
-- Sunburst sized responsively (max 560 px), 3 rings only for performance. Use existing `useChartTooltip` hook for tooltip consistency.
-- Color scale: warm earth tones derived from existing `--primary` token (no hard-coded colors — use `hsl(var(--primary))` plus lightness mixing, matching `AgriSunburst` approach).
-- Year toggle is a small segmented control built from existing button styles (no new shadcn component).
-- All numbers via `formatCr()` from `@/lib/format`.
+Exports `getSchemeDDGMap(schemeCode)` returning the mapping entry plus the resolved `DDGLeaf[]` rows from `all-ddg.json`. Also `getSchemeDDGTree(schemeCode)` that builds a mini DDGNode tree (reuses the existing `buildDDGTree` grouping logic, scoped to the matched leaves only).
+
+### 3. UI: scheme drill-down
+
+- **Where:** `src/components/explorer/SchemeTableView.tsx` already lists schemes. Add a chevron / "View in DDG" affordance on each row for CSS and Central Sector schemes that have a mapping.
+- **Component:** `src/components/explorer/SchemeDDGSheet.tsx` — a `<Sheet>` (mirrors `DDGSheet.tsx`) opened when a scheme is clicked. Contents:
+  - Header: scheme name, type chip, ministry, demand no.
+  - Stat row: Recorded outlay (from schemes.json), Sum of matched DDG leaves (BE 26-27), Δ with color-coded reconciliation badge.
+  - Match-confidence badge ("Exact name match at Sub-Head" / "Fuzzy match — review").
+  - Tree: same `DDGTreeNode` rows as the existing DDG sheet, scoped to matched leaves, with full Major→Object path visible. All year columns (Act 23-24 → BE 26-27 + YoY) shown so totals can be verified.
+  - "Open full demand DDG" link to existing `DDGSheet`.
+- **Unmatched schemes:** show a muted "No DDG mapping found" with a "Report" hint instead of the chevron.
+
+## Files
+
+**Created:**
+- `scripts/build-scheme-ddg-map.py` (build script, sandbox-run, not bundled)
+- `src/data/scheme-ddg-map.json`
+- `src/lib/scheme-ddg.ts`
+- `src/components/explorer/SchemeDDGSheet.tsx`
+
+**Edited:**
+- `src/components/explorer/SchemeTableView.tsx` — add row click → open sheet, render reconciliation chip per row.
 
 ## Out of scope
 
-- No changes to Explorer routing, schemes view, or the Excel-derived data feeding other pages. The new JSON is additive and only consumed by the homepage section.
+- No edits to ministry/demand pages, sunburst, or homepage.
+- No editorial overrides for unmatched schemes — those will show as "unmatched" until a manual override file is added later (can be a follow-up: `src/data/scheme-ddg-overrides.json`).
+- No backend / Lovable Cloud changes — fully static.
+
+## Notes for matching quality
+
+- Expect ~50–70% auto-match coverage given the name-quality variance. Reconciliation status will surface mismatches so you can see where the heuristic missed (e.g., schemes that sit under a generic Minor like "0.789 Special Component Plan").
+- After first build I'll print a coverage report (matched / fuzzy / unmatched counts by ministry) so you can decide whether to add manual overrides.
