@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ConfidenceChip } from "@/components/ConfidenceChip";
 import { BudgetHistoryChart } from "@/components/home/BudgetHistoryChart";
+import { UnionBudget4Year } from "@/components/home/UnionBudget4Year";
 import { BUDGET_META, FINDINGS, MINISTRIES, ministryById } from "@/lib/budget-data";
 import { formatCr } from "@/lib/format";
 
