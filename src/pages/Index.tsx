@@ -82,8 +82,8 @@ const Index = () => {
             <EntryTile
               n="01"
               title="Union Budget"
-              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head. Schemes view (Central Sector + Centrally-Sponsored) is rolling out next.`}
-              to="/explorer"
+              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries through a 4-year sunburst (FY24 → FY27). Drill from major head → sub-major → minor → object head, with YoY and CAGR side-by-side.`}
+              to="/explorer?view=union"
             />
           </div>
 
@@ -95,8 +95,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* 4-year sunburst */}
-        <UnionBudget4Year />
 
 
 
