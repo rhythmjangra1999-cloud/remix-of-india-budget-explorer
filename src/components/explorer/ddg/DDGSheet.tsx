@@ -63,9 +63,12 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
               <div className="font-serif text-2xl font-bold tnum text-primary">{fmt(totals.be2627)}</div>
             </div>
             <div className="text-xs text-muted-foreground space-y-0.5">
-              <div>BE 25-26: <span className="tnum">{fmt(totals.be2526)}</span></div>
               <div>RE 25-26: <span className="tnum">{fmt(totals.re2526)}</span></div>
+              <div>BE 25-26: <span className="tnum">{fmt(totals.be2526)}</span></div>
               <div>Act 24-25: <span className="tnum">{fmt(totals.actuals2425)}</span></div>
+              <div>RE 24-25: <span className="tnum">{fmt(totals.re2425)}</span></div>
+              <div>BE 24-25: <span className="tnum">{fmt(totals.be2425)}</span></div>
+              <div>Act 23-24: <span className="tnum">{fmt(totals.actuals2324)}</span></div>
             </div>
             {yoy !== null && (
               <div className={`rounded-sm px-2 py-1 text-xs font-medium ${yoy >= 0 ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"}`}>
