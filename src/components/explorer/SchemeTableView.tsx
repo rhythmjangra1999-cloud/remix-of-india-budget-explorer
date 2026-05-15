@@ -305,7 +305,8 @@ export function SchemeTableView({ fy }: { fy: string }) {
           </thead>
           <tbody className="divide-y divide-border">
             {schemeRows.map((s, i) => {
-              const mapping = getSchemeMapping(s.schemeCode, s.grantCode);
+              const mappable = s.schemeType === "Centrally Sponsored Scheme" || s.schemeType === "Central Sector Scheme";
+              const mapping = mappable ? getSchemeMapping(s.schemeCode, s.grantCode) : null;
               const clickable = !!mapping && mapping.matchedLeafIds.length > 0;
               return (
                 <tr
@@ -321,7 +322,9 @@ export function SchemeTableView({ fy }: { fy: string }) {
                     </div>
                   </td>
                   <td className="px-4 py-3 text-right">
-                    {mapping && mapping.matchedLeafIds.length > 0 ? (
+                    {!mappable ? (
+                      <span className="text-[10px] text-muted-foreground">—</span>
+                    ) : mapping && mapping.matchedLeafIds.length > 0 ? (
                       <span className={`inline-block rounded-sm border px-1.5 py-0.5 text-[10px] font-medium ${reconColor(mapping.reconStatus)}`}
                         title={`DDG sum: INR ${mapping.sumMatchedBE2627?.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr (${mapping.matchConfidence})`}
                       >
