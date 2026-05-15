@@ -168,7 +168,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <p className="text-sm text-muted-foreground">
-            {SCHEMES.length} schemes · ₹{(grandTotal / 100000).toFixed(2)} lakh cr · click a type to drill down
+            {SCHEMES.length} schemes · {formatCr(grandTotal)} · click a type to drill down
           </p>
         </div>
         <div className="rounded-sm border border-border bg-card overflow-hidden">
@@ -178,7 +178,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
                 <th className="px-4 py-3 text-left font-medium">Scheme Type</th>
                 <th className="px-4 py-3 text-right font-medium w-20">Schemes</th>
                 <th className="px-4 py-3 font-medium w-[30%]">Share of total</th>
-                <th className="px-4 py-3 text-right font-medium w-36">Outlay (₹ Cr)</th>
+                <th className="px-4 py-3 text-right font-medium w-36">Outlay (INR Cr)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -225,7 +225,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
           <Breadcrumb />
         </div>
         <p className="text-xs text-muted-foreground">
-          {byMinistry.length} ministries · ₹{(typeTotal / 100000).toFixed(2)} lakh cr · click a ministry to see its schemes
+          {byMinistry.length} ministries · {formatCr(typeTotal)} · click a ministry to see its schemes
         </p>
         <div className="rounded-sm border border-border bg-card overflow-hidden">
           <table className="w-full text-sm">
@@ -234,7 +234,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
                 <th className="px-4 py-3 text-left font-medium">Ministry / Department</th>
                 <th className="px-4 py-3 text-right font-medium w-20">Schemes</th>
                 <th className="px-4 py-3 font-medium w-[30%]">Share within type</th>
-                <th className="px-4 py-3 text-right font-medium w-36">Outlay (₹ Cr)</th>
+                <th className="px-4 py-3 text-right font-medium w-36">Outlay (INR Cr)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -282,7 +282,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
           className="max-w-sm"
         />
         <span className="text-xs text-muted-foreground">
-          {schemeRows.length} schemes · ₹{ministryTotal.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr
+          {schemeRows.length} schemes · {formatCr(ministryTotal)}
         </span>
         <button
           onClick={() => setSortDir(sortDir === "desc" ? "asc" : "desc")}
@@ -298,7 +298,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
             <tr>
               <th className="px-4 py-3 text-left font-medium">Scheme</th>
               <th className="px-4 py-3 text-right font-medium w-32">DDG match</th>
-              <th className="px-4 py-3 text-right font-medium w-36">Outlay (₹ Cr)</th>
+              <th className="px-4 py-3 text-right font-medium w-36">Outlay (INR Cr)</th>
               <th className="w-8"></th>
             </tr>
           </thead>
@@ -322,7 +322,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
                   <td className="px-4 py-3 text-right">
                     {mapping && mapping.matchedLeafIds.length > 0 ? (
                       <span className={`inline-block rounded-sm border px-1.5 py-0.5 text-[10px] font-medium ${reconColor(mapping.reconStatus)}`}
-                        title={`DDG sum: ₹${mapping.sumMatchedBE2627?.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr (${mapping.matchConfidence})`}
+                        title={`DDG sum: INR ${mapping.sumMatchedBE2627?.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr (${mapping.matchConfidence})`}
                       >
                         {mapping.reconStatus === "match" ? "✓ matches" : mapping.reconStatus === "close" ? "≈ close" : "Δ off"}
                       </span>
