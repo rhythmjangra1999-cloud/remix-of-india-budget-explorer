@@ -195,12 +195,12 @@ export function BudgetBuilder({ embedded, defaults }: Props) {
             )}
             <div className="mb-2 grid grid-cols-2 gap-2">
               <div>
-                <label className="text-[11px] text-muted-foreground">Min (₹ Cr)</label>
+                <label className="text-[11px] text-muted-foreground">Min (INR Cr)</label>
                 <input type="number" value={cfg.minAmount ?? ""} onChange={e => update("minAmount", e.target.value ? +e.target.value : undefined)}
                   className="mt-1 w-full rounded-sm border border-border bg-background px-2 py-1.5 text-xs tnum" />
               </div>
               <div>
-                <label className="text-[11px] text-muted-foreground">Max (₹ Cr)</label>
+                <label className="text-[11px] text-muted-foreground">Max (INR Cr)</label>
                 <input type="number" value={cfg.maxAmount ?? ""} onChange={e => update("maxAmount", e.target.value ? +e.target.value : undefined)}
                   className="mt-1 w-full rounded-sm border border-border bg-background px-2 py-1.5 text-xs tnum" />
               </div>

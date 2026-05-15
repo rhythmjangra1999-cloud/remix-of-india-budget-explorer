@@ -124,7 +124,7 @@ export function MajorHeadTable({ rows }: { rows: MajorHeadRow[] }) {
             className="w-full pl-8 pr-3 py-1.5 text-sm rounded-md border border-input bg-background"
           />
         </div>
-        <span className="text-xs text-muted-foreground ml-auto">{sorted.length} heads · ₹ Cr</span>
+        <span className="text-xs text-muted-foreground ml-auto">{sorted.length} heads · INR Cr</span>
       </div>
 
       <div className="overflow-auto max-h-[640px]">

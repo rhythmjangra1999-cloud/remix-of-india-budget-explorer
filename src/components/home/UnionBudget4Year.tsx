@@ -79,7 +79,7 @@ export function UnionBudget4Year() {
         <BottomMetrics totals={totals} labels={labels} ministries={ministries} fy={fy} />
 
         <p className="mt-6 text-[11px] text-muted-foreground">
-          Source: Union Budget Demands for Grants, Budget Estimates FY 2023-24 to FY 2026-27. Figures in ₹ Crores, net of receipts & recoveries.
+          Source: Union Budget Demands for Grants, Budget Estimates FY 2023-24 to FY 2026-27. Figures in INR Crores, net of receipts & recoveries.
         </p>
       </div>
     </section>

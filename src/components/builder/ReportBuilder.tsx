@@ -116,8 +116,8 @@ function newSelection(): Selection {
 // ---------- formatters ----------
 function fmtCr(v: number | null): string {
   if (v == null || isNaN(v)) return "—";
-  if (Math.abs(v) >= 100000) return `₹${(v / 100000).toFixed(2)} L Cr`;
-  return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 2 })} Cr`;
+  if (Math.abs(v) >= 1000) return `INR ${(v / 1000).toLocaleString("en-IN", { maximumFractionDigits: 2 })}k Cr`;
+  return `INR ${v.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr`;
 }
 function fmtPct(v: number | null): string {
   if (v == null || isNaN(v) || !isFinite(v)) return "—";
@@ -171,7 +171,7 @@ export default function ReportBuilder() {
   const maxVal = Math.max(0, ...computed.map(c => Math.abs(c.value ?? 0)));
 
   function exportCSV() {
-    const head = ["#", "Ministry", "Demand", "Type", "Section", "Year", "Value (₹ Cr)", "% of Union Budget", "YoY %"];
+    const head = ["#", "Ministry", "Demand", "Type", "Section", "Year", "Value (INR Cr)", "% of Union Budget", "YoY %"];
     const lines = [head.join(",")];
     computed.forEach((c, i) => {
       const dem = c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`;

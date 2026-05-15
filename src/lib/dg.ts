@@ -84,14 +84,13 @@ export function computeYoY(current: number | null, prev: number | null): number 
   return ((current - prev) / Math.abs(prev)) * 100;
 }
 
-export function formatCrore(v: number | null | undefined, compact = false): string {
+export function formatCrore(v: number | null | undefined, _compact = false): string {
   if (v === null || v === undefined) return "—";
-  const lakh = v / 100000;
-  if (compact && Math.abs(lakh) >= 0.01) {
-    if (Math.abs(lakh) >= 1) return `₹${lakh.toFixed(2)} L Cr`;
-    return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr`;
+  const abs = Math.abs(v);
+  if (abs >= 1000) {
+    return `INR ${(v / 1000).toLocaleString("en-IN", { maximumFractionDigits: 2 })}k Cr`;
   }
-  return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 2 })} Cr`;
+  return `INR ${v.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr`;
 }
 
 export function getMHStatus(row: MajorHeadRow): "DISCONTINUED" | "SMALL_BASE" | "NEW" | null {
