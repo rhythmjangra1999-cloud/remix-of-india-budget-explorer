@@ -34,8 +34,8 @@ interface Node {
 
 function fmtCr(v: number | null | undefined): string {
   if (v == null || isNaN(v)) return "—";
-  if (Math.abs(v) >= 100000) return `₹${(v / 100000).toFixed(2)} L Cr`;
-  return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 2 })} Cr`;
+  if (Math.abs(v) >= 1000) return `INR ${(v / 1000).toLocaleString("en-IN", { maximumFractionDigits: 2 })}k Cr`;
+  return `INR ${v.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr`;
 }
 function fmtPct(v: number | null): string {
   if (v == null || isNaN(v) || !isFinite(v)) return "—";
