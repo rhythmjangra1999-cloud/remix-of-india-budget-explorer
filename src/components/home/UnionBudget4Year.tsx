@@ -18,6 +18,7 @@ interface Ministry {
 
 export function UnionBudget4Year() {
   const [fy, setFy] = useState<FY>("FY27");
+  const [focus, setFocus] = useState<{ ministry: string; demand?: string } | null>(null);
   const ministries = data.ministries as Ministry[];
   const totals = data.totals as Record<FY, number>;
   const labels = data.yearLabels as Record<FY, string>;
@@ -66,9 +67,13 @@ export function UnionBudget4Year() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <Sunburst ministries={ministries} fy={fy} totalBudget={totals[fy]} />
+          <div className="space-y-3">
+            <SearchPicker ministries={ministries} fy={fy} focus={focus} onPick={setFocus} />
+            <Sunburst ministries={ministries} fy={fy} totalBudget={totals[fy]} focus={focus} />
+          </div>
           <TopMinistries top={top} fy={fy} max={topMax} totalBudget={totals[fy]} />
         </div>
+
 
         {/* Bottom metrics: YoY per year + 3-yr CAGR + others */}
         <BottomMetrics totals={totals} labels={labels} ministries={ministries} fy={fy} />
