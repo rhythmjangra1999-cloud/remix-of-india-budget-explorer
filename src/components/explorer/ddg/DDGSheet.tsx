@@ -33,9 +33,9 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
   const yoy = ddgYoY(totals.be2627, totals.be2526);
 
   const exportCsv = () => {
-    const hdr = "Full Code,Section,Sub-Major,Minor,Minor Name,Sub,Detailed,Sub Name,Object,Object Name,Actuals 24-25,BE 25-26,RE 25-26,BE 26-27,Gap\n";
+    const hdr = "Full Code,Section,Sub-Major,Minor,Minor Name,Sub,Detailed,Sub Name,Object,Object Name,Actuals 23-24,BE 24-25,RE 24-25,Actuals 24-25,BE 25-26,RE 25-26,BE 26-27,Gap\n";
     const body = leaves.map((r) =>
-      [r.id, r.section, r.subMajor, r.minorHead, `"${r.minorHeadName}"`, r.subHead, r.detailedHead, `"${r.subHeadName}"`, r.objectHead, `"${r.objectHeadName}"`, r.actuals2425 ?? "", r.be2526 ?? "", r.re2526 ?? "", r.be2627 ?? "", r.gapFlag ?? ""].join(",")
+      [r.id, r.section, r.subMajor, r.minorHead, `"${r.minorHeadName}"`, r.subHead, r.detailedHead, `"${r.subHeadName}"`, r.objectHead, `"${r.objectHeadName}"`, r.actuals2324 ?? "", r.be2425 ?? "", r.re2425 ?? "", r.actuals2425 ?? "", r.be2526 ?? "", r.re2526 ?? "", r.be2627 ?? "", r.gapFlag ?? ""].join(",")
     ).join("\n");
     const blob = new Blob([hdr + body], { type: "text/csv" });
     const a = document.createElement("a");
