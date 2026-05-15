@@ -1,16 +1,12 @@
 // Indian currency formatting in ₹ Cr / Lakh Cr.
 
-export function formatCr(amountCr: number, opts?: { compact?: boolean }): string {
+export function formatCr(amountCr: number, _opts?: { compact?: boolean }): string {
   if (amountCr == null || isNaN(amountCr)) return "—";
   const abs = Math.abs(amountCr);
-  if (abs >= 1_00_000) {
-    // ≥ 1 Lakh Cr
-    return `₹${(amountCr / 1_00_000).toLocaleString("en-IN", { maximumFractionDigits: 2 })} Lakh Cr`;
+  if (abs >= 1000) {
+    return `INR ${(amountCr / 1000).toLocaleString("en-IN", { maximumFractionDigits: 2 })}k Cr`;
   }
-  if (opts?.compact && abs >= 1000) {
-    return `₹${(amountCr / 1000).toLocaleString("en-IN", { maximumFractionDigits: 1 })}k Cr`;
-  }
-  return `₹${amountCr.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr`;
+  return `INR ${amountCr.toLocaleString("en-IN", { maximumFractionDigits: 0 })} Cr`;
 }
 
 export function formatPct(num: number, denom: number): string {
