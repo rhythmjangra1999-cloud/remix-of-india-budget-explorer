@@ -108,6 +108,9 @@ export interface DDGNode {
   name: string;
   fullCode: string;
   section: string;
+  actuals2324: number | null;
+  be2425: number | null;
+  re2425: number | null;
   actuals2425: number | null;
   be2526: number | null;
   re2526: number | null;
