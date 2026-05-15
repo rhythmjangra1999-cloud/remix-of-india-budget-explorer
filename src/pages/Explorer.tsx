@@ -783,6 +783,31 @@ export default function Explorer() {
     );
   }
 
+  if (view === "union") {
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <SiteHeader />
+        <main className="flex-1">
+          <section className="border-b border-border">
+            <div className="container py-10">
+              <button onClick={() => navigate("/")} className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2">
+                <ArrowLeft className="h-3.5 w-3.5" /> Back to Home
+              </button>
+              <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">Explorer — Union Budget</div>
+              <h1 className="mt-2 font-serif text-3xl md:text-4xl font-semibold leading-tight">Union Budget · 4-year sunburst</h1>
+              <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
+                Pick a year. The sunburst shows every ministry and demand at that level of the Budget. Bottom strip surfaces YoY, 3-yr CAGR and movers.
+              </p>
+            </div>
+          </section>
+          <UnionBudget4Year />
+        </main>
+        <SiteFooter />
+      </div>
+    );
+  }
+
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
