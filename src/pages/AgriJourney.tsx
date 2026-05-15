@@ -323,6 +323,7 @@ function AgriJourneyInner() {
             {step === "majorheads" && <MajorHeadsStep />}
             {step === "schemes"    && <SchemesStep />}
             {step === "insights"   && <InsightsStep />}
+            {step === "framework"  && <AgriReportFramework />}
             {step === "tutorial"   && <TutorialStep onStart={startTour} />}
             {step === "builder"    && <BudgetBuilder embedded defaults={{ dataset: "majorHeads", ministries: ["Ministry of Agriculture and Farmers Welfare"] }} />}
           </div>
