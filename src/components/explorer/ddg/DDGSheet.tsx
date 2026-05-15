@@ -23,12 +23,12 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
   const leaves = useMemo(() => getDDGLeaves(demandNo, majorHead), [demandNo, majorHead]);
   const gaps = useMemo(() => getGapCounts(leaves), [leaves]);
   const totals = useMemo(() => {
-    const sum = (k: "actuals2425" | "be2526" | "re2526" | "be2627") => {
+    const sum = (k: "actuals2324" | "be2425" | "re2425" | "actuals2425" | "be2526" | "re2526" | "be2627") => {
       let s = 0, any = false;
       for (const r of leaves) { const v = r[k]; if (typeof v === "number") { s += v; any = true; } }
       return any ? s : null;
     };
-    return { actuals2425: sum("actuals2425"), be2526: sum("be2526"), re2526: sum("re2526"), be2627: sum("be2627") };
+    return { actuals2324: sum("actuals2324"), be2425: sum("be2425"), re2425: sum("re2425"), actuals2425: sum("actuals2425"), be2526: sum("be2526"), re2526: sum("re2526"), be2627: sum("be2627") };
   }, [leaves]);
   const yoy = ddgYoY(totals.be2627, totals.be2526);
 
