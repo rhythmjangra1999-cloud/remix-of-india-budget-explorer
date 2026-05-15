@@ -55,6 +55,7 @@ export function SchemeTableView({ fy }: { fy: string }) {
   const [selectedMinistry, setSelectedMinistry] = useState<string>("");
   const [q, setQ] = useState("");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [openEntry, setOpenEntry] = useState<SchemeDDGEntry | null>(null);
 
   // Level 1: totals by type
   const byType = useMemo(() => {
