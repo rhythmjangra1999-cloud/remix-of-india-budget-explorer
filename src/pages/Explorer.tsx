@@ -439,11 +439,11 @@ function AllDemandsOverview({ section, onSelect }: { section: Section; onSelect:
                       <div className="font-medium text-sm leading-snug">{d.demandDesc}</div>
                       <div className="text-xs text-muted-foreground mt-0.5">{d.ministry}</div>
                     </td>
-                    <td className="px-3 py-3 text-right tnum text-muted-foreground">{formatCrore(getValue(d, "actuals2425", section), true)}</td>
-                    <td className="px-3 py-3 text-right tnum text-muted-foreground">{formatCrore(getValue(d, "be2526", section), true)}</td>
-                    <td className="px-3 py-3 text-right tnum text-muted-foreground">{formatCrore(getValue(d, "re2526", section), true)}</td>
-                    <td className="px-3 py-3 text-right tnum font-semibold">{formatCrore(getValue(d, "be2627", section), true)}</td>
-                    <td className="px-3 py-3 text-right"><YoYPill value={yoy} /></td>
+                    <td className="px-3 py-3 text-right tnum text-muted-foreground whitespace-nowrap">{formatCrore(getValue(d, "actuals2425", section), true)}</td>
+                    <td className="px-3 py-3 text-right tnum text-muted-foreground whitespace-nowrap">{formatCrore(getValue(d, "be2526", section), true)}</td>
+                    <td className="px-3 py-3 text-right tnum text-muted-foreground whitespace-nowrap">{formatCrore(getValue(d, "re2526", section), true)}</td>
+                    <td className="px-3 py-3 text-right tnum font-semibold whitespace-nowrap">{formatCrore(getValue(d, "be2627", section), true)}</td>
+                    <td className="px-3 py-3 text-right whitespace-nowrap"><YoYPill value={yoy} /></td>
                   </tr>
                 );
               })}
