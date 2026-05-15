@@ -97,9 +97,12 @@ export function DDGSheet({ open, onClose, demandNo, majorHead, majorHeadName, mi
         </div>
 
         {/* Tree header row */}
-        <div className="px-2 py-2 border-b border-border bg-muted/30 text-[10px] uppercase tracking-wider text-muted-foreground grid grid-cols-[1fr_70px_70px_70px_80px_60px] gap-2">
+        <div className="px-2 py-2 border-b border-border bg-muted/30 text-[10px] uppercase tracking-wider text-muted-foreground grid grid-cols-[1fr_60px_60px_60px_60px_60px_60px_70px_56px] gap-1.5">
           <div>Hierarchy</div>
-          <div className="text-right">Actuals 24-25</div>
+          <div className="text-right">Act 23-24</div>
+          <div className="text-right">BE 24-25</div>
+          <div className="text-right">RE 24-25</div>
+          <div className="text-right">Act 24-25</div>
           <div className="text-right">BE 25-26</div>
           <div className="text-right">RE 25-26</div>
           <div className="text-right">BE 26-27</div>
