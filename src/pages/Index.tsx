@@ -72,28 +72,26 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Three entry tiles */}
+        {/* Single entry tile */}
         <section className="container py-20">
           <SectionHeader
-            kicker="Three ways in"
-            title="Start from a question"
-            sub="Most people come to the Budget with a question. Pick a starting point — every path leads to the same underlying data."
+            kicker="Start here"
+            title="One way in"
+            sub="Open the Union Budget at its most granular published level — ministry, demand, major head, sub-head, all the way down to the object head."
           />
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-10">
             <EntryTile
               n="01"
-              title="Ministry"
-              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head.`}
+              title="Union Budget"
+              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries. A sunburst of each ministry is linked to its demands table — pick any slice to see the revenue–capital split and drill from major head → sub-major → minor → object head. Schemes view (Central Sector + Centrally-Sponsored) is rolling out next.`}
               to="/explorer"
-            />
-            <EntryTile
-              n="02"
-              title="Scheme"
-              dek="A cross-cutting view of all centrally-funded schemes — outlays, the ministries that run them, and where the money lands. We're starting with Central Sector and Centrally-Sponsored schemes, mapping each one back to its ministry's DDG (major-head → object-head) and forward to estimated flows into state department budgets."
-              to="/explorer?view=schemes"
             />
           </div>
         </section>
+
+        {/* 4-year sunburst */}
+        <UnionBudget4Year />
+
 
         {/* Largest ministries strip */}
         <section className="border-y border-border bg-secondary/30">
