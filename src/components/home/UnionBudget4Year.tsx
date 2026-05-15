@@ -312,8 +312,8 @@ function Sunburst({ ministries, fy, totalBudget, focus }: SBProps) {
         .join("path")
         .attr("d", arc as any)
         .attr("fill", color)
-        .attr("stroke", "hsl(var(--background))")
-        .attr("stroke-width", 0.75)
+        .attr("stroke", (d: any) => d.data?.isFocus ? "hsl(var(--foreground))" : "hsl(var(--background))")
+        .attr("stroke-width", (d: any) => d.data?.isFocus ? 2 : 0.75)
         .style("cursor", "default")
         .on("mouseenter", (event, d: any) => {
           const trail = d.ancestors().reverse().slice(1).map((n: any) => n.data.name).join(" › ");
