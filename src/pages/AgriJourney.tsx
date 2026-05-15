@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { JourneyStepper, JourneyNav, type JourneyStepId } from "@/components/agri/JourneyStepper";
 import { AgriInsights } from "@/components/agri/AgriInsights";
+import { AgriReportFramework } from "@/components/agri/AgriReportFramework";
 import { Definition } from "@/components/agri/Definition";
 import { TourProvider, useTour } from "@/components/tour/TourProvider";
 import { SchemeTableView } from "@/components/explorer/SchemeTableView";
@@ -322,6 +323,7 @@ function AgriJourneyInner() {
             {step === "majorheads" && <MajorHeadsStep />}
             {step === "schemes"    && <SchemesStep />}
             {step === "insights"   && <InsightsStep />}
+            {step === "framework"  && <AgriReportFramework />}
             {step === "tutorial"   && <TutorialStep onStart={startTour} />}
             {step === "builder"    && <BudgetBuilder embedded defaults={{ dataset: "majorHeads", ministries: ["Ministry of Agriculture and Farmers Welfare"] }} />}
           </div>
