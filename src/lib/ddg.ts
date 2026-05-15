@@ -1,4 +1,4 @@
-import ddgRaw from "@/data/ddgs/agri-ddg.json";
+import ddgRaw from "@/data/ddgs/all-ddg.json";
 
 export type GapFlag = "DISCONTINUED" | "NEW" | "SMALL_BASE" | "TOKEN" | null;
 
