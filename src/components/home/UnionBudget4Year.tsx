@@ -18,6 +18,7 @@ interface Ministry {
 
 export function UnionBudget4Year() {
   const [fy, setFy] = useState<FY>("FY27");
+  const [focus, setFocus] = useState<{ ministry: string; demand?: string } | null>(null);
   const ministries = data.ministries as Ministry[];
   const totals = data.totals as Record<FY, number>;
   const labels = data.yearLabels as Record<FY, string>;
@@ -66,9 +67,13 @@ export function UnionBudget4Year() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <Sunburst ministries={ministries} fy={fy} totalBudget={totals[fy]} />
+          <div className="space-y-3">
+            <SearchPicker ministries={ministries} fy={fy} focus={focus} onPick={setFocus} />
+            <Sunburst ministries={ministries} fy={fy} totalBudget={totals[fy]} focus={focus} />
+          </div>
           <TopMinistries top={top} fy={fy} max={topMax} totalBudget={totals[fy]} />
         </div>
+
 
         {/* Bottom metrics: YoY per year + 3-yr CAGR + others */}
         <BottomMetrics totals={totals} labels={labels} ministries={ministries} fy={fy} />
@@ -235,27 +240,36 @@ interface SBProps {
   ministries: Ministry[];
   fy: FY;
   totalBudget: number;
+  focus?: { ministry: string; demand?: string } | null;
 }
 
-function Sunburst({ ministries, fy, totalBudget }: SBProps) {
+function Sunburst({ ministries, fy, totalBudget, focus }: SBProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const { containerRef, show, move, hide, Tooltip } = useChartTooltip();
 
   const root = useMemo(() => {
+    const filtered = focus
+      ? ministries.filter((m) => m.name === focus.ministry)
+      : ministries;
     return {
-      name: "Union Budget",
-      children: ministries
+      name: focus ? focus.ministry : "Union Budget",
+      children: filtered
         .filter((m) => (m.totals[fy] ?? 0) > 0)
         .map((m) => ({
           name: m.name,
           value: m.totals[fy],
           children: m.demands
             .filter((d) => (d.totals[fy] ?? 0) > 0)
-            .map((d) => ({ name: d.name, value: d.totals[fy] })),
+            .map((d) => ({
+              name: d.name,
+              value: d.totals[fy],
+              isFocus: focus?.demand === d.name,
+            })),
         })),
     };
-  }, [ministries, fy]);
+  }, [ministries, fy, focus]);
+
 
   useEffect(() => {
     if (!wrapRef.current) return;
@@ -298,8 +312,8 @@ function Sunburst({ ministries, fy, totalBudget }: SBProps) {
         .join("path")
         .attr("d", arc as any)
         .attr("fill", color)
-        .attr("stroke", "hsl(var(--background))")
-        .attr("stroke-width", 0.75)
+        .attr("stroke", (d: any) => d.data?.isFocus ? "hsl(var(--foreground))" : "hsl(var(--background))")
+        .attr("stroke-width", (d: any) => d.data?.isFocus ? 2 : 0.75)
         .style("cursor", "default")
         .on("mouseenter", (event, d: any) => {
           const trail = d.ancestors().reverse().slice(1).map((n: any) => n.data.name).join(" › ");
@@ -395,6 +409,135 @@ function TopMinistries({
         <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-sm bg-primary/80" /> Revenue</span>
         <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-sm bg-primary/30" /> Capital</span>
       </div>
+    </div>
+  );
+}
+
+// ── Search picker ────────────────────────────────────────────────────────────
+type PickResult = { ministry: string; demand?: string };
+
+function SearchPicker({
+  ministries,
+  fy,
+  focus,
+  onPick,
+}: {
+  ministries: Ministry[];
+  fy: FY;
+  focus: PickResult | null;
+  onPick: (p: PickResult | null) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onDoc(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  const matches = useMemo(() => {
+    const lq = q.trim().toLowerCase();
+    type Row = { kind: "ministry" | "demand"; ministry: string; demand?: string; value: number };
+    const rows: Row[] = [];
+    for (const m of ministries) {
+      const mHit = !lq || m.name.toLowerCase().includes(lq);
+      if (mHit) rows.push({ kind: "ministry", ministry: m.name, value: m.totals[fy] });
+      for (const d of m.demands) {
+        if (!lq || d.name.toLowerCase().includes(lq) || m.name.toLowerCase().includes(lq)) {
+          rows.push({ kind: "demand", ministry: m.name, demand: d.name, value: d.totals[fy] });
+        }
+      }
+    }
+    return rows.sort((a, b) => b.value - a.value).slice(0, 40);
+  }, [ministries, q, fy]);
+
+  const label = focus
+    ? focus.demand
+      ? `${focus.ministry.replace(/^Ministry of /, "")} · ${focus.demand}`
+      : focus.ministry
+    : "Search ministries or demands…";
+
+  return (
+    <div ref={ref} className="relative">
+      <div className="flex items-center gap-2 rounded-sm border border-border bg-card px-3 py-2">
+        <span className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground shrink-0">Focus</span>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className={`flex-1 text-left text-xs truncate ${focus ? "text-foreground font-medium" : "text-muted-foreground"}`}
+        >
+          {label}
+        </button>
+        {focus && (
+          <button
+            onClick={() => {
+              onPick(null);
+              setQ("");
+            }}
+            className="text-[10px] uppercase tracking-wider text-muted-foreground hover:text-foreground px-1.5 py-0.5 rounded-sm hover:bg-muted"
+            title="Clear focus"
+          >
+            Clear
+          </button>
+        )}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="text-muted-foreground hover:text-foreground text-xs"
+          aria-label="Toggle"
+        >
+          ▾
+        </button>
+      </div>
+      {open && (
+        <div className="absolute z-30 mt-1 w-full rounded-sm border border-border bg-card shadow-lg">
+          <div className="p-2 border-b border-border">
+            <input
+              autoFocus
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Type to filter ministries or demands…"
+              className="w-full px-2 py-1.5 text-xs rounded-sm border border-input bg-background"
+            />
+          </div>
+          <ul className="max-h-72 overflow-y-auto py-1">
+            {matches.length === 0 && (
+              <li className="px-3 py-2 text-xs text-muted-foreground">No matches.</li>
+            )}
+            {matches.map((r, i) => (
+              <li key={i}>
+                <button
+                  onClick={() => {
+                    onPick({ ministry: r.ministry, demand: r.demand });
+                    setOpen(false);
+                  }}
+                  className="w-full flex items-baseline justify-between gap-3 px-3 py-1.5 text-left hover:bg-muted/60 transition-colors"
+                >
+                  <span className="flex items-baseline gap-2 min-w-0">
+                    <span
+                      className={`text-[9px] uppercase tracking-wider font-mono shrink-0 ${
+                        r.kind === "ministry" ? "text-primary" : "text-muted-foreground"
+                      }`}
+                    >
+                      {r.kind === "ministry" ? "MIN" : "DEM"}
+                    </span>
+                    <span className="text-xs truncate">
+                      {r.kind === "ministry"
+                        ? r.ministry
+                        : `${r.ministry.replace(/^Ministry of /, "")} · ${r.demand}`}
+                    </span>
+                  </span>
+                  <span className="text-[10px] font-mono text-muted-foreground shrink-0 tnum">
+                    {formatCr(r.value, { compact: true })}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
