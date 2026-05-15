@@ -87,10 +87,18 @@ const Index = () => {
               to="/explorer"
             />
           </div>
+
+          {/* Sub-tabs after Union Budget */}
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <SubTile n="02" title="Ministry" dek="Drill into any of the 56 ministries — demands, major heads, object heads." to="/explorer" />
+            <SubTile n="03" title="Schemes" dek="Central Sector & Centrally-Sponsored schemes mapped from each ministry's DDG." to="/explorer?view=schemes" badge="Rolling out" />
+            <SubTile n="04" title="State" dek="Estimated flows of central scheme money into each state's department budgets." to="/explorer?view=state" badge="Coming soon" />
+          </div>
         </section>
 
         {/* 4-year sunburst */}
         <UnionBudget4Year />
+
 
 
         {/* Largest ministries strip */}
@@ -240,6 +248,26 @@ function EntryTile({ n, title, dek, to, badge }: { n: string; title: string; dek
       <h3 className="mt-4 font-serif text-2xl font-semibold leading-tight">{title}</h3>
       <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{dek}</p>
       <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+    </Link>
+  );
+}
+
+function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: string; to: string; badge?: string }) {
+  return (
+    <Link
+      to={to}
+      className="group relative block border border-border bg-card p-5 hover:border-foreground transition-all"
+    >
+      <div className="flex items-center justify-between">
+        <div className="font-mono text-[10px] text-muted-foreground">{n}</div>
+        {badge && (
+          <span className="text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm bg-muted text-muted-foreground font-medium">
+            {badge}
+          </span>
+        )}
+      </div>
+      <h3 className="mt-3 font-serif text-lg font-semibold leading-tight group-hover:text-primary transition-colors">{title}</h3>
+      <p className="mt-2 text-xs text-foreground/65 leading-relaxed">{dek}</p>
     </Link>
   );
 }
