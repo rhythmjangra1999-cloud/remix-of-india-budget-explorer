@@ -70,6 +70,9 @@ export function UnionBudget4Year() {
           <TopMinistries top={top} fy={fy} max={topMax} totalBudget={totals[fy]} />
         </div>
 
+        {/* Bottom metrics: YoY per year + 3-yr CAGR + others */}
+        <BottomMetrics totals={totals} labels={labels} ministries={ministries} fy={fy} />
+
         <p className="mt-6 text-[11px] text-muted-foreground">
           Source: Union Budget Demands for Grants, Budget Estimates FY 2023-24 to FY 2026-27. Figures in ₹ Crores, net of receipts & recoveries.
         </p>
@@ -77,6 +80,124 @@ export function UnionBudget4Year() {
     </section>
   );
 }
+
+function BottomMetrics({
+  totals,
+  labels,
+  ministries,
+  fy,
+}: {
+  totals: Record<FY, number>;
+  labels: Record<FY, string>;
+  ministries: Ministry[];
+  fy: FY;
+}) {
+  // YoY for each transition
+  const yoy = YEARS.slice(1).map((y, i) => {
+    const prev = YEARS[i];
+    const v = ((totals[y] - totals[prev]) / totals[prev]) * 100;
+    return { from: prev, to: y, v };
+  });
+  // 3-yr CAGR FY24 → FY27
+  const cagr = (Math.pow(totals.FY27 / totals.FY24, 1 / 3) - 1) * 100;
+  const absGrowth = totals.FY27 - totals.FY24;
+  const absGrowthPct = (absGrowth / totals.FY24) * 100;
+
+  // Fastest-growing & largest-shrinking ministry by CAGR (FY24→FY27), filter small base
+  const minBase = 1000; // ₹1000 Cr to avoid noise
+  const movers = ministries
+    .filter((m) => m.totals.FY24 >= minBase && m.totals.FY27 > 0)
+    .map((m) => ({
+      name: m.name.replace(/^Ministry of /, "").replace(/^Department of /, "Dept. of "),
+      cagr: (Math.pow(m.totals.FY27 / m.totals.FY24, 1 / 3) - 1) * 100,
+      delta: m.totals.FY27 - m.totals.FY24,
+    }));
+  const fastest = [...movers].sort((a, b) => b.cagr - a.cagr).slice(0, 1)[0];
+  const slowest = [...movers].sort((a, b) => a.cagr - b.cagr).slice(0, 1)[0];
+
+  // Selected-year share of top 5 ministries
+  const sortedFy = [...ministries].sort((a, b) => b.totals[fy] - a.totals[fy]);
+  const top5Share = (sortedFy.slice(0, 5).reduce((s, m) => s + m.totals[fy], 0) / totals[fy]) * 100;
+
+  return (
+    <div className="mt-10 space-y-4">
+      <div className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Growth metrics</div>
+
+      {/* YoY strip */}
+      <div className="grid gap-px bg-border rounded-sm overflow-hidden border border-border grid-cols-2 md:grid-cols-3">
+        {yoy.map((r) => (
+          <Metric
+            key={r.to}
+            label={`YoY · ${r.to.replace("FY", "FY ")}`}
+            value={`${r.v >= 0 ? "+" : ""}${r.v.toFixed(2)}%`}
+            tone={r.v >= 0 ? "pos" : "neg"}
+            sub={`${labels[r.from]} → ${labels[r.to]}`}
+          />
+        ))}
+      </div>
+
+      {/* CAGR + share strip */}
+      <div className="grid gap-px bg-border rounded-sm overflow-hidden border border-border grid-cols-2 md:grid-cols-4">
+        <Metric
+          label="3-yr CAGR"
+          value={`${cagr >= 0 ? "+" : ""}${cagr.toFixed(2)}%`}
+          tone={cagr >= 0 ? "pos" : "neg"}
+          sub="FY24 → FY27 compounded"
+        />
+        <Metric
+          label="Absolute growth"
+          value={`${absGrowth >= 0 ? "+" : ""}${formatCr(absGrowth, { compact: true })}`}
+          sub={`${absGrowthPct >= 0 ? "+" : ""}${absGrowthPct.toFixed(1)}% over 3 yrs`}
+        />
+        <Metric
+          label={`Top 5 share · ${fy.replace("FY", "FY ")}`}
+          value={`${top5Share.toFixed(1)}%`}
+          sub="of Union Budget"
+        />
+        <Metric
+          label="Concentration"
+          value={`${sortedFy.length} ministries`}
+          sub={`largest: ${sortedFy[0].name.replace(/^Ministry of /, "")}`}
+        />
+      </div>
+
+      {/* Fastest / slowest movers */}
+      <div className="grid gap-px bg-border rounded-sm overflow-hidden border border-border grid-cols-1 md:grid-cols-2">
+        {fastest && (
+          <Metric
+            label="Fastest-growing ministry"
+            value={`${fastest.cagr >= 0 ? "+" : ""}${fastest.cagr.toFixed(1)}% CAGR`}
+            tone="pos"
+            sub={`${fastest.name} · +${formatCr(fastest.delta, { compact: true })} since FY24`}
+          />
+        )}
+        {slowest && (
+          <Metric
+            label={slowest.cagr < 0 ? "Largest contraction" : "Slowest-growing ministry"}
+            value={`${slowest.cagr >= 0 ? "+" : ""}${slowest.cagr.toFixed(1)}% CAGR`}
+            tone={slowest.cagr < 0 ? "neg" : undefined}
+            sub={`${slowest.name} · ${slowest.delta >= 0 ? "+" : ""}${formatCr(slowest.delta, { compact: true })} since FY24`}
+          />
+        )}
+      </div>
+      <p className="text-[10px] text-muted-foreground">
+        CAGR computed on Budget Estimates FY24 → FY27 (3 years). Movers exclude ministries with FY24 base under ₹1,000 Cr.
+      </p>
+    </div>
+  );
+}
+
+function Metric({ label, value, sub, tone }: { label: string; value: string; sub?: string; tone?: "pos" | "neg" }) {
+  const toneCls = tone === "pos" ? "text-emerald-700" : tone === "neg" ? "text-rose-700" : "text-foreground";
+  return (
+    <div className="bg-card p-4">
+      <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">{label}</div>
+      <div className={`mt-1.5 font-serif text-xl font-semibold tnum ${toneCls}`}>{value}</div>
+      {sub && <div className="mt-0.5 text-[11px] text-muted-foreground leading-snug">{sub}</div>}
+    </div>
+  );
+}
+
 
 function YearToggle({ fy, onChange, labels }: { fy: FY; onChange: (fy: FY) => void; labels: Record<FY, string> }) {
   return (
