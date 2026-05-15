@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp, ArrowLeft, Download, ChevronRight, ExternalLink } f
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SCHEMES_RAW from "@/data/schemes.json";
+import { formatCr } from "@/lib/format";
 import { getSchemeMapping, reconColor, type SchemeDDGEntry } from "@/lib/scheme-ddg";
 import { SchemeDDGSheet } from "./SchemeDDGSheet";
 

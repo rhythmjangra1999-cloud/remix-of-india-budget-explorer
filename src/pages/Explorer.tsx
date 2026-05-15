@@ -554,7 +554,7 @@ function DemandDetail({ demandNo, section }: { demandNo: number; section: Sectio
       {/* Major heads table (all heads under this demand) */}
       <div>
         <div className="text-xs uppercase tracking-wide text-muted-foreground mb-3">
-          All Major Heads · {mhRows.length} heads under this demand · figures ₹ Cr · click column to sort
+          All Major Heads · {mhRows.length} heads under this demand · figures INR Cr · click column to sort
         </div>
         {mhRows.length > 0
           ? <MajorHeadTable rows={mhRows} demandNo={demand.demandNo} ministry={demand.ministry} demandDesc={demand.demandDesc} />

@@ -171,7 +171,7 @@ export default function ReportBuilder() {
   const maxVal = Math.max(0, ...computed.map(c => Math.abs(c.value ?? 0)));
 
   function exportCSV() {
-    const head = ["#", "Ministry", "Demand", "Type", "Section", "Year", "Value (₹ Cr)", "% of Union Budget", "YoY %"];
+    const head = ["#", "Ministry", "Demand", "Type", "Section", "Year", "Value (INR Cr)", "% of Union Budget", "YoY %"];
     const lines = [head.join(",")];
     computed.forEach((c, i) => {
       const dem = c.sel.demandNo === "all" ? "All" : `D${c.sel.demandNo}`;
