@@ -62,20 +62,11 @@ const Index = () => {
 
         {/* Problem statement */}
         <section className="border-b border-border bg-secondary/30">
-          <div className="container py-20">
-            <div className="max-w-3xl">
-              <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">The problem</div>
-              <h2 className="mt-4 font-serif text-3xl md:text-4xl font-semibold leading-tight">
-                Budget headlines stop at the ministry. The money does not.
-              </h2>
-              <p className="mt-5 text-lg text-foreground/75 leading-relaxed">
-                Press coverage rarely goes beyond the top-line allocation per ministry. But the
-                Demands for Grants, Detailed Demands, and scheme annexures contain the actual
-                story — which schemes are funded, by how much, and which states they reach.
-                That detail is buried across thousands of pages of PDFs. Koshtha makes it
-                searchable, comparable, and traceable.
-              </p>
-            </div>
+          <div className="container py-10">
+            <p className="font-serif text-xl md:text-2xl leading-snug">
+              <span className="text-xs uppercase tracking-[0.16em] text-primary font-medium font-sans mr-3 align-middle">Problem statement</span>
+              Press coverage stops at the ministry-level allocation, but the Demands for Grants, Detailed Demands, and scheme annexures, where the actual flow of money lives, stay buried across thousands of pages of PDFs.
+            </p>
           </div>
         </section>
 
