@@ -64,7 +64,7 @@ export function BudgetHistoryChart() {
             Total Union Budget · {ROWS[0].year}–{latest.year}
           </div>
           <div className="mt-1 font-serif text-sm text-foreground/70">
-            Annual outlay, log scale
+            Annual outlay
           </div>
         </div>
         <div className="text-right">

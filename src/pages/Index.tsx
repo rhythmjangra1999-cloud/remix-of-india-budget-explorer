@@ -61,10 +61,11 @@ const Index = () => {
               <BudgetHistoryChart />
             </div>
 
-            {/* Headline figures — 2 stats only */}
-            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Total Union Budget" value={formatCr(BUDGET_META.totalUnionBudgetCr)} sub="net of recoveries" />
-              <Stat label="Fiscal year" value="2026-27" sub={`updated ${BUDGET_META.lastUpdated}`} />
+            {/* Headline figures — 3 stats */}
+            <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden border border-border">
+              <Stat label="Union Budget BE 2026-27" value="₹53.47 lakh crore" />
+              <Stat label="Source documents parsed" value="Over 1,000" />
+              <Stat label="From budget to ministry to scheme to state" value="Four layers deep" />
             </div>
           </div>
         </section>
