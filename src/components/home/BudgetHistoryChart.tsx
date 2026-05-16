@@ -21,26 +21,7 @@ type Row = {
 
 const ROWS: Row[] = (historyData as { rows: Row[] }).rows;
 
-// Compress the 1890–1991 stretch (101 years of slow colonial growth) into 25
-// visual units so the post-Independence rise has room to breathe.
-const COMPRESS_START = 1890;
-const COMPRESS_END = 1991;
-const COMPRESS_WIDTH = 25;
-const COMPRESS_SPAN = COMPRESS_END - COMPRESS_START; // 101
-function xPos(year: number): number {
-  if (year <= COMPRESS_START) return year;
-  if (year >= COMPRESS_END) return COMPRESS_START + COMPRESS_WIDTH + (year - COMPRESS_END);
-  return COMPRESS_START + (year - COMPRESS_START) * (COMPRESS_WIDTH / COMPRESS_SPAN);
-}
-
-const DATA = ROWS.map((r) => ({ ...r, x: xPos(r.year) }));
-const X_DOMAIN: [number, number] = [xPos(ROWS[0].year), xPos(ROWS[ROWS.length - 1].year)];
-
-const X_TICKS_YEARS = [1860, 1890, 1947, 1991, 2014, 2026];
-const X_TICKS = X_TICKS_YEARS.map(xPos);
-const TICK_LABEL: Record<number, number> = Object.fromEntries(
-  X_TICKS_YEARS.map((y) => [xPos(y), y])
-);
+const X_TICKS = [1860, 1900, 1947, 1971, 1991, 2014, 2026];
 
 const ERA_MARKERS: { year: number; label: string }[] = [
   { year: 1947, label: "Independence" },
@@ -100,7 +81,7 @@ export function BudgetHistoryChart() {
       <div className="mt-5 h-[280px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
-            data={DATA}
+            data={data}
             margin={{ top: 24, right: 16, left: 0, bottom: 8 }}
           >
             <defs>
@@ -111,11 +92,10 @@ export function BudgetHistoryChart() {
             </defs>
 
             <XAxis
-              dataKey="x"
+              dataKey="year"
               type="number"
-              domain={X_DOMAIN}
+              domain={[ROWS[0].year, latest.year]}
               ticks={X_TICKS}
-              tickFormatter={(v: number) => String(TICK_LABEL[v] ?? "")}
               tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11, fontFamily: "var(--font-mono, ui-monospace)" }}
               tickLine={false}
               axisLine={{ stroke: "hsl(var(--border))" }}
@@ -125,30 +105,10 @@ export function BudgetHistoryChart() {
               hide
             />
 
-            {/* Compression markers — the "//" break in the timeline */}
-            <ReferenceLine
-              x={xPos(COMPRESS_START)}
-              stroke="hsl(var(--border))"
-              strokeDasharray="1 2"
-            />
-            <ReferenceLine
-              x={xPos(COMPRESS_END)}
-              stroke="hsl(var(--border))"
-              strokeDasharray="1 2"
-              label={{
-                value: "// 101 yrs compressed //",
-                position: "top",
-                fill: "hsl(var(--muted-foreground))",
-                fontSize: 9,
-                fontFamily: "var(--font-mono, ui-monospace)",
-                offset: 6,
-              }}
-            />
-
             {ERA_MARKERS.map((m) => (
               <ReferenceLine
                 key={m.year}
-                x={xPos(m.year)}
+                x={m.year}
                 stroke="hsl(var(--border))"
                 strokeDasharray="2 3"
                 label={{
