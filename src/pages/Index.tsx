@@ -65,7 +65,7 @@ const Index = () => {
           <div className="container py-10">
             <p className="font-serif text-xl leading-snug md:text-4xl">
               <span className="uppercase tracking-[0.16em] text-primary mr-3 align-middle text-3xl font-serif font-bold text-left border-slate-50">PROBLEM STATEMENT:</span>
-              <br /><br /><br />
+              <br /><br />
               The Union Budget is reported every year, but the actual flow of money lives deeper, in the Demands for Grants, the Detailed Demands for Grants, and the scheme annexures that each ministry publishes alongside the budget. And deeper still, in the allocations that flow from those schemes into each state. These documents run to thousands of pages, are scattered across government portals, and are rarely read together. Koshtha reads them so you do not have to.
             </p>
           </div>
