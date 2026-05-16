@@ -62,9 +62,6 @@ const Index = () => {
                 Read Tutorial
               </Link>
             </div>
-              <Stat label="Source documents read and parsed" value="Over 1,000" />
-              <Stat label="From Parliament to ministry to scheme to state" value="Four layers" />
-            </div>
           </div>
         </section>
 
