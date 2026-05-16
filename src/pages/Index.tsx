@@ -75,7 +75,7 @@ const Index = () => {
         <section className="container py-20">
           <SectionHeader
             kicker={<br />}
-            title="KOSHTHA"
+            title="SOLUTION: KOSHTHA"
             sub="Open the Union Budget at its most granular published level — ministry, demand, major head, sub-head, all the way down to the object head."
           />
           <div className="mt-10">
