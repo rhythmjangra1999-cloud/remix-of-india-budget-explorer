@@ -65,7 +65,7 @@ export function GlobalSearch() {
         label,
         sub: short || undefined,
         type: "Ministry",
-        url: `/explorer?ministry=${m.id}`,
+        url: `/explorer?ministry=${encodeURIComponent(label)}`,
         haystack: `${label} ${short}`.toLowerCase(),
       });
     }
