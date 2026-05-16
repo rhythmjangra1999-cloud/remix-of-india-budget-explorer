@@ -65,7 +65,7 @@ const Index = () => {
           <div className="container py-10">
             <p className="font-serif text-xl leading-snug md:text-3xl">
               <span className="uppercase tracking-[0.16em] text-primary mr-3 align-middle text-3xl font-serif font-bold text-left border-slate-50">PROBLEM STATEMENT:</span>
-              Press coverage stops at the ministry-level allocation, but the Demands for Grants, Detailed Demands, and scheme annexures, where the actual flow of money lives, stay buried across thousands of pages of PDFs.
+              The Union Budget is reported every year, but the story told is always the same — how much each ministry received. The actual flow of money lives deeper, in the Demands for Grants, the Detailed Demands for Grants, and the scheme annexures that each ministry publishes alongside the budget. And deeper still, in the allocations that flow from those schemes into each state. These documents run to thousands of pages, are scattered across government portals, and are rarely read together. Koshtha reads them so you do not have to.
             </p>
           </div>
         </section>
