@@ -34,21 +34,6 @@ const Index = () => {
                   The Union Budget allocates fifty three lakh forty seven thousand crore rupees each year. Yet knowing how much any one ministry received tells you almost nothing about where the money goes. <span className="text-foreground font-medium">Koshtha</span> reads over one thousand government documents (the Demands for Grants, the Detailed Demands, and the scheme annexures published by each ministry) to trace public money from its allocation in Parliament, through the schemes it funds, to the states those schemes are meant to serve.
                 </p>
               </div>
-
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Link
-                  to="/explorer"
-                  className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-                >
-                  Open Explorer <ArrowUpRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  to="/methodology"
-                  className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
-                >
-                  Read Tutorial
-                </Link>
-              </div>
             </div>
 
             {/* History chart — full width, below heading */}
@@ -61,6 +46,21 @@ const Index = () => {
               <Stat label="Union Budget, BE 2026 to 27" value="₹53.47 lakh crore" />
               <Stat label="Source documents read and parsed" value="Over 1,000" />
               <Stat label="From Parliament to ministry to scheme to state" value="Four layers" />
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                to="/explorer"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                Open Explorer <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/methodology"
+                className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
+              >
+                Read Tutorial
+              </Link>
             </div>
           </div>
         </section>
