@@ -78,17 +78,13 @@ const Index = () => {
             title="SOLUTION: KOSHTHA"
             sub="Koshtha opens the Union Budget at every level it is published. Start with the full picture and drill down until you reach the individual budget line that funds a specific activity in a specific state."
           />
-          <div className="mt-10">
-            <EntryTile
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <SubTile
               n="01"
               title="Union Budget"
               dek={`Browse all ${BUDGET_META.ministriesCovered} ministries across four fiscal years. Follow any allocation from its major head all the way down to the object head, with year on year changes shown at every level.`}
               to="/explorer?view=union"
             />
-          </div>
-
-          {/* Sub-tabs after Union Budget */}
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
             <SubTile n="02" title="Ministry" dek="Open any of the 56 ministries and read its demands, major heads, and object heads the way the government published them, with four years of figures side by side." to="/explorer" />
             <SubTile n="03" title="Schemes" dek="Every Central Sector and Centrally Sponsored scheme, mapped from the ministry that funds it down to the states it is meant to serve." to="/explorer?view=schemes" badge="Rolling out" />
             <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them." to="/explorer?view=state" badge="Coming soon" />
