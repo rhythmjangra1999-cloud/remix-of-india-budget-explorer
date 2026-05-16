@@ -25,13 +25,16 @@ const Index = () => {
           <div className="container py-20 md:py-24">
             {/* Full-width heading + copy */}
             <div className="w-full">
+              <div className="mb-5 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                Koshtha, Sanskrit for treasury.
+              </div>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
                 Trace the rupee. <span className="text-foreground/55">The pulse of public spending.</span>
               </h1>
 
               <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
                 <p>
-                  The Union Budget allocates <span className="text-foreground font-medium tnum">₹53.47 lakh crore</span>. But knowing how much a ministry received tells you almost nothing. <span className="text-foreground font-medium">Koshtha</span> parses over 1,000 government documents (Demands for Grants, Detailed Demands, and scheme annexures) to map money from a ministry demand, through the schemes it funds, all the way to the states those schemes reach.
+                  The Union Budget allocates fifty three lakh forty seven thousand crore rupees each year. Yet knowing how much any one ministry received tells you almost nothing about where the money goes. <span className="text-foreground font-medium">Koshtha</span> reads over one thousand government documents — the Demands for Grants, the Detailed Demands, and the scheme annexures published by each ministry — to trace public money from its allocation in Parliament, through the schemes it funds, to the states those schemes are meant to serve.
                 </p>
               </div>
 
@@ -58,9 +61,9 @@ const Index = () => {
 
             {/* Headline figures — 3 stats */}
             <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Union Budget BE 2026-27" value="₹53.47 lakh crore" />
-              <Stat label="Source documents parsed" value="Over 1,000" />
-              <Stat label="From budget to ministry to scheme to state" value="Four layers deep" />
+              <Stat label="Union Budget, BE 2026 to 27" value="₹53.47 lakh crore" />
+              <Stat label="Source documents read and parsed" value="Over 1,000" />
+              <Stat label="From Parliament to ministry to scheme to state" value="Four layers" />
             </div>
           </div>
         </section>
