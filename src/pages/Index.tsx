@@ -41,23 +41,18 @@ const Index = () => {
               <BudgetHistoryChart />
             </div>
 
-            {/* Headline figures — 3 stats */}
+            {/* Headline figure + CTAs in one grid */}
             <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden border border-border">
               <Stat label="Union Budget, BE 2026 to 27" value="₹53.47 lakh crore" />
-              <Stat label="Source documents read and parsed" value="Over 1,000" />
-              <Stat label="From Parliament to ministry to scheme to state" value="Four layers" />
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/explorer"
-                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                className="bg-primary px-5 py-6 flex items-center justify-center gap-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
               >
                 Open Explorer <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/methodology"
-                className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-5 py-3 text-sm font-medium hover:bg-muted transition-colors"
+                className="bg-card px-5 py-6 flex items-center justify-center gap-2 text-sm font-medium hover:bg-muted transition-colors"
               >
                 Read Tutorial
               </Link>
