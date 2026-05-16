@@ -25,9 +25,6 @@ const Index = () => {
           <div className="container py-20 md:py-24">
             {/* Full-width heading + copy */}
             <div className="w-full">
-              <div className="mb-5 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                Koshtha, Sanskrit for treasury.
-              </div>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
                 Trace the rupee. <span className="text-foreground/55">The pulse of public spending.</span>
               </h1>
