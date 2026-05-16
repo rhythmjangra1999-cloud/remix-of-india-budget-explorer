@@ -102,8 +102,6 @@ export function BudgetHistoryChart() {
             />
             <YAxis
               dataKey="totalCr"
-              scale="log"
-              domain={[0.3, "dataMax"]}
               hide
             />
 
@@ -143,8 +141,8 @@ export function BudgetHistoryChart() {
 
       {/* Footnote */}
       <p className="mt-3 text-[11px] text-muted-foreground leading-relaxed">
-        Total expenditure across {ROWS.length} budgets. Log scale — without it, the colonial-era figures
-        (₹0.5 Cr in 1860) would vanish next to today's ₹53 Lakh Cr. Pre-1947 values reconstructed from
+        Total expenditure across {ROWS.length} budgets. Linear scale — the colonial-era figures
+        (₹0.5 Cr in 1860) are barely visible next to today's ₹53 Lakh Cr. Pre-1947 values reconstructed from
         Government of India Finance Accounts; post-1947 from indiabudget.gov.in Expenditure Profile,
         PIB, PRS India and the RBI Handbook of Statistics.
       </p>
