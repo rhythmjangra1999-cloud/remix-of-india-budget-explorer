@@ -217,7 +217,7 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
-function SectionHeader({ kicker, title, sub }: { kicker: string; title: string; sub?: string }) {
+function SectionHeader({ kicker, title, sub }: { kicker: string | React.ReactNode; title: string; sub?: string }) {
   return (
     <div className="max-w-2xl">
       <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">{kicker}</div>
