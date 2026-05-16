@@ -26,7 +26,7 @@ const Index = () => {
             {/* Full-width heading + copy */}
             <div className="w-full">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
-                Trace the rupee. <span className="text-foreground/55">The pulse of public spending.</span>
+                Trace the rupee. <span className="text-2xl md:text-3xl lg:text-4xl text-foreground/55 align-middle font-normal">The pulse of public spending.</span>
               </h1>
 
               <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
