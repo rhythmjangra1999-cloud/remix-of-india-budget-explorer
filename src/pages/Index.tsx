@@ -31,7 +31,7 @@ const Index = () => {
 
               <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
                 <p>
-                  The Union Budget allocates fifty three lakh forty seven thousand crore rupees each year. Yet knowing how much any one ministry received tells you almost nothing about where the money goes. <span className="text-foreground font-medium">Koshtha</span> reads over one thousand government documents — the Demands for Grants, the Detailed Demands, and the scheme annexures published by each ministry — to trace public money from its allocation in Parliament, through the schemes it funds, to the states those schemes are meant to serve.
+                  The Union Budget allocates fifty three lakh forty seven thousand crore rupees each year. Yet knowing how much any one ministry received tells you almost nothing about where the money goes. <span className="text-foreground font-medium">Koshtha</span> reads over one thousand government documents (the Demands for Grants, the Detailed Demands, and the scheme annexures published by each ministry) to trace public money from its allocation in Parliament, through the schemes it funds, to the states those schemes are meant to serve.
                 </p>
               </div>
 
