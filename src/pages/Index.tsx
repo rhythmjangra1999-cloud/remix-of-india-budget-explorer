@@ -264,7 +264,7 @@ function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: 
         )}
       </div>
       <h3 className="mt-3 font-serif text-lg font-semibold leading-tight group-hover:text-primary transition-colors">{title}</h3>
-      <p className="mt-2 text-xs text-foreground/65 leading-relaxed">{dek}</p>
+      <p className="mt-2 font-serif text-xs text-foreground/65 leading-relaxed">{dek}</p>
     </Link>
   );
 }
