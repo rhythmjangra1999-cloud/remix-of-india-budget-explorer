@@ -170,7 +170,7 @@ const Index = () => {
                   <h3 className="mt-3 font-serif text-2xl leading-tight font-semibold group-hover:text-primary transition-colors">
                     {f.title}
                   </h3>
-                  <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{f.dek}</p>
+                  <p className="mt-3 font-serif text-sm text-foreground/70 leading-relaxed">{f.dek}</p>
                 </Link>
               );
             })}
