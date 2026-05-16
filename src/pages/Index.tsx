@@ -243,7 +243,7 @@ function EntryTile({ n, title, dek, to, badge }: { n: string; title: string; dek
         )}
       </div>
       <h3 className="mt-4 font-serif text-2xl font-semibold leading-tight">{title}</h3>
-      <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{dek}</p>
+      <p className="mt-3 font-serif text-sm text-foreground/70 leading-relaxed">{dek}</p>
       <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
     </Link>
   );
