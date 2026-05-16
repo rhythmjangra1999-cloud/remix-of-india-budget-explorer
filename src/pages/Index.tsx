@@ -63,7 +63,7 @@ const Index = () => {
         {/* Problem statement */}
         <section className="border-b border-border bg-secondary/30">
           <div className="container py-10">
-            <p className="font-serif text-xl leading-snug md:text-4xl">
+            <p className="font-serif text-base leading-relaxed md:text-xl">
               <span className="uppercase tracking-[0.16em] text-primary mr-3 align-middle text-3xl font-serif font-bold text-left border-slate-50">PROBLEM STATEMENT:</span>
               <br /><br />
               Every year, the Union Budget is announced and reported. But what gets covered is only the first layer  which is how much each ministry received. The actual flow of money lives in the documents that follow: the Demands for Grants, the Detailed Demands for Grants, and the scheme annexures that each ministry publishes. And further still, in how those schemes distribute their allocations across every state in the country. Taken together, these run to thousands of pages scattered across government portals. Koshtha brings them into one place so the full journey of public money becomes readable.
