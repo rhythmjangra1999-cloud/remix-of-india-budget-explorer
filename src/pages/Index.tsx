@@ -128,7 +128,7 @@ const Index = () => {
                     {m.name}
                   </div>
                   <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
-                    <span>
+                    <span className="font-serif">
                       {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
                     </span>
                     {m.netFY27 != null && (
