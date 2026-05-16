@@ -29,7 +29,7 @@ const Index = () => {
                 Trace the rupee. <span className="text-foreground/55">The pulse of public spending.</span>
               </h1>
 
-              <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
+              <div className="mt-8 w-full space-y-5 font-serif text-lg text-foreground/75 leading-relaxed">
                 <p>
                   The Union Budget allocates fifty three lakh forty seven thousand crore rupees each year. Yet knowing how much any one ministry received tells you almost nothing about where the money goes. <span className="text-foreground font-medium">Koshtha</span> reads over one thousand government documents (the Demands for Grants, the Detailed Demands, and the scheme annexures published by each ministry) to trace public money from its allocation in Parliament, through the schemes it funds, to the states those schemes are meant to serve.
                 </p>
@@ -128,7 +128,7 @@ const Index = () => {
                     {m.name}
                   </div>
                   <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
-                    <span>
+                    <span className="font-serif">
                       {(((m.totals.FY27 ?? 0) / BUDGET_META.totalUnionBudgetCr) * 100).toFixed(1)}% of Union Budget
                     </span>
                     {m.netFY27 != null && (
@@ -170,7 +170,7 @@ const Index = () => {
                   <h3 className="mt-3 font-serif text-2xl leading-tight font-semibold group-hover:text-primary transition-colors">
                     {f.title}
                   </h3>
-                  <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{f.dek}</p>
+                  <p className="mt-3 font-serif text-sm text-foreground/70 leading-relaxed">{f.dek}</p>
                 </Link>
               );
             })}
@@ -222,7 +222,7 @@ function SectionHeader({ kicker, title, sub }: { kicker: string | React.ReactNod
     <div className="max-w-2xl">
       <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">{kicker}</div>
       <h2 className="mt-3 font-serif text-3xl md:text-4xl font-semibold leading-tight">{title}</h2>
-      {sub && <p className="mt-3 text-foreground/70 leading-relaxed">{sub}</p>}
+      {sub && <p className="mt-3 font-serif text-foreground/70 leading-relaxed">{sub}</p>}
     </div>
   );
 }
@@ -243,7 +243,7 @@ function EntryTile({ n, title, dek, to, badge }: { n: string; title: string; dek
         )}
       </div>
       <h3 className="mt-4 font-serif text-2xl font-semibold leading-tight">{title}</h3>
-      <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{dek}</p>
+      <p className="mt-3 font-serif text-sm text-foreground/70 leading-relaxed">{dek}</p>
       <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
     </Link>
   );
@@ -264,7 +264,7 @@ function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: 
         )}
       </div>
       <h3 className="mt-3 font-serif text-lg font-semibold leading-tight group-hover:text-primary transition-colors">{title}</h3>
-      <p className="mt-2 text-xs text-foreground/65 leading-relaxed">{dek}</p>
+      <p className="mt-2 font-serif text-xs text-foreground/65 leading-relaxed">{dek}</p>
     </Link>
   );
 }
