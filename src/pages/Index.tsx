@@ -76,22 +76,22 @@ const Index = () => {
           <SectionHeader
             kicker=""
             title="SOLUTION: KOSHTHA"
-            sub="Open the Union Budget at its most granular published level — ministry, demand, major head, sub-head, all the way down to the object head."
+            sub="Koshtha opens the Union Budget at every level it is published. Start with the full picture and drill down until you reach the individual budget line that funds a specific activity in a specific state."
           />
           <div className="mt-10">
             <EntryTile
               n="01"
               title="Union Budget"
-              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries through a 4-year sunburst (FY24 → FY27). Drill from major head → sub-major → minor → object head, with YoY and CAGR side-by-side.`}
+              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries across four fiscal years. Follow any allocation from its major head all the way down to the object head, with year on year changes shown at every level.`}
               to="/explorer?view=union"
             />
           </div>
 
           {/* Sub-tabs after Union Budget */}
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <SubTile n="02" title="Ministry" dek="Drill into any of the 56 ministries — demands, major heads, object heads." to="/explorer" />
-            <SubTile n="03" title="Schemes" dek="Central Sector & Centrally-Sponsored schemes mapped from each ministry's DDG." to="/explorer?view=schemes" badge="Rolling out" />
-            <SubTile n="04" title="State" dek="Estimated flows of central scheme money into each state's department budgets." to="/explorer?view=state" badge="Coming soon" />
+            <SubTile n="02" title="Ministry" dek="Open any of the 56 ministries and read its demands, major heads, and object heads the way the government published them, with four years of figures side by side." to="/explorer" />
+            <SubTile n="03" title="Schemes" dek="Every Central Sector and Centrally Sponsored scheme, mapped from the ministry that funds it down to the states it is meant to serve." to="/explorer?view=schemes" badge="Rolling out" />
+            <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them." to="/explorer?view=state" badge="Coming soon" />
           </div>
         </section>
 
