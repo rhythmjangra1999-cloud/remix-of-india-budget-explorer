@@ -46,15 +46,15 @@ const Index = () => {
               <Stat label="Union Budget, BE 2026 to 27" value="₹53.47 lakh crore" />
               <Link
                 to="/methodology"
-                className="bg-primary/10 text-primary p-5 flex items-center justify-center gap-2 text-base font-medium hover:bg-primary/20 transition-colors min-h-[104px]"
+                className="bg-primary/10 text-primary p-5 flex items-center justify-center gap-2 text-xl font-semibold hover:bg-primary/20 transition-colors min-h-[104px]"
               >
-                Read Tutorial <ArrowUpRight className="h-4 w-4" />
+                Read Tutorial <ArrowUpRight className="h-5 w-5" />
               </Link>
               <Link
                 to="/explorer"
-                className="bg-primary p-5 flex items-center justify-center gap-2 text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors min-h-[104px]"
+                className="bg-primary p-5 flex items-center justify-center gap-2 text-xl font-semibold text-primary-foreground hover:bg-primary/90 transition-colors min-h-[104px]"
               >
-                Open Explorer <ArrowUpRight className="h-4 w-4" />
+                Open Explorer <ArrowUpRight className="h-5 w-5" />
               </Link>
             </div>
           </div>
