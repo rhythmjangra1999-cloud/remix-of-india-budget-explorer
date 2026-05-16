@@ -26,7 +26,7 @@ const Index = () => {
             {/* Full-width heading + copy */}
             <div className="w-full">
               <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                Koshtha — Sanskrit for treasury
+                Koshtha · Sanskrit for treasury
               </div>
 
               <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
@@ -36,7 +36,7 @@ const Index = () => {
 
               <div className="mt-8 w-full space-y-5 text-lg text-foreground/75 leading-relaxed">
                 <p>
-                  The Union Budget allocates <span className="text-foreground font-medium tnum">₹53.47 lakh crore</span>. But knowing how much a ministry received tells you almost nothing. <span className="text-foreground font-medium">Koshtha</span> parses over 1,000 government documents — Demands for Grants, Detailed Demands, and scheme annexures — to map money from a ministry demand, through the schemes it funds, all the way to the states those schemes reach.
+                  The Union Budget allocates <span className="text-foreground font-medium tnum">₹53.47 lakh crore</span>. But knowing how much a ministry received tells you almost nothing. <span className="text-foreground font-medium">Koshtha</span> parses over 1,000 government documents (Demands for Grants, Detailed Demands, and scheme annexures) to map money from a ministry demand, through the schemes it funds, all the way to the states those schemes reach.
                 </p>
               </div>
 
