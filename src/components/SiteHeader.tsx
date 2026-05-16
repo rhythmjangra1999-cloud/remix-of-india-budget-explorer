@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
+import { GlobalSearch } from "@/components/GlobalSearch";
 
 export function SiteHeader() {
   const linkClass =
@@ -19,6 +20,7 @@ export function SiteHeader() {
             </div>
           </div>
         </Link>
+        <div className="flex items-center gap-5">
         <nav className="hidden md:flex items-center gap-7">
           <NavLink to="/explorer" className={linkClass} activeClassName={activeClass}>
             Explorer
@@ -36,6 +38,8 @@ export function SiteHeader() {
             About
           </NavLink>
         </nav>
+        <GlobalSearch />
+        </div>
       </div>
     </header>
   );
