@@ -74,8 +74,8 @@ const Index = () => {
         {/* Single entry tile */}
         <section className="container py-20">
           <SectionHeader
-            kicker="Start here"
-            title="One way in"
+            kicker={<br />}
+            title="KOSHTHA"
             sub="Open the Union Budget at its most granular published level — ministry, demand, major head, sub-head, all the way down to the object head."
           />
           <div className="mt-10">
@@ -217,7 +217,7 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
-function SectionHeader({ kicker, title, sub }: { kicker: string; title: string; sub?: string }) {
+function SectionHeader({ kicker, title, sub }: { kicker: string | React.ReactNode; title: string; sub?: string }) {
   return (
     <div className="max-w-2xl">
       <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">{kicker}</div>
