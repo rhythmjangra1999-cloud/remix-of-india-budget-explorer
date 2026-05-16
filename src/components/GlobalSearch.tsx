@@ -73,10 +73,10 @@ export function GlobalSearch() {
       out.push({
         key: `d:${d.id}`,
         label: d.title,
-        sub: `Demand ${d.number}`,
+        sub: `Demand ${d.number} · ${d.title}`,
         type: "Demand",
-        url: `/explorer?ministry=${d.ministryId}`,
-        haystack: String(d.title).toLowerCase(),
+        url: `/explorer?demand=${d.number}`,
+        haystack: `${String(d.title)} demand ${d.number}`.toLowerCase(),
       });
     }
     const seenScheme = new Set<string>();
