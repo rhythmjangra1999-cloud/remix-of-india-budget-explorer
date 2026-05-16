@@ -63,8 +63,8 @@ const Index = () => {
         {/* Problem statement */}
         <section className="border-b border-border bg-secondary/30">
           <div className="container py-10">
-            <p className="font-serif text-xl md:text-2xl leading-snug">
-              <span className="text-xs uppercase tracking-[0.16em] text-primary font-medium font-sans mr-3 align-middle">Problem statement</span>
+            <p className="font-serif text-xl leading-snug md:text-3xl">
+              <span className="uppercase tracking-[0.16em] text-primary mr-3 align-middle text-3xl font-serif font-bold text-left border-slate-50">PROBLEM STATEMENT:</span>
               Press coverage stops at the ministry-level allocation, but the Demands for Grants, Detailed Demands, and scheme annexures, where the actual flow of money lives, stay buried across thousands of pages of PDFs.
             </p>
           </div>
