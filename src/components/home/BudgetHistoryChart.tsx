@@ -69,7 +69,7 @@ export function BudgetHistoryChart() {
         </div>
         <div className="text-right">
           <div className="font-serif text-2xl font-semibold tnum text-primary">
-            {formatCr(latest.totalCr)}
+            ₹{(latest.totalCr / 100000).toFixed(2)} LCr
           </div>
           <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
             BE {latest.year}-{String((latest.year + 1) % 100).padStart(2, "0")}
