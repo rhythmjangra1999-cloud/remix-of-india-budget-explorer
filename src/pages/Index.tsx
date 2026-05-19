@@ -254,10 +254,10 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 
 function SectionHeader({ kicker, title, sub }: { kicker: string | React.ReactNode; title: string; sub?: string }) {
   return (
-    <div className="max-w-2xl">
-      <div className="text-xs uppercase tracking-[0.16em] text-primary font-medium">{kicker}</div>
+    <div className="w-full text-left">
+      <div className="uppercase tracking-[0.16em] text-primary text-xs md:text-sm font-sans font-medium">{kicker}</div>
       <h2 className="mt-3 font-serif text-3xl md:text-4xl font-semibold leading-tight">{title}</h2>
-      {sub && <p className="mt-3 font-serif text-foreground/70 leading-relaxed">{sub}</p>}
+      {sub && <p className="mt-3 w-full font-serif text-base md:text-lg text-foreground/75 leading-relaxed">{sub}</p>}
     </div>
   );
 }
