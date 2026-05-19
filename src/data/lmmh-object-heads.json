@@ -1,0 +1,562 @@
+[
+  {
+    "code": "01",
+    "name": "Salaries",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "Pay of Govt employees (FR 9(21)), honorarium, stipend to interns, emoluments/allowances of Heads of States, salary of Departmental canteen staff, leave encashment on LTC. Basic pay only \u2014 allowances moved to OH 07.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "02",
+    "name": "Wages",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "Wages of labourers and staff paid out of contingencies.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "05",
+    "name": "Rewards",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "Rewards under a scheme given to Govt employees in addition to pay and allowances. Includes bonus and cash awards for Hindi Pratiyogita etc.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "06",
+    "name": "Medical Treatment",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "Medical reimbursements/treatment of Govt employees and pensioners.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "07",
+    "name": "Allowances",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "DA, HRA, Transport Allowance, Foreign Allowance, Non-Practising Allowance, Deputation (Duty) Allowance, Personal Pay, Family Planning Allowance, Special Compensatory (Hill Areas/Remote Locality), Tribal Area, Hard Area, Headquarter, Overtime, CEA, Reimbursement of Tuition Fee, Ration Allowance, Cost of Ration in cash, Constituency, Uniform & Clothing, Entertainment, Project, Bad Climate, Washing, Special Duty, Night Duty, Risk, Sunderban, Cash Handling, Caretaking, Split Duty Allowance and any other allowance payable in addition to pay. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "08",
+    "name": "Leave Travel Concession",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "Air/rail/bus fare or any other mode of transport entitled under LTC Rules. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "09",
+    "name": "Training Expenses",
+    "objectClass": "Class I: Compensation to Employees",
+    "revOrCapital": "Revenue",
+    "description": "Cost of training: fees paid, contingencies, materials for participating in training/workshops. Excludes domestic or foreign travel expenses. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "04",
+    "name": "Pensionary Charges",
+    "objectClass": "Class II: Social Security of Employees",
+    "revOrCapital": "Revenue",
+    "description": "All pensionary benefits incl. pensions and gratuity in all forms to Govt employees, MPs, freedom fighters etc. Contributions to service funds and contributory provident funds. Leave encashment at retirement/death/termination. Govt contribution under NPS. Does NOT include social security expenditure such as old age pension. [Shifted from Class I]",
+    "status": "Shifted from Class I"
+  },
+  {
+    "code": "11",
+    "name": "Domestic Travel Expenses",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Travel expenses on official tours and transfers within India. Includes TA/DA to non-official members on travel in India. Transfer TA payable to pensioners at retirement.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "12",
+    "name": "Foreign Travel Expenses",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Expenses on official tours and transfers outside India. Includes TA/DA to non-official members going on official tour abroad.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "13",
+    "name": "Office Expenses",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "All recurring and non-recurring contingent expenses for maintenance of office establishment: stationery, postage, courier, telephone, internet, cable, electricity, water, service agreements, security, hiring of retired Govt servants on short-term contract, outsourced office attendants/DEO, house-keeping, liveries, hot/cold weather charges, pest control, refreshment, books and periodicals, hospitality incl. entertainment of foreign delegates, gifts, souvenirs, conferences/seminars/workshops/meetings (all related expenses incl. study material/kits, study tours). Purchase of office equipment, furniture and fixtures NOT exceeding \u20b91 lakh or 3 years useful life (whichever reached first). Vehicles irrespective of usage go to capital OH 51.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "14",
+    "name": "Rent, Rates and Taxes for Land and Buildings",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Rent for buildings (non-residential or residential) or structures, municipal rates and taxes, lease charges for rented land and buildings whose ownership is NOT transferable to Govt. [Lease charges where ownership IS transferable \u2192 capital OH 78 (Land) / 72 (Buildings and Structures)]",
+    "status": "Unchanged"
+  },
+  {
+    "code": "15",
+    "name": "Royalty",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Expenses on royalties on patents, designs, trademarks, print, publishing, music etc.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "16",
+    "name": "Printing and Publication",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Printing of valuables, audit/accounts reports, forms, stationery, office codes, manuals, other documents, newspapers, magazines, e-books, e-magazines, digital printing, pen drive, CD etc. Excludes printing of publicity material (\u2192 OH 26).",
+    "status": "Unchanged"
+  },
+  {
+    "code": "18",
+    "name": "Rent for Others",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Rent for equipment and other items: office equipment, transport, computer and ancillary equipment, communication, AC/heating/refrigeration, security, broadcasting/recording, construction, agricultural, horticultural, medical equipment, furniture and fixtures. Lease charges where ownership NOT transferable to Govt. [Lease charges where ownership IS transferable \u2192 respective capital OH]. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "19",
+    "name": "Digital Equipment",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Hardware and software where cost of individual item does NOT exceed \u20b91 lakh or 3 years useful life (whichever first). Consumables like toner and cartridge for printer classified under revenue regardless of cost. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "21",
+    "name": "Materials and Supplies",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Various kinds of supplies, materials and stores: medical supplies, educational supplies, agricultural supplies, livestock supplies, cleaning materials, hospital drugs and medicines, veterinary drugs, chemicals and fertilizers, lab supplies, spare parts, clothing and tentage.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "22",
+    "name": "Arms and Ammunition",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Revenue expenditure on arms and ammunitions for police and other para-establishments.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "23",
+    "name": "Cost of Ration",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Procurement of ration provided to police and central armed police forces.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "24",
+    "name": "Fuels and Lubricants",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Petrol, oil, lubricants and other fuels like CNG, diesel etc.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "26",
+    "name": "Advertising and Publicity",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Commission to agents for sale and printing of publicity material; advertising through print media, TV, outdoor media, Internet or mobile network, other audio-visual media; fairs and exhibitions.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "27",
+    "name": "Minor Civil and Electric Works",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Repairs and maintenance of minor civil and electrical works of office buildings, residential buildings, other buildings; expenditure on running operation and maintenance (ROM) of diesel genset etc. maintained by CPWD.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "28",
+    "name": "Professional Services",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Engagement of professionals, consultants, artists, banks etc. for services to Govt: legal services, consultancy fees, audit fees, teaching/training fees, payments to artists, remunerations to question setters/invigilators/guest speakers, payments to other departments for services, payments to agencies for departmental examinations.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "29",
+    "name": "Repair and Maintenance",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Repair and maintenance (incl. all maintenance contracts) of: machinery and equipment, office equipment, functional use equipment, digital equipment (office and functional use), furniture and fixtures (office and functional), vehicles (motor and non-motor incl. bicycle, rickshaw, cart, trolley, boat), infrastructural assets (preventive, operating maintenance of roads, bridges, rolling stocks, ships, aircrafts, helicopters, radars, hovercrafts, airports, other infrastructure, telecom towers), tools and plants, arms and ammunition. Excludes upgradation, midlife rehabilitation, retrofitting and reconditioning. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "39",
+    "name": "Bank and Agency Charges",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Bank service charges, agency charges, MDR charges, direct benefit transfer charges to banks and any other charges for convenience fee performing monetary transactions. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "40",
+    "name": "Awards and Prizes",
+    "objectClass": "Class III: Goods and Services",
+    "revOrCapital": "Revenue",
+    "description": "Expenses on awards and prizes given by Govt to eminent persons and organisations. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "31",
+    "name": "Grants-in-Aid \u2014 General",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Grants-in-aid released for payments other than salaries and creation of capital assets. Includes expenditure on welfare activities.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "32",
+    "name": "Contribution",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Contributions to international or national organisations related to membership. Does NOT include transfers to autonomous bodies or PSUs/PSBs for corpus funds.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "33",
+    "name": "Subsidies",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Subsidies released under various schemes of the Government.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "34",
+    "name": "Scholarships",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Scholarship amount released to various institutions, organisations, beneficiaries or individuals. Includes stipends to interns.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "35",
+    "name": "Grants for Creation of Capital Assets",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Grants-in-aid released for payment for creation of capital assets. Includes Viability Gap Funding (expenditure on projects under VGF Scheme).",
+    "status": "Unchanged"
+  },
+  {
+    "code": "36",
+    "name": "Grants-in-Aid \u2014 Salaries",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Grants-in-aid released for payment of salaries.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "37",
+    "name": "Aid Material and Equipment",
+    "objectClass": "Class IV: Aid and Assistance",
+    "revOrCapital": "Revenue",
+    "description": "Value of aid material and equipment transferred to Ministries/Departments, other Govts or organisations. Includes grants given in kind to grantee bodies. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "41",
+    "name": "Secret Service Expenditure",
+    "objectClass": "Class V: Miscellaneous Revenue Expenditure",
+    "revOrCapital": "Revenue",
+    "description": "Expenses on secret services.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "44",
+    "name": "Loss in Exchange",
+    "objectClass": "Class V: Miscellaneous Revenue Expenditure",
+    "revOrCapital": "Revenue",
+    "description": "Loss due to difference in rate of exchange of foreign currency in Indian rupees. Loss at time of receipts/loans from foreign resources and repayment thereof.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "45",
+    "name": "Interest Payments",
+    "objectClass": "Class V: Miscellaneous Revenue Expenditure",
+    "revOrCapital": "Revenue",
+    "description": "Payment of interest on capital and discount on loans.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "49",
+    "name": "Other Revenue Expenditure",
+    "objectClass": "Class V: Miscellaneous Revenue Expenditure",
+    "revOrCapital": "Revenue",
+    "description": "Payment out of discretionary grants, other discounts, fees and fines, custom duty compensation, commitment charges, notional value of gifts, re-imbursement of newspapers at officers residence, purchase/re-imbursement of briefcase/ladies purse to Govt servants. Any expenditure not classifiable under any specified object head. Expenditure on schemes/sub-schemes/organisations not elsewhere classified. In place of old OH \"Other Charges\" (50) and \"Lump Sum Provision\" (42). [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "51",
+    "name": "Motor Vehicles",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Procurement of motor vehicles on road: buses, cars, trucks, motorcycles, irrespective of usage (office or otherwise). All vehicle purchases are capital regardless of value.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "52",
+    "name": "Machinery and Equipment",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Procurement of machinery and equipment (other than motor vehicles and ICT equipment): electrical and electronic equipment, medical appliances, precision and optical instruments, watches and clocks, musical instruments, sports goods. Cost exceeds \u20b91 lakh or 3 years useful life (whichever first).",
+    "status": "Unchanged"
+  },
+  {
+    "code": "71",
+    "name": "Information, Computer, Telecommunications (ICT) Equipment",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Procurement of ICT equipment: computer hardware, telecommunication devices (computers/laptops, projectors), and computer software exceeding \u20b91 lakh or 3 years useful life (whichever first). Electromagnetic spectrum used in transmission of sound, data and television. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "72",
+    "name": "Buildings and Structures",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Office buildings, residential buildings, other buildings and structures (hospitals, laboratories, auditorium, light houses, shelters), public monuments (statues, fountains at public places), and land improvement. Lease charges for buildings where ownership IS transferable to Govt. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "73",
+    "name": "Infrastructural Assets",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Infrastructural assets: roads, bridges, tunnels, irrigation projects, power projects, sports infrastructure, water and sewage projects, railway assets, ships, ports, satellites, satellite launch vehicles, airports, aircrafts, motor boats, railway locomotives and rolling stock, other infrastructural projects (cable lines, sewage systems, rain water harvesting, solar systems, telecom towers, transmission lines, electricity towers). [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "74",
+    "name": "Furniture and Fixtures",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Expenditure on purchase of furniture and fixtures exceeding \u20b91 lakh or 3 years useful life (whichever first) for office use and functional use. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "75",
+    "name": "Arms and Ammunition (Capital)",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Procurement of arms and ammunition of capital nature. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "76",
+    "name": "Upgradation/Procurement of Heritage Assets and not elsewhere classified",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Rehabilitation, overhaul, retrofitting of heritage asset recognised and recorded in the asset register at the nominal value of Re. 1/-. Upgradation \"not elsewhere classified\". Procurement of items of fine art and of cultural and archaeological importance. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "77",
+    "name": "Other Fixed Assets",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Procurement of other fixed assets: library books and publications, trees/crops/plants whose natural growth and regeneration is under direct control of institutional units, non-motor vehicles (bicycle, rickshaw, cart, trolleys, boat). [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "78",
+    "name": "Land",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Land: ground, land for office and residential building, soil covering and any associated surface waters (reservoirs, lakes, rivers and other inland waters over which ownership rights can be exercised). Lease charges for land where ownership IS transferable to Govt. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "79",
+    "name": "Non-produced Assets other than Land",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Mineral and energy reserves on or below surface: oil, natural gas, coal, metallic ores (ferrous, non-ferrous, precious), non-metallic mineral reserves (stone quarries, clay and sand pits, chemical and fertilizer mineral deposits, salt, quartz, gypsum, natural gem stones, asphalts, bitumen, peat), water resources, plants yielding both once-only and repeat products where ownership rights are enforced but natural growth/regeneration is not under direct institutional control \u2014 virgin forests, commercially exploitable fisheries. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "80",
+    "name": "Intangible Assets",
+    "objectClass": "Class VI-A: Non-Financial Assets \u2014 Fixed and Intangible Assets",
+    "revOrCapital": "Capital",
+    "description": "Copyright, patents, goodwill, intellectual property etc. Acquiring ownership in copyrights, patents, goodwill, intellectual property (previously under Royalty). [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "54",
+    "name": "Investment",
+    "objectClass": "Class VI-B: Financial Assets",
+    "revOrCapital": "Capital",
+    "description": "Investments made by Govt: purchase of shares and equity, investment in securities, investment in fixed and term deposits, and other investments.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "55",
+    "name": "Loans and Advances",
+    "objectClass": "Class VI-B: Financial Assets",
+    "revOrCapital": "Capital",
+    "description": "Loans and advances given by the Government.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "56",
+    "name": "Repayment of Borrowings",
+    "objectClass": "Class VI-B: Financial Assets",
+    "revOrCapital": "Capital",
+    "description": "Repayment of borrowings by the Government.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "57",
+    "name": "Subscription",
+    "objectClass": "Class VI-B: Financial Assets",
+    "revOrCapital": "Capital",
+    "description": "Subscriptions made by the Govt of capital nature. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "60",
+    "name": "Other Capital Expenditure",
+    "objectClass": "Class VI-B: Financial Assets",
+    "revOrCapital": "Capital",
+    "description": "All other capital expenditure which cannot be classified under any of the above capital object heads.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "43",
+    "name": "Suspense",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Amount kept under suspense heads for want of complete details for adjustment under final head of account. [Shifted from Class V]",
+    "status": "Shifted from Class I"
+  },
+  {
+    "code": "61",
+    "name": "Depreciation",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Depreciation charged on assets by commercial departments.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "62",
+    "name": "Reserves",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Provisions of reserves.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "63",
+    "name": "Inter Account Transfers",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Used for transfer of amount from one head to another.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "64",
+    "name": "Writes Off of Losses",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Write off of irrecoverable loans, trading losses.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "69",
+    "name": "Deduct Receipts",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Amounts paid from the receipt heads by adjusting as reduction in receipts. [NEW w.e.f. 1.4.2023]",
+    "status": "NEW \u2726"
+  },
+  {
+    "code": "70",
+    "name": "Deduct Recoveries",
+    "objectClass": "Class VII: Accounting Adjustments",
+    "revOrCapital": "Both",
+    "description": "Operated to adjust the overpayments in reduction of expenditure.",
+    "status": "Unchanged"
+  },
+  {
+    "code": "03",
+    "name": "Overtime Allowance",
+    "objectClass": "Subsumed in OH 07 \u2014 Allowances",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "17",
+    "name": "BCTT (Bank Cash Transaction Tax)",
+    "objectClass": "Obsolete \u2014 deleted",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "20",
+    "name": "Other Administrative Expenses",
+    "objectClass": "Subsumed in OH 01 (Salaries), OH 49 (Other Revenue Expenditure), OH 09 (Training Expenses)",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "25",
+    "name": "Clothing and Tentage",
+    "objectClass": "Subsumed in OH 21 \u2014 Materials and Supplies",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "30",
+    "name": "Other Contractual Services",
+    "objectClass": "Subsumed in OH 49 \u2014 Other Revenue Expenditure",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "42",
+    "name": "Lump Sum Provision",
+    "objectClass": "Subsumed in OH 49 \u2014 Other Revenue Expenditure",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "46",
+    "name": "Share of Taxes/Duties",
+    "objectClass": "Obsolete \u2014 deleted",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "50",
+    "name": "Other Charges",
+    "objectClass": "Subsumed in OH 49 \u2014 Other Revenue Expenditure",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  },
+  {
+    "code": "53",
+    "name": "Major Works",
+    "objectClass": "Subsumed in OH 71\u201379 (Capital assets) and OH 72/73 (Buildings, Infrastructure)",
+    "revOrCapital": "",
+    "description": "",
+    "status": ""
+  }
+]

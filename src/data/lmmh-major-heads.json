@@ -1,0 +1,3698 @@
+[
+  {
+    "section": "Revenue Receipt",
+    "code": "0005",
+    "name": "Central Goods and Services Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 13,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0006",
+    "name": "State Goods and Services Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0007",
+    "name": "Union Territory Goods and Services Tax",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 84,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0008",
+    "name": "Integrated Goods and Services Tax",
+    "subMajorsUsed": "01",
+    "minorHeadCount": 36,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0009",
+    "name": "Goods and Services Tax Compensation Cess",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 14,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0020",
+    "name": "Corporation Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 17,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0021",
+    "name": "Non-Corporate Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0022",
+    "name": "Taxes on Agricultural Income",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0023",
+    "name": "Hotel Receipts Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0024",
+    "name": "Interest Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0026",
+    "name": "Fringe Benefit Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0028",
+    "name": "Other Taxes on Income and Expenditure",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0029",
+    "name": "Land Revenue",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0030",
+    "name": "Stamps and Registration",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0031",
+    "name": "Miscellaneous Tax Receipts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0032",
+    "name": "Taxes on Wealth",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0034",
+    "name": "Securities Transaction Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0035",
+    "name": "Taxes on Immovable",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0036",
+    "name": "Commodities Transaction Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0037",
+    "name": "Customs",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0038",
+    "name": "Union Excise Duties",
+    "subMajorsUsed": "01, 02, 03, 60",
+    "minorHeadCount": 28,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0039",
+    "name": "State Excise",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0040",
+    "name": "Taxes on Sales, Trade etc.",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0041",
+    "name": "Taxes on Vehicles",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0042",
+    "name": "Taxes on Goods and Passengers",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0043",
+    "name": "Taxes and Duties on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0044",
+    "name": "Service Tax",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0045",
+    "name": "Other Taxes and Duties on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 21,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0046",
+    "name": "Currency, Coinage and Mint 101 Currency Note Press",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0047",
+    "name": "Other Fiscal Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0049",
+    "name": "Interest Receipts",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 49,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0050",
+    "name": "Dividends and Profits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0051",
+    "name": "Public Service Commission 104 UPSC/SSC Examination Fees.",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0055",
+    "name": "Police",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0056",
+    "name": "Jails",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0057",
+    "name": "Supplies and Disposals",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0058",
+    "name": "Stationery and Printing",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0059",
+    "name": "Public Works",
+    "subMajorsUsed": "01, 60, 80",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0070",
+    "name": "Other Administrative Services",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 27,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0071",
+    "name": "Contributions and Recoveries towards Pension and Other Retirement Benefits",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0075",
+    "name": "Miscellaneous General Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0076",
+    "name": "Defence Services - Army",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0077",
+    "name": "Defence services-Navy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0078",
+    "name": "Defence Services - Air Force",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0079",
+    "name": "Defence Services \u2013 Coordination & Services ( Directorate of Ordnance)",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0080",
+    "name": "Defence Services \u2013 Research & development",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0202",
+    "name": "Education, Sports, Art and Culture",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0210",
+    "name": "Medical and Public Health",
+    "subMajorsUsed": "01, 02, 03, 04, 80",
+    "minorHeadCount": 21,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0211",
+    "name": "Family Welfare",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0215",
+    "name": "Water Supply and Sanitation",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0216",
+    "name": "Housing",
+    "subMajorsUsed": "01, 02, 03, 80",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0217",
+    "name": "Urban Development",
+    "subMajorsUsed": "02, 03, 04, 60",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0220",
+    "name": "Information and Publicity",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0221",
+    "name": "Broadcasting",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0230",
+    "name": "Labour and Employment",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0235",
+    "name": "Social Security and Welfare",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0250",
+    "name": "Other Social Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0401",
+    "name": "Crop Husbandry",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0403",
+    "name": "Animal Husbandry",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0404",
+    "name": "Dairy Development",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0405",
+    "name": "Fisheries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0406",
+    "name": "Forestry and Wild Life",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0407",
+    "name": "Plantations",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 14,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0408",
+    "name": "Food Storage and Warehousing",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0415",
+    "name": "Agricultural Research and Education",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0425",
+    "name": "Co-operation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0435",
+    "name": "Other Agricultural Programmes",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0506",
+    "name": "Land Reforms",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0515",
+    "name": "Other Rural Development Programmes",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0700",
+    "name": "Major Irrigation Each Commercial Project will be a sub-major head",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 23,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0701",
+    "name": "Medium Irrigation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 23,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0702",
+    "name": "Minor Irrigation",
+    "subMajorsUsed": "01, 02, 03, 04, 80",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0801",
+    "name": "Power",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 80",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0802",
+    "name": "Petroleum",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0803",
+    "name": "Coal and Lignite",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0810",
+    "name": "Non Conventional Sources of Energy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0851",
+    "name": "Village and Small Industries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0852",
+    "name": "Industries",
+    "subMajorsUsed": "01, 02, 03, 05, 06, 07, 08, 09",
+    "minorHeadCount": 29,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0853",
+    "name": "Non-ferrous Mining and Metallurgical Industries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "0875",
+    "name": "Other Industries",
+    "subMajorsUsed": "01, 02, 03, 60",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1001",
+    "name": "Indian Railways - Miscellaneous Receipts",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1002",
+    "name": "Indian Railways- Commercial Lines- Revenue Receipts",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 26,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1003",
+    "name": "Indian Railways-Strategic Lines Revenue Receipt",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 27,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1051",
+    "name": "Ports and Light Houses",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1052",
+    "name": "Shipping",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1053",
+    "name": "Civil Aviation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1054",
+    "name": "Roads and Bridges",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1055",
+    "name": "Road Transport Each Departmental undertaking will be a minor",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1056",
+    "name": "Inland Water Transport Each Departmental undertaking/Project will be a",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1075",
+    "name": "Other Transport Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1201",
+    "name": "Postal Receipts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1225",
+    "name": "Telecommunication",
+    "subMajorsUsed": "01, 02, 03, 05",
+    "minorHeadCount": 35,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1275",
+    "name": "Other Communication Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1401",
+    "name": "Atomic Energy Research",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1425",
+    "name": "Other Scientific Research",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1452",
+    "name": "Tourism",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1453",
+    "name": "Foreign Trade and Export Promotion",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1456",
+    "name": "Civil Supplies",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1475",
+    "name": "Other General Economic",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1601",
+    "name": "Grants-in-aid from Central Government",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06",
+    "minorHeadCount": 53,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1605",
+    "name": "External Grant Assistance",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 50,
+    "status": null
+  },
+  {
+    "section": "Revenue Receipt",
+    "code": "1606",
+    "name": "Aid Material and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 51,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2011",
+    "name": "Parliament, State/Union",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2012",
+    "name": "President, Vice President,",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 24,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2013",
+    "name": "Council of Ministers",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2014",
+    "name": "Administration of Justice",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 21,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2015",
+    "name": "Elections",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2016",
+    "name": "Audit",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2020",
+    "name": "Collection of Taxes on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2029",
+    "name": "Land Revenue",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2030",
+    "name": "Stamps and Registration",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2031",
+    "name": "Collection of Taxes on Wealth, Securities Transaction Tax and Other Taxes.",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2035",
+    "name": "Collection of Other Taxes",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2037",
+    "name": "Customs",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2038",
+    "name": "Union Excise Duties",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2039",
+    "name": "State Excise",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2040",
+    "name": "Taxes on Sales, Trade etc.",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2041",
+    "name": "Taxes on Vehicles",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2042",
+    "name": "Central Goods and Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2043",
+    "name": "State Goods and Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2044",
+    "name": "Union Territory Goods and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2045",
+    "name": "Other Taxes and Duties on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2046",
+    "name": "Currency, Coinage and Mint",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2047",
+    "name": "Other Fiscal Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2048",
+    "name": "Appropriation for reduction",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2049",
+    "name": "Interest Payments",
+    "subMajorsUsed": "01, 05, 60",
+    "minorHeadCount": 96,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2051",
+    "name": "Public Service Commission",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2052",
+    "name": "Secretariat-General Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2053",
+    "name": "District Administration",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2054",
+    "name": "Treasury and Accounts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2055",
+    "name": "Police",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 25,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2056",
+    "name": "Jails",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2057",
+    "name": "Supplies and Disposals",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2058",
+    "name": "Stationery and Printing",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2059",
+    "name": "Public Works",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 25,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2061",
+    "name": "External Affairs",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2062",
+    "name": "Vigilance",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2070",
+    "name": "Other Administrative",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 20,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2071",
+    "name": "Pensions and other",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 30,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2075",
+    "name": "Miscellaneous General Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 14,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2076",
+    "name": "Defence Services-Army",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 14,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2077",
+    "name": "Defence Services-Navy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2078",
+    "name": "Defence Services-Air Force",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2079",
+    "name": "Defence Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2080",
+    "name": "Defence Services-Research",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2202",
+    "name": "General Education",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 80",
+    "minorHeadCount": 60,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2203",
+    "name": "Technical Education",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2204",
+    "name": "Sports and Youth Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2205",
+    "name": "Art and Culture",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2210",
+    "name": "Medical and Public Health",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 80",
+    "minorHeadCount": 46,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2211",
+    "name": "Family Welfare",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2215",
+    "name": "Water Supply and Sanitation",
+    "subMajorsUsed": "01, 80",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2216",
+    "name": "Housing",
+    "subMajorsUsed": "02, 03, 04, 05, 06, 07, 80",
+    "minorHeadCount": 39,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2217",
+    "name": "Urban Development",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 80",
+    "minorHeadCount": 36,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2220",
+    "name": "Information and Publicity",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2221",
+    "name": "Broadcasting",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 31,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2225",
+    "name": "Welfare of Scheduled Castes, Scheduled Tribes Other Backward Classes and Minorities",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 36,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2230",
+    "name": "Labour, Employment and Skill Development",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 32,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2235",
+    "name": "Social Security and Welfare",
+    "subMajorsUsed": "01, 03, 04, 60",
+    "minorHeadCount": 42,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2236",
+    "name": "Nutrition",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2245",
+    "name": "Relief on account of",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 59,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2250",
+    "name": "Other Social Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2251",
+    "name": "Secretariat-Social Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2401",
+    "name": "Crop Husbandry",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2402",
+    "name": "Soil and Water Conservation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2403",
+    "name": "Animal Husbandry",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 14,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2404",
+    "name": "Dairy Development",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2405",
+    "name": "Fisheries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2406",
+    "name": "Forestry and Wild Life",
+    "subMajorsUsed": "01, 02, 04",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2407",
+    "name": "Plantations",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2408",
+    "name": "Food, Storage and Warehousing",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2415",
+    "name": "Agricultural Research and Education",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06",
+    "minorHeadCount": 36,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2425",
+    "name": "Co-operation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2435",
+    "name": "Other Agricultural",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2501",
+    "name": "Special Programmes for Rural Development",
+    "subMajorsUsed": "02, 03, 04, 06",
+    "minorHeadCount": 20,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2505",
+    "name": "Rural Employment",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2506",
+    "name": "Land Reforms",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2515",
+    "name": "Other Rural Development",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2552",
+    "name": "North Eastern Areas",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2553",
+    "name": "MPs Local Area",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2700",
+    "name": "Major Irrigation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 21,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2701",
+    "name": "Medium Irrigation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 21,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2702",
+    "name": "Minor Irrigation",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 17,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2711",
+    "name": "Flood Control and Drainage",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2801",
+    "name": "Power",
+    "subMajorsUsed": "01, 02, 03, 04, 06, 80",
+    "minorHeadCount": 46,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2802",
+    "name": "Petroleum",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2803",
+    "name": "Coal and Lignite",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2810",
+    "name": "New and Renewable Energy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2851",
+    "name": "Village and Small Industries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2852",
+    "name": "Industries",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 08, 09, 80",
+    "minorHeadCount": 51,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2853",
+    "name": "Non ferrous Mining and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 17,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2875",
+    "name": "Other Industries",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "2885",
+    "name": "Other Outlays on Industries",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3001",
+    "name": "Indian Railways-Policy Formulation, Direction, Research and Other Miscellaneous Organisation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3002",
+    "name": "Indian Railways-",
+    "subMajorsUsed": "01, 02, 03, 12, 13",
+    "minorHeadCount": 90,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3003",
+    "name": "Indian Railways-Strategic",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 90,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3004",
+    "name": "Indian Railways-Open Line",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3005",
+    "name": "Payments to General Revenues",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3006",
+    "name": "Appropriation from Railway",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3007",
+    "name": "Repayment of Loans taken",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3051",
+    "name": "Ports and Light Houses",
+    "subMajorsUsed": "01, 02, 03, 80",
+    "minorHeadCount": 30,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3052",
+    "name": "Shipping",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 17,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3053",
+    "name": "Civil Aviation",
+    "subMajorsUsed": "01, 02, 60, 80",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3054",
+    "name": "Roads and Bridges",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 80",
+    "minorHeadCount": 34,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3055",
+    "name": "Road Transport",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3056",
+    "name": "Inland Water Transport",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3075",
+    "name": "Other Transport Services",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3201",
+    "name": "Postal Services",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 08",
+    "minorHeadCount": 30,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3225",
+    "name": "Telecommunication Services",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 60",
+    "minorHeadCount": 53,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3230",
+    "name": "Dividends to General",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3231",
+    "name": "Appropriations from",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3232",
+    "name": "Repayment of Loans taken",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3252",
+    "name": "Satellite systems",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3275",
+    "name": "Other Communication",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3401",
+    "name": "Atomic Energy Research",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3402",
+    "name": "Space Research",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3403",
+    "name": "Earth System Science",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3425",
+    "name": "Other Scientific Research",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 17,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3435",
+    "name": "Ecology and Environment",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 20,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3451",
+    "name": "Secretariat-Economic",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3452",
+    "name": "Tourism",
+    "subMajorsUsed": "01, 80",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3453",
+    "name": "Foreign Trade and Export",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3454",
+    "name": "Census Surveys and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3455",
+    "name": "Meteorology",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3456",
+    "name": "Civil Supplies",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3465",
+    "name": "General Financial and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3466",
+    "name": "International Financial",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3475",
+    "name": "Other General Economic Services",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 20,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3601",
+    "name": "Grants-in-aid to State",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 53,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3602",
+    "name": "Grants-in-aid to",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 08",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3604",
+    "name": "Compensation and Assignments to Local Bodies and Panchayati Raj Institutions",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3605",
+    "name": "Technical and Economic",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Revenue Expenditure",
+    "code": "3606",
+    "name": "Aid Materials and Equipments",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 51,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4000",
+    "name": "Miscellaneous Capital",
+    "subMajorsUsed": "01, 02, 03, 04, 05",
+    "minorHeadCount": 17,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4016",
+    "name": "Capital Outlay on Audit",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4046",
+    "name": "Capital Outlay on Currency,",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4047",
+    "name": "Capital Outlay on Other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4055",
+    "name": "Capital Outlay on Police",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4058",
+    "name": "Capital Outlay on Stationery",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4059",
+    "name": "Capital Outlay on Public",
+    "subMajorsUsed": "01, 60, 80",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4070",
+    "name": "Capital Outlay on Other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4075",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4076",
+    "name": "Capital Outlay on Defence Services",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 08",
+    "minorHeadCount": 51,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4202",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4210",
+    "name": "Capital Outlay on Medical",
+    "subMajorsUsed": "01, 02, 03, 04, 80",
+    "minorHeadCount": 27,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4211",
+    "name": "Capital Outlay on Family Welfare",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4215",
+    "name": "Capital Outlay on Water Supply and Sanitation",
+    "subMajorsUsed": "01, 02, 03, 80",
+    "minorHeadCount": 23,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4217",
+    "name": "Capital Outlay on Urban",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 33,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4220",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4221",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4225",
+    "name": "Capital Outlay on Welfare",
+    "subMajorsUsed": "01, 02, 03, 04",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4235",
+    "name": "Capital Outlay on Social",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4236",
+    "name": "Capital Outlay on Nutrition",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4250",
+    "name": "Capital Outlay on other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4401",
+    "name": "Capital Outlay on Crop",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4402",
+    "name": "Capital Outlay on Soil and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4403",
+    "name": "Capital Outlay on Animal",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4404",
+    "name": "Capital outlay on Dairy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4405",
+    "name": "Capital Outlay on Fisheries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4406",
+    "name": "Capital Outlay on Forestry",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4407",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4408",
+    "name": "Capital Outlay on food",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4415",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 80",
+    "minorHeadCount": 24,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4416",
+    "name": "Investments in Agricultural",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4425",
+    "name": "Capital Outlay on Co- operation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4435",
+    "name": "Capital Outlay on Other Agricultural Programmes",
+    "subMajorsUsed": "01",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4515",
+    "name": "Capital Outlay on other Rural Development Programmes",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4700",
+    "name": "Capital Outlay on Major",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4701",
+    "name": "Capital Outlay on Medium",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4702",
+    "name": "Capital Outlay on Minor",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4711",
+    "name": "Capital Outlay on Flood",
+    "subMajorsUsed": "01, 03",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4801",
+    "name": "Capital Outlay on Power",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 80",
+    "minorHeadCount": 40,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4802",
+    "name": "Capital Outlay on Petroleum",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4803",
+    "name": "Capital outlay on Coal and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4810",
+    "name": "Capital Outlay on New and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4851",
+    "name": "Capital Outlay on Village",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4852",
+    "name": "Capital Outlay on Iron and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4853",
+    "name": "Capital Outlay on Non-",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4854",
+    "name": "Capital outlay on Cement",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4855",
+    "name": "Capital Outlay on Fertilizer",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4856",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4857",
+    "name": "Capital Outlay on Chemicals",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4858",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 60",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4859",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4860",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 03, 04, 05, 60",
+    "minorHeadCount": 22,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4861",
+    "name": "Capital Outlay on Atomic",
+    "subMajorsUsed": "01, 02, 03, 60",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4875",
+    "name": "Capital Outlay on Other",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "4885",
+    "name": "Other Capital Outlay on",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5002",
+    "name": "Capital Outlay on Indian",
+    "subMajorsUsed": "01",
+    "minorHeadCount": 75,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5003",
+    "name": "Capital Outlay on Indian",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 68,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5051",
+    "name": "Capital Outlay on Ports and",
+    "subMajorsUsed": "01, 02, 03, 80",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5052",
+    "name": "Capital Outlay on Shipping",
+    "subMajorsUsed": "01, 02, 80",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5053",
+    "name": "Capital Outlay on Civil",
+    "subMajorsUsed": "01, 02, 60, 80",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5054",
+    "name": "Capital Outlay on Roads and",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 80",
+    "minorHeadCount": 27,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5055",
+    "name": "Capital Outlay on Road",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5056",
+    "name": "Capital Outlay on Inland",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5075",
+    "name": "Capital Outlay on Other",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5201",
+    "name": "Capital Outlay on Postal",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5225",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 60, 80",
+    "minorHeadCount": 49,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5252",
+    "name": "Capital Outlay on Satellite",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5275",
+    "name": "Capital Outlay on other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5401",
+    "name": "Capital Outlay on Atomic",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5402",
+    "name": "Capital Outlay on Space",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5403",
+    "name": "Capital Outlay on Earth",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5425",
+    "name": "Capital Outlay on other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5452",
+    "name": "Capital Outlay on Tourism",
+    "subMajorsUsed": "01, 80",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5453",
+    "name": "Capital Outlay on Foreign",
+    "subMajorsUsed": "01, 02, 03, 04, 05, 06, 07, 80",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5455",
+    "name": "Capital Outlay on",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5465",
+    "name": "Investments in General",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5466",
+    "name": "Investment in International",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5467",
+    "name": "Capital outlay on Investment",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "5475",
+    "name": "Capital Outlay on other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "6001",
+    "name": "Internal Debt of Central",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 28,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "6002",
+    "name": "External Debt",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 28,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "6003",
+    "name": "Internal debt of the State",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "6004",
+    "name": "Loans and Advances from",
+    "subMajorsUsed": "01, 02, 03, 05, 06, 07, 08, 09",
+    "minorHeadCount": 36,
+    "status": null
+  },
+  {
+    "section": "Capital Expenditure",
+    "code": "6005",
+    "name": "External Debt Suspense",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6075",
+    "name": "Loans for Miscellaneous",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6202",
+    "name": "Loans for Education,",
+    "subMajorsUsed": "01, 02, 03, 04, 80",
+    "minorHeadCount": 18,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6210",
+    "name": "Loans for Medical and",
+    "subMajorsUsed": "01, 03, 04, 80",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6211",
+    "name": "Loans for Family Welfare",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6215",
+    "name": "Loans for Water Supply and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6216",
+    "name": "Loans for Housing",
+    "subMajorsUsed": "02, 03, 80",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6217",
+    "name": "Loans for Urban",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6220",
+    "name": "Loans for Information and",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6221",
+    "name": "Loans for Broadcasting",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6225",
+    "name": "Loans for Welfare of",
+    "subMajorsUsed": "01, 02, 03, 04, 80",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6235",
+    "name": "Loans for Social Security",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 25,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6245",
+    "name": "Loans for Relief on account",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 30,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6250",
+    "name": "Loans for other Social",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6401",
+    "name": "Loans for Crop Husbandry",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6402",
+    "name": "Loans for Soil and Water",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6403",
+    "name": "Loans for Animal",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6404",
+    "name": "Loans for Dairy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6405",
+    "name": "Loans for Fisheries",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6406",
+    "name": "Loans for Forestry and Wild",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6407",
+    "name": "Loans for Plantations",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 12,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6408",
+    "name": "Loans for Food Storage and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6416",
+    "name": "Loans to Agricultural",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6425",
+    "name": "Loans for Co-operation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6435",
+    "name": "Loans for other Agricultural",
+    "subMajorsUsed": "01",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6501",
+    "name": "Loans for Special",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6505",
+    "name": "Loans for Rural",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6506",
+    "name": "Loans for Land Reforms",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6515",
+    "name": "Loans for other Rural",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6700",
+    "name": "Loans for Major Irrigation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6701",
+    "name": "Loans for Medium",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6702",
+    "name": "Loans for Minor Irrigation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6705",
+    "name": "Loans for Command Area",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6711",
+    "name": "Loans for Flood Control",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6801",
+    "name": "Loans for Power",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6802",
+    "name": "Loans for Petroleum",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6803",
+    "name": "Loans for Coal and Lignite",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6810",
+    "name": "Loans for New and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6851",
+    "name": "Loans for Village and Small",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6852",
+    "name": "Loans for Iron and Steel",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6853",
+    "name": "Loans for non-Ferrous",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6854",
+    "name": "Loans for Cement and Non-",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6855",
+    "name": "Loans for Fertilizer",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6856",
+    "name": "Loans for Petro-Chemical",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6857",
+    "name": "Loans for Chemical and",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6858",
+    "name": "Loans for Engineering",
+    "subMajorsUsed": "01, 02, 03, 60",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6859",
+    "name": "Loans for",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6860",
+    "name": "Loans for Consumer",
+    "subMajorsUsed": "01, 03, 04, 05, 60",
+    "minorHeadCount": 20,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6861",
+    "name": "Loans for Atomic Energy",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6875",
+    "name": "Loans for other Industries",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "6885",
+    "name": "Other Loans to Industries",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7002",
+    "name": "Loans to Railways",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7051",
+    "name": "Loans for Ports and Light",
+    "subMajorsUsed": "01, 02, 03, 60",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7052",
+    "name": "Loans for Shipping",
+    "subMajorsUsed": "01, 02, 60",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7053",
+    "name": "Loans for Civil Aviation",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7055",
+    "name": "Loans for Road Transport",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7056",
+    "name": "Loans for Inland Water",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7075",
+    "name": "Loans for Other Transport",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7225",
+    "name": "Loans for",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7275",
+    "name": "Loans for other",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7425",
+    "name": "Loans for Other Scientific",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7452",
+    "name": "Loans for Tourism",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7453",
+    "name": "Loans for Foreign Trade",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7465",
+    "name": "Loans for General Financial",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7466",
+    "name": "101 Loans to African Development Fund (AfDF)",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7475",
+    "name": "Loans for Other General",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7601",
+    "name": "Loans and Advances to State",
+    "subMajorsUsed": "01, 02, 03, 05, 06, 08, 09",
+    "minorHeadCount": 34,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7602",
+    "name": "Loans and Advances to",
+    "subMajorsUsed": "01, 02, 03, 06, 07",
+    "minorHeadCount": 13,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7610",
+    "name": "Loans to Government",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7615",
+    "name": "Miscellaneous Loans",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Loans & Advances",
+    "code": "7810",
+    "name": "Inter State Settlement",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 25,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "7999",
+    "name": "Appropriation to the",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8000",
+    "name": "Contingency Fund",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8001",
+    "name": "National Savings Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8002",
+    "name": "National Savings",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8006",
+    "name": "Public Provident Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8007",
+    "name": "Investments of National",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8008",
+    "name": "Income and Expenditure of National Small Savings Fund",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 14,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8009",
+    "name": "State Provident Funds",
+    "subMajorsUsed": "01, 02, 03, 04, 60",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8010",
+    "name": "Trusts and Endowments",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8011",
+    "name": "Insurance and Pension",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8012",
+    "name": "Special Deposits and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 35,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8013",
+    "name": "Other Deposits and",
+    "subMajorsUsed": "01, 60",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8014",
+    "name": "Postal Life Insurance",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 16,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8015",
+    "name": "Investments of Post Office",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 10,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8016",
+    "name": "Income & Expenditure of",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 37,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8031",
+    "name": "Other Savings Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8032",
+    "name": "Other Savings Certificates",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8115",
+    "name": "Depreciation/Renewal",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8116",
+    "name": "Revenue Reserve Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8117",
+    "name": "Development Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8118",
+    "name": "Capital Reserve Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8121",
+    "name": "General and other Reserve",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 25,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8222",
+    "name": "Sinking Funds",
+    "subMajorsUsed": "01, 02",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8223",
+    "name": "Famine Relief Fund",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8224",
+    "name": "Central Road and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8225",
+    "name": "Roads and Bridges Fund",
+    "subMajorsUsed": "01, 02, 03",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8226",
+    "name": "Depreciation/Renewal",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8228",
+    "name": "Revenue Reserve Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8229",
+    "name": "Development and Welfare",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 31,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8230",
+    "name": "Special Railway Safety Fund",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8231",
+    "name": "Railway Safety Fund",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8232",
+    "name": "Rural Employment",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8235",
+    "name": "General and other Reserve Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 44,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8336",
+    "name": "Civil Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8337",
+    "name": "Deposits of Railways",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8338",
+    "name": "Deposits of Local Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8342",
+    "name": "Other Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 19,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8443",
+    "name": "Civil Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 31,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8444",
+    "name": "Defence Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8445",
+    "name": "Railway Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8446",
+    "name": "Postal Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 3,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8447",
+    "name": "Telecommunication",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8448",
+    "name": "Deposits of Local Funds",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 15,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8449",
+    "name": "Other Deposits",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 23,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8450",
+    "name": "Balance Account of Union",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8451",
+    "name": "Bhopal Gas Leak Disaster",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 7,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8452",
+    "name": "National Investment Fund",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8453",
+    "name": "Income and Expenditure",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8455",
+    "name": "Settlement Account with",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": "NEW \u2726"
+  },
+  {
+    "section": "Public Account",
+    "code": "8550",
+    "name": "Civil Advances",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8551",
+    "name": "Defence Advances",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8552",
+    "name": "Railway Advances",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8553",
+    "name": "Postal Advances",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8554",
+    "name": "Telecommunication",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8656",
+    "name": "Coinage Accounts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8658",
+    "name": "Suspense Accounts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 27,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8659",
+    "name": "Suspense Accounts (Defence)",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8660",
+    "name": "Suspense Accounts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8661",
+    "name": "Suspense Accounts (Postal)",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 9,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8662",
+    "name": "Suspense Accounts",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 11,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8663",
+    "name": "Accounting Adjustments",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8670",
+    "name": "Cheques and Bills",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 14,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8671",
+    "name": "Departmental Balances",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8672",
+    "name": "Permanent Cash Imprest",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8673",
+    "name": "Cash Balance Investment",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8674",
+    "name": "Security Deposits made by",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8675",
+    "name": "Deposits with Reserve Bank",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 8,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8677",
+    "name": "Remittances into Banks/",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 4,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8680",
+    "name": "Miscellaneous Government",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8781",
+    "name": "Money Orders",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 5,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8782",
+    "name": "Cash Remittances and",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 29,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8783",
+    "name": "Agency arrangements of",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8785",
+    "name": "Other Remittances",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 1,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8794",
+    "name": "Accounts with the High",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 2,
+    "status": null
+  },
+  {
+    "section": "Public Account",
+    "code": "8999",
+    "name": "Cash Balance",
+    "subMajorsUsed": "00 only",
+    "minorHeadCount": 6,
+    "status": null
+  }
+]
