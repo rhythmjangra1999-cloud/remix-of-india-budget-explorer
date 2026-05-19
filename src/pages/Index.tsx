@@ -41,21 +41,57 @@ const Index = () => {
               <BudgetHistoryChart />
             </div>
 
-            {/* Headline figure + CTAs in one grid */}
-            <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden border border-border">
-              <Stat label="Union Budget, BE 2026 to 27" value="₹53.47 lakh crore" />
-              <Link
-                to="/methodology"
-                className="bg-primary/10 text-primary p-5 flex items-center justify-center gap-2 text-xl font-semibold hover:bg-primary/20 transition-colors min-h-[104px]"
-              >
-                Read Tutorial <ArrowUpRight className="h-5 w-5" />
-              </Link>
-              <Link
-                to="/explorer"
-                className="bg-primary p-5 flex items-center justify-center gap-2 text-xl font-semibold text-primary-foreground hover:bg-primary/90 transition-colors min-h-[104px]"
-              >
-                Open Explorer <ArrowUpRight className="h-5 w-5" />
-              </Link>
+            {/* Headline figure + CTAs — editorial ledger band */}
+            <div className="mt-14">
+              <div className="border-t-2 border-b border-foreground" />
+              <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] bg-border gap-px">
+                {/* Figure cell */}
+                <div className="bg-card p-7 md:p-8 flex flex-col justify-center min-h-[140px]">
+                  <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
+                    Union Budget · BE 2026 to 27
+                  </span>
+                  <div className="mt-3 font-serif text-4xl md:text-5xl font-semibold tnum text-foreground leading-none">
+                    ₹53.47 <span className="text-2xl md:text-3xl font-normal text-foreground/75">lakh crore</span>
+                  </div>
+                </div>
+
+                {/* Read Tutorial */}
+                <Link
+                  to="/methodology"
+                  className="group relative overflow-hidden bg-primary/10 p-7 md:p-8 flex flex-col justify-center min-h-[140px] hover:bg-primary/15 transition-colors"
+                >
+                  <span className="font-serif italic text-sm text-primary/80">Getting started</span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="font-serif text-2xl font-semibold text-foreground leading-tight">
+                      Read Tutorial
+                    </span>
+                    <ArrowUpRight className="h-5 w-5 text-primary transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </div>
+                  <span aria-hidden className="pointer-events-none select-none absolute -bottom-6 -right-3 font-sans text-8xl font-black text-foreground/[0.05] transition-transform duration-700 group-hover:-translate-y-1">
+                    01
+                  </span>
+                </Link>
+
+                {/* Open Explorer */}
+                <Link
+                  to="/explorer"
+                  className="group relative overflow-hidden bg-primary p-7 md:p-8 flex flex-col justify-center min-h-[140px] hover:bg-primary/90 transition-colors"
+                >
+                  <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-primary-foreground/70 font-medium">
+                    Interactive Suite
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="font-sans text-xl font-bold uppercase tracking-tight text-primary-foreground leading-tight">
+                      Open Explorer
+                    </span>
+                    <ArrowUpRight className="h-5 w-5 text-primary-foreground transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                  <span aria-hidden className="pointer-events-none select-none absolute -bottom-6 -right-3 font-sans text-8xl font-black text-primary-foreground/10 transition-transform duration-700 group-hover:-translate-y-1">
+                    02
+                  </span>
+                </Link>
+              </div>
+              <div className="border-b-2 border-t border-foreground" />
             </div>
           </div>
         </section>
