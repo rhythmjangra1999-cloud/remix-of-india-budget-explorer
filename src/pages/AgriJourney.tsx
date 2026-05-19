@@ -231,9 +231,9 @@ function InsightsStep() {
 // ── Step 6: Tutorial ─────────────────────────────────────────────────────────
 function TutorialStep({ onStart }: { onStart: () => void }) {
   return (
-    <div className="rounded-md border border-border bg-card p-8 text-center space-y-4">
+    <div className="rounded-md border border-border bg-card p-8 text-left space-y-4">
       <h2 className="font-serif text-2xl font-semibold">Take the guided tour</h2>
-      <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+      <p className="text-sm text-muted-foreground max-w-xl">
         An 8-step coach-mark walk-through of the Agriculture journey — from headline KPIs to insights.
         Use it any time you want a refresher on what each section means.
       </p>
