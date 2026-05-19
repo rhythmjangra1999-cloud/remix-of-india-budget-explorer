@@ -129,6 +129,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Proof */}
+        <ProofSection topMinistries={topMinistries} totalCr={BUDGET_META.totalUnionBudgetCr} />
+
+
+
 
 
 
