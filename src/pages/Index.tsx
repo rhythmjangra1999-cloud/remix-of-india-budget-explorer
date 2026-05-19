@@ -22,7 +22,7 @@ const Index = () => {
       <main className="flex-1">
         {/* Hero */}
         <section className="paper border-b border-border">
-          <div className="container py-20 md:py-24">
+          <div className="container py-20 md:py-24 text-sm font-serif font-normal">
             {/* Full-width heading + copy */}
             <div className="w-full">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
@@ -78,7 +78,7 @@ const Index = () => {
                   className="group relative overflow-hidden bg-primary p-7 md:p-8 flex flex-col justify-center min-h-[140px] hover:bg-primary/90 transition-colors"
                 >
                   <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-primary-foreground/70 font-medium">
-                    Interactive Suite
+                    DIVE DEEPER
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <span className="font-sans text-xl font-bold uppercase tracking-tight text-primary-foreground leading-tight">
