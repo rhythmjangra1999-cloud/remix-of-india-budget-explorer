@@ -21,13 +21,13 @@ export function BudgetCycleTimeline() {
               />
             </div>
             {/* Phase label */}
-            <div className="mt-3 text-[10px] uppercase tracking-[0.14em] text-muted-foreground font-mono text-center">
+            <div className="mt-3 text-[10px] uppercase tracking-[0.14em] text-muted-foreground font-mono text-left">
               {p.phase}
             </div>
-            <div className="mt-1 font-serif text-base font-semibold text-center leading-tight">
+            <div className="mt-1 font-serif text-base font-semibold text-left leading-tight">
               {p.title}
             </div>
-            <p className="mt-2 text-xs text-foreground/70 leading-relaxed text-center">
+            <p className="mt-2 text-xs text-foreground/70 leading-relaxed text-left">
               {p.detail}
             </p>
           </div>
