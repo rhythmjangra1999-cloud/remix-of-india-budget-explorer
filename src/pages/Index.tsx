@@ -129,6 +129,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Proof */}
+        <ProofSection topMinistries={topMinistries} totalCr={BUDGET_META.totalUnionBudgetCr} />
+
+
+
 
 
 
@@ -304,4 +309,140 @@ function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: 
   );
 }
 
+function ProofSection({ topMinistries, totalCr }: { topMinistries: typeof MINISTRIES; totalCr: number }) {
+  const rows = topMinistries.slice(0, 6).map((m) => ({
+    id: m.id,
+    name: m.short ?? m.name,
+    cr: m.totals.FY27 ?? 0,
+    share: ((m.totals.FY27 ?? 0) / totalCr) * 100,
+  }));
+  const max = Math.max(...rows.map((r) => r.cr));
+  const top = rows[0];
+  const sumTop6 = rows.reduce((s, r) => s + r.cr, 0);
+  const top6Share = (sumTop6 / totalCr) * 100;
+
+  const insights = [
+    {
+      k: "Concentration",
+      t: `Top 6 ministries hold ${top6Share.toFixed(1)}% of the Union Budget`,
+      d: `Excluding Finance (debt servicing), just six ministries account for ${formatCr(sumTop6, { compact: true })} of the ${formatCr(totalCr, { compact: true })} allocation in BE 2026-27.`,
+      tag: "01",
+    },
+    {
+      k: "Largest line",
+      t: `${top?.name} leads at ${formatCr(top?.cr ?? 0, { compact: true })}`,
+      d: `That is ${top?.share.toFixed(1)}% of the Union Budget — visible only after stripping Finance's accounting flows from the league table.`,
+      tag: "02",
+    },
+    {
+      k: "Reproducible",
+      t: "Every number traces back to a source document",
+      d: "Open the same view in the Report Builder. Every cell links to the Demand for Grants page it was parsed from. No black box.",
+      tag: "03",
+    },
+  ];
+
+  return (
+    <section className="border-y border-border bg-card">
+      <div className="container py-16">
+        <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
+          PROOF:
+        </div>
+        <p className="mt-4 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
+          Build your case with all the numbers. Every chart on Koshtha is reproducible in the Report Builder — pick a dimension, pick a year, see what the data says, and read what it implies.
+        </p>
+
+        <div className="mt-10 grid gap-px bg-border border border-border rounded-sm overflow-hidden lg:grid-cols-[1.4fr_1fr]">
+          {/* LEFT — Report Builder snapshot */}
+          <div className="bg-card p-6 md:p-8">
+            <div className="flex items-baseline justify-between gap-4 border-b border-border pb-3">
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                  Report Builder · snapshot
+                </div>
+                <div className="mt-1 font-serif text-base font-semibold">
+                  Top ministries by allocation · BE 2026-27
+                </div>
+              </div>
+              <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                <span className="px-1.5 py-0.5 border border-border">groupBy: ministry</span>
+                <span className="px-1.5 py-0.5 border border-border">measure: be2627</span>
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-3">
+              {rows.map((r, i) => (
+                <Link
+                  key={r.id}
+                  to={`/builder?b=ministry&y=be2627`}
+                  className="group block"
+                >
+                  <div className="flex items-baseline justify-between gap-3 text-xs">
+                    <div className="flex items-baseline gap-2 min-w-0">
+                      <span className="font-mono text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-serif text-sm truncate group-hover:text-primary transition-colors">
+                        {r.name}
+                      </span>
+                    </div>
+                    <div className="font-mono tnum text-foreground/80 shrink-0">
+                      {formatCr(r.cr, { compact: true })}
+                      <span className="ml-2 text-muted-foreground">{r.share.toFixed(1)}%</span>
+                    </div>
+                  </div>
+                  <div className="mt-1.5 h-2 w-full bg-muted/60 overflow-hidden">
+                    <div
+                      className="h-full bg-primary/80 group-hover:bg-primary transition-colors"
+                      style={{ width: `${(r.cr / max) * 100}%` }}
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs">
+              <span className="font-mono text-muted-foreground">
+                Source · Demands for Grants 2026-27
+              </span>
+              <Link
+                to="/builder"
+                className="inline-flex items-center gap-1 text-primary font-medium hover:underline"
+              >
+                Open in Builder <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT — Insights tied to the chart */}
+          <div className="bg-card p-6 md:p-8">
+            <div className="border-b border-border pb-3">
+              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                Suggested insights
+              </div>
+              <div className="mt-1 font-serif text-base font-semibold">
+                What the chart on the left actually says
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-5">
+              {insights.map((ins) => (
+                <div key={ins.tag} className="border-t border-border/70 pt-4 first:border-t-0 first:pt-0">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[10px] text-muted-foreground">{ins.tag}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                      {ins.k}
+                    </span>
+                  </div>
+                  <h4 className="mt-2 font-serif text-base font-semibold leading-snug">{ins.t}</h4>
+                  <p className="mt-1.5 font-serif text-xs text-foreground/70 leading-relaxed">{ins.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default Index;
+
