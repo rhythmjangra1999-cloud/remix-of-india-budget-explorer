@@ -98,22 +98,24 @@ const Index = () => {
 
         {/* Problem statement */}
         <section className="border-b border-border bg-secondary/30">
-          <div className="container py-10">
-            <p className="font-serif text-base leading-relaxed md:text-xl">
-              <span className="uppercase tracking-[0.16em] text-primary mr-3 align-middle text-3xl font-serif font-bold text-left border-slate-50">PROBLEM STATEMENT:</span>
-              <br /><br />
+          <div className="container py-14">
+            <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
+              PROBLEM STATEMENT:
+            </div>
+            <p className="mt-6 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
               Every year, the Union Budget is announced and reported. But what gets covered is only the first layer  which is how much each ministry received. The actual flow of money lives in the documents that follow: the Demands for Grants, the Detailed Demands for Grants, and the scheme annexures that each ministry publishes. And further still, in how those schemes distribute their allocations across every state in the country. Taken together, these run to thousands of pages scattered across government portals. Koshtha brings them into one place so the full journey of public money becomes readable.
             </p>
           </div>
         </section>
 
         {/* Single entry tile */}
-        <section className="container py-20">
-          <SectionHeader
-            kicker=""
-            title="SOLUTION: KOSHTHA"
-            sub="Koshtha opens the Union Budget at every level it is published. Start with the full picture and drill down until you reach the individual budget line that funds a specific activity in a specific state."
-          />
+        <section className="container py-14">
+          <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
+            SOLUTION: KOSHTHA
+          </div>
+          <p className="mt-6 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
+            Koshtha opens the Union Budget at every level it is published. Start with the full picture and drill down until you reach the individual budget line that funds a specific activity in a specific state.
+          </p>
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <SubTile
               n="01"
@@ -126,6 +128,7 @@ const Index = () => {
             <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them." to="/explorer?view=state" badge="Coming soon" />
           </div>
         </section>
+
 
 
 
