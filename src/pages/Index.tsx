@@ -125,7 +125,7 @@ const Index = () => {
             />
             <SubTile n="02" title="Ministry" dek="Open any of the 56 ministries and read its demands, major heads, and object heads the way the government published them, with four years of figures side by side." to="/explorer" />
             <SubTile n="03" title="Schemes" dek="Every Central Sector and Centrally Sponsored scheme, mapped from the ministry that funds it down to the states it is meant to serve." to="/explorer?view=schemes" badge="Rolling out" />
-            <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them." to="/explorer?view=state" badge="Coming soon" />
+            <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them. Starting with Uttar Pradesh · Agriculture." to="/states" badge="Rolling out" />
           </div>
         </section>
 
