@@ -14,6 +14,8 @@ import Builder from "./pages/Builder.tsx";
 import States from "./pages/States.tsx";
 import StateUttarPradesh from "./pages/StateUttarPradesh.tsx";
 import UPAgriJourney from "./pages/UPAgriJourney.tsx";
+import StatePunjab from "./pages/StatePunjab.tsx";
+import PunjabAgriJourney from "./pages/PunjabAgriJourney.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -37,6 +39,8 @@ const App = () => (
           <Route path="/states" element={<States />} />
           <Route path="/states/uttar-pradesh" element={<StateUttarPradesh />} />
           <Route path="/states/uttar-pradesh/agriculture" element={<UPAgriJourney />} />
+          <Route path="/states/punjab" element={<StatePunjab />} />
+          <Route path="/states/punjab/agriculture" element={<PunjabAgriJourney />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

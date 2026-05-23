@@ -19,7 +19,7 @@
     { "name": "Mizoram", "slug": "mizoram", "type": "state", "status": "placeholder" },
     { "name": "Nagaland", "slug": "nagaland", "type": "state", "status": "placeholder" },
     { "name": "Odisha", "slug": "odisha", "type": "state", "status": "placeholder" },
-    { "name": "Punjab", "slug": "punjab", "type": "state", "status": "placeholder" },
+    { "name": "Punjab", "slug": "punjab", "type": "state", "status": "live", "live": ["agriculture"] },
     { "name": "Rajasthan", "slug": "rajasthan", "type": "state", "status": "placeholder" },
     { "name": "Sikkim", "slug": "sikkim", "type": "state", "status": "placeholder" },
     { "name": "Tamil Nadu", "slug": "tamil-nadu", "type": "state", "status": "placeholder" },
