@@ -226,7 +226,7 @@ export function ProofAgriInfographic() {
     footerLink = { to: "/ministry/agriculture", label: "Open Agriculture case study" };
   } else if (tab === "heads") {
     title = "Where the money goes · Major Heads";
-    subtitle = "Agriculture outlay broken down by accounting head";
+    subtitle = "Click any Major Head to reveal its top Object Heads";
     chips = ["groupBy: majorHead", "measure: be2627"];
     rows = majorHeads.map((m) => ({
       label: `${m.code} · ${m.name}`,
