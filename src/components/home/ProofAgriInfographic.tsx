@@ -8,7 +8,6 @@ import {
   ALL_AGRI,
   computeKpis as agriKpis,
   getDemandSummaries,
-  getMajorHeads,
 } from "@/lib/agri";
 import {
   UP_AGRI_ALL,
