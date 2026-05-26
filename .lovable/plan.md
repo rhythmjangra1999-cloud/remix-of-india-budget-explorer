@@ -1,91 +1,40 @@
-
 ## Goal
 
-Open up a new "States & UTs" axis of analysis, parallel to the existing Union explorer, and seed it with the first live dataset: **Uttar Pradesh · Agriculture & Allied** (9 demands, grants 010–018).
+Replace the Proof section's static "Top ministries by allocation" snapshot with an **interactive Agriculture case-study infographic** on the left and a synced **4–5 key insights** column on the right. The two panels stay interlinked: clicking a view on the left updates which insights are emphasized on the right.
 
-Note: The upload contains **9 CSVs (grants 010–018)**, not 10. I'll treat that as the canonical demand list for UP Agriculture unless you tell me otherwise.
+## Left panel — Agriculture infographic (tabbed)
 
-## What gets built
+A small tab strip at the top lets the reader switch between four views, all sourced from data already in the project:
 
-### 1. States & UTs index page — `/states`
-- Route + nav entry ("States" in `SiteHeader`).
-- Editorial intro in the same serious/left-aligned ledger style as `/` (Problem → Solution).
-- Grid of all 28 states + 8 UTs as cards. Each card: state name, short code, status chip.
-  - **UP** → status `live · agriculture`, links to `/states/uttar-pradesh`.
-  - All others → status `placeholder`, card is non-interactive (or routes to a stub "coming soon" page).
+1. **Demands** — DAFW (D001) + DARE (D002), BE 2026-27 vs 2025-26. Two-bar comparison + total. Source: `src/lib/agri.ts` (`ALL_AGRI`, `computeKpis`, `filterRows`).
+2. **Major → Object** — Top Major Heads under Agriculture (e.g., 2401 Crop Husbandry, 2415 Agri Research) with the largest Object Head inside each shown as a sub-bar. Source: `src/lib/agri.ts` hierarchy helpers (already used in `AgriJourney`).
+3. **Schemes** — Top 6 agriculture schemes by BE 26-27 (PM-KISAN, PMFBY, etc.). Source: `src/data/schemes.json` filtered to DAFW/DARE demand IDs (logic mirrors `Builder` scheme preset).
+4. **States — UP & Punjab** — Side-by-side bars: UP Agriculture total (9 demands) vs Punjab Agriculture total (Demands 1 + 34), BE 26-27. Source: `src/lib/up-agri.ts` and `src/lib/punjab-agri.ts` (`computeKpis`).
 
-### 2. Uttar Pradesh state page — `/states/uttar-pradesh`
-- Header: "Uttar Pradesh · State Budget 2026-27", kicker, methodology note.
-- "Ministries / Departments" section — placeholder grid of UP's ~56 departments (same look as the states grid).
-  - **Agriculture & Allied** → `live`, links to `/states/uttar-pradesh/agriculture`.
-  - All others → `placeholder` chips, no link.
-- A short list of all UP departments hard-coded from a static `up-ministries.json` (names only, no totals). We can replace this list later; the names are just labels for now.
+Each view keeps the existing visual language: numbered rows, thin horizontal bars, ₹ Cr in mono, share %, and a footer line "Source · Demands for Grants 2026-27" with an **Open in Builder / Open case study** deep link that changes per tab (e.g. → `/ministry/agriculture`, `/states/uttar-pradesh/agriculture`, `/states/punjab/agriculture`, `/builder?preset=schemes-pm`).
 
-### 3. UP Agriculture explorer — `/states/uttar-pradesh/agriculture`
-Mirrors the existing Union Agriculture journey (`AgriJourney.tsx` + `components/explorer/agri/*`), but driven by the 9 UP CSVs.
+## Right panel — 4–5 key insights (synced)
 
-- **Data ingestion** (build-time, static JSON in repo — no backend):
-  - Script `scripts/build-up-agri.py` reads `src/data/states/uttar-pradesh/agriculture/raw/up_grant_0{10..18}.csv`.
-  - Emits one normalized JSON: `src/data/states/uttar-pradesh/agriculture/ddgs.json`.
-  - Row shape mirrors `AgriRow` in `src/lib/agri.ts`, extended with:
-    - `demandId: "d010" … "d018"`
-    - `demandNo: 10…18`
-    - `demandTitle` (English from `ministry` column)
-    - bilingual fields: `majorHeadNameHi`, `subMajorHeadNameHi`, `minorHeadNameHi`, `objectHeadNameHi`, `subHeadName` (already Hindi in source — kept as-is).
-  - Numeric fields: `actuals2425`, `be2526`, `re2526`, `be2627`.
-  - Gap flags computed same way as Union (NEW / DISCONTINUED / SMALL_BASE).
+A single "Suggested insights" column with 4–5 cards. The card relevant to the active left-tab is highlighted (primary border / tag color); the others stay visible but muted. Draft copy (numbers will be computed live from the same selectors so they always match the left):
 
-- **Selectors lib** `src/lib/up-agri.ts`:
-  - `UP_AGRI_ALL`, `UP_DEMANDS` (id, no, titleEn), `filterRows`, `computeKpis`, `buildHierarchy`, `topMovers`, `getMajorHeads`, `getDemandSummaries` — same API surface as `src/lib/agri.ts` so existing components can be re-used with minimal forking.
-
-- **Page composition** — copy of `AgriJourney` adapted to UP:
-  1. Demands overview (9 cards, EN title + Hindi short, BE 26-27 total, YoY).
-  2. Demand filter (All · 010 … 018).
-  3. KPI strip (total BE, YoY, revenue/capital split, row count, flagged count).
-  4. Major-head table.
-  5. Sunburst + linked hierarchy table (Major → Minor → SubHead → Object), with Hindi names shown under English where present.
-  6. Top movers (hikes / cuts).
-  7. Source footer pointing to the original PDFs (`source_pdf` column).
-
-- Hindi handling: render Hindi name as a smaller second line under the English label (e.g. in table rows and sunburst tooltips). No transliteration; preserved verbatim from CSV.
-
-### 4. Cross-links
-- Home page (`/`): add a thin "States & UTs" entry in the existing nav grid (without restructuring the page).
-- Union Agriculture page: small footer link "See state-level: Uttar Pradesh →".
-
-## Out of scope (this round)
-- Other states' data (placeholders only).
-- Other UP departments beyond Agriculture (placeholders only).
-- Center→State transfer reconciliation between Union and UP figures.
-- Search/global index updates for UP rows.
+1. **Agri envelope** — "DAFW + DARE together get ₹X k Cr in BE 26-27, Y% of the Union Budget." (active on Demands tab)
+2. **Where it concentrates** — "Crop Husbandry (MH 2401) alone absorbs Z% of the agri outlay; within it, one object head — Grants-in-Aid / Subsidies — dominates." (active on Major→Object tab)
+3. **Scheme gravity** — "Top 3 schemes (PM-KISAN, PMFBY, Modified Interest Subvention) account for N% of all agri scheme spend." (active on Schemes tab)
+4. **State transfers** — "UP's own Agriculture envelope (₹A Cr) is ~M× Punjab's (₹B Cr) — sub-national budgets reveal what Union aggregates hide." (active on States tab)
+5. **Reproducible** — "Every number above traces back to a Demand-for-Grants page; open the same view in the case study or Builder." (always visible, neutral)
 
 ## Technical notes
 
-```
-src/
-  data/states/
-    states-index.json                 # 28 states + 8 UTs, status per state
-    uttar-pradesh/
-      up-ministries.json              # ~56 dept names, status per dept
-      agriculture/
-        raw/up_grant_010_rows.csv …   # checked-in source
-        ddgs.json                     # normalized, built by script
-  lib/
-    up-agri.ts                        # selectors mirroring agri.ts
-  pages/
-    States.tsx                        # /states
-    StateUttarPradesh.tsx             # /states/uttar-pradesh
-    UPAgriJourney.tsx                 # /states/uttar-pradesh/agriculture
-  components/states/
-    StateCard.tsx
-    DepartmentCard.tsx
-scripts/
-  build-up-agri.py                    # CSVs → ddgs.json
-```
+- Edit only `src/pages/Index.tsx` `ProofSection` (lines 312–445). No new pages, no data changes.
+- New small components live inside the same file (or a single new `src/components/home/ProofAgriInfographic.tsx` if it grows past ~150 lines).
+- Reuse selectors: `computeKpis`, `filterRows` from `@/lib/agri`, `@/lib/up-agri`, `@/lib/punjab-agri`; scheme totals from `@/data/schemes.json` filtered by `demandId ∈ {d001, d002}`.
+- Reuse `formatCr` from `@/lib/format`.
+- Tab state via `useState<"demands" | "heads" | "schemes" | "states">`; right-panel highlighting derived from the same state.
+- Keep all text **left-aligned** and use semantic tokens only (per project memory). No new colors.
+- The old `topMinistries` / `totalCr` props become unused; remove from the `ProofSection` call site at line 133.
 
-Routes registered in `src/App.tsx`. `SiteHeader` gets one new top-level link: **States**.
+## Out of scope
 
-## Open questions
-
-1. The upload has **9 demands (010–018)**, not 10. Proceed with 9, or are you expecting a 10th file?
-2. For the ~56 UP department placeholders, do you have a canonical list, or should I generate one from a standard UP Budget department list?
+- No changes to `AgriJourney`, `Builder`, `States`, or any data files.
+- No new routes or nav entries.
+- No animation beyond existing hover transitions.
