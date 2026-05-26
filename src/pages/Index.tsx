@@ -33,9 +33,9 @@ const Index = () => {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* PAGE 1 — Hero heading + history chart */}
+        {/* PAGE 1 — Hero heading */}
         <section id="page-1" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
-          <div className="container py-20 md:py-24 text-sm font-serif font-normal flex-1 flex flex-col">
+          <div className="container py-20 md:py-24 text-sm font-serif font-normal flex-1 flex flex-col justify-center">
             <div className="w-full">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
                 Trace the rupee. <span className="text-foreground/55">The pulse of public spending.</span>
@@ -48,19 +48,23 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="mt-14 border-t border-border pt-10">
-              <BudgetHistoryChart />
-            </div>
-
-            <NextPage to="page-2" label="Next · Open Explorer" />
+            <NextPage to="page-2" label="Next · History" />
           </div>
         </section>
 
-        {/* PAGE 2 — Ledger band CTAs */}
+        {/* PAGE 2 — Budget history chart */}
         <section id="page-2" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
+            <BudgetHistoryChart />
+            <NextPage to="page-3" label="Next · Open Explorer" />
+          </div>
+        </section>
+
+        {/* PAGE 3 — Ledger band CTAs */}
+        <section id="page-3" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
+          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <div className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-              Page 2 · Start exploring
+              Page 3 · Start exploring
             </div>
             <h2 className="mt-3 font-serif text-3xl md:text-4xl font-semibold leading-tight">
               The headline figure — and two ways in.
@@ -114,12 +118,12 @@ const Index = () => {
               <div className="border-b-2 border-t border-foreground" />
             </div>
 
-            <NextPage to="page-3" label="Next · Problem statement" />
+            <NextPage to="page-4" label="Next · Problem statement" />
           </div>
         </section>
 
-        {/* PAGE 3 — Problem statement */}
-        <section id="page-3" className="border-b border-border bg-secondary/30 min-h-screen flex flex-col scroll-mt-16">
+        {/* PAGE 4 — Problem statement */}
+        <section id="page-4" className="border-b border-border bg-secondary/30 min-h-screen flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
               PROBLEM STATEMENT:
@@ -127,12 +131,12 @@ const Index = () => {
             <p className="mt-6 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
               Every year, the Union Budget is announced and reported. But what gets covered is only the first layer  which is how much each ministry received. The actual flow of money lives in the documents that follow: the Demands for Grants, the Detailed Demands for Grants, and the scheme annexures that each ministry publishes. And further still, in how those schemes distribute their allocations across every state in the country. Taken together, these run to thousands of pages scattered across government portals. Koshtha brings them into one place so the full journey of public money becomes readable.
             </p>
-            <NextPage to="page-4" label="Next · Solution" />
+            <NextPage to="page-5" label="Next · Solution" />
           </div>
         </section>
 
-        {/* PAGE 4 — Solution */}
-        <section id="page-4" className="border-b border-border min-h-screen flex flex-col scroll-mt-16">
+        {/* PAGE 5 — Solution */}
+        <section id="page-5" className="border-b border-border min-h-screen flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
               SOLUTION: KOSHTHA
@@ -151,12 +155,12 @@ const Index = () => {
               <SubTile n="03" title="Schemes" dek="Every Central Sector and Centrally Sponsored scheme, mapped from the ministry that funds it down to the states it is meant to serve." to="/explorer?view=schemes" badge="Rolling out" />
               <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them. Starting with Uttar Pradesh · Agriculture." to="/states" badge="Rolling out" />
             </div>
-            <NextPage to="page-5" label="Next · Proof" />
+            <NextPage to="page-6" label="Next · Proof" />
           </div>
         </section>
 
-        {/* PAGE 5 — Proof */}
-        <section id="page-5" className="bg-card min-h-screen flex flex-col scroll-mt-16">
+        {/* PAGE 6 — Proof */}
+        <section id="page-6" className="bg-card min-h-screen flex flex-col scroll-mt-16">
           <ProofSection />
         </section>
       </main>
