@@ -1,7 +1,6 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { formatCr } from "@/lib/format";
-import { formatCr } from "@/lib/format";
 import { MoneyFlowChart } from "@/components/methodology/MoneyFlowChart";
 import { BudgetCycleTimeline } from "@/components/methodology/BudgetCycleTimeline";
 import { RupeeDonut } from "@/components/methodology/RupeeDonut";
