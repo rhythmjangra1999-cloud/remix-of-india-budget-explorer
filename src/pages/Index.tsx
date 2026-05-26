@@ -54,7 +54,7 @@ const Index = () => {
 
         {/* PAGE 2 — Budget history chart */}
         <section id="page-2" className="paper border-b border-border min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
-          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
+          <div className="container py-8 md:py-10 flex-1 flex flex-col justify-start">
             <BudgetHistoryChart />
             <NextPage to="page-3" label="Next · Open Explorer" />
           </div>
