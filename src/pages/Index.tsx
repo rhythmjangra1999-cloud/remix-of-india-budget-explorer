@@ -230,17 +230,15 @@ function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: 
 
 function ProofSection() {
   return (
-    <section className="border-y border-border bg-card">
-      <div className="container py-16">
-        <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
-          PROOF:
-        </div>
-        <p className="mt-4 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
-          Build your case with all the numbers. Take Agriculture as the worked example — trace the envelope from two Union demands down to schemes, then watch the same sector get budgeted differently in UP and Punjab. Every chart on the left is mirrored by an insight on the right.
-        </p>
-        <ProofAgriInfographic />
+    <div className="container py-20 md:py-24 flex-1 flex flex-col">
+      <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
+        PROOF:
       </div>
-    </section>
+      <p className="mt-4 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
+        Build your case with all the numbers. Take Agriculture as the worked example — trace the envelope from two Union demands down to schemes, then watch the same sector get budgeted differently in UP and Punjab. Every chart on the left is mirrored by an insight on the right.
+      </p>
+      <ProofAgriInfographic />
+    </div>
   );
 }
 
