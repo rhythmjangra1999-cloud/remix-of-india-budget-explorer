@@ -212,7 +212,7 @@ export function ProofAgriInfographic() {
   let subtitle = "";
   let chips: string[] = [];
   let rows: BarRow[] = [];
-  let footerLink: { to: string; label: string } = { to: "/ministry/agriculture", label: "Open Agriculture case study" };
+  let footerLink: { to: string; label: string } = { to: "/agri-journey", label: "Open Agriculture case study" };
 
   if (tab === "demands") {
     title = "Agriculture envelope · BE 2026-27";
@@ -223,7 +223,7 @@ export function ProofAgriInfographic() {
       cr: d.be2627,
       sub: `Revenue ${formatCr(d.revBe2627, { compact: true })} · Capital ${formatCr(d.capBe2627, { compact: true })}`,
     }));
-    footerLink = { to: "/ministry/agriculture", label: "Open Agriculture case study" };
+    footerLink = { to: "/agri-journey", label: "Open Agriculture case study" };
   } else if (tab === "heads") {
     title = "Where the money goes · Major Heads";
     subtitle = "Click any Major Head to reveal its top Object Heads";
@@ -232,7 +232,7 @@ export function ProofAgriInfographic() {
       label: `${m.code} · ${m.name}`,
       cr: m.cr,
     }));
-    footerLink = { to: "/ministry/agriculture", label: "Drill into Major → Object" };
+    footerLink = { to: "/agri-journey", label: "Drill into Major → Object" };
   } else if (tab === "schemes") {
     title = "Top agriculture schemes · BE 2026-27";
     subtitle = `${agriSchemes.length} schemes mapped to DAFW + DARE`;
