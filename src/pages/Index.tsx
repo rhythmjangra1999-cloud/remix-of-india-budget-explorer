@@ -132,14 +132,6 @@ const Index = () => {
 
         {/* Proof */}
         <ProofSection />
-
-
-
-
-
-
-
-
       </main>
 
       <SiteFooter />
