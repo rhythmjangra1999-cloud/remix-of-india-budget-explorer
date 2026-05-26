@@ -64,6 +64,92 @@ function BarList({ rows, max, totalForShare }: { rows: BarRow[]; max: number; to
   );
 }
 
+interface HeadRow {
+  code: string;
+  name: string;
+  cr: number;
+  objects: { code: string; name: string; cr: number }[];
+}
+
+function HeadsDrill({ heads, total }: { heads: HeadRow[]; total: number }) {
+  const max = Math.max(1, ...heads.map((h) => h.cr));
+  const [open, setOpen] = useState<Set<string>>(() => new Set(heads[0] ? [heads[0].code] : []));
+  const toggle = (k: string) =>
+    setOpen((s) => {
+      const n = new Set(s);
+      n.has(k) ? n.delete(k) : n.add(k);
+      return n;
+    });
+
+  return (
+    <div className="mt-5 space-y-3">
+      {heads.map((h, i) => {
+        const isOpen = open.has(h.code);
+        const share = total ? (h.cr / total) * 100 : 0;
+        const objMax = Math.max(1, ...h.objects.map((o) => o.cr));
+        return (
+          <div key={h.code} className="block">
+            <button
+              onClick={() => toggle(h.code)}
+              className="block w-full text-left group"
+            >
+              <div className="flex items-baseline justify-between gap-3 text-xs">
+                <div className="flex items-baseline gap-2 min-w-0">
+                  <span className="font-mono text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                  {isOpen ? (
+                    <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
+                  ) : (
+                    <ChevronRight className="h-3 w-3 shrink-0 text-muted-foreground" />
+                  )}
+                  <span className="font-mono text-[11px] text-muted-foreground">MH {h.code}</span>
+                  <span className="font-serif text-sm truncate group-hover:text-primary transition-colors">
+                    {h.name}
+                  </span>
+                </div>
+                <div className="font-mono tnum text-foreground/80 shrink-0">
+                  {formatCr(h.cr, { compact: true })}
+                  <span className="ml-2 text-muted-foreground">{share.toFixed(1)}%</span>
+                </div>
+              </div>
+              <div className="mt-1.5 h-2 w-full bg-muted/60 overflow-hidden">
+                <div className="h-full bg-primary/80" style={{ width: `${(h.cr / max) * 100}%` }} />
+              </div>
+            </button>
+
+            {isOpen && h.objects.length > 0 && (
+              <div className="mt-2 ml-6 pl-3 border-l border-border space-y-1.5">
+                <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                  Top object heads
+                </div>
+                {h.objects.map((o) => {
+                  const oShare = h.cr ? (o.cr / h.cr) * 100 : 0;
+                  return (
+                    <div key={o.code}>
+                      <div className="flex items-baseline justify-between gap-3 text-[11px]">
+                        <div className="flex items-baseline gap-2 min-w-0">
+                          <span className="font-mono text-muted-foreground shrink-0">{o.code}</span>
+                          <span className="font-serif truncate">{o.name}</span>
+                        </div>
+                        <div className="font-mono tnum text-foreground/70 shrink-0">
+                          {formatCr(o.cr, { compact: true })}
+                          <span className="ml-2 text-muted-foreground">{oShare.toFixed(0)}%</span>
+                        </div>
+                      </div>
+                      <div className="mt-1 h-1 w-full bg-muted/40 overflow-hidden">
+                        <div className="h-full bg-primary/50" style={{ width: `${(o.cr / objMax) * 100}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function ProofAgriInfographic() {
   const [tab, setTab] = useState<Tab>("demands");
 
@@ -263,7 +349,11 @@ export function ProofAgriInfographic() {
           </div>
         </div>
 
-        <BarList rows={rows} max={max} totalForShare={totalForShare} />
+        {tab === "heads" ? (
+          <HeadsDrill heads={majorHeads} total={mhTotal} />
+        ) : (
+          <BarList rows={rows} max={max} totalForShare={totalForShare} />
+        )}
 
         <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs">
           <span className="font-mono text-muted-foreground">
