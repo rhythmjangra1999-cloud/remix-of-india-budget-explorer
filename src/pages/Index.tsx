@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ConfidenceChip } from "@/components/ConfidenceChip";
@@ -8,9 +8,21 @@ import { ProofAgriInfographic } from "@/components/home/ProofAgriInfographic";
 import { BUDGET_META, FINDINGS, MINISTRIES, ministryById } from "@/lib/budget-data";
 import { formatCr } from "@/lib/format";
 
+function NextPage({ to, label }: { to: string; label: string }) {
+  return (
+    <div className="mt-12 flex justify-end">
+      <a
+        href={`#${to}`}
+        className="group inline-flex items-center gap-2 border-t border-foreground pt-3 pl-6 font-sans text-[11px] uppercase tracking-[0.2em] text-foreground/70 hover:text-foreground transition-colors"
+      >
+        <span>{label}</span>
+        <ArrowDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
+      </a>
+    </div>
+  );
+}
+
 const Index = () => {
-  // Exclude Finance because Repayment of Debt + Interest Payments dwarf everything
-  // and aren't really "ministry spending" — they're balance-sheet flows.
   const topMinistries = [...MINISTRIES]
     .filter((m) => m.id !== "mof")
     .sort((a, b) => (b.totals.FY27 ?? 0) - (a.totals.FY27 ?? 0))
@@ -21,10 +33,9 @@ const Index = () => {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* Hero */}
-        <section className="paper border-b border-border">
-          <div className="container py-20 md:py-24 text-sm font-serif font-normal">
-            {/* Full-width heading + copy */}
+        {/* PAGE 1 — Hero heading + history chart */}
+        <section id="page-1" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
+          <div className="container py-20 md:py-24 text-sm font-serif font-normal flex-1 flex flex-col">
             <div className="w-full">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
                 Trace the rupee. <span className="text-foreground/55">The pulse of public spending.</span>
@@ -37,16 +48,26 @@ const Index = () => {
               </div>
             </div>
 
-            {/* History chart — full width, below heading */}
             <div className="mt-14 border-t border-border pt-10">
               <BudgetHistoryChart />
             </div>
 
-            {/* Headline figure + CTAs — editorial ledger band */}
-            <div className="mt-14">
+            <NextPage to="page-2" label="Next · Open Explorer" />
+          </div>
+        </section>
+
+        {/* PAGE 2 — Ledger band CTAs */}
+        <section id="page-2" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
+          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
+            <div className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
+              Page 2 · Start exploring
+            </div>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl font-semibold leading-tight">
+              The headline figure — and two ways in.
+            </h2>
+            <div className="mt-10">
               <div className="border-t-2 border-b border-foreground" />
               <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] bg-border gap-px">
-                {/* Figure cell */}
                 <div className="bg-card p-7 md:p-8 flex flex-col justify-center min-h-[140px]">
                   <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
                     Union Budget · BE 2026 to 27
@@ -56,7 +77,6 @@ const Index = () => {
                   </div>
                 </div>
 
-                {/* Read Tutorial */}
                 <Link
                   to="/methodology"
                   className="group relative overflow-hidden bg-primary/10 p-7 md:p-8 flex flex-col justify-center min-h-[140px] hover:bg-primary/15 transition-colors"
@@ -73,7 +93,6 @@ const Index = () => {
                   </span>
                 </Link>
 
-                {/* Open Explorer */}
                 <Link
                   to="/explorer"
                   className="group relative overflow-hidden bg-primary p-7 md:p-8 flex flex-col justify-center min-h-[140px] hover:bg-primary/90 transition-colors"
@@ -94,44 +113,52 @@ const Index = () => {
               </div>
               <div className="border-b-2 border-t border-foreground" />
             </div>
+
+            <NextPage to="page-3" label="Next · Problem statement" />
           </div>
         </section>
 
-        {/* Problem statement */}
-        <section className="border-b border-border bg-secondary/30">
-          <div className="container py-14">
+        {/* PAGE 3 — Problem statement */}
+        <section id="page-3" className="border-b border-border bg-secondary/30 min-h-screen flex flex-col scroll-mt-16">
+          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
               PROBLEM STATEMENT:
             </div>
             <p className="mt-6 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
               Every year, the Union Budget is announced and reported. But what gets covered is only the first layer  which is how much each ministry received. The actual flow of money lives in the documents that follow: the Demands for Grants, the Detailed Demands for Grants, and the scheme annexures that each ministry publishes. And further still, in how those schemes distribute their allocations across every state in the country. Taken together, these run to thousands of pages scattered across government portals. Koshtha brings them into one place so the full journey of public money becomes readable.
             </p>
+            <NextPage to="page-4" label="Next · Solution" />
           </div>
         </section>
 
-        {/* Single entry tile */}
-        <section className="container py-14">
-          <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
-            SOLUTION: KOSHTHA
-          </div>
-          <p className="mt-6 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
-            Koshtha opens the Union Budget at every level it is published. Start with the full picture and drill down until you reach the individual budget line that funds a specific activity in a specific state.
-          </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <SubTile
-              n="01"
-              title="Union Budget"
-              dek={`Browse all ${BUDGET_META.ministriesCovered} ministries across four fiscal years. Follow any allocation from its major head all the way down to the object head, with year on year changes shown at every level.`}
-              to="/explorer?view=union"
-            />
-            <SubTile n="02" title="Ministry" dek="Open any of the 56 ministries and read its demands, major heads, and object heads the way the government published them, with four years of figures side by side." to="/explorer" />
-            <SubTile n="03" title="Schemes" dek="Every Central Sector and Centrally Sponsored scheme, mapped from the ministry that funds it down to the states it is meant to serve." to="/explorer?view=schemes" badge="Rolling out" />
-            <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them. Starting with Uttar Pradesh · Agriculture." to="/states" badge="Rolling out" />
+        {/* PAGE 4 — Solution */}
+        <section id="page-4" className="border-b border-border min-h-screen flex flex-col scroll-mt-16">
+          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
+            <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
+              SOLUTION: KOSHTHA
+            </div>
+            <p className="mt-6 w-full font-serif text-base leading-relaxed md:text-xl text-foreground/85">
+              Koshtha opens the Union Budget at every level it is published. Start with the full picture and drill down until you reach the individual budget line that funds a specific activity in a specific state.
+            </p>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <SubTile
+                n="01"
+                title="Union Budget"
+                dek={`Browse all ${BUDGET_META.ministriesCovered} ministries across four fiscal years. Follow any allocation from its major head all the way down to the object head, with year on year changes shown at every level.`}
+                to="/explorer?view=union"
+              />
+              <SubTile n="02" title="Ministry" dek="Open any of the 56 ministries and read its demands, major heads, and object heads the way the government published them, with four years of figures side by side." to="/explorer" />
+              <SubTile n="03" title="Schemes" dek="Every Central Sector and Centrally Sponsored scheme, mapped from the ministry that funds it down to the states it is meant to serve." to="/explorer?view=schemes" badge="Rolling out" />
+              <SubTile n="04" title="State" dek="See how central scheme allocations translate into actual flows of money into each state, traced from the ministry demand that carried them. Starting with Uttar Pradesh · Agriculture." to="/states" badge="Rolling out" />
+            </div>
+            <NextPage to="page-5" label="Next · Proof" />
           </div>
         </section>
 
-        {/* Proof */}
-        <ProofSection />
+        {/* PAGE 5 — Proof */}
+        <section id="page-5" className="bg-card min-h-screen flex flex-col scroll-mt-16">
+          <ProofSection />
+        </section>
       </main>
 
       <SiteFooter />
