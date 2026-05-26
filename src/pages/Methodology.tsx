@@ -1,7 +1,5 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { ConfidenceChip } from "@/components/ConfidenceChip";
-import { COVERAGE, MINISTRIES, ministryById } from "@/lib/budget-data";
 import { formatCr } from "@/lib/format";
 import { MoneyFlowChart } from "@/components/methodology/MoneyFlowChart";
 import { BudgetCycleTimeline } from "@/components/methodology/BudgetCycleTimeline";
@@ -21,7 +19,6 @@ const SECTIONS = [
   { id: "sec-e", label: "E · The 6-level hierarchy" },
   { id: "sec-f", label: "F · Centre → State" },
   { id: "sec-g", label: "G · The rupee diagram" },
-  { id: "coverage", label: "Coverage tracker" },
 ];
 
 function AnchorH2({ id, children, eyebrow }: { id: string; children: React.ReactNode; eyebrow?: string }) {
@@ -434,50 +431,6 @@ const Methodology = () => {
                   <RupeeDonut />
                   <SourceLine>Budget at a Glance FY26 · Rupee Comes From / Rupee Goes To.</SourceLine>
                 </div>
-              </section>
-
-              {/* Coverage tracker (kept) */}
-              <section id="coverage" className="mt-24 scroll-mt-24">
-                <AnchorH2 id="coverage-h" eyebrow="Tracker">
-                  Coverage tracker
-                </AnchorH2>
-                <p className="mt-2 text-foreground/70 max-w-2xl">
-                  Per-ministry status. As more DDGs are validated, this table updates.
-                </p>
-                <div className="mt-6 overflow-x-auto rounded-sm border border-border">
-                  <table className="w-full text-sm">
-                    <thead className="bg-muted/50">
-                      <tr className="text-left">
-                        <th className="px-4 py-3 font-medium">Ministry</th>
-                        <th className="px-4 py-3 font-medium tnum text-right">FY26 outlay</th>
-                        <th className="px-4 py-3 font-medium">DG status</th>
-                        <th className="px-4 py-3 font-medium">DDG status</th>
-                        <th className="px-4 py-3 font-medium">Notes</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border">
-                      {COVERAGE.map((c) => {
-                        const m = ministryById(c.ministryId);
-                        if (!m) return null;
-                        return (
-                          <tr key={c.ministryId} className="hover:bg-muted/30">
-                            <td className="px-4 py-3 font-medium">{m.name}</td>
-                            <td className="px-4 py-3 tnum text-right">
-                              {formatCr(m.totals.FY26 ?? 0, { compact: true })}
-                            </td>
-                            <td className="px-4 py-3"><ConfidenceChip level={c.dgStatus} /></td>
-                            <td className="px-4 py-3"><ConfidenceChip level={c.ddgStatus} /></td>
-                            <td className="px-4 py-3 text-muted-foreground">{c.notes ?? "—"}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="mt-3 text-xs text-muted-foreground">
-                  Showing {COVERAGE.length} ministries of {MINISTRIES.length}; remainder are
-                  DG-validated, DDG not yet attempted.
-                </p>
               </section>
 
               {/* Footer block */}
