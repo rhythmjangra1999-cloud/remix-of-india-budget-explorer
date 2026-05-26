@@ -234,7 +234,7 @@ function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: 
 
 function ProofSection() {
   return (
-    <div className="container py-20 md:py-24 flex-1 flex flex-col">
+    <div className="container py-10 md:py-14 flex-1 flex flex-col">
       <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
         PROOF:
       </div>
