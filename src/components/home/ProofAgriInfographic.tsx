@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { formatCr } from "@/lib/format";
@@ -72,17 +73,33 @@ export function ProofAgriInfographic() {
   const agriTotal = demands.reduce((s, d) => s + d.be2627, 0);
   const agriPrev = demands.reduce((s, d) => s + d.be2526, 0);
 
-  // Top Major Heads in Agriculture
+  // Top Major Heads in Agriculture, each with top object-head drill-down
   const majorHeads = useMemo(() => {
-    const mh = getMajorHeads(ALL_AGRI);
-    const merged = new Map<string, { code: string; name: string; cr: number }>();
-    for (const m of mh) {
-      const prev = merged.get(m.mhCode);
-      const v = m.be2627 ?? 0;
-      if (prev) prev.cr += v;
-      else merged.set(m.mhCode, { code: m.mhCode, name: m.mhName, cr: v });
+    const mhMap = new Map<string, { code: string; name: string; cr: number; objects: Map<string, { code: string; name: string; cr: number }> }>();
+    for (const r of ALL_AGRI) {
+      const v = r.be2627 ?? 0;
+      if (!v) continue;
+      const mhKey = String(r.majorHead);
+      let mh = mhMap.get(mhKey);
+      if (!mh) {
+        mh = { code: mhKey, name: r.majorHeadName, cr: 0, objects: new Map() };
+        mhMap.set(mhKey, mh);
+      }
+      mh.cr += v;
+      const oKey = String(r.objectHead);
+      const o = mh.objects.get(oKey);
+      if (o) o.cr += v;
+      else mh.objects.set(oKey, { code: oKey, name: r.objectHeadName, cr: v });
     }
-    return Array.from(merged.values()).sort((a, b) => b.cr - a.cr).slice(0, 6);
+    return Array.from(mhMap.values())
+      .sort((a, b) => b.cr - a.cr)
+      .slice(0, 6)
+      .map((mh) => ({
+        code: mh.code,
+        name: mh.name,
+        cr: mh.cr,
+        objects: Array.from(mh.objects.values()).sort((a, b) => b.cr - a.cr).slice(0, 4),
+      }));
   }, []);
   const mhTotal = majorHeads.reduce((s, r) => s + r.cr, 0);
   const mhTop = majorHeads[0];
