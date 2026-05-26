@@ -34,7 +34,7 @@ const Index = () => {
 
       <main className="flex-1">
         {/* PAGE 1 — Hero heading */}
-        <section id="page-1" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
+        <section id="page-1" className="paper border-b border-border min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 text-sm font-serif font-normal flex-1 flex flex-col justify-center">
             <div className="w-full">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.04] tracking-tight">
@@ -53,7 +53,7 @@ const Index = () => {
         </section>
 
         {/* PAGE 2 — Budget history chart */}
-        <section id="page-2" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
+        <section id="page-2" className="paper border-b border-border min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <BudgetHistoryChart />
             <NextPage to="page-3" label="Next · Open Explorer" />
@@ -61,7 +61,7 @@ const Index = () => {
         </section>
 
         {/* PAGE 3 — Ledger band CTAs */}
-        <section id="page-3" className="paper border-b border-border min-h-screen flex flex-col scroll-mt-16">
+        <section id="page-3" className="paper border-b border-border min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <div className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
               Page 3 · Start exploring
@@ -123,7 +123,7 @@ const Index = () => {
         </section>
 
         {/* PAGE 4 — Problem statement */}
-        <section id="page-4" className="border-b border-border bg-secondary/30 min-h-screen flex flex-col scroll-mt-16">
+        <section id="page-4" className="border-b border-border bg-secondary/30 min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
           <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
             <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
               PROBLEM STATEMENT:
@@ -136,8 +136,8 @@ const Index = () => {
         </section>
 
         {/* PAGE 5 — Solution */}
-        <section id="page-5" className="border-b border-border min-h-screen flex flex-col scroll-mt-16">
-          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
+        <section id="page-5" className="border-b border-border min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
+          <div className="container py-10 md:py-14 flex-1 flex flex-col justify-center">
             <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
               SOLUTION: KOSHTHA
             </div>
@@ -160,7 +160,7 @@ const Index = () => {
         </section>
 
         {/* PAGE 6 — Proof */}
-        <section id="page-6" className="bg-card min-h-screen flex flex-col scroll-mt-16">
+        <section id="page-6" className="bg-card min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
           <ProofSection />
         </section>
       </main>
@@ -234,7 +234,7 @@ function SubTile({ n, title, dek, to, badge }: { n: string; title: string; dek: 
 
 function ProofSection() {
   return (
-    <div className="container py-20 md:py-24 flex-1 flex flex-col">
+    <div className="container py-10 md:py-14 flex-1 flex flex-col">
       <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
         PROOF:
       </div>
