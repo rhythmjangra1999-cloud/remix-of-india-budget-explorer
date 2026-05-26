@@ -140,29 +140,6 @@ const Index = () => {
 
 
 
-        {/* Coverage status */}
-        <section className="border-t border-border bg-card">
-          <div className="container py-14 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
-            <div className="max-w-2xl">
-              <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Coverage</div>
-              <p className="mt-2 font-serif text-2xl">
-                <span className="text-primary">102</span> Demands across <span className="text-primary">{BUDGET_META.ministriesCovered}</span> ministries are live · Detailed DGs live for{" "}
-                <span className="text-primary">{BUDGET_META.ddgsLive}</span> of {BUDGET_META.ddgsPlanned} planned.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <ConfidenceChip level="validated" />
-                <ConfidenceChip level="parsed" />
-                <ConfidenceChip level="ocr-needed" />
-              </div>
-            </div>
-            <Link
-              to="/methodology"
-              className="inline-flex items-center gap-2 rounded-sm border border-foreground px-5 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
-            >
-              See coverage tracker
-            </Link>
-          </div>
-        </section>
       </main>
 
       <SiteFooter />
