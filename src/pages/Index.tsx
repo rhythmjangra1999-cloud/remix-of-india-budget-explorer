@@ -137,7 +137,7 @@ const Index = () => {
 
         {/* PAGE 5 — Solution */}
         <section id="page-5" className="border-b border-border min-h-[calc(100vh-4rem)] flex flex-col scroll-mt-16">
-          <div className="container py-20 md:py-24 flex-1 flex flex-col justify-center">
+          <div className="container py-10 md:py-14 flex-1 flex flex-col justify-center">
             <div className="uppercase tracking-[0.16em] text-primary text-2xl md:text-3xl font-serif font-bold">
               SOLUTION: KOSHTHA
             </div>
