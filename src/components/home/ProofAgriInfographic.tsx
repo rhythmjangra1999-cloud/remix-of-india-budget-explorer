@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { formatCr } from "@/lib/format";
@@ -7,7 +8,6 @@ import {
   ALL_AGRI,
   computeKpis as agriKpis,
   getDemandSummaries,
-  getMajorHeads,
 } from "@/lib/agri";
 import {
   UP_AGRI_ALL,
@@ -64,6 +64,92 @@ function BarList({ rows, max, totalForShare }: { rows: BarRow[]; max: number; to
   );
 }
 
+interface HeadRow {
+  code: string;
+  name: string;
+  cr: number;
+  objects: { code: string; name: string; cr: number }[];
+}
+
+function HeadsDrill({ heads, total }: { heads: HeadRow[]; total: number }) {
+  const max = Math.max(1, ...heads.map((h) => h.cr));
+  const [open, setOpen] = useState<Set<string>>(() => new Set(heads[0] ? [heads[0].code] : []));
+  const toggle = (k: string) =>
+    setOpen((s) => {
+      const n = new Set(s);
+      n.has(k) ? n.delete(k) : n.add(k);
+      return n;
+    });
+
+  return (
+    <div className="mt-5 space-y-3">
+      {heads.map((h, i) => {
+        const isOpen = open.has(h.code);
+        const share = total ? (h.cr / total) * 100 : 0;
+        const objMax = Math.max(1, ...h.objects.map((o) => o.cr));
+        return (
+          <div key={h.code} className="block">
+            <button
+              onClick={() => toggle(h.code)}
+              className="block w-full text-left group"
+            >
+              <div className="flex items-baseline justify-between gap-3 text-xs">
+                <div className="flex items-baseline gap-2 min-w-0">
+                  <span className="font-mono text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                  {isOpen ? (
+                    <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
+                  ) : (
+                    <ChevronRight className="h-3 w-3 shrink-0 text-muted-foreground" />
+                  )}
+                  <span className="font-mono text-[11px] text-muted-foreground">MH {h.code}</span>
+                  <span className="font-serif text-sm truncate group-hover:text-primary transition-colors">
+                    {h.name}
+                  </span>
+                </div>
+                <div className="font-mono tnum text-foreground/80 shrink-0">
+                  {formatCr(h.cr, { compact: true })}
+                  <span className="ml-2 text-muted-foreground">{share.toFixed(1)}%</span>
+                </div>
+              </div>
+              <div className="mt-1.5 h-2 w-full bg-muted/60 overflow-hidden">
+                <div className="h-full bg-primary/80" style={{ width: `${(h.cr / max) * 100}%` }} />
+              </div>
+            </button>
+
+            {isOpen && h.objects.length > 0 && (
+              <div className="mt-2 ml-6 pl-3 border-l border-border space-y-1.5">
+                <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                  Top object heads
+                </div>
+                {h.objects.map((o) => {
+                  const oShare = h.cr ? (o.cr / h.cr) * 100 : 0;
+                  return (
+                    <div key={o.code}>
+                      <div className="flex items-baseline justify-between gap-3 text-[11px]">
+                        <div className="flex items-baseline gap-2 min-w-0">
+                          <span className="font-mono text-muted-foreground shrink-0">{o.code}</span>
+                          <span className="font-serif truncate">{o.name}</span>
+                        </div>
+                        <div className="font-mono tnum text-foreground/70 shrink-0">
+                          {formatCr(o.cr, { compact: true })}
+                          <span className="ml-2 text-muted-foreground">{oShare.toFixed(0)}%</span>
+                        </div>
+                      </div>
+                      <div className="mt-1 h-1 w-full bg-muted/40 overflow-hidden">
+                        <div className="h-full bg-primary/50" style={{ width: `${(o.cr / objMax) * 100}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function ProofAgriInfographic() {
   const [tab, setTab] = useState<Tab>("demands");
 
@@ -72,17 +158,33 @@ export function ProofAgriInfographic() {
   const agriTotal = demands.reduce((s, d) => s + d.be2627, 0);
   const agriPrev = demands.reduce((s, d) => s + d.be2526, 0);
 
-  // Top Major Heads in Agriculture
+  // Top Major Heads in Agriculture, each with top object-head drill-down
   const majorHeads = useMemo(() => {
-    const mh = getMajorHeads(ALL_AGRI);
-    const merged = new Map<string, { code: string; name: string; cr: number }>();
-    for (const m of mh) {
-      const prev = merged.get(m.mhCode);
-      const v = m.be2627 ?? 0;
-      if (prev) prev.cr += v;
-      else merged.set(m.mhCode, { code: m.mhCode, name: m.mhName, cr: v });
+    const mhMap = new Map<string, { code: string; name: string; cr: number; objects: Map<string, { code: string; name: string; cr: number }> }>();
+    for (const r of ALL_AGRI) {
+      const v = r.be2627 ?? 0;
+      if (!v) continue;
+      const mhKey = String(r.majorHead);
+      let mh = mhMap.get(mhKey);
+      if (!mh) {
+        mh = { code: mhKey, name: r.majorHeadName, cr: 0, objects: new Map() };
+        mhMap.set(mhKey, mh);
+      }
+      mh.cr += v;
+      const oKey = String(r.objectHead);
+      const o = mh.objects.get(oKey);
+      if (o) o.cr += v;
+      else mh.objects.set(oKey, { code: oKey, name: r.objectHeadName, cr: v });
     }
-    return Array.from(merged.values()).sort((a, b) => b.cr - a.cr).slice(0, 6);
+    return Array.from(mhMap.values())
+      .sort((a, b) => b.cr - a.cr)
+      .slice(0, 6)
+      .map((mh) => ({
+        code: mh.code,
+        name: mh.name,
+        cr: mh.cr,
+        objects: Array.from(mh.objects.values()).sort((a, b) => b.cr - a.cr).slice(0, 4),
+      }));
   }, []);
   const mhTotal = majorHeads.reduce((s, r) => s + r.cr, 0);
   const mhTop = majorHeads[0];
@@ -110,7 +212,7 @@ export function ProofAgriInfographic() {
   let subtitle = "";
   let chips: string[] = [];
   let rows: BarRow[] = [];
-  let footerLink: { to: string; label: string } = { to: "/ministry/agriculture", label: "Open Agriculture case study" };
+  let footerLink: { to: string; label: string } = { to: "/agri-journey", label: "Open Agriculture case study" };
 
   if (tab === "demands") {
     title = "Agriculture envelope · BE 2026-27";
@@ -121,16 +223,16 @@ export function ProofAgriInfographic() {
       cr: d.be2627,
       sub: `Revenue ${formatCr(d.revBe2627, { compact: true })} · Capital ${formatCr(d.capBe2627, { compact: true })}`,
     }));
-    footerLink = { to: "/ministry/agriculture", label: "Open Agriculture case study" };
+    footerLink = { to: "/agri-journey", label: "Open Agriculture case study" };
   } else if (tab === "heads") {
     title = "Where the money goes · Major Heads";
-    subtitle = "Agriculture outlay broken down by accounting head";
+    subtitle = "Click any Major Head to reveal its top Object Heads";
     chips = ["groupBy: majorHead", "measure: be2627"];
     rows = majorHeads.map((m) => ({
       label: `${m.code} · ${m.name}`,
       cr: m.cr,
     }));
-    footerLink = { to: "/ministry/agriculture", label: "Drill into Major → Object" };
+    footerLink = { to: "/agri-journey", label: "Drill into Major → Object" };
   } else if (tab === "schemes") {
     title = "Top agriculture schemes · BE 2026-27";
     subtitle = `${agriSchemes.length} schemes mapped to DAFW + DARE`;
@@ -247,7 +349,11 @@ export function ProofAgriInfographic() {
           </div>
         </div>
 
-        <BarList rows={rows} max={max} totalForShare={totalForShare} />
+        {tab === "heads" ? (
+          <HeadsDrill heads={majorHeads} total={mhTotal} />
+        ) : (
+          <BarList rows={rows} max={max} totalForShare={totalForShare} />
+        )}
 
         <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs">
           <span className="font-mono text-muted-foreground">
